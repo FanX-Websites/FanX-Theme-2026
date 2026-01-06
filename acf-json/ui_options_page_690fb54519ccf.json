@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_690fb54519ccf",
+    "title": "Alert Messages",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Alert Messages",
+    "menu_slug": "alerts",
+    "parent_slug": "index.php",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "Alerts\/ Messages",
+    "position": 1,
+    "redirect": false,
+    "description": "Messages that appear on the Top bar of the Website Header",
+    "menu_icon": [],
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "modified": 1762641263
+}

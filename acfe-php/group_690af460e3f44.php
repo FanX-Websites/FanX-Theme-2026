@@ -1,0 +1,102 @@
+<?php 
+
+if( function_exists('acf_add_local_field_group') ):
+
+acf_add_local_field_group(array(
+	'key' => 'group_690af460e3f44',
+	'title' => 'Schedule Post',
+	'fields' => array(
+		array(
+			'allow_backendsearch' => false,
+			'show_column_filter' => false,
+			'allow_bulkedit' => 0,
+			'allow_quickedit' => 0,
+			'show_column' => 0,
+			'show_column_weight' => 1000,
+			'show_column_sortable' => false,
+			'key' => 'field_690af46102b34',
+			'label' => 'Schedule Push to Static Site',
+			'name' => 'scheduled_static_push',
+			'aria-label' => '',
+			'type' => 'date_time_picker',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'display_format' => 'd/m/Y g:i a',
+			'return_format' => 'Y-m-d H:i:s',
+			'first_day' => 1,
+			'default_to_current_date' => 1,
+			'allow_in_bindings' => 0,
+		),
+		array(
+			'allow_backendsearch' => false,
+			'show_column_filter' => 0,
+			'allow_bulkedit' => 0,
+			'allow_quickedit' => 0,
+			'show_column' => 0,
+			'show_column_weight' => 1000,
+			'show_column_sortable' => false,
+			'key' => 'field_690afab402b35',
+			'label' => '',
+			'name' => 'static_push_action',
+			'aria-label' => '',
+			'type' => 'button_group',
+			'instructions' => 'WARNING: Do NOT push the \'Export static page\' button below unless you want the page to be pushed immediately.',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => array(
+				'schedule_push' => 'Schedule Push',
+				'cancel_schedule' => 'Cancel Push',
+			),
+			'default_value' => '',
+			'return_format' => 'value',
+			'allow_null' => 0,
+			'allow_in_bindings' => 0,
+			'layout' => 'vertical',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'all',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'side',
+	'style' => 'default',
+	'label_placement' => 'left',
+	'instruction_placement' => 'field',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+	'show_in_rest' => 0,
+	'display_title' => '',
+	'acfe_display_title' => 'Schedule Push',
+	'acfe_autosync' => array(
+		0 => 'php',
+		1 => 'json',
+	),
+	'acfe_form' => 0,
+	'qef_simple_location_rules' => 0,
+	'acfe_meta' => '',
+	'acfe_note' => '',
+	'acfe_categories' => array(
+		'dev' => 'Dev',
+	),
+	'modified' => 1762408575,
+));
+
+endif;

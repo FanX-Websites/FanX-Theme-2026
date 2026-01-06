@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_690568e4b4a04",
+    "title": "Participant Info",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Participant Info",
+    "menu_slug": "participant-info",
+    "parent_slug": "edit.php?post_type=partner",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "Participant Info - Options Page",
+    "position": 0,
+    "redirect": false,
+    "description": "For Exhibitors, Panelists, etc",
+    "menu_icon": [],
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "modified": 1766005744
+}

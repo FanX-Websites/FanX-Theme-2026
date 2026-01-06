@@ -1,0 +1,233 @@
+/** 
+Theme Name: FanX Theme 2026
+Text Domain: fanxtheme2026
+Theme URI: https://dev.DancingFraxinus.com/fanx26
+Author: Elizabeth Moore 
+Author URI: https://DancingFraxinus.com/
+Domain Path: /assets/languages
+Description: A theme created for FanX Comic & Pop Culture Contventions 2026 Calendar Year. 
+Tags: FanX, ACF Pro, Accessible, Responsive, inlusive, Customized Category & Tag Functions, Customized Admin
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html 
+**/
+
+/** 
+This Stylesheet is for base frameworks ONLY. For sitewide branding styles, please refer to the branding stylesheet located in the Branding File. 
+
+Editing this file may affect sitewide layout structures and behaviors. Please save a backup copy before making changes.
+
+**/
+
+/*Global*/
+body{ /*Every Page*/
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: auto;
+    overflow-x: hidden;
+    flex: 1;
+}
+.site-main{ /*Every Page*/
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 80vh; 
+    width: 100%;
+    padding: 0; 
+    margin: 0; 
+    z-index: 1;  
+    background-color: transparent; 
+}
+/*Fixes Admin Bar Overlap */
+body.admin-bar .main-nav { 
+    top: 32px;
+}
+/* Navigation -------------------------> */
+/*Horizontal Navigation 
+* used by: Socket Menu & Page Top Sub-Menus */
+.hor-nav{
+    display: flex; 
+    align-content: center; 
+    justify-content: center; 
+    text-align: center;
+    flex-wrap: wrap; 
+}
+.hor-nav ul{
+    list-style-type: none;
+    display: flex;  
+    flex-wrap: wrap;
+    align-items: center; 
+    justify-content: center;
+    gap: 10px 20px;  
+    width: 100%; 
+    margin: 0; 
+    padding: 0;
+
+}
+.hor-nav ul li{
+    float: left; 
+}    
+.hor-nav ul li a{
+    text-decoration: none; 
+}
+/*END Horizontal Navigation*/
+
+/* Containers
+For divs that hold template parts*/
+.container{
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+/*Pages with Behaviors Issued -----------------------> */
+.cover{ /*Cover Page
+    * Used by: Front Page */
+    width: 100%;
+    height: 80vh;
+    position: relative; 
+    box-sizing: border-box;
+} 
+
+/*Divs with Behaviors Issued ------------------------> */
+    .self-centered-top{ /*Centered elements on Top*/
+        display: flex; 
+        justify-content: top;
+        align-items: center;
+        flex-wrap: wrap;
+        flex: 1; /*Space Between*/
+    }
+    .self-centered{ /*Centered elements in Div that wrap*/
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        flex: 1; /*Space Between*/
+    }
+    .self-centered-column{/* Centered Columns  */
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        flex-direction: column; 
+    }
+    .self-centered-row{/* Centered Row  */
+        display: flex; 
+        flex-direction: row; 
+        align-items: center; 
+        justify-content: center;
+    }
+     .self-centered-scrunch{/* Centered Row no wrap/mobile -  */
+        display: flex; 
+        flex-direction: row; 
+        align-items: center; 
+        justify-content: center;
+    }
+
+     .self-centered-stretch{/* Centered Row with stretch  */
+        display: flex; 
+        flex-direction: row; 
+        align-items: stretch; 
+        justify-content: center;
+    }
+         /*Self Centered Mobile*/
+            @media (max-width: 900px){
+                .self-centered-row, .self-centered-stretch{
+                    flex-direction: column;
+                }
+            }
+        /*Replace with .self-centered-row*/    
+        .resp-section{ /*Responsive Section - Center Aligned*/
+            display: flex; 
+            flex-direction: row;
+            align-items: center; 
+                }
+            /*Mobile*/
+            @media (max-width: 900px){
+                .resp-section{
+                    flex-direction: column;
+                }
+            }
+            /*END REPLACE*/
+
+/* For the Children*/
+    .self-centered-inside{ /* Filler Child Div for conflicting Parents
+        Used by: Front Page Blocks*/
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap; 
+        flex: 1; /*Space Between*/
+        width: 100%;
+        height: 100%; 
+    }
+    .fill{ /*Basic Fillers for Inner Divs
+        Used by Front Page Blocks*/
+        width: 100%; 
+        height: 100%;
+        padding: 0; 
+        margin: 0; 
+    }
+
+
+
+/* ----------- Div Dimensions ------------------------>*/
+/* Widths */
+.full{
+    width: 100%;
+    padding: 0; 
+    margin: 0; 
+    box-sizing: border-box;
+}
+
+.framed-900{
+    width: 90%;
+    max-width: 900px; 
+    padding: 1% 0 6%; 
+    margin: 0 auto; 
+    box-sizing: border-box;
+}
+
+.framed-1300{
+    width: 90%;
+    max-width: 1300px; 
+    padding: 1% 0 6%; 
+    margin: 0 auto; 
+    box-sizing: border-box;
+}
+
+.framed-1500{
+    width: 90%;
+    max-width: 1500px; 
+    padding: 1% 0 6%; 
+    margin: 0 auto; 
+    box-sizing: border-box;
+}
+/* Heights */
+.min-50{
+    min-height: 50vh; 
+    box-sizing: border-box;
+}
+.min-80{
+    min-height: 80vh; 
+    box-sizing: border-box;
+}
+
+
+/* ------------ Inner Divs ------------------------>*/
+.block{ /* Div wraps around an inner-Div 
+    - Inside of Responsive Section Divs*/
+    display: flex;   
+    align-content: center; 
+    align-items: center; 
+    justify-content: center; 
+    flex-wrap: wrap;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+
+               
+

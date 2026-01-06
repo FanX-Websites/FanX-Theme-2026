@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_69091fc3cedca",
+    "title": "Guest\/Feature Statuses",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Guest\/Feature Statuses",
+    "menu_slug": "guests-experiences",
+    "parent_slug": "edit.php?post_type=guests",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "Guest Status Options Page",
+    "position": 0,
+    "redirect": false,
+    "description": "Statuses of Guests, Features & eXperiences",
+    "menu_icon": [],
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "modified": 1765009239
+}
