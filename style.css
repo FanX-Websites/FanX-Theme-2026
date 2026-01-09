@@ -13,7 +13,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 **/
 
 /** 
-This Stylesheet is for base frameworks ONLY. For sitewide branding styles, please refer to the branding stylesheet located in the Branding File. 
+This Stylesheet is for base frameworks ONLY. For sitewide branding styles, please refer to the FanX branding stylesheet located in the Branding File. 
 
 Editing this file may affect sitewide layout structures and behaviors. Please save a backup copy before making changes.
 
@@ -226,6 +226,35 @@ For divs that hold template parts*/
     width: 100%;
     box-sizing: border-box;
 }
+
+
+/** TEMPLATE PARTS ---------------------------------------*/
+
+/* Template Part: Content Blocks Section */
+    /* Content Block Layouts - Based on Number of Blocks created on page */
+        /* Single block - full width */
+        .content-blocks.layout-single {
+            display: block;
+        }
+        /* Two columns */
+        .content-blocks.layout-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        /* Three columns */
+        .content-blocks.layout-three-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        /* Four or more - flexible grid */
+        .content-blocks.layout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+    /* END Content Block Layouts */
 
 
 

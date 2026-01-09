@@ -37,7 +37,8 @@
 				wp_enqueue_style('fanx-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get('Version')); //Stylesheet 
 
 			//Branding Stylesheets 
-				wp_enqueue_style('fanx-branding', get_template_directory_uri() . '/branding/styles/brutal2026.css', array(), wp_get_theme()->get('Version')); //Branding CSS		
+				wp_enqueue_style('fanx-branding', get_template_directory_uri() . '/branding/styles/fanx.css', array(), wp_get_theme()->get('Version')); //Branding CSS
+			
 		}
 		add_action('wp_enqueue_scripts', 'fanx_enqueue_assets');
 

@@ -1,31 +1,44 @@
-/** BRUTAL THEME 2026 STYLESHEET 
-Theme Name: FanX Brutal Theme 2026
+/** FanX Theme Branded 2026 Stylesheet 
+Theme Name: FanX Theme 2026
 Text Domain: fanxtheme2026
 Theme URI: https://dev.DancingFraxinus.com/fanx26
 Author: Elizabeth Moore
 Author URI: https://DancingFraxinus.com/
 
+Notes: 
+- Primary stylesheet for FanX Theme 2026
+- Used for branding the theme to FanX colors and styles
+- Replacing brutal2026.css (Currently in progress) 
 
-Post Soft-launch Notes: 
-- Set up Light/Dark Mode
-- Clean up and organize the code
+Future Updates: 
+- Light/Dark Mode 
 
-*/
+View Style.css for the Wireframes 
+**/
 
 /*** Sitewide Branding **/
 
 /** Body & Basic Content**/
-body{/*View Style.css for wire-frames*/
+body{
     background-color: var(--color_drk);
-    /*Default Body Text*/
-    }
-    
-div{ /* All the Corners */
-  border-radius: 45px;
+}    
+
+/* The Div ----------------------- */
+/* Basic Div - Default - */
+div{ 
+  border-radius: 45px; /* ALL the Corners */
 }
 
-/*Text - Dark Mode -  */
-p{ /*Content Text*/
+.div-shadow{
+        margin: 2%; 
+        padding: 3%;
+        background-color: inherit;
+        box-shadow: -5px -5px 8px var(--color_prim),
+                    5px 5px 8px var(--color_prim) ;         
+        }
+
+/* Text -------------------------------------------  */
+p{ /* Content Text */
     font-family: Arial, Helvetica, sans-serif; 
     font-size: 1em;
     font-weight: 100;
@@ -41,7 +54,8 @@ a{ /* Content Links */
     line-height: 1.5em; 
     color: var(--color_acc_lght); 
 }   
-    /* Headers - Default */
+
+ /* Headers - Default */
     h1, h2, h3, h4, h5, h6{
         font-family: Arial, Helvetica, sans-serif; 
     }
@@ -94,11 +108,12 @@ a{ /* Content Links */
         margin: 0; 
     } 
 
-    /* Lists - Dark Mode */
+    /* Lists */
     li{
         color: var(--color_fnt_wht); 
         text-align: left; 
     }
+
     /* Blockquotes */
     blockquote {
         border-left: 5px solid var(--color_base_lght);
@@ -113,6 +128,7 @@ a{ /* Content Links */
         opacity: 0.3;
         margin-right: 10px;
         }
+
     /* Paragraph Elements */
     hr{
         border: 0;
@@ -123,15 +139,15 @@ a{ /* Content Links */
         }
 
 /* Text Branding */
-.outline{/**Text Shadow */
+.outline{/** Text Shadow */
     text-shadow:-1px -1px 0px var(--color_fnt_blk),
                 2px -1px 0px var(--color_fnt_blk),
                 -1px 1px 0px var(--color_fnt_blk),
                 2px 2px 0px var(--color_fnt_blk);
-                }      
+                }   
+/* END Text ---------------------------------------------- */
 
-/* Elements -----------------------------------*/
-/*Buttons ------------------------------*/
+/* Buttons ----------------------------------------------- */
 /* Global Button Styles */
 button{
     background-color: var(--color_drk);
@@ -181,11 +197,11 @@ button a{
         margin: 3%;
     }
 
+/* END Buttons ------------------------------ */
 
-/* END Buttons ------------------------------*/
+/* Backgrounds  -------------------- */
 
-/*Backgrounds & Textures*/
-    /*Purple to Pink Gradient*/
+    /* Basic Gradient Background */
     .gradi{
         background: linear-gradient(
             140deg, 
@@ -194,32 +210,26 @@ button a{
             var(--color_acc_brht) 100%
             );
         }
-    /*The Pink Grid*/
+/* Patterns ------------------------ */
+    /* The Grid Background */
     .grid-bkgrnd{
         background-color: var(--color_prim_brht);
         background-image: 
             linear-gradient(var(--color_lght) 2px, transparent 1px),
             linear-gradient(90deg, var(--color_lght) 2px, transparent 1px);
             background-size: 75px 75px; /* Grid cell size */
-        /*Div Border*/
-        border: 3px solid var(--color_lght);         
-        }
-    .div-shadow{
-        margin: 2%; 
-        padding: 3%;
-        background-color: inherit;
-        box-shadow: -5px -5px 8px var(--color_prim),
-                    5px 5px 8px var(--color_prim) ;         
+        border: 3px solid var(--color_lght); /*Div Border*/        
         }
 
-    /*Lined Paper*/
+    /* Lined Paper Background */
     .lined-paper{
         background-image: 
             linear-gradient(var(--color_acc_lght) 2px, transparent 1px);
             background-size: 100% 40px; /* Line Spacing */      
         }
 
-    /* Static Overlay - Animated */
+/* Overlays ------------------------ */
+    /* Static Overlay - Animated - Sitewide */
     body::after {
         content: "";
         position: fixed;
@@ -264,9 +274,9 @@ button a{
             90% { background-position: 0% 0%, 0% 0%, -15% -10%; }
             100% { background-position: 0% 0%, 0% 0%, 0% 0%; }
         }
-    /* END The Screen is Cracked */
+    /* END Static Overlay - Animated */
 
-    /*The Div is Cracked*/
+    /* The Div is Cracked - Overlay Element */
     .cracked::before{
         content: "";
         position: absolute;
@@ -280,10 +290,10 @@ button a{
         opacity: 0.9;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Main diagonal line --%3E%3Cpath d='M 80 40 L 100 100 L 95 150 L 115 200 L 110 250 L 130 300 L 125 350 L 145 400 L 140 440' stroke='rgba(255,255,255,0.85)' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3C!-- Fork branch 1 --%3E%3Cpath d='M 140 440 L 130 470 L 135 490' stroke='rgba(255,255,255,0.75)' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C!-- Fork branch 2 --%3E%3Cpath d='M 140 440 L 155 470 L 150 490' stroke='rgba(255,255,255,0.8)' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     }
-/** END Backgrounds & Textures **/
+/* END Overlays ----------------------------------------------------- */
 
-/*Header*/
-    /*TOP - Alert Bar ------->*/      
+/* ------------------  Header Styling ------------------------------------ */
+    /*TOP - Alert Bar -------> */      
     .alert-bar {
         display: flex; 
         align-content: center;
@@ -316,97 +326,95 @@ button a{
             display: flex;
             
         }
-            
-
-/*Main Menu - Logo - Desktop* -------> */
-    /** Logo */           
-    .menu-logo{
-        height: auto; 
-        max-width: 100px;
-        background-color: transparent;
-    }
-
-    .menu-logo-mobile{
-        display: none;
-    }
-
-    .menu-logo img{
-        padding: 0;
-        margin: 0; 
-        width: 100%;
-        height: auto;
-    }
-    /** Hide Mobile Menu Features*/
-    .menu-toggle{
-        display: none; 
-    }
-    /** END Hide Mobile Menu Features*/
-        
-/*Main Menu - Desktop -----------> */
-    .main-nav {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0;
-        padding: 0;
-        margin: 0;
-        z-index: 99999;
-        background-color: var(--color_base);
-    }
-    .menu-container {
-        display: flex;
-        position: relative;
-    }
-    .dropdown-menu {
-        list-style: none;
-        display: flex;
-        margin: 0;
-        padding: 0;
-        gap: 10px;
-        z-index: 999999;
-    }
-    .dropdown-menu > li {
-        position: relative;
-    }
-    .dropdown-menu > li > a {
-        display: block;
-        padding: 10px 15px;
-        text-decoration: none;
-        color: var(--color_fnt_wht);
-    }
-    /* Dropdown Menu styling - Main Menu Bar */
-    .dropdown-menu ul {
-        list-style: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: white;
-        min-width: 200px;
-        padding: 10px 0;
-        margin: 0;
-        display: none;
-        flex-direction: column;
-        border: 1px solid var(--color_lght);
-        box-shadow: 0 2px 5px var(--color_drk);
-    }
-    .dropdown-menu li:hover > ul {
-        display: flex;
-    }
-    .dropdown-menu ul li a {
-        display: block;
-        padding: 10px 15px;
-        text-decoration: none;
-        color: #333;
-    }
-    .dropdown-menu ul li a:hover {
-        background-color: #f0f0f0;
-    }
-
-    .menu-description{
+    
+    /* ---------------- MAIN MENU --------------------- */
+    /* ------- Main Menu - Desktop -------------- */
+        /** Logo */           
+        .menu-logo{
+            height: auto; 
+            max-width: 100px;
+            background-color: transparent;
+        }
+        .menu-logo img{ 
+            padding: 0;
+            margin: 0; 
+            width: 100%;
+            height: auto;
+        }
+        /** Hide Mobile Menu Features on Desktop */
+        .menu-toggle{
+            display: none; 
+        }
+        .menu-logo-mobile{ 
             display: none;
         }
-/*END - Main Menu - Desktop */   
-        
+
+        /* Main Navigation Styling - Desktop -----------> */
+        .main-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            padding: 0;
+            margin: 0;
+            z-index: 99999;
+            background-color: var(--color_base);
+        }
+        .menu-container {
+            display: flex;
+            position: relative;
+        }
+        .dropdown-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            gap: 10px;
+            z-index: 999999;
+        }
+        .dropdown-menu > li {
+            position: relative;
+        }
+        .dropdown-menu > li > a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: var(--color_fnt_wht);
+        }
+
+        /* Dropdown Menu styling - Main Menu Bar */
+        .dropdown-menu ul {
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            padding: 10px 0;
+            margin: 0;
+            display: none;
+            flex-direction: column;
+            border: 1px solid var(--color_lght);
+            box-shadow: 0 2px 5px var(--color_drk);
+        }
+        .dropdown-menu li:hover > ul {
+            display: flex;
+        }
+        .dropdown-menu ul li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        .dropdown-menu ul li a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .menu-description{
+                display: none;
+            }
+/*END --------------- Main Menu - Desktop ------------------------- */   
+
 /* ---------------------- Main Menu - Mobile -------------------- */
     /*Main Menu - Logo - Mobile* -------> */
     @media (max-width: 925px){
@@ -535,10 +543,12 @@ button a{
             font-size: .8em;
         }
     }
-    /*END - Main Menu - Mobile */ 
+    /*END ------------------ Main Menu - Mobile ------------------- */ 
+    /* END ---------------------- Main Menu -------------------- */
+/* END -------------------- Site Header Styling ----------------------------------- */
 
-    /* Page Top Sub-Menus */
-    /** Submenus - PAGE Headers */
+/* ------------ Page/Post Header Styling -------------- */ 
+    /* ----------- Sub Menu ---------- */
     .sub-menu-section{
         padding: 20px;
         margin: 0;   
@@ -550,60 +560,63 @@ button a{
     .sub-menu-section, .socket-menu a{
         color: var(--color_prim_lght);
     }
+    /* END ----------- Sub Menus ---------- */
 
-/** END Submenus - Page Headers */
+    /** Page Headers - Taxonomies & Categories */    
+    .page-header-section{
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 0;
+        width: 100%; 
+        padding: 0; 
+        margin: 0;
+    }
+    .page-header{
+        display: flex;
+        align-items: center; 
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 0;
+        width: 100%; 
+        padding: 0; 
+        margin: 0;
+    }
 
-/** Page Headers - Taxonomies & Categories */    
-.page-header-section{
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 0;
-    width: 100%; 
-    padding: 0; 
-    margin: 0;
-}
-.page-header{
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 0;
-    width: 100%; 
-    padding: 0; 
-    margin: 0;
-}
+    /** Page Headers - Text */
+    h1.page-title{
+        width: 90%;
+        margin: 0; 
+        padding: 0; 
+        font-size: clamp(2.5rem, 8vw, 4rem);
+            /* min size, preferred size, max size */
+        line-height: 1.5em; 
+        font-weight: 700; 
+        color: var(--color_acc_brht);
+    }
 
-/** Page Headers - Text */
-h1.page-title{
-    width: 90%;
-    margin: 0; 
-    padding: 0; 
-    font-size: clamp(2.5rem, 8vw, 4rem);
-        /* min size, preferred size, max size */
-    line-height: 1.5em; 
-    font-weight: 700; 
-    color: var(--color_acc_brht);
-}
+    .description{
+        width: 90%;
+        max-width: 1000px; 
+        padding: 0; 
+        margin: 0; 
+    }
+    .description p{ /**Subtext */
+        margin: 0;
+        padding: 0 0 2%;
+        font-size: 1em; 
+        line-height: 1.75em; 
+        text-align: center;
+        font-style: italic; 
+        color: var(--color_base_lght);
+    }
 
-.description{
-    width: 90%;
-    max-width: 1000px; 
-    padding: 0; 
-    margin: 0; 
-}
-.description p{ /**Subtext */
-    margin: 0;
-    padding: 0 0 2%;
-    font-size: 1em; 
-    line-height: 1.75em; 
-    text-align: center;
-    font-style: italic; 
-    color: var(--color_base_lght);
-}
+    /*END Page Headers ----------------------------------*/
 
-/*END Page Headers ----------------------------------*/
+
+    /* ORGANIZE BELOW */ 
+
 
 /* Footer ----------------------------------- */       
     /**BOTTOM - Link Bar Styles **/
@@ -777,6 +790,7 @@ h1.page-title{
     width: 90%;
     max-width: 900px;    
 }
+
 /* Content Block Text Styles */
 
 h2.tkt-cb{ /** Content Block Titles */

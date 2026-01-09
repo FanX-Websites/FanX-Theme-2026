@@ -1,6 +1,6 @@
 <?php 
 
-/** Template Part: Content-Blocks Section - Default 
+/** Template Part: Content-Blocks Section - DELETE ME
  * @package FanXTheme2026 
  * 
  * Notes: Veiw Layout in Design Notebook 

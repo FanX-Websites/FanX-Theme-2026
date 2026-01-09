@@ -19,7 +19,7 @@ get_header(); /** body- main-site */
 <!------------------- Main Content Area -------------------->
     <!-- Content Blocks - Comparison Chart -[Template Part] -->
     <div class="comparison-chart container">        
-        <?php get_template_part('template-parts/sections/comparison-chart'); ?>
+        <?php get_template_part('template-parts/sections/content-blocks'); ?>
     </div>
     <!----------- END Comparison Chart Section -->
 
@@ -30,6 +30,7 @@ get_header(); /** body- main-site */
     <!----------- END Latest News Post Block -->
 
 <!----------- END Main Content Area ----------------->  
+
 
 <?php
     get_footer();
