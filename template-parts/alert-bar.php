@@ -8,13 +8,9 @@
  * - Post slider 
  * 
  */
-
 ?>
 
-
-
-<?php
-// Alert Bar - ACF Repeater Field
+<?php // Alert Bar - ACF Repeater Field
 if( have_rows('alert', 'option') ) {
     $alerts = array();
     
@@ -29,8 +25,7 @@ if( have_rows('alert', 'option') ) {
                 'link' => $link
             );
         }
-    }
-    
+    }    
     // Display alerts as slides
     if( !empty($alerts) ) {
         echo '<div class="alert-bar gradi">';// Alert Bar Container --------->       

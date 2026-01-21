@@ -384,7 +384,7 @@
                     "parent_repeater": "field_6943c77711a87"
                 },
                 {
-                    "allow_backendsearch": 0,
+                    "allow_backendsearch": 1,
                     "show_column_filter": false,
                     "allow_bulkedit": 0,
                     "allow_quickedit": 0,
@@ -489,7 +489,7 @@
                     "show_column_sortable": false,
                     "key": "field_6943c77011a75",
                     "label": "Button Subtext",
-                    "name": "butt_subtxt_1",
+                    "name": "butt_subtxt",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -639,7 +639,7 @@
         }
     },
     "acfe_note": "",
-    "modified": 1767845658,
+    "modified": 1768284200,
     "acfe_categories": {
         "event-info": "Event Info"
     }

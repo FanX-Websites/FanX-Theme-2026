@@ -1,33 +1,27 @@
 <?php 
 
-// This is the Block for The tickets Category (see taemplate)
+// This is the Block for The tickets Category (see template) - CURRENTLY NOT IN USE
 
 ?> 
 
-<div class="block-mos"><!--All Mosaic Blocks-->
-    <div class="ticket-block"><!-- Ticket Block Position -->
-        <div class="self-centered-inside"><!-- Style --->
-            <div class="ticket-layout self-centered-column"><!-- Style -->
-                <h1>[TICKET STATUS]</h1>
-                <!-- Ticket Links --->
-                <nav class="tickets">
-                    <a href="">[Ticket Info Page]</a>  |  
-                    <a href="">[Ticket Action]</a>
-                </nav><!-- Ticket Links --> 
-            </div><!-- END Ticket Layout w/self-centered column -->
-        </div><!--END Self Centered Div-->
-    </div><!-- END Tickets Block-->
-</div><!-- End Block -->
+
+<div class="ticket-fp-block"><!-- Ticket Block Position -->
+    <div class="self-centered-inside"><!-- Style --->
+        <div class="ticket-layout self-centered-column"><!-- Style -->
+            <h1>[TICKET STATUS]</h1>
+            <!-- Ticket Links --->
+            <nav class="tickets">
+                <a href="">[Ticket Info Page]</a>  |  
+                <a href="">[Ticket Action]</a>
+            </nav><!-- Ticket Links --> 
+        </div><!-- END Ticket Layout w/self-centered column -->
+    </div><!--END Self Centered Div-->
+</div><!-- END Tickets Block-->
+
 
 
 <style>
-.ticket-block{ /** The Block size & positioning in Partent Div*/
-    background-color: var(--color_base_lght); 
-    width: 35%; 
-    height: 20%; 
-    position: absolute;
-
-}
+.ticket-fp-block{ /** The Block size & positioning in Partent Div*/}
 
 .ticket-layout{/** Inner Div - combined with self-centered-column */
     width: 90%;

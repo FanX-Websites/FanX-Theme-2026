@@ -1260,7 +1260,7 @@
             "show_column_weight": 1000,
             "show_column_sortable": false,
             "key": "field_694265bfb3f83",
-            "label": "Buttons",
+            "label": "Buttons \/ Links",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -1284,11 +1284,11 @@
             "show_column": false,
             "show_column_weight": 1000,
             "show_column_sortable": false,
-            "key": "field_694265cfb3f84",
+            "key": "field_69705d543efc4",
             "label": "Buttons",
-            "name": "butt",
+            "name": "button",
             "aria-label": "",
-            "type": "group",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -1297,9 +1297,14 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
-            "acfe_seamless_style": 0,
-            "acfe_group_modal": 0,
+            "acfe_repeater_stylised_button": 0,
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "allow_backendsearch": 0,
@@ -1309,37 +1314,9 @@
                     "show_column": 0,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "key": "field_694268c6b3f85",
-                    "label": "Featured Button Label",
-                    "name": "feat_label",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "butt_feat_label",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_69426923b3f86",
-                    "label": "Featured Button Subtext",
-                    "name": "feat_txt",
+                    "key": "field_69706e537ffb9",
+                    "label": "Button Title",
+                    "name": "title",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -1355,7 +1332,8 @@
                     "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "parent_repeater": "field_69705d543efc4"
                 },
                 {
                     "allow_backendsearch": 0,
@@ -1365,9 +1343,9 @@
                     "show_column": 0,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "key": "field_69426939b3f87",
-                    "label": "Featured Button Link",
-                    "name": "feat_url",
+                    "key": "field_69706e777ffba",
+                    "label": "Button Subtext",
+                    "name": "subtext",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -1383,12 +1361,39 @@
                     "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "parent_repeater": "field_69705d543efc4"
+                },
+                {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_69706e8a7ffbb",
+                    "label": "Button Link",
+                    "name": "url",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_69705d543efc4"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         }
     ],
     "location": [
@@ -1446,7 +1451,7 @@
     "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1765960054,
+    "modified": 1768976262,
     "acfe_categories": {
         "people": "People"
     }

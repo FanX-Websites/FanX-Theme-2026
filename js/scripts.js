@@ -1,7 +1,6 @@
 //Java Script Code for Fun Website Effects 
 
 //Alert Bar - Slide
-
 document.addEventListener('DOMContentLoaded', function() {
     let currentSlide = 0;
     const slides = document.querySelectorAll('.alert-slide');
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         slides[currentSlide].style.display = 'block';
     }, 3000); // Change slide every 5 seconds
 });
-
 //END Alert Bar - Slide 
 
 //Mobile Menu - Accordian

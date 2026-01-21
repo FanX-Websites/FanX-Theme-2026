@@ -18,6 +18,11 @@ View Style.css for the Wireframes
 
 /*** Sitewide Branding **/
 
+/* Universal Font Family - Applied to all elements */
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 /** Body & Basic Content**/
 body{
     background-color: var(--color_drk);
@@ -39,11 +44,10 @@ div{
 
 /* Text -------------------------------------------  */
 p{ /* Content Text */
-    font-family: Arial, Helvetica, sans-serif; 
     font-size: 1em;
     font-weight: 100;
     line-height: 1.25em;
-    color: var(--color_fnt_wht);
+    color: var(--color_lght);
     text-align: left; 
 }
 a{ /* Content Links */
@@ -149,32 +153,40 @@ a{ /* Content Links */
 
 /* Buttons ----------------------------------------------- */
 /* Global Button Styles */
-button{
-    background-color: var(--color_drk);
-    border: solid 8px var(--color_drk); ;
+.button{
+    background-color: var(--color_acc);
+    border: solid 8px var(--color_acc);
     border-radius: 75px;    
-    padding: 3%;
-    margin: 0;
+    padding: 2% 3%;
+    margin: 10px;
     font-size: 1em;
     font-weight: 100;
-    width: 100%; 
+    width: 90%; 
     min-width: 200px;
     cursor: pointer;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    flex-flow: column; 
+    }
+    .button:hover{
+        background-color: var(--color_base);
+        border: var(--color_base) solid 8px;
     }       
-button a{
-    color: var(--color_fnt_wht);
-    text-decoration: none; 
+    a.button{
+        color: var(--color_fnt_wht);
+        text-decoration: none; 
         }
-.butt-txt{
-    color: var(--color_fnt_wht);
-    font-size: 1.25em;
-    font-weight: 100; 
-    width: 100%;
-}
-.butt-subtxt{
-    color: var(--color_lght);
-    font-size: 1em;
-    font-weight: 100; 
+    .button-text{
+        font-size: 1.25em;
+        font-weight: 100; 
+        width: 100%;
+        text-align: center; 
+        }
+    .button-subtext{
+        color: var(--color_lght);
+        font-size: 1em;
+        font-weight: 100; 
         }
 
 /* XP Buttons - Profiles ---- */   
@@ -294,38 +306,40 @@ button a{
 
 /* ------------------  Header Styling ------------------------------------ */
     /*TOP - Alert Bar -------> */      
-    .alert-bar {
-        display: flex; 
+    .alert-bar{
+        display: flex;
         align-content: center;
         justify-content: center;
-        width: 100%;
+        min-width: 100%;
         height: auto;
-        padding: 15px 20px;
+        padding: 0px;
         margin: 0;
         min-height: 25px;
         border-radius: 0; 
+    }
         /*Text*/
+        .alert-bar a{
         color: white; 
         text-align: center;
+        text-decoration: none;  
+        padding: 15px 0px; 
+        margin: 0; 
+        min-width: 100%;
         
     }
-        .alert-bar a{
-            color: var(--color_fnt_wht);
-            text-decoration: none;
-        }
-        .alert-slide {
+        /* TOP - Alert Bar -  Slides */
+        .alert-slide, a.alert-slide{
             display: none;
+            min-width: 100%; 
         }
         .alert-slide[href] {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
+            min-width: 100%;
         }
-        .alert-slide:first-child {
-            display: flex;
-            
-        }
+    /* END Top - Alert Bar -------> */
+   
     
     /* ---------------- MAIN MENU --------------------- */
     /* ------- Main Menu - Desktop -------------- */
@@ -417,7 +431,7 @@ button a{
 
 /* ---------------------- Main Menu - Mobile -------------------- */
     /*Main Menu - Logo - Mobile* -------> */
-    @media (max-width: 925px){
+    @media (max-width: 1070px){
 
         /** Logo - Mobile */
         .menu-logo-mobile-sec{
@@ -545,21 +559,30 @@ button a{
     }
     /*END ------------------ Main Menu - Mobile ------------------- */ 
     /* END ---------------------- Main Menu -------------------- */
-/* END -------------------- Site Header Styling ----------------------------------- */
+    /* END -------------------- Site Header Styling ----------------------------------- */
 
-/* ------------ Page/Post Header Styling -------------- */ 
+
+    /* ------------ Page/Post Header Styling -------------- */ 
     /* ----------- Sub Menu ---------- */
     .sub-menu-section{
-        padding: 20px;
+        padding: 0px;
+        width: 90%; 
         margin: 0;   
         font-size: 1em; 
-        line-height: 1.5em;  
+        line-height: 1.25em;  
         font-family: arial, sans-serif;
         top: 0; 
         }
     .sub-menu-section, .socket-menu a{
         color: var(--color_prim_lght);
     }
+    /* Sub Menu - Mobile --- */ 
+    @media (max-width: 905px){
+        .sub-menu-section{
+            display: none; 
+            }
+    }
+
     /* END ----------- Sub Menus ---------- */
 
     /** Page Headers - Taxonomies & Categories */    
@@ -580,8 +603,6 @@ button a{
         flex-direction: column;
         border-radius: 0;
         width: 100%; 
-        padding: 0; 
-        margin: 0;
     }
 
     /** Page Headers - Text */
@@ -611,8 +632,9 @@ button a{
         font-style: italic; 
         color: var(--color_base_lght);
     }
-
     /*END Page Headers ----------------------------------*/
+
+
 
 
     /* ORGANIZE BELOW */ 
@@ -712,12 +734,23 @@ button a{
         /** Mobile - Sticky Bottom Link Bar */
         @media (max-width: 800px){
             .mobile-icons a{
-                padding: 0 15px;
+                padding: 0 7px;
                 color: var(--color_fnt_wht);
                 font-size: 2.5em;
             }
             .ops-block, .tickets-block{
                 display: none;
+            }
+             .mobile-icons p{
+                display: inline;
+                font-size: 1.2em; 
+                font-weight: 500; 
+                color: var(--color_fnt_wht);
+                margin: 0; 
+                padding: 0;
+            }
+            .mobile-icons.block{
+                gap: 10px;
             }
         }
         /** END Sticky Bottom Links Bar */
@@ -749,105 +782,199 @@ button a{
     }
 /** END Post Block */
 
-/** Read More Button Styling */
-.read-more-button { /*Update to Global Styling*/
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--color_acc);
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-    .read-more-button:hover {
-        background-color: var(--color_prim_brht);
-    }
 /** END Read More Button Styling */
 
-/** TEMPLATE PARTS ---------------------------------------*/
-
-
-/* Template Part: Ticket Comparison chart */
-.tkt-content-blocks-sec{
-    width: 100%; 
-    padding: 0; 
-    margin: 0;
-    gap: 30px; 
-    align-items: flex-start;
-}
-.tkt-content-blocks{ /** cross-check */
-    color: var(--color_fnt_blk);
-    background-color: var(--color_lght);
-    padding: 3%;
-    margin: 0; 
-    min-width: 250px;
-}
-.tkt-small-print{ /**Also in Posts - SYNC ME */
-    font-size: 0.8em;
-    color: var(--color_fnt_wht);
-    text-align: center;
-    font-style: italic;
-    padding-bottom: 3%; 
-    width: 90%;
-    max-width: 900px;    
+/* No Posts Mode */
+.no-posts-container{
+    text-align: center; 
 }
 
-/* Content Block Text Styles */
+/** ---------------- TEMPLATE PARTS ---------------------------------------*/
 
-h2.tkt-cb{ /** Content Block Titles */
-    font-weight: 700;
-    font-size: 3em;
-    line-height: 1.2em;
-    width: 100%;
-    color: var(--color_fnt_wht);
-    padding:0; 
-    margin:0;
-}
-h3.tkt-cb{/** Content Block Subtext*/
-    width: 100%;
-    padding: 0; 
-    margin: 0;
-    font-weight: 500;
-    font-size: 1.75em;
-    line-height: 1.35em;
-    color: var(--color_prim);
-}
-.ticket-cb h5{
-    width: 100%;
-    padding: 0; 
-    margin: 0;
-    font-style: italic; 
-    font-weight: 100;
-    font-size: 1.25em;
-    line-height: 1.5em;
-    color: var(--color_base);
-}
-.ticket-cb li{
-    color: var(--color_fnt_blk); 
-    text-align: left; 
-}
-.ticket-cb p{
-    color: var(--color_fnt_blk);
-}
+/* ------------- Content Blocks Section ------------> 
+- Refer to Wireframes in Style.css for layouts, breakpoints - */
 
-/** Backgrounds */
+/* Default Content Blocks Section Styles */
+    .cb-section{
+        width: 100vw; 
+        padding: 0; 
+        margin: 0;
+        align-items: center; 
+        justify-content: center;
+        display: flex; 
+        border-radius: 0;
+    }
+        .cb-section-inner{
+            width: 100%; 
+            padding: 3% 0 9%; 
+            margin: 0; 
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+            .content-blocks{
+                padding: 0;
+                margin: 0; 
+                width: 90%; 
+                max-width: 1500px;
 
-/** Template Part: Comparison Chart Section 
-    * - Builds on Content Blocks-3 Section */
-.ticket-compare{
-    padding: 0 ;
-    margin: 0;
-}
-.ticket-cb-sec{
-    width: 90%;
-    max-width: 1500px;
-    padding: 3%;
-    margin: 0; 
-}
-.ticket-cb{/** Ticket Content Blocks */
-    position: relative;
-    border: 8px solid var(--color_lght);
-}
+            }
+            .content-block{
+                padding: 30px; 
+                margin: 0; 
+                background-color: var(--color_lght);
+                display: flex; 
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
 
+    /* Content Block - Content */
+        .content-block p, ul li{
+            color: var(--color_fnt_blk); 
+        }
+        h2.content-block-title{
+            color: var(--color_base);
+            width: 100%;
+            text-transform: uppercase;
+            font-size: 2.5em;
+            text-align: center;
+            padding: 0; 
+            margin: 0; 
+        }
+        h3.content-block-subtext{
+            font-size: 1.2em;
+            font-weight: 100; 
+            text-align: center;
+            color: var(--color_prim);
+            width: 100%;
+            padding: 0 0 15px; 
+            margin: 0; 
+        }
+        .content-block-small-print{
+            font-size: 0.9em;
+            line-height: 1.25em;
+            color: var(--color_drk);
+            text-align: center;
+            font-style: italic;
+            padding-bottom: 3%; 
+            margin: 15px; 
+            padding: 0;
+        }
+
+
+
+/* CB - Ticket Comparison Chart */
+    .ticket-info-blocks{}
+
+    .ticket-info-blocks .content-block{
+        padding: 30px; 
+        margin: 0; 
+        background-color: var(--color_lght);
+        display: flex; 
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+         /** Ticket Content Block Text Styling */
+        .ticket-info-blocks .content-block-title{ /** Content Block Titles */
+            font-weight: 700;
+            font-size: 3em;
+            line-height: 1.2em;
+            width: 100%;
+            color: var(--color_base);
+            padding:0; 
+            margin:0;
+        }
+        .ticket-info-blocks .content-block-subtext{/** Content Block Subtext*/
+            width: 100%;
+            padding: 0; 
+            margin: 0;
+            font-weight: 500;
+            font-size: 1.75em;
+            line-height: 1.35em;
+            color: var(--color_prim);
+        }
+        .ticket-info-blocks .content-block-text{
+            width: 100%;
+            padding: 0; 
+            margin: 0;
+            font-style: italic; 
+            font-weight: 100;
+            font-size: 1.25em;
+            line-height: 1.5em;
+            color: var(--color_base);
+        }
+        .ticket-info-blocks h5{
+            font-size: 1.5em;
+            font-weight: 300; 
+            color: var(--color_acc_lght);
+
+        }
+        .ticket-info-blocks li{
+            color: var(--color_fnt_blk); 
+            text-align: left; 
+        }
+        .ticket-info-blocks p{
+            color: var(--color_fnt_blk);
+        }
+
+
+/* CB - Event Hours */
+    .event-info-blocks{
+
+    }
+
+
+    /* CB - Event Hour Content */
+        /** Event Info - Calendar Events List - */
+        .event-info-blocks ul {
+            padding: 0; 
+            margin: 0; 
+            width: 90%; 
+            }
+        .event-info-blocks ul li {
+            list-style-type: none;
+            padding-left: 15px;
+            position: relative;
+            /*Text */
+            line-height: 1.25em;
+            font-size: 1.2em;
+            border-top: .1px solid var(--color_acc_lght);
+            border-bottom: .1px solid var(--color_acc_lght);
+            padding: 20px;
+            }
+        .event-info-blocks ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 2em;
+            }
+
+            /** Registration */
+            .content-blocks ul li:nth-child(1)::before {
+                background-color: var(--color_acc_brht);
+            }
+            /** Vendor Floor */
+            .content-blocks ul li:nth-child(2)::before {
+                background-color: var(--color_prim_brht);
+            }
+            /** Panel Programming */
+            .content-blocks ul li:nth-child(3)::before {
+                background-color: var(--color_base_brht);
+            }    
+        /** END Event Info - Calendar Events List - */
+
+    /* CB - Exhibitor Booth & Pricing Info */ 
+    .exhibitor-info-blocks{}
+
+
+
+/* ---------- END Content Blocks Section ------------->
 
 /* Template Part: News & Updates Section */    
 .updates-section{ /* Updates Section */
@@ -927,88 +1054,6 @@ h3.tkt-cb{/** Content Block Subtext*/
         }
 /* Updates Section END */
 
-/** Content Blocks Section - Event Hours 
-- To Do: Update to Event Hours/Calendar Blocks & update Event-Hours Template Part
-*/
-.content-blocks-sec{
-    width: 100%; 
-    padding: 0; 
-    margin: 0;
-    gap: 10px; 
-    align-items: flex-start;
-}
-.content-blocks{ /** cross-check */
-    padding: 2%;
-    margin: 1%; 
-    min-width: 250px;
-    border: 1px solid var(--color_lght);    
-
-}
-.cb-small-print{ /**Also in Posts - SYNC ME */
-    font-size: 0.8em;
-    color: var(--color_fnt_wht);
-    text-align: center;
-    font-style: italic;
-    padding-bottom: 3%; 
-    width: 90%;
-    max-width: 900px;    
-}
-h2.cb{
-    width: 100%;
-    text-transform: uppercase;
-    font-size: 2.5em;
-    text-align: center;
-    padding: 0; 
-    margin: 0; 
-}
-h3.cb{
-    font-size: 1.2em;
-    font-weight: 100; 
-    text-align: center;
-    color: var(--color_prim_lght);
-    width: 100%;
-    padding: 0 0 15px; 
-    margin: 0; 
-}
-/** Calendar Blocks - */
-.content-blocks ul {
-    padding: 0; 
-    margin: 0; 
-    width: 90%;
-}
-.content-blocks ul li {
-    list-style-type: none;
-    padding-left: 15px;
-    position: relative;
-      /*Text */
-    line-height: 3.0em;
-    font-size: 1.2em;
-    border-top: .1px solid var(--color_lght);
-}
-
-.content-blocks ul li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 6px;
-    height: 2em;
-}
-
-/** Registration */
-.content-blocks ul li:nth-child(1)::before {
-    background-color: var(--color_acc_brht);
-}
-/** Vendor Floor */
-.content-blocks ul li:nth-child(2)::before {
-    background-color: var(--color_prim_brht);
-}
-/** Panel Programming */
-.content-blocks ul li:nth-child(3)::before {
-    background-color: var(--color_base_brht);
-}
-
 
 /** END TEMPLATE PARTS -----------------------------------*/
 
@@ -1052,11 +1097,11 @@ h2.entry-title a{
         margin: 0; 
         align-items: center; 
         justify-content: center; 
-
+        gap: 20px; 
     }
     .profile-content{
         width: 100%;
-        padding: 2% 0;
+        padding: 2%;
         text-align: left; 
         font-family: inherit; 
         font-size: 1em; 
@@ -1066,16 +1111,21 @@ h2.entry-title a{
         max-width: 400px; 
         height: auto;
     }
-    div.profile-header{
-        width: 100%; 
-        text-align: center; 
-        padding: 0 0 3%;
-    }
-    h1.profile-header a{
-        text-decoration: none; 
-        font-size: 2em; 
-        line-height: 1.2em;    
-    }
+.profile-cat-header h1,
+.profile-cat-header a{
+    text-decoration: none; 
+    color: var(--color_base_lght);
+    font-size: 1.2em; 
+    font-weight: 400;
+    line-height: 1.7em;
+    padding: 0;
+    margin: 0;
+}
+.profile-header, .page-header{
+    padding: 2% 0 4%;
+    margin: 0;
+    text-align: center; 
+}
 
 
     /*** Profile - mobile */
@@ -1093,3 +1143,83 @@ h2.entry-title a{
     }
     }        
 /** END Single Post Styling HAAALLLLP FIX ME **/
+
+/* Front Page Blocks ----------------------------------------------- */ 
+/* Front Page Grid Container - DESKTOP */ 
+    .fp-grid{
+        display: grid;
+        grid-template: 1fr 1fr 1fr / 1.5fr 1fr; /** 9 Rows - 2 Columns */
+        gap: 20px;
+        padding: 20px 10px;
+        border-radius: 0; 
+        font-family: inherit;
+    }
+    
+/* Front Page Grid Blocks */
+
+    /** Both Columns */
+    .event-details.container{ /* Event Details Block */
+        grid-column: 1 / span 2;
+        grid-row: 1;
+        display: flex; 
+        align-items: center;
+        justify-content: flex-start;
+        background-color: var(--color_acc);
+    }
+    /** Grid Column 1 */
+    .feat-video.container{ /* Featured Video Block */
+        grid-column: 1;
+        grid-row: 2 / span 2;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+
+    /** Grid Column 2 */  
+    .countdown.container{ /* Countdown Block */
+        grid-column: 2;
+        grid-row: 1 / span 1;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        font-family: inherit;
+    }
+
+    .updates-feed.container{ /* Updates Feed Block */
+        grid-column: 2;
+        grid-row: 2 / span 2;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Responsive Grid for Mobile */
+    @media (max-width: 1045px) {
+        .fp-grid{
+            grid-template: repeat(4, auto) / 1fr; /** 4 Rows - 1 Column */
+            gap: 20px;
+        }
+        .event-details.container{ /* Event Details Block */
+            grid-column: 1;
+            grid-row: 1;
+            padding: 20px 10px; 
+        }
+        .feat-video.container{ /* Featured Video Block */
+            grid-column: 1;
+            grid-row: 3;
+        }
+        .countdown.container{ /* Countdown Block */
+            grid-column: 1;                 
+            grid-row: 2;
+            padding: 3%; 
+        }
+        .updates-feed.container{ /* Updates Feed Block */
+            grid-column: 1;
+            grid-row: 4;
+            border: 3px solid var(--color_prim_lght);
+            padding: 3%;
+            width: 90%; 
+            margin: 0 auto;
+        }
+    }   /* END Front Page Grid Blocks - Mobile */
+    /* END - Front Page Grid Blocks ---------------------------------- */

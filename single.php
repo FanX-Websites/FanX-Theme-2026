@@ -13,35 +13,34 @@ get_header();
  ?>
 
 <!-- Profile Main Div --------------------->
-    <div class="profile min-80"><!-- Profile sizing, padding,  -->
+    <div class="profile min-90"><!-- Profile sizing, padding,  -->
         <div class="self-centered">
-            <!--  Profile Header -->
+            <!--  Profile Header --------------->
             <div class="profile-header block"> 
                 
-            <!-- Submenu --- [Template Part] -->
-            <div class="sub-menu container">
-                <?php get_template_part( 
-                    'template-parts/sub-menu' 
-                ); ?>
-            </div><!-- END Submenu -->
+                <!-- Submenu --- [Template Part] -->
+                <div class="sub-menu container">
+                    <?php get_template_part( 
+                        'template-parts/sub-menu' 
+                    ); ?>
+                </div><!-- END Submenu -->
 
-            <!-- //Main Category --->
-            <h1 class="profile-header">
-                <?php 
-                    $categories = get_the_category(); //Main Category 
-                    if ( ! empty( $categories ) ) {
-                        echo '<div class="categories">';
-                        
-                        foreach ( $categories as $category ) {
-                            echo '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a> ';
+                <!-- Main Category --->
+                <h1>
+                    <?php 
+                        $categories = get_the_category(); //Main Category 
+                        if ( ! empty( $categories ) ) {
+                            echo '<div class="profile-cat-header">';
+                            
+                            foreach ( $categories as $category ) {
+                                echo '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a> ';
+                            }
+                            echo '</div>';
                         }
-                        echo '</div>';
-                    }
-                ?>
-            </h1><!-- Profile Header Text --> 
-            <!-- END Main Category --> 
-            </div><!--END Profile Header -->
-        </div><!-- END Resp Section -->
+                    ?><!-- END Main Category -->
+                </h1><!-- Profile Header Text --> 
+        </div><!--END Profile Header ------------------>
+    </div><!-- END Self Centered -->
 
     <!-- Post Content --------------------------------------->    
     <?php if ( have_posts() ) :
@@ -89,6 +88,29 @@ get_header();
                     <div class="profile-content">
                         <?php the_content(); //Content ?>
                     </div><!-- END Profile Content-->
+                    
+                    <!-- Buttons from ACF Repeater -->
+                    <?php 
+                    if( have_rows('button') ) {
+                        echo '<div class="button-container">';
+                        while( have_rows('button') ) {
+                            the_row();
+                            $button_title = get_sub_field('title');
+                            $button_subtitle = get_sub_field('subtitle');
+                            $button_link = get_sub_field('url');
+                            
+                            if( $button_title && $button_link ) {
+                                echo '<a href="' . esc_url($button_link) . '" class="button">';
+                                echo '<span class="button-title">' . esc_html($button_title) . '</span>';
+                                if( $button_subtitle ) {
+                                    echo '<span class="button-subtitle">' . esc_html($button_subtitle) . '</span>';
+                                }
+                                echo '</a>';
+                            }
+                        }
+                        echo '</div><!-- END button-container -->';
+                    }
+                    ?> <!-- END Buttons -->
                     <!-- Guest Xperience Links --->
                      
                       

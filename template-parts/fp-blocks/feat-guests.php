@@ -1,23 +1,19 @@
 <?php 
 
-// This is the Block for The Featured Guest Category (see taemplate)
+// This is the Block for The Featured Guest Category (see template) - CURRENTLY NOT IN USE
 
 ?> 
 
-<div class="block-mos">
-    <div class="featured-guest">
+
+<div class="featured-guest-fp-block">
 
 Featured Guest
 </div>
-</div>
+
 
 
 <style>
-.featured-guest{ /**  */
-    background-color: green; 
-    width: 60%; 
-    height: 35%; 
-    position: absolute;
+.featured-guest-fp-block{ /** The Block size & positioning in Partent Div*/
 
 } 
 </style>

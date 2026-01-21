@@ -5,7 +5,7 @@
 ?> 
 
 
-    <div class="participate-block">
+    <div class="participate-fp-block">
         <div class="participate-content self-centered-column fill">
            <h3>Participate/Industry</h3>
             <div class= "icon-row self-centered-row">
@@ -26,20 +26,10 @@
 
 
 <style>
-.participate-block{ /**  */
-    background-color: var(--color_base);
-        width: 40%; 
-        height: 30%;
-        top: 70%;
-        right: 0;
-        position: absolute;
-    }
 .participate-content{
     width: 100%;
     height: 100%;
-    text-align: center;
-
-    
+    text-align: center;    
 }
 .pb{
     margin: 0 20px;

@@ -810,6 +810,31 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "key": "field_696ff529595e3",
+                    "label": "",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "For Customer Service integrations (ie: Chatbot) fields are located on the Customer Service Options Page.",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6909232613f36",
                     "label": "Head Code",
                     "name": "head",
@@ -976,8 +1001,7 @@
     "active": true,
     "description": "",
     "show_in_rest": 1,
-    "display_title": "",
-    "acfe_display_title": "Website Development",
+    "display_title": "Website Development",
     "acfe_autosync": [
         "php",
         "json"
@@ -986,7 +1010,7 @@
     "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1763615819,
+    "modified": 1768945665,
     "acfe_categories": {
         "dev": "Dev"
     }

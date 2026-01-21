@@ -21,7 +21,7 @@ get_header(); /** body- main-site */
     <!-- Main Content Area -->
         <!-- Content Blocks - Event Hours -[Template Part] -->
         <div class="event-info container">        
-            <?php get_template_part('template-parts/sections/event-hours'); ?>
+            <?php get_template_part('template-parts/sections/content-blocks'); ?>
         </div><!-- END Comparison Chart Section -->
     <!-- END Main Content Area --> 
 

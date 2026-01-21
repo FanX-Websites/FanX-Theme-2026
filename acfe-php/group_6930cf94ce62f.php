@@ -390,7 +390,7 @@ acf_add_local_field_group(array(
 					'parent_repeater' => 'field_6943c77711a87',
 				),
 				array(
-					'allow_backendsearch' => 0,
+					'allow_backendsearch' => 1,
 					'show_column_filter' => false,
 					'allow_bulkedit' => 0,
 					'allow_quickedit' => 0,
@@ -495,7 +495,7 @@ acf_add_local_field_group(array(
 					'show_column_sortable' => false,
 					'key' => 'field_6943c77011a75',
 					'label' => 'Button Subtext',
-					'name' => 'butt_subtxt_1',
+					'name' => 'butt_subtxt',
 					'aria-label' => '',
 					'type' => 'text',
 					'instructions' => '',
@@ -648,7 +648,7 @@ acf_add_local_field_group(array(
 	'acfe_categories' => array(
 		'event-info' => 'Event Info',
 	),
-	'modified' => 1767845658,
+	'modified' => 1768284200,
 ));
 
 endif;

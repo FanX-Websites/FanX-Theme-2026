@@ -70,8 +70,3 @@
     </div><!--END self-centered-scrunch -->
 </div><!--- END Link Bar -->
 
-
-<style>
-
-
-</style>

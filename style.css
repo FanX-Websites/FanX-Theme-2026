@@ -15,7 +15,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 /** 
 This Stylesheet is for base frameworks ONLY. For sitewide branding styles, please refer to the FanX branding stylesheet located in the Branding File. 
 
-Editing this file may affect sitewide layout structures and behaviors. Please save a backup copy before making changes.
+Editing this file affects sitewide layout structures and behaviors. Please save a backup copy before making changes.
 
 **/
 
@@ -27,6 +27,8 @@ body{ /*Every Page*/
     height: auto;
     overflow-x: hidden;
     flex: 1;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color_lght);
 }
 .site-main{ /*Every Page*/
     display: flex; 
@@ -88,6 +90,7 @@ For divs that hold template parts*/
     height: 80vh;
     position: relative; 
     box-sizing: border-box;
+    overflow: auto; 
 } 
 
 /*Divs with Behaviors Issued ------------------------> */
@@ -231,7 +234,7 @@ For divs that hold template parts*/
 /** TEMPLATE PARTS ---------------------------------------*/
 
 /* Template Part: Content Blocks Section */
-    /* Content Block Layouts - Based on Number of Blocks created on page */
+    /* Content Block Layouts - Based on Number of Blocks created on page ------------ */
         /* Single block - full width */
         .content-blocks.layout-single {
             display: block;
@@ -254,9 +257,37 @@ For divs that hold template parts*/
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-    /* END Content Block Layouts */
+    
+    /* Responsive breakpoints for content blocks */
+    @media (max-width: 1024px) {
+        /* Tablet: Three columns to two columns */
+        .content-blocks.layout-three-col {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+    }
 
+    @media (max-width: 768px) {
+        /* Tablet to mobile: All layouts to single column */
+        .content-blocks.layout-two-col,
+        .content-blocks.layout-three-col,
+        .content-blocks.layout-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+    }
 
+    @media (max-width: 480px) {
+        /* Small mobile devices */
+        .content-blocks {
+            gap: 1rem;
+        }
+        .content-block {
+            padding: 1rem;
+        }
+    }
+
+/* END Content Block Layouts ------------------------- */
 
                
 

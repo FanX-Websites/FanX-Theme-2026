@@ -738,17 +738,7 @@ h1.page-title{
 /** END Post Block */
 
 /** Read More Button Styling */
-.read-more-button { /*Update to Global Styling*/
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--color_acc);
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-    .read-more-button:hover {
-        background-color: var(--color_prim_brht);
-    }
+/* Read More Button now uses global .button styles */
 /** END Read More Button Styling */
 
 /** TEMPLATE PARTS ---------------------------------------*/

@@ -65,8 +65,18 @@
             <!----------- No Posts Message -------------->
             <?php else : ?>
                 <div class="updates-no-posts-message">
-                    <h3>No updates available</h3>
-                    <p>Check back soon for the latest updates.</p>
+                    <h3>No updates Yet</h3>
+                    <p>
+                        <?php echo wp_kses_post(get_field('news_message', get_option('page_on_front'))); ?>
+                        <?php 
+                            $news_link = get_field('news_url', get_option('page_on_front'));
+                            if ($news_link) {
+                                $url = $news_link['url'];
+                                $title = isset($news_link['title']) ? $news_link['title'] : 'sign up for our newsletter.';
+                                echo ' <a href="' . esc_url($url) . '">' . esc_html($title) . '</a>';
+                            }
+                        ?>
+                    </p>
                 </div>
             <?php endif; ?>
             <!-- END No Posts Message -->

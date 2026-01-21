@@ -50,6 +50,7 @@
 <!--- Website Wrap up ------->
 
 <?php echo get_field('theme_body', 'option')?>
+<?php echo get_field('int_bubble', 'option')?>
 <?php wp_footer(); ?>
     </body>
 </html>

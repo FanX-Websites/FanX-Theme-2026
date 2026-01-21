@@ -64,11 +64,23 @@ get_header(); /** body- main-site */
             ) );
         else :
             ?>
-            <h3>Coming Soon</h3>
-            <p></p>
+            <div class="no-posts-container">
+                <h3>Coming Soon</h3>
+                <p>
+                    <?php 
+                        $news_link = get_field('news_url', 'option');
+                        $news_message = get_field('news_message', 'option');
+                        if ($news_link && isset($news_link['url'])) {
+                            echo '<a href="' . esc_url($news_link['url']) . '">' . wp_kses_post($news_message) . '</a>';
+                        } else {
+                            echo wp_kses_post($news_message);
+                        }
+                    ?>
+                </p>
+            </div>
             <?php
         endif;
-        ?><!-- END No Posts Message --> 
+        ?><!-- END No Posts Message -->
 
     <!----- END Main Content Area ----------------->
     </div><!-- END self-centered-inside -->

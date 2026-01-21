@@ -1,24 +1,23 @@
 <?php 
 
-// This is the Block for The Attendees Category (see taemplate)
+// This is the Block for The Attendees Category (see template) - CURRENTLY NOT IN USE
 
 ?> 
 
-<div class="block-mos">
-    <div class="attendees">
 
-Attendees
+<div class="attendees-block">
 
-    </div><!-- END Attendees -->
-</div><!-- END Block -->
+    Attendees
+
+</div><!-- END Attendees Block -->
+
 
 
 <style>
-.attendees{ /**  */
-    background-color: violet; 
-    width: 30%; 
-    height: 40%; 
-    position: absolute; 
+.attendees-block{ /** The Block size & positioning in Partent Div*/   */
+
+
+
 
 
 
