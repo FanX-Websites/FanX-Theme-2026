@@ -163,8 +163,9 @@ add_action('wp_enqueue_scripts', function() {
 //FLUSH THE THINGS --->
 	//remove_action('shutdown', 'wp_ob_end_flush_all', 1);  //Flush error
 	//flush_rewrite_rules(); //Flush Rules
-// Prevent dev site from being indexed - DO NOT SYNC TO LIVE
-if ( strpos( $_SERVER['HTTP_HOST'], 'dev.fanx.com' ) !== false ) {
+	
+// Prevent non-production sites from being indexed - DO NOT SYNC TO LIVE
+if ( 'production' !== wp_get_environment_type() ) {
     add_filter( 'wpseo_robots', function() {
         return 'noindex, nofollow';
     });
