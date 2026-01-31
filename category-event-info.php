@@ -25,11 +25,12 @@ get_header(); /** body- main-site */
         </div><!-- END Comparison Chart Section -->
     <!-- END Main Content Area --> 
 
+    <?Php /* Hidden Until Styling issues resolved
     <!-- Latest News Post Block Section -->
         <div class="updates container">
             <?php get_template_part('template-parts/sections/updates-section'); ?>
         </div><!-- END Latest News Post Block -->
-     <!-- END Latest News Post Block -->
+     <!-- END Latest News Post Block --> */ ?>
          
 
 <?php

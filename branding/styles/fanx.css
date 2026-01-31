@@ -306,40 +306,38 @@ a{ /* Content Links */
 
 /* ------------------  Header Styling ------------------------------------ */
     /*TOP - Alert Bar -------> */      
-    .alert-bar{
-        display: flex;
+    .alert-bar {
+        display: flex; 
         align-content: center;
         justify-content: center;
-        min-width: 100%;
+        width: 100%;
         height: auto;
-        padding: 0px;
+        padding: 15px 20px;
         margin: 0;
         min-height: 25px;
         border-radius: 0; 
-    }
         /*Text*/
-        .alert-bar a{
         color: white; 
         text-align: center;
-        text-decoration: none;  
-        padding: 15px 0px; 
-        margin: 0; 
-        min-width: 100%;
         
     }
-        /* TOP - Alert Bar -  Slides */
-        .alert-slide, a.alert-slide{
+        .alert-bar a{
+            color: var(--color_fnt_wht);
+            text-decoration: none;
+        }
+        .alert-slide {
             display: none;
-            min-width: 100%; 
         }
         .alert-slide[href] {
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 100%;
+            width: 100%;
         }
-    /* END Top - Alert Bar -------> */
-   
+        .alert-slide:first-child {
+            display: flex;
+            
+        }
     
     /* ---------------- MAIN MENU --------------------- */
     /* ------- Main Menu - Desktop -------------- */
@@ -559,30 +557,21 @@ a{ /* Content Links */
     }
     /*END ------------------ Main Menu - Mobile ------------------- */ 
     /* END ---------------------- Main Menu -------------------- */
-    /* END -------------------- Site Header Styling ----------------------------------- */
+/* END -------------------- Site Header Styling ----------------------------------- */
 
-
-    /* ------------ Page/Post Header Styling -------------- */ 
+/* ------------ Page/Post Header Styling -------------- */ 
     /* ----------- Sub Menu ---------- */
     .sub-menu-section{
-        padding: 0px;
-        width: 90%; 
+        padding: 20px;
         margin: 0;   
         font-size: 1em; 
-        line-height: 1.25em;  
+        line-height: 1.5em;  
         font-family: arial, sans-serif;
         top: 0; 
         }
     .sub-menu-section, .socket-menu a{
         color: var(--color_prim_lght);
     }
-    /* Sub Menu - Mobile --- */ 
-    @media (max-width: 905px){
-        .sub-menu-section{
-            display: none; 
-            }
-    }
-
     /* END ----------- Sub Menus ---------- */
 
     /** Page Headers - Taxonomies & Categories */    
@@ -603,6 +592,8 @@ a{ /* Content Links */
         flex-direction: column;
         border-radius: 0;
         width: 100%; 
+        padding: 0; 
+        margin: 0;
     }
 
     /** Page Headers - Text */
@@ -632,9 +623,8 @@ a{ /* Content Links */
         font-style: italic; 
         color: var(--color_base_lght);
     }
+
     /*END Page Headers ----------------------------------*/
-
-
 
 
     /* ORGANIZE BELOW */ 
@@ -734,23 +724,12 @@ a{ /* Content Links */
         /** Mobile - Sticky Bottom Link Bar */
         @media (max-width: 800px){
             .mobile-icons a{
-                padding: 0 7px;
+                padding: 0 15px;
                 color: var(--color_fnt_wht);
                 font-size: 2.5em;
             }
             .ops-block, .tickets-block{
                 display: none;
-            }
-             .mobile-icons p{
-                display: inline;
-                font-size: 1.2em; 
-                font-weight: 500; 
-                color: var(--color_fnt_wht);
-                margin: 0; 
-                padding: 0;
-            }
-            .mobile-icons.block{
-                gap: 10px;
             }
         }
         /** END Sticky Bottom Links Bar */
@@ -783,11 +762,6 @@ a{ /* Content Links */
 /** END Post Block */
 
 /** END Read More Button Styling */
-
-/* No Posts Mode */
-.no-posts-container{
-    text-align: center; 
-}
 
 /** ---------------- TEMPLATE PARTS ---------------------------------------*/
 
@@ -1055,6 +1029,11 @@ a{ /* Content Links */
 /* Updates Section END */
 
 
+
+
+
+
+
 /** END TEMPLATE PARTS -----------------------------------*/
 
 /** Basic Post Loop Styling ---> */
@@ -1097,11 +1076,10 @@ h2.entry-title a{
         margin: 0; 
         align-items: center; 
         justify-content: center; 
-        gap: 20px; 
     }
     .profile-content{
         width: 100%;
-        padding: 2%;
+        padding: 2% 0;
         text-align: left; 
         font-family: inherit; 
         font-size: 1em; 
@@ -1114,17 +1092,12 @@ h2.entry-title a{
 .profile-cat-header h1,
 .profile-cat-header a{
     text-decoration: none; 
-    color: var(--color_base_lght);
-    font-size: 1.2em; 
-    font-weight: 400;
-    line-height: 1.7em;
+    color: var(--color_acc_brht);
+    font-size: 2em; 
+    font-weight: 700;
+    line-height: 1.2em;
     padding: 0;
     margin: 0;
-}
-.profile-header, .page-header{
-    padding: 2% 0 4%;
-    margin: 0;
-    text-align: center; 
 }
 
 
@@ -1143,83 +1116,3 @@ h2.entry-title a{
     }
     }        
 /** END Single Post Styling HAAALLLLP FIX ME **/
-
-/* Front Page Blocks ----------------------------------------------- */ 
-/* Front Page Grid Container - DESKTOP */ 
-    .fp-grid{
-        display: grid;
-        grid-template: 1fr 1fr 1fr / 1.5fr 1fr; /** 9 Rows - 2 Columns */
-        gap: 20px;
-        padding: 20px 10px;
-        border-radius: 0; 
-        font-family: inherit;
-    }
-    
-/* Front Page Grid Blocks */
-
-    /** Both Columns */
-    .event-details.container{ /* Event Details Block */
-        grid-column: 1 / span 2;
-        grid-row: 1;
-        display: flex; 
-        align-items: center;
-        justify-content: flex-start;
-        background-color: var(--color_acc);
-    }
-    /** Grid Column 1 */
-    .feat-video.container{ /* Featured Video Block */
-        grid-column: 1;
-        grid-row: 2 / span 2;
-        display: flex; 
-        align-items: center;
-        justify-content: center;
-    }
-
-    /** Grid Column 2 */  
-    .countdown.container{ /* Countdown Block */
-        grid-column: 2;
-        grid-row: 1 / span 1;
-        display: flex; 
-        align-items: center;
-        justify-content: center;
-        font-family: inherit;
-    }
-
-    .updates-feed.container{ /* Updates Feed Block */
-        grid-column: 2;
-        grid-row: 2 / span 2;
-        display: flex; 
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Responsive Grid for Mobile */
-    @media (max-width: 1045px) {
-        .fp-grid{
-            grid-template: repeat(4, auto) / 1fr; /** 4 Rows - 1 Column */
-            gap: 20px;
-        }
-        .event-details.container{ /* Event Details Block */
-            grid-column: 1;
-            grid-row: 1;
-            padding: 20px 10px; 
-        }
-        .feat-video.container{ /* Featured Video Block */
-            grid-column: 1;
-            grid-row: 3;
-        }
-        .countdown.container{ /* Countdown Block */
-            grid-column: 1;                 
-            grid-row: 2;
-            padding: 3%; 
-        }
-        .updates-feed.container{ /* Updates Feed Block */
-            grid-column: 1;
-            grid-row: 4;
-            border: 3px solid var(--color_prim_lght);
-            padding: 3%;
-            width: 90%; 
-            margin: 0 auto;
-        }
-    }   /* END Front Page Grid Blocks - Mobile */
-    /* END - Front Page Grid Blocks ---------------------------------- */

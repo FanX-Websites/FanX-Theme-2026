@@ -1,6 +1,6 @@
 <?php 
 
-/** Template Part: Content-Blocks Section - DELETE ME
+/** Template Part: Content-Blocks Section
  * @package FanXTheme2026 
  * 
  * Notes: 
@@ -49,7 +49,7 @@
             }
             
             if ($page_slug) {
-                $layout_class .= ' ' . $page_slug . '-blocks';
+                $layout_class .= ' ' . $page_slug . '-blocks'; //Template Specific Class > .{page-slug}-blocks
             }
             
             if ($block_count === 1) {

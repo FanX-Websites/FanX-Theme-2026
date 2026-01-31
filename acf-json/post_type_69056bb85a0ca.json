@@ -42,7 +42,7 @@
         "item_link": "Guest Link",
         "item_link_description": "A link to a guest."
     },
-    "description": "Attending Featured Guest Celebs, Authors, Artists, Panelists, etc",
+    "description": "",
     "public": true,
     "hierarchical": false,
     "exclude_from_search": false,
@@ -76,11 +76,10 @@
         "category",
         "post_tag",
         "xp",
-        "days",
-        "fandom"
+        "days"
     ],
-    "has_archive": true,
-    "has_archive_slug": "guests",
+    "has_archive": false,
+    "has_archive_slug": "",
     "rewrite": {
         "permalink_rewrite": "custom_permalink",
         "slug": "guest",
@@ -94,5 +93,5 @@
     "delete_with_user": false,
     "register_meta_box_cb": "",
     "enter_title_here": "",
-    "modified": 1764046348
+    "modified": 1769162104
 }

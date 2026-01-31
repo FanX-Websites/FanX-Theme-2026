@@ -122,6 +122,13 @@
                 "operator": "==",
                 "value": "schedules-maps"
             }
+        ],
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "participant-info"
+            }
         ]
     ],
     "menu_order": 0,
@@ -142,7 +149,7 @@
     "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1765912243,
+    "modified": 1769818497,
     "acfe_categories": {
         "dev": "Dev"
     }

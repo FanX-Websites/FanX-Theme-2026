@@ -130,6 +130,33 @@
                 {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_697354d66ed55",
+                    "label": "Expiration Date:",
+                    "name": "feat_vid_stop",
+                    "aria-label": "",
+                    "type": "date_time_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "m\/d\/Y g:i a",
+                    "return_format": "m\/d\/Y g:i a",
+                    "first_day": 0,
+                    "default_to_current_date": 0,
+                    "allow_in_bindings": 0
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
                     "allow_bulkedit": false,
                     "allow_quickedit": false,
                     "show_column": false,
@@ -235,7 +262,7 @@
     "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1768936183,
+    "modified": 1769166140,
     "acfe_categories": {
         "event-info": "Event Info"
     }

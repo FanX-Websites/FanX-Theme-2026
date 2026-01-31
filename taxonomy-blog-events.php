@@ -23,7 +23,7 @@ get_header(); /** body- main-site */
         while ( have_posts() ) : the_post();
             ?>
         <!------------------- Post Block --------------------->
-        <div class="post-block-5 block">
+        <div class="post-block block">
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <!-- -- Post Thumbnail -->
@@ -58,10 +58,6 @@ get_header(); /** body- main-site */
         <!-- No Posts Message -->
         <?php
             endwhile;
-            the_posts_pagination( array(
-                'prev_text' => '← Previous',
-                'next_text' => 'Next →',
-            ) );
         else :
             ?>
             <div class="no-posts-container">

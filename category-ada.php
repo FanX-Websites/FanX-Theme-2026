@@ -1,10 +1,10 @@
 <?php
 /**
- * Template Name: Basic Category Archive
+ * Template Name: Category Page - ADA Information
  * @author FanXTheme2026
  * 
  * Notes: 
- * Classes used: tax-cat-page, container, page-header, updates, event-hours
+    * Uses classes: page-header, page-title, description, container, ada-blocks, content-block, content-block-title, content-block-subtext, updates, full
  */
 
 get_header(); /** body- main-site */
@@ -26,8 +26,8 @@ get_header(); /** body- main-site */
             <div class="container"></div>        
               
         <!-- Section 3 - Website Accessibility Statement --> 
-        <div class="framed-900 container">        
-            <?php get_template_part('template-parts/layouts/content-1-full'); ?>
+        <div class="container">        
+            <?php get_template_part('template-parts/sections/content-blocks'); ?>
         </div><!-- END Website Accessibility Statement Section -->
     <!-- END Main Content Area --> 
 
@@ -41,3 +41,4 @@ get_header(); /** body- main-site */
 <?php
     get_footer();
 ?>
+

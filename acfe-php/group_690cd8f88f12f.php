@@ -80,6 +80,9 @@ acf_add_local_field_group(array(
 			'layout' => 'block',
 			'acfe_seamless_style' => 0,
 			'acfe_group_modal' => 0,
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'allow_backendsearch' => false,
@@ -130,6 +133,33 @@ acf_add_local_field_group(array(
 					'width' => '',
 					'height' => '',
 					'allow_in_bindings' => 1,
+				),
+				array(
+					'allow_backendsearch' => false,
+					'show_column_filter' => false,
+					'allow_bulkedit' => 0,
+					'allow_quickedit' => 0,
+					'show_column' => 0,
+					'show_column_weight' => 1000,
+					'show_column_sortable' => false,
+					'key' => 'field_697354d66ed55',
+					'label' => 'Expiration Date:',
+					'name' => 'feat_vid_stop',
+					'aria-label' => '',
+					'type' => 'date_time_picker',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'display_format' => 'm/d/Y g:i a',
+					'return_format' => 'm/d/Y g:i a',
+					'first_day' => 0,
+					'default_to_current_date' => 0,
+					'allow_in_bindings' => 0,
 				),
 				array(
 					'allow_backendsearch' => false,
@@ -207,9 +237,6 @@ acf_add_local_field_group(array(
 					'columns' => '6/12',
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 	),
 	'location' => array(
@@ -239,10 +266,10 @@ acf_add_local_field_group(array(
 	'qef_simple_location_rules' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
+	'modified' => 1769818551,
 	'acfe_categories' => array(
 		'event-info' => 'Event Info',
 	),
-	'modified' => 1768936183,
 ));
 
 endif;

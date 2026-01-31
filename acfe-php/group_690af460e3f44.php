@@ -4,7 +4,7 @@ if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
 	'key' => 'group_690af460e3f44',
-	'title' => 'Schedule Post',
+	'title' => 'Schedule Exports',
 	'fields' => array(
 		array(
 			'allow_backendsearch' => false,
@@ -16,7 +16,7 @@ acf_add_local_field_group(array(
 			'show_column_sortable' => false,
 			'key' => 'field_690af46102b34',
 			'label' => 'Schedule Push to Static Site',
-			'name' => 'scheduled_static_push',
+			'name' => 'export_datetime',
 			'aria-label' => '',
 			'type' => 'date_time_picker',
 			'instructions' => '',
@@ -43,7 +43,7 @@ acf_add_local_field_group(array(
 			'show_column_sortable' => false,
 			'key' => 'field_690afab402b35',
 			'label' => '',
-			'name' => 'static_push_action',
+			'name' => 'static_export_action',
 			'aria-label' => '',
 			'type' => 'button_group',
 			'instructions' => 'WARNING: Do NOT push the \'Export static page\' button below unless you want the page to be pushed immediately.',
@@ -55,8 +55,8 @@ acf_add_local_field_group(array(
 				'id' => '',
 			),
 			'choices' => array(
-				'schedule_push' => 'Schedule Push',
-				'cancel_schedule' => 'Cancel Push',
+				'schedule' => 'Schedule Export',
+				'cancel' => 'Cancel Scheduled Export',
 			),
 			'default_value' => '',
 			'return_format' => 'value',
@@ -73,6 +73,20 @@ acf_add_local_field_group(array(
 				'value' => 'all',
 			),
 		),
+		array(
+			array(
+				'param' => 'taxonomy',
+				'operator' => '==',
+				'value' => 'all',
+			),
+		),
+		array(
+			array(
+				'param' => 'taxonomy_list',
+				'operator' => '==',
+				'value' => 'all',
+			),
+		),
 	),
 	'menu_order' => 0,
 	'position' => 'side',
@@ -83,20 +97,20 @@ acf_add_local_field_group(array(
 	'active' => true,
 	'description' => '',
 	'show_in_rest' => 0,
-	'display_title' => '',
-	'acfe_display_title' => 'Schedule Push',
+	'display_title' => 'Simply Static Scheduled Export',
 	'acfe_autosync' => array(
 		0 => 'php',
 		1 => 'json',
 	),
-	'acfe_form' => 0,
+	'acfe_permissions' => '',
+	'acfe_form' => 1,
 	'qef_simple_location_rules' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
+	'modified' => 1769818546,
 	'acfe_categories' => array(
 		'dev' => 'Dev',
 	),
-	'modified' => 1762408575,
 ));
 
 endif;

@@ -7,6 +7,7 @@
 //--- Theme Support -->
 	function fanx_theme_setup() {	
 		add_theme_support('post-thumbnails'); //Thumbnails	
+		add_theme_support('sticky-posts'); //Sticky Posts
 	
 	//--- Menu Registration -->
 		register_nav_menus(array( 
@@ -173,3 +174,16 @@ if ( 'production' !== wp_get_environment_type() ) {
         echo '<meta name="robots" content="noindex, nofollow">' . "\n";
     }, 1 );
 }
+
+// Increase media upload size limits
+add_filter( 'upload_size_limit', function() {
+    return 512 * 1024 * 1024; // 512MB limit
+}, 20 );
+
+add_filter( 'wp_max_upload_size', function() {
+    return 512 * 1024 * 1024; // 512MB limit
+}, 20 );
+
+add_filter( 'wp_import_post_data_raw', function( $post_data ) {
+    return $post_data;
+} );

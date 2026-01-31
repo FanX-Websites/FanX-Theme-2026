@@ -42,7 +42,7 @@
         "item_link": "Feature Link",
         "item_link_description": "A link to a feature."
     },
-    "description": "Features, Activities, Vendors, and Special Events",
+    "description": "",
     "public": true,
     "hierarchical": false,
     "exclude_from_search": false,
@@ -73,7 +73,6 @@
     "taxonomies": [
         "category",
         "xp",
-        "fandom",
         "days",
         "post_tag"
     ],
@@ -92,5 +91,5 @@
     "delete_with_user": false,
     "register_meta_box_cb": "",
     "enter_title_here": "",
-    "modified": 1764046523
+    "modified": 1769154499
 }

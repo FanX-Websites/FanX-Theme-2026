@@ -31,6 +31,9 @@
         }
         ?>
     </h1>
+    <?php if ( is_singular() && get_field('heafoo_subtitle') ) {
+        printf( '<h4 class="cat-subtitle">%s</h4>', esc_html( get_field('heafoo_subtitle') ) );
+    } ?>
 </div>
         <!-- END Page Title Block -->
         

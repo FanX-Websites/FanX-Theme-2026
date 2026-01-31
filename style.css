@@ -20,15 +20,14 @@ Editing this file affects sitewide layout structures and behaviors. Please save 
 **/
 
 /*Global*/
-body{ /*Every Page*/
+body,html{ /*Header, Body, Footer*/ 
     margin: 0;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     height: auto;
     overflow-x: hidden;
-    flex: 1;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color_lght);
+    font-family: Arial, Helvetica, sans-serif; 
+    
 }
 .site-main{ /*Every Page*/
     display: flex; 
@@ -108,16 +107,22 @@ For divs that hold template parts*/
         flex-wrap: wrap;
         flex: 1; /*Space Between*/
     }
-    .self-centered-column{/* Centered Columns  */
-        display: flex; 
-        align-items: center; 
-        justify-content: center;
-        flex-direction: column; 
-    }
+        .self-centered-column{/* Centered Columns  */
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            flex-direction: column; 
+        }
     .self-centered-row{/* Centered Row  */
         display: flex; 
         flex-direction: row; 
         align-items: center; 
+        justify-content: center;
+    }
+    .self-centered-row-top{/* Centered Row  */
+        display: flex; 
+        flex-direction: row; 
+        align-items: flex-start; 
         justify-content: center;
     }
      .self-centered-scrunch{/* Centered Row no wrap/mobile -  */
@@ -289,5 +294,4 @@ For divs that hold template parts*/
 
 /* END Content Block Layouts ------------------------- */
 
-               
 

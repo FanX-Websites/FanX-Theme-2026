@@ -1,21 +1,10 @@
 //Java Script Code for Fun Website Effects 
 
-//Alert Bar - Slide
-document.addEventListener('DOMContentLoaded', function() {
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.alert-slide');
-    
-    if(slides.length === 0) return;
-    
-    setInterval(() => {
-        slides[currentSlide].style.display = 'none';
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].style.display = 'block';
-    }, 3000); // Change slide every 5 seconds
-});
-//END Alert Bar - Slide 
+//Alert Bar - Slide -------------------------------------------------->
+//TODO: Alert Bar Code Here         
+//END Alert Bar - Slide <--------------------------------------------------
 
-//Mobile Menu - Accordian
+//Mobile Menu - Accordian -------------------------------------------------->
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
     const mainMenuNav = document.querySelector('.main-menu-nav');
@@ -34,15 +23,19 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (submenu) {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
-                submenu.classList.toggle('active');
+                // Only prevent default on mobile/tablet (max-width: 1070px)
+                if (window.innerWidth < 1070) {
+                    e.preventDefault();
+                    submenu.classList.toggle('active');
+                }
+                // On desktop, allow the link to work normally
             });
         }
     });
 });
-//END Mobile Menu
+//END Mobile Menu <----------------------------------------------------------
 
-//Countdown Timer 
+//Countdown Timer ----------------------------------------------------------->
 function updateCountdown() {
     const targetDate = new Date(document.querySelector('.countdown-container').dataset.targetDate).getTime();
     const now = new Date().getTime();
@@ -58,4 +51,4 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
-//END Countdown Timer
+//END Countdown Timer <----------------------------------------------------------
