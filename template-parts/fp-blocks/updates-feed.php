@@ -53,7 +53,6 @@
                             <footer class="updates-feed-entry-footer">
                             <a href="<?php the_permalink(); ?>" class="button">Read More</a>
                             </footer>   
-
                         </div><!-- END Post Content -->
                     </article><!-- END News & Updates Post Layout -->
                 <?php 
@@ -90,7 +89,9 @@
 
 
 <style>
-.updates-feed-fp-block{ /** The Block size & positioning in Parent Div*/
+
+/** FP BLOCK - UPDATES FEED ----------------- */
+.updates-feed-fp-block{  
     padding: 20px;
     margin: 0;
     font-family: inherit;
@@ -101,6 +102,9 @@
     border-top: solid 1px var(--color_acc_lght);
     border-radius: 0px; 
     padding: 20px;
+}
+article.updates-feed{
+    margin-bottom: 20px; 
 }
 .updates-feed-post-content header h3 a{
     font-size: 1.5rem;
@@ -128,4 +132,5 @@ h3.updates-feed{
     text-align: center; 
     text-transform: uppercase;
 }
+/** END FP BLOCK - UPDATES FEED ----------------- */
 </style>

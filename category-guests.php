@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Blog Category Page
+ * Template Name: Guest Category/Archive Pages 
  * @author FanXTheme2026
  * 
  * Notes: 
@@ -9,6 +9,7 @@
 
 get_header(); /** body- main-site */
 ?>
+<!-- Category Page Body -->
 
     <!--------------- Page Header Container [Template Part] ----------------------->
     <div class="page-header container">
@@ -18,26 +19,60 @@ get_header(); /** body- main-site */
 
     <!-------------------------- Main Content Area --------------------->
     <div class="post-grid-container"> 
-        <?php if ( have_posts() ) : ?>
         <?php
-        while ( have_posts() ) : the_post();
+        // Query guests CPT for the current category
+        $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+        $args = array(
+            'post_type' => 'guests',
+            'cat' => get_queried_object_id(), // Current category ID
+            'paged' => $paged,
+            'posts_per_page' => get_option( 'posts_per_page' ),
+        );
+        $query = new WP_Query( $args );
+        if ( $query->have_posts() ) : ?>
+        <?php
+        while ( $query->have_posts() ) : $query->the_post();
             ?>
         <!------------------- Post Block --------------------->
         <div class="post-block block">
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <!-- -- Post Thumbnail -->
+                
+            <!-- -- Post Thumbnail -->
                 <?php if ( has_post_thumbnail() ) : ?>
                     <div class="post-thumbnail">
-                        <a href="<?php echo esc_url( get_field( 'butt_feat_url' ) ); ?>" target="_blank">
+                        <a href="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail( 'medium' ); ?>
                         </a>
                     </div>
                 <?php endif; ?>
                 <!-- END Post Thumbnail -->
                 
-                
-                
+                <!-- Post Header -->
+                <header class="entry-header">
+                    <h2 class="entry-title">
+                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                    </h2>
+                </header>
+                <!-- END Post Header -->
+
+                <!-- Fandom Tags -->
+                <div class="fandom-tags">
+                    <?php
+                    $fandoms = get_the_terms( get_the_ID(), 'fandoms' );
+                    if ( $fandoms && ! is_wp_error( $fandoms ) ) {
+                        echo '<div class="tags-list">';
+                        $tags = array();
+                        foreach ( $fandoms as $fandom ) {
+                            $tags[] = '<span class="fandom-tag">' . esc_html( $fandom->name ) . '</span>';
+                        }
+                        echo implode( ' | ', $tags );
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
+                <!-- END Fandom Tags -->
+
             </article>
         </div>
         <!-- END Post Block -------------------->
@@ -48,7 +83,7 @@ get_header(); /** body- main-site */
         else :
             ?>
             <div class="no-posts-container">
-                <h3>Coming Soon</h3>
+                <h3>COMING SOON</h3>
                 <p>
                     <?php 
                         $news_link = get_field('news_url', 'option');
@@ -63,9 +98,10 @@ get_header(); /** body- main-site */
             </div>
             <?php
         endif;
+        wp_reset_postdata();
         ?><!-- END No Posts Message -->
 
-    <!----- END Main Content Area ----------------->
+    <!----- END Main Content Area----------------->
     </div><!-- END post-grid-container -->
 
 <?php

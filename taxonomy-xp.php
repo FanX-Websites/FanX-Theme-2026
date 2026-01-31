@@ -2,5 +2,5 @@
 /**
  * Taxonomy Template - Forwards to category.php
  */
-get_template_part( 'taxonomy' );
+get_template_part( 'category-guests' );
 ?>

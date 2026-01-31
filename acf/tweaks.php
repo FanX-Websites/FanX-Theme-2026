@@ -1,4 +1,7 @@
-<?php  //For Tweaks to ACF Fields 
+<?php  //Functions File for ACF Features & Tweaks
+
+//TODO: Support for ACF Fields in WP Menu  
+//TODO: Allow Encoded URL in ACF Link Fields
 
 //Shortcodes in ACF 
 add_filter('acf/format_value/type=textarea', 'do_shortcode'); //Text Area
@@ -31,7 +34,7 @@ function acf_add_allowed_iframe_tag( $tags, $context ) {
 //Allow iframe Guest Schedule
 add_filter( 'acf/shortcode/allow_unsafe_html', 
 function ( $allowed, $atts ) {
-    if ( $atts['field'] === 'sched_url' ) {
+    if ( is_array( $atts ) && isset( $atts['field'] ) && $atts['field'] === 'sched_url' ) {
         return true;
     }
     return $allowed;
@@ -58,7 +61,3 @@ function acf_add_allowed_svg_tag( $tags, $context ) {
 
     return $tags;
 }
-
-//Disable HTML Escaping Security Feature - uneeded
-    //add_filter('acf/shortcode/allow_unsafe_html', '__return_true'); //Allow 'Unsafe' HTML 
-    //add_filter( 'acf/admin/prevent_eåscaped_html_notice', '__return_true' ); //Disable Notices 

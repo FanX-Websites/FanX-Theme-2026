@@ -58,7 +58,7 @@ acf_add_local_field_group(array(
 			'min' => 0,
 			'max' => 0,
 			'collapsed' => '',
-			'button_label' => 'Add Row',
+			'button_label' => 'Add Another Slide',
 			'rows_per_page' => 20,
 			'sub_fields' => array(
 				array(
@@ -271,8 +271,7 @@ acf_add_local_field_group(array(
 	'active' => true,
 	'description' => '',
 	'show_in_rest' => 1,
-	'display_title' => '',
-	'acfe_display_title' => 'Alert Bar Content',
+	'display_title' => 'Alert Bar Content',
 	'acfe_autosync' => array(
 		0 => 'php',
 		1 => 'json',
@@ -281,10 +280,10 @@ acf_add_local_field_group(array(
 	'qef_simple_location_rules' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
+	'modified' => 1769818521,
 	'acfe_categories' => array(
 		'event-info' => 'Event Info',
 	),
-	'modified' => 1762848366,
 ));
 
 endif;

@@ -11,7 +11,7 @@
             "show_column_weight": 1000,
             "show_column_sortable": false,
             "key": "field_696ff0b39af7a",
-            "label": "ADA links and info",
+            "label": "Guest Accounts and ADA Info",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -110,31 +110,6 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "key": "field_6909008807a2f",
-                    "label": "ASL Request Form",
-                    "name": "asl_url",
-                    "aria-label": "",
-                    "type": "acfe_advanced_link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 1
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_6909005b07a2e",
                     "label": "ZenDesk URL - Main Page",
                     "name": "zen_url",
@@ -201,6 +176,31 @@
                     "columns": "6\/12",
                     "endpoint": 0,
                     "allow_in_bindings": 0
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_6909008807a2f",
+                    "label": "ASL Request Form",
+                    "name": "asl_url",
+                    "aria-label": "",
+                    "type": "acfe_advanced_link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 1
                 },
                 {
                     "allow_backendsearch": 1,
@@ -375,7 +375,7 @@
     "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1768944371,
+    "modified": 1769551832,
     "acfe_categories": {
         "hospitality": "Hospitality"
     }

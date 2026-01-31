@@ -30,6 +30,9 @@ acf_add_local_field_group(array(
 			'layout' => 'block',
 			'acfe_seamless_style' => 0,
 			'acfe_group_modal' => 0,
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'allow_backendsearch' => 1,
@@ -86,9 +89,6 @@ acf_add_local_field_group(array(
 					'esc_html' => 0,
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 	),
 	'location' => array(
@@ -127,6 +127,13 @@ acf_add_local_field_group(array(
 				'value' => 'schedules-maps',
 			),
 		),
+		array(
+			array(
+				'param' => 'options_page',
+				'operator' => '==',
+				'value' => 'participant-info',
+			),
+		),
 	),
 	'menu_order' => 0,
 	'position' => 'side',
@@ -146,10 +153,10 @@ acf_add_local_field_group(array(
 	'qef_simple_location_rules' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
+	'modified' => 1769818606,
 	'acfe_categories' => array(
 		'dev' => 'Dev',
 	),
-	'modified' => 1765912243,
 ));
 
 endif;

@@ -15,7 +15,7 @@ get_header();
 <!-- Profile Main Div --------------------->
     <div class="profile min-90"><!-- Profile sizing, padding,  -->
         <div class="self-centered">
-            <!--  Profile Header --------------->
+            <!--  Profile Header -->
             <div class="profile-header block"> 
                 
                 <!-- Submenu --- [Template Part] -->
@@ -39,8 +39,8 @@ get_header();
                         }
                     ?><!-- END Main Category -->
                 </h1><!-- Profile Header Text --> 
-        </div><!--END Profile Header ------------------>
-    </div><!-- END Self Centered -->
+        </div><!--END Profile Header -->
+        </div><!-- END Self Centered -->
 
     <!-- Post Content --------------------------------------->    
     <?php if ( have_posts() ) :
@@ -88,29 +88,6 @@ get_header();
                     <div class="profile-content">
                         <?php the_content(); //Content ?>
                     </div><!-- END Profile Content-->
-                    
-                    <!-- Buttons from ACF Repeater -->
-                    <?php 
-                    if( have_rows('button') ) {
-                        echo '<div class="button-container">';
-                        while( have_rows('button') ) {
-                            the_row();
-                            $button_title = get_sub_field('title');
-                            $button_subtitle = get_sub_field('subtitle');
-                            $button_link = get_sub_field('url');
-                            
-                            if( $button_title && $button_link ) {
-                                echo '<a href="' . esc_url($button_link) . '" class="button">';
-                                echo '<span class="button-title">' . esc_html($button_title) . '</span>';
-                                if( $button_subtitle ) {
-                                    echo '<span class="button-subtitle">' . esc_html($button_subtitle) . '</span>';
-                                }
-                                echo '</a>';
-                            }
-                        }
-                        echo '</div><!-- END button-container -->';
-                    }
-                    ?> <!-- END Buttons -->
                     <!-- Guest Xperience Links --->
                      
                       

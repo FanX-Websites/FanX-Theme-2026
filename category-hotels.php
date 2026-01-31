@@ -17,19 +17,33 @@ get_header(); /** body- main-site */
     <!------------ END Page Header Container -------------------->
 
     <!-------------------------- Main Content Area --------------------->
-    <div class="self-centered-inside framed-1300"> 
+    <div class="post-grid-container"> 
         <?php if ( have_posts() ) : ?>
         <?php
         while ( have_posts() ) : the_post();
             ?>
         <!------------------- Post Block --------------------->
-        <div class="post-block-5 block">
+        <div class="post-block block">
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <?php
+                // Get button data for use throughout the post
+                $button_url = '';
+                $button_title = '';
+                if ( have_rows( 'button' ) ) :
+                    while ( have_rows( 'button' ) ) :
+                        the_row();
+                        $button_url = get_sub_field( 'url' );
+                        $button_title = get_sub_field( 'title' );
+                        break; // Only get first button
+                    endwhile;
+                endif;
+                ?>
+                
                 <!-- -- Post Thumbnail -->
                 <?php if ( has_post_thumbnail() ) : ?>
                     <div class="post-thumbnail">
-                        <a href="<?php echo esc_url( get_field( 'butt_feat_url' ) ); ?>" target="_blank">
+                        <a href="<?php echo esc_url( $button_url ); ?>" target="_blank">
                             <?php the_post_thumbnail( 'medium' ); ?>
                         </a>
                     </div>
@@ -39,7 +53,7 @@ get_header(); /** body- main-site */
                 <!-- Post Header -->
                 <header class="entry-header">
                     <h2 class="entry-title">
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        <a href="<?php echo esc_url( $button_url ); ?>" target="_blank"><?php the_title(); ?></a>
                     </h2>
                 </header>
                 <!-- END Post Header -->
@@ -53,15 +67,10 @@ get_header(); /** body- main-site */
                 <!-- Read More Button/ Footer -->
                 
                 <footer class="entry-footer">
-                    <?php
-                    $button_link = get_field( 'butt_feat_url' );
-                    $button_text = get_field( 'butt_feat_label' );
-                    
-                    if ( $button_link && $button_text ) :
-                    ?>
-                        <button class="read-more-button" onclick="window.open('<?php echo esc_url( $button_link ); ?>', '_blank');">
-                            <?php echo esc_html( $button_text ); ?>
-                        </button>
+                    <?php if ( $button_title && $button_url ) : ?>
+                        <a href="<?php echo esc_url( $button_url ); ?>" class="button" target="_blank">
+                            <?php echo esc_html( $button_title ); ?>
+                        </a>
                     <?php endif; ?>
                 </footer><!-- END Read More Button/ Footer -->
                 
@@ -72,10 +81,6 @@ get_header(); /** body- main-site */
         <!-- No Posts Message -->
         <?php
             endwhile;
-            the_posts_pagination( array(
-                'prev_text' => '← Previous',
-                'next_text' => 'Next →',
-            ) );
         else :
             ?>
             <div class="no-posts-container">
@@ -97,7 +102,7 @@ get_header(); /** body- main-site */
         ?><!-- END No Posts Message -->
 
     <!----- END Main Content Area ----------------->
-    </div><!-- END self-centered-inside -->
+    </div><!-- END post-grid-container -->
 
 <?php
 get_footer();
