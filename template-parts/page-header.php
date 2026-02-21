@@ -4,7 +4,11 @@
  * @author FanXTheme2026
  * 
  * Notes: 
- * Uses classes: self-centered-top, page-header-section, page-header, sub-menu, description, page-title
+ * 
+ * //BUG: The Page Header Template Part is taking up the ENTIRE PAGE
+    * Updates: 
+        * All Divs are closed 
+        *
  */
 ?>
 
@@ -20,22 +24,41 @@
         
         <!--Page Title Block -------->
         <div class="page-title block">    
-    <h1 class="page-title">
-        <?php 
-        if ( is_tax() || is_category() || is_tag() ) {
-            single_term_title();
-        } elseif ( is_archive() ) {
-            the_archive_title( '', '' );
-        } else {
-            the_title();
-        }
-        ?>
-    </h1>
-    <?php if ( is_singular() && get_field('heafoo_subtitle') ) {
-        printf( '<h4 class="cat-subtitle">%s</h4>', esc_html( get_field('heafoo_subtitle') ) );
-    } ?>
-</div>
-        <!-- END Page Title Block -->
+            <h1 class="page-title">
+                <?php 
+                if ( is_tax() || is_category() || is_tag() ) {
+                    single_term_title();
+                } elseif ( is_archive() ) {
+                    the_archive_title( '', '' );
+                } else {
+                    the_title();
+                }
+                ?>
+            </h1>
+        <!-- Subtitle -->        
+<?php 
+if ( is_category() || is_tax() ) {
+    $term = get_queried_object();
+    $subtitle = get_field('subtitle', $term->taxonomy . '_' . $term->term_id);
+} else {
+    $subtitle = get_field('heafoo_subtitle');
+}
+if ( $subtitle ) {
+    printf( '<h4 class="cat-subtitle">%s</h4>', esc_html( $subtitle ) );
+} 
+?>
+<!-- Subtext -->
+<?php 
+if ( is_category() || is_tax() ) {
+    $term = get_queried_object();
+    $subtext = get_field('subtext', $term->taxonomy . '_' . $term->term_id);
+} else {
+    $subtext = get_field('heafoo_subtext');
+}
+if ( $subtext ) {
+    printf( '<p class="cat-subtext">%s</p>', esc_html( $subtext ) );
+} 
+?>
         
         <!--Taxonomy Description -->    
         <div class="description block">

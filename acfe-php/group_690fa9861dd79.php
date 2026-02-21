@@ -280,7 +280,7 @@ acf_add_local_field_group(array(
 	'qef_simple_location_rules' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
-	'modified' => 1769818521,
+	'modified' => 1770777072,
 	'acfe_categories' => array(
 		'event-info' => 'Event Info',
 	),

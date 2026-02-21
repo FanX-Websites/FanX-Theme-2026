@@ -1,10 +1,9 @@
 <?php
 /**
- * Template Name: Blog Category Page
+ * Template Name: Exhibitor Info Page/ Category Archive
  * @author FanXTheme2026
  * 
  * Notes: 
- * Uses classes: self-centered, self-centered-row, post-block, tax-cat,
  */
 
 get_header(); /** body- main-site */
@@ -12,54 +11,45 @@ get_header(); /** body- main-site */
 
     <!--------------- Page Header Container [Template Part] ----------------------->
     <div class="page-header container">
-        <?php get_template_part('template-parts/page-header'); ?>
+        <?php get_template_part('template-parts/page-header'); ?> 
     </div><!-- END page-header Container -->
     <!------------ END Page Header Container -------------------->
 
+    <!-------------------------- CONTENT BLOCKS Template Part --------------------->
+    <div class="content-blocks container">
+        <?php get_template_part('template-parts/sections/content-blocks'); ?>
+    </div>
+    <!---------------------------END Content BLOCK Template Part --------------------->
+
+    <!-------------------------- Table Charts Template Part --------------------->
+    <div class="table-charts container">
+        <?php get_template_part('template-parts/sections/table-charts'); ?>
+    </div>
+    <!---------------------------END Table Charts Template Part --------------------->
+
     <!-------------------------- Main Content Area --------------------->
     <div class="post-grid-container"> 
-        
         <?php
-        // Query partners CPT filtered by current category
-        $term = get_queried_object();
-        $args = array(
-            'post_type' => 'partner',
-            'posts_per_page' => -1,
-            'tax_query' => array(
-                array(
-                    'taxonomy' => $term->taxonomy,
-                    'field' => 'term_id',
-                    'terms' => $term->term_id,
-                ),
-            ),
-        );
-        $query = new WP_Query( $args );
-        if ( $query->have_posts() ) : ?>
+        // Unlimited posts for category/taxonomy pages
+        if ( is_category() || is_tax() ) {
+            global $wp_query;
+            $wp_query->set( 'posts_per_page', -1 );
+            $wp_query->query( $wp_query->query_vars );
+        }
+        if ( have_posts() ) : ?>
         <?php
-        while ( $query->have_posts() ) : $query->the_post();
+        while ( have_posts() ) : the_post();
             ?>
+
         <!------------------- Post Block --------------------->
         <div class="post-block block">
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <?php
-                // Get button data for use throughout the post
-                $button_url = '';
-                $button_title = '';
-                if ( have_rows( 'button' ) ) :
-                    while ( have_rows( 'button' ) ) :
-                        the_row();
-                        $button_url = get_sub_field( 'url' );
-                        $button_title = get_sub_field( 'title' );
-                        break; // Only get first button
-                    endwhile;
-                endif;
-                ?>
                 
-                <!-- -- Post Thumbnail -->
+            <!-- -- Post Thumbnail -->
                 <?php if ( has_post_thumbnail() ) : ?>
                     <div class="post-thumbnail">
-                        <a href="<?php echo esc_url( $button_url ); ?>" target="_blank">
+                        <a href="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail( 'medium' ); ?>
                         </a>
                     </div>
@@ -69,27 +59,21 @@ get_header(); /** body- main-site */
                 <!-- Post Header -->
                 <header class="entry-header">
                     <h2 class="entry-title">
-                        <a href="<?php echo esc_url( $button_url ); ?>" target="_blank"><?php the_title(); ?></a>
+                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                     </h2>
                 </header>
                 <!-- END Post Header -->
 
-                 <!-- Post Excerpt -->
+                <!-- Post Excerpt -->
                 <div class="entry-summary">
                     <?php the_excerpt(); ?>
-                </div><!-- END entry-summary -->
+                </div>
                 <!-- END Post Excerpt -->
 
                 <!-- Read More Button/ Footer -->
-                
                 <footer class="entry-footer">
-                    <?php if ( $button_title && $button_url ) : ?>
-                        <a href="<?php echo esc_url( $button_url ); ?>" class="button" target="_blank">
-                            <?php echo esc_html( $button_title ); ?>
-                        </a>
-                    <?php endif; ?>
-                </footer><!-- END Read More Button/ Footer -->
-                
+                <a href="<?php the_permalink(); ?>" class="button">Read More</a>
+                </footer><!-- END Read More Button/ Footer -->                   
             </article>
         </div>
         <!-- END Post Block -------------------->
@@ -97,11 +81,10 @@ get_header(); /** body- main-site */
         <!-- No Posts Message -->
         <?php
             endwhile;
-            wp_reset_postdata();
         else :
             ?>
             <div class="no-posts-container">
-                <h3>Coming Soon</h3>
+                <h3>COMING SOON</h3>
                 <p>
                     <?php 
                         $news_link = get_field('news_url', 'option');
@@ -118,7 +101,7 @@ get_header(); /** body- main-site */
         endif;
         ?><!-- END No Posts Message -->
 
-    <!----- END Main Content Area ----------------->
+    <!----- END Main Content Area----------------->
     </div><!-- END post-grid-container -->
 
 <?php

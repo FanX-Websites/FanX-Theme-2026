@@ -840,7 +840,7 @@
                     "name": "head",
                     "aria-label": "",
                     "type": "acfe_code_editor",
-                    "instructions": "",
+                    "instructions": "theme_head",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -872,7 +872,7 @@
                     "name": "body",
                     "aria-label": "",
                     "type": "acfe_code_editor",
-                    "instructions": "For Facebook Tags, Google Analytics, etc",
+                    "instructions": "theme_body \r\nFor Facebook Tags, Google Analytics, etc not used in Google Tags",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -904,7 +904,7 @@
                     "name": "footer",
                     "aria-label": "",
                     "type": "acfe_code_editor",
-                    "instructions": "For Facebook Tags, Google Analytics, etc",
+                    "instructions": "theme_footer \r\nFor Facebook Tags, Google Analytics, etc",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -1010,7 +1010,7 @@
     "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1768945665,
+    "modified": 1770354975,
     "acfe_categories": {
         "dev": "Dev"
     }

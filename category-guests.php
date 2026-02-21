@@ -5,6 +5,7 @@
  * 
  * Notes: 
  * Uses classes: self-centered, self-centered-row, post-block, tax-cat,
+ * //TODO: Rankings, Latest News Block, 
  */
 
 get_header(); /** body- main-site */
@@ -26,14 +27,17 @@ get_header(); /** body- main-site */
             'post_type' => 'guests',
             'cat' => get_queried_object_id(), // Current category ID
             'paged' => $paged,
-            'posts_per_page' => get_option( 'posts_per_page' ),
+            'posts_per_page' => -1,
+            'meta_key' => 'info_display_order',
+            'orderby' => 'meta_value_num',
+            'order' => 'ASC',
         );
         $query = new WP_Query( $args );
         if ( $query->have_posts() ) : ?>
         <?php
         while ( $query->have_posts() ) : $query->the_post();
             ?>
-        <!------------------- Post Block --------------------->
+        <!------------------- Post (Guest) Block --------------------->
         <div class="post-block block">
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -100,9 +104,18 @@ get_header(); /** body- main-site */
         endif;
         wp_reset_postdata();
         ?><!-- END No Posts Message -->
-
-    <!----- END Main Content Area----------------->
     </div><!-- END post-grid-container -->
+     <!--- SMALL PRINT -->
+        <div class="small-print">
+            <p>
+                <?php the_field('heafoo_small_print'); //Small Print ?>
+            </p>
+            <p>
+                <?php the_field('heafoo_celeb_small_print'); //Small Print ?>
+            </p>
+        </div>
+        <!-- END Small Print -->
+    <!----- END Main Content Area----------------->
 
 <?php
 get_footer();

@@ -1,22 +1,33 @@
 <?php 
 
-/** Template Part: Content-Blocks Section
+/** Template Part: Table-Charts Section
  * @package FanXTheme2026 
  * 
  * Notes: 
  * - Classes used: 
- * - Pages using this template part: Ticket-Info, Event-Info, Exhibitor-Info 
- * - CSS Wireframes in style.css, Styling in FanX.css (differs by page ^)
+ * - Pages using this template part: Exhibitor Info 
+ * - CSS Wireframes shared with content-blocks in style.css, Styling in FanX.css
+ * //TODO: Use as replacement for Comparison & Pricing Charts - Ticketing, Exhibitor Packages, etc.
 */
 ?>
-<!-- Content Blocks Section ------------------------->
-<div class="cb-section">
-    <div class="cb-section-inner">  
+<!-- Table Charts Section ------------------------->
+<div class="tc-section">
+    <div class="tc-section-inner">  
+     
+    <!-- Table Chart Section Header -->
+        <h2 class="tc-section-title">
+        <?php $term_id = get_queried_object_id(); echo get_field( 'tc_section_title', 'term_' . $term_id ); //Title ?></h2>
+        <h3 class="tc-section-sub">
+        <?php $term_id = get_queried_object_id(); echo get_field( 'tc_section_sub', 'term_' . $term_id ); //Sub Title ?></h3>
+        <p class="tc-section-txt">
+        <?php $term_id = get_queried_object_id(); echo get_field( 'tc_section_txt', 'term_' . $term_id ); //Sub Text ?></p>
 
-    <!-- Content BLOCK ---------------------->
+    <!-- END Table Chart Section Header -->
+
+    <!-- Table Chart BLOCK ---------------------->
     <?php //Content Block - Repeater
         $term_id = get_queried_object_id();
-        $blocks = get_field('cb', 'term_' . $term_id); // ACF Repeater Field
+        $blocks = get_field('tc', 'term_' . $term_id); // ACF Repeater Field
         
         if ($blocks) :
             $block_count = count($blocks);
@@ -65,19 +76,19 @@
             <div class="<?php echo esc_attr($layout_class); ?>">
                 <?php
                 foreach ($blocks as $index => $block) :
-                    $block_class = 'content-block';
+                    $block_class = 'table-chart';
                     // Add position class for styling purposes
-                    $block_class .= ' block-' . ($index + 1);
+                    $block_class .= ' chart-' . ($index + 1);
                     ?>
       
                     <div class="<?php echo esc_attr($block_class); ?>">
-                        <h2 class="content-block-title">
+                        <h2 class="table-chart-title">
                             <?php echo wp_kses_post($block['title'] ?? ''); //Title ?> 
                         </h2>
-                        <h3 class="content-block-subtext">   
+                        <h3 class="table-chart-subtext">   
                             <?php echo wp_kses_post($block['subtext'] ?? ''); //Subtext ?>
                         </h3>
-                        <p class="content-block-text">   
+                        <p class="table-chart-text">   
                             <?php echo wp_kses_post($block['content'] ?? ''); //Content ?>
                         </p>
                         <?php
@@ -100,17 +111,17 @@
                             <span class="button-subtext"><?php echo esc_html($button_subtext); ?></span>
                         </a>
                         <!-- Small Print / Disclaimer ---------------------->
-                        <div class="content-block-small-print">
+                        <div class="table-chart-small-print">
                             <?php echo wp_kses_post($block['small_print'] ?? ''); ?>
                         </div><!-- END Small Print / Disclaimer ----------------------->
      
-                    </div><!-- END Individual Content Block -->
+                    </div><!-- END Individual Table Chart -->
                     <?php
                 endforeach;
                 ?>
-            </div><!-- END Content Blocks Container -->
+            </div><!-- END Table Charts Container -->
         <?php endif; ?>
-    </div><!-- END Content Blocks Section - Inner ---------------------->
-</div><!-- END Content Blocks Section ----------------------->
+    </div><!-- END Table Charts Section - Inner ---------------------->
+</div><!-- END Table Charts Section ----------------------->
 
 

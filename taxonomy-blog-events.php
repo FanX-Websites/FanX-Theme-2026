@@ -18,7 +18,14 @@ get_header(); /** body- main-site */
 
     <!-------------------------- Main Content Area --------------------->
     <div class="self-centered-inside"> 
-        <?php if ( have_posts() ) : ?>
+        <?php
+        // Unlimited posts for category/taxonomy pages
+        if ( is_category() || is_tax() ) {
+            global $wp_query;
+            $wp_query->set( 'posts_per_page', -1 );
+            $wp_query->query( $wp_query->query_vars );
+        }
+        if ( have_posts() ) : ?>
         <?php
         while ( have_posts() ) : the_post();
             ?>

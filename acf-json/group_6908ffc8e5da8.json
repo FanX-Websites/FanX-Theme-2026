@@ -224,9 +224,9 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "allow_in_bindings": 1,
+                    "allow_in_bindings": 0,
                     "tabs": "all",
-                    "toolbar": "basic",
+                    "toolbar": "full",
                     "media_upload": 1,
                     "delay": 1
                 },
@@ -375,7 +375,7 @@
     "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1769551832,
+    "modified": 1771494435,
     "acfe_categories": {
         "hospitality": "Hospitality"
     }

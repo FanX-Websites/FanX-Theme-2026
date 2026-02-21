@@ -18,6 +18,7 @@ get_header(); /** body- main-site */
     <!------------ END Page Header Container -------------------->
 
     <!-------------------------- Main Content Area --------------------->
+    
     <div class="post-grid-container"> 
         <?php
         // Query guests CPT for the current taxonomy term
@@ -39,7 +40,8 @@ get_header(); /** body- main-site */
         if ( $query->have_posts() ) : ?>
         <?php
         while ( $query->have_posts() ) : $query->the_post();
-            ?>
+        ?>
+
         <!------------------- Post Block --------------------->
         <div class="post-block block">
 
@@ -81,9 +83,9 @@ get_header(); /** body- main-site */
                     if ( ! empty( $days_cats ) && ! is_wp_error( $days_cats ) ) {
                         $links = array();
                         foreach ( $days_cats as $cat ) {
-                            $links[] = '<a href="' . esc_url( get_term_link( $cat ) ) . '">' . esc_html( $cat->name ) . '</a>';
+                            $links[] = esc_html( $cat->name );
                         }
-                        echo implode( ' | ', $links );
+                        echo implode( ' | ', $links ) . '*';
                     } else {
                         echo 'More info soon';
                       }
@@ -119,6 +121,18 @@ get_header(); /** body- main-site */
         endif;
         wp_reset_postdata();
         ?><!-- END No Posts Message -->
+
+    </div><!-- END Profile Main Div --------------------->
+    <!--- SMALL PRINT -->
+        <div class="small-print">
+            <p>
+                <?php the_field('heafoo_small_print'); //Small Print ?>
+            </p>
+            <p>
+                <?php the_field('heafoo_celeb_small_print'); //Small Print ?>
+            </p>
+        </div>
+        <!-- END Small Print -->
 
     <!----- END Main Content Area----------------->
     </div><!-- END post-grid-container -->

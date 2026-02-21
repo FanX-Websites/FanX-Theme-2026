@@ -42,7 +42,7 @@
         "item_link": "Guest Link",
         "item_link_description": "A link to a guest."
     },
-    "description": "",
+    "description": "Attending Featured Guest Celebs, Authors, Artists, Panelists, etc",
     "public": true,
     "hierarchical": false,
     "exclude_from_search": false,
@@ -93,5 +93,5 @@
     "delete_with_user": false,
     "register_meta_box_cb": "",
     "enter_title_here": "",
-    "modified": 1769162104
+    "modified": 1770252226
 }

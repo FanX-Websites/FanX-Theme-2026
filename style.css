@@ -45,6 +45,14 @@ body,html{ /*Header, Body, Footer*/
 body.admin-bar .main-nav { 
     top: 32px;
 }
+.footer{
+    width: 100%;
+    height: auto;
+    padding: 20px 0; 
+    margin: 0;
+    background-color: transparent; 
+}
+
 /* Navigation -------------------------> */
 /*Horizontal Navigation 
 * used by: Socket Menu & Page Top Sub-Menus */
@@ -294,4 +302,28 @@ For divs that hold template parts*/
 
 /* END Content Block Layouts ------------------------- */
 
+    /* Template Parts Sections */
+        .section-full-width{
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            border-radius: 0;
+            }
+
+    /* Section Layouts - CSS Grid */
+        .layout-single {
+            display: block;
+
+                }
+        .layout-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem; 
+            }
+
+/* END Template Parts Sections */
+            
 

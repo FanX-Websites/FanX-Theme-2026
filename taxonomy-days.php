@@ -35,7 +35,7 @@ get_header(); /** body- main-site */
                 ),
             ),
             'paged' => $paged,
-            'posts_per_page' => get_option( 'posts_per_page' ),
+            'posts_per_page' => -1,
         );
         $query = new WP_Query( $args );
         if ( $query->have_posts() ) : ?>

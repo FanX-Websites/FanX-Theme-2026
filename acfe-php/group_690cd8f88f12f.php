@@ -4,7 +4,7 @@ if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
 	'key' => 'group_690cd8f88f12f',
-	'title' => 'Pages - Main',
+	'title' => 'Front Page',
 	'fields' => array(
 		array(
 			'allow_backendsearch' => false,
@@ -266,7 +266,7 @@ acf_add_local_field_group(array(
 	'qef_simple_location_rules' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
-	'modified' => 1769818551,
+	'modified' => 1771360417,
 	'acfe_categories' => array(
 		'event-info' => 'Event Info',
 	),

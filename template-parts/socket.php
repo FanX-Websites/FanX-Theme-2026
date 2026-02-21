@@ -14,7 +14,7 @@
     
     <!--- Copyright ----------------------------------->
     <div class="copyright block">
-        Copyright <?php echo get_field('event_name', 'options')?>  
+        Copyright <?php echo get_field('event_name', 'option')?>  
         <?php echo do_shortcode( '[year]' ); ?>
     </div><!--- END Copyright -->
     

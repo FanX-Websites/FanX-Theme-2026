@@ -6,26 +6,25 @@
   
 </main><!-- END Site Main from Header-->  
 
-<?php echo get_field( //Footer Injection Code 
-            'theme_footer', 'option'
-            ) ?>            
+<!-- Footer Injection Code -->
+<?php echo get_field('theme_footer', 'option') ?>            
 
 <!--- FOOTER --->
 <div class="footer">
     
     <!--SPONSOR BAR --------->
-    <div data-id="sponsor-bar" class="container">
+    <div class="sponsor-bar container">
         <?php get_template_part('template-parts/sponsor-bar'); ?>
     </div><!-- END Sponsor Bar Container-->
 
     <?php /* Temp Hidden
     <!-- FOOTER MAIN: CONTACT SECTION ------>    
-    <div data-id="Contact Us"class="container">
+    <div class="Contact Us"class="container">
         <?php get_template_part('template-parts/connection'); ?>
     </div><!-- END Footer Main/Contact Section -->*/ ?>
 
     <!--- Socket Bar -->
-    <div data-id="The Small Print" class="container">
+    <div class="container">
         <?php 
         // Fetch socials from ACF Options page
         $socials = get_field('socials', 'option');
@@ -34,24 +33,26 @@
         //Template Part - Socket 
         get_template_part('template-parts/socket'); ?>
     </div>
-    
-</div><!-- END Footer-->
 
-
-<!-- Bottom Link Bar ----------> 
-    <div data-id="Purchase Tickets and Photo Ops" class="container">
+    <!-- Bottom Link Bar ----------> 
+    <div class="container">
         <?php get_template_part( //Sticky Bottom Link Bar
             'template-parts/link-bar'
         ); ?>
     </div><!-- END Container -->
-<!-- END Bottom Link Bar -->    
+    <!-- END Bottom Link Bar -->
+    
+</div><!-- END Footer-->    
 
 
-<!--- Website Wrap up ------->
 
-<?php echo get_field('theme_body', 'option')?>
+<!-- Customer Service Chatbot -->
 <?php echo get_field('int_bubble', 'option')?>
+<!-- END Customer Service Chatbot -->
+
 <?php wp_footer(); ?>
+
+<!-- Website CLosing Tags -->
     </body>
 </html>
 <!-- END Body and HTML --->

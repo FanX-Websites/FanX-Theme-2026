@@ -8,10 +8,10 @@
     "parent_slug": "event-info",
     "advanced_configuration": 1,
     "icon_url": "",
-    "menu_title": "Schedules\/Maps Options Page",
-    "position": 0,
+    "menu_title": "Schedules\/Floor Maps",
+    "position": 1,
     "redirect": false,
-    "description": "All the Map & Schedule Info",
+    "description": "All the Maps & Event Schedule Info",
     "menu_icon": [],
     "update_button": "Update",
     "updated_message": "Options Updated",
@@ -20,5 +20,5 @@
     "post_id": "",
     "autoload": 0,
     "_parent": 14,
-    "modified": 1765009424
+    "modified": 1771542939
 }

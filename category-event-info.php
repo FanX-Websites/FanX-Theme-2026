@@ -20,17 +20,18 @@ get_header(); /** body- main-site */
 
     <!-- Main Content Area -->
         <!-- Content Blocks - Event Hours -[Template Part] -->
-        <div class="event-info container">        
+        <div class="event-info container" id="hours">        
             <?php get_template_part('template-parts/sections/content-blocks'); ?>
         </div><!-- END Comparison Chart Section -->
+
+<!-------------------------- ADDRESS MAP Template Part --------------------->
+    <div class="section-full-width">
+        <?php get_template_part('template-parts/sections/event-address-map'); ?>
+    </div>
+<!---------------------------END ADDRESS MAP Template Part ---------------------> 
+
     <!-- END Main Content Area --> 
 
-    <?Php /* Hidden Until Styling issues resolved
-    <!-- Latest News Post Block Section -->
-        <div class="updates container">
-            <?php get_template_part('template-parts/sections/updates-section'); ?>
-        </div><!-- END Latest News Post Block -->
-     <!-- END Latest News Post Block --> */ ?>
          
 
 <?php

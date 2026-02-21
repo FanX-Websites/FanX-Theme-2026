@@ -16,7 +16,7 @@ Custom Admin Area, Dashboard, Admin Columns,etc
             $wp_admin_bar->add_menu( array(
             'parent' => false,
             'id' => 'eventinfo',
-            'title' => get_field('event_date', 'options'), //Event Dates
+            'title' => get_field('event_date', 'option'), //Event Dates
             'href' => $eventinfoTAB
             ));
         
@@ -114,6 +114,43 @@ Custom Admin Area, Dashboard, Admin Columns,etc
             }
             
 // --- END Admin Menu <--- 
+
+// ------ ADMIN MENU LOGO --->
+    function df_admin_menu_logo() {
+        if (!function_exists('get_field')) {
+            return; // ACF is not active, exit the function
+        }
+        
+        $logo = get_field('event_logo', 'option');
+        
+        if ($logo) {
+            $logo_url = $logo;
+            if (is_array($logo)) {
+                $logo_url = $logo['url'];
+            }
+            
+            echo '<style>
+                #adminmenu::before {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    margin: 0 auto;
+                    padding: 0; 
+                    background-image: url("' . esc_url($logo_url) . '");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    height: auto;
+                    aspect-ratio: auto;
+                    min-height: 150px;
+                }
+            </style>';
+        }
+    }
+    add_action('admin_head', 'df_admin_menu_logo');
+
+// --- END ADMIN MENU LOGO <---
+
             
 //Use When Needed:
    // remove_action('shutdown', 'wp_ob_end_flush_all', 1);  //Flush error

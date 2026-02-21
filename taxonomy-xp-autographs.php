@@ -119,9 +119,19 @@ get_header(); /** body- main-site */
         endif;
         wp_reset_postdata();
         ?><!-- END No Posts Message -->
-
-    <!----- END Main Content Area----------------->
     </div><!-- END post-grid-container -->
+    <!--- SMALL PRINT -->
+        <div class="small-print">
+            <p>
+                <?php the_field('heafoo_small_print'); //Small Print ?>
+            </p>
+            <p>
+                <?php the_field('heafoo_celeb_small_print'); //Small Print ?>
+            </p>
+        </div>
+        <!-- END Small Print -->
+    <!----- END Main Content Area----------------->
+
 
 <?php
 get_footer();

@@ -24,7 +24,8 @@
 
                     <!--------- Article Section - Updates ---------->
                     <article class="updates self-centered-row" 
-                        id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                        id="post-<?php the_ID(); ?>" 
+                            <?php post_class(); ?>>
 
                         <!-------------- Post Thumbnail Container--------------------->
                         <div class="updates-post-thumbnail-container">

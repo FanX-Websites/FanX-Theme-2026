@@ -51,6 +51,9 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "allow_backendsearch": false,
@@ -244,10 +247,10 @@
                 },
                 {
                     "allow_backendsearch": false,
-                    "show_column_filter": 0,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
+                    "show_column_filter": 1,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 1,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
                     "key": "field_691fa14a8775e",
@@ -273,6 +276,9 @@
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": "0"
                     },
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "acfe_permissions": "",
                     "allow_in_bindings": 1,
                     "bidirectional": 0,
                     "multiple": 0,
@@ -382,10 +388,7 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "allow_backendsearch": false,
@@ -437,6 +440,9 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "allow_backendsearch": false,
@@ -468,7 +474,7 @@
                     "show_column_filter": 1,
                     "allow_bulkedit": 1,
                     "allow_quickedit": 1,
-                    "show_column": 0,
+                    "show_column": 1,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
                     "key": "field_69795c743bb2b",
@@ -494,6 +500,9 @@
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": "0"
                     },
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "acfe_permissions": "",
                     "allow_in_bindings": 1,
                     "bidirectional": 0,
                     "multiple": 0,
@@ -592,7 +601,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "taxonomy": "post_tag",
+                    "taxonomy": "xp-status",
                     "add_term": 1,
                     "save_terms": 1,
                     "load_terms": 1,
@@ -602,6 +611,9 @@
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": "0"
                     },
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "acfe_permissions": "",
                     "allow_in_bindings": 1,
                     "bidirectional": 0,
                     "multiple": 0,
@@ -695,16 +707,16 @@
                     "append": ""
                 },
                 {
-                    "allow_backendsearch": 0,
+                    "allow_backendsearch": 1,
                     "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
                     "show_column": 0,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
                     "key": "field_69795e003bb32",
                     "label": "Photo Ops Link",
-                    "name": "auto_price_copy",
+                    "name": "op_url",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -715,12 +727,12 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
+                    "default_value": "[acf field=\"op_fri_url\" post_id=\"options\"]",
                     "acfe_settings": "",
                     "acfe_validate": "",
                     "maxlength": "",
                     "acfe_permissions": "",
-                    "allow_in_bindings": 1,
+                    "allow_in_bindings": 0,
                     "placeholder": "[acf field=\"\" post_id=\"options\"]",
                     "prepend": "",
                     "append": ""
@@ -936,10 +948,7 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "allow_backendsearch": false,
@@ -990,6 +999,9 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "allow_backendsearch": false,
@@ -1128,10 +1140,10 @@
                     "new_lines": ""
                 },
                 {
-                    "allow_backendsearch": 0,
+                    "allow_backendsearch": 1,
                     "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
                     "show_column": 0,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
@@ -1148,13 +1160,16 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "**Photo Op & Autograph experiences are subject to change.\r\n\r\n**Autographs include one 8x10 photo. For more information about Autographs, Memorabilia Signings, Voice recordings, and other signing table opportunities visit the Celebrities Booth during the convention. Prices and options are subject to change.",
+                    "default_value": "**Photo Op & Autograph experiences are subject to change.\r\n\r\n**Autographs include one 8x10 photo.\r\n\r\n**For more information about Autographs, Memorabilia Signings, Voice recordings, and other signing table opportunities visit the Celebrities Booth during the convention. Prices and options are subject to change.",
                     "acfe_textarea_code": 0,
+                    "acfe_settings": "",
+                    "acfe_validate": "",
                     "maxlength": "",
-                    "allow_in_bindings": 1,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 0,
                     "rows": 6,
                     "placeholder": "",
-                    "new_lines": ""
+                    "new_lines": "wpautop"
                 },
                 {
                     "allow_backendsearch": false,
@@ -1181,10 +1196,7 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "allow_backendsearch": false,
@@ -1235,6 +1247,9 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "allow_backendsearch": false,
@@ -1605,10 +1620,7 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "allow_backendsearch": false,
@@ -1663,6 +1675,69 @@
             "acfe_group_modal_close": 0,
             "acfe_group_modal_button": "",
             "acfe_group_modal_size": "large"
+        },
+        {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
+            "key": "field_69979d07220e2",
+            "label": "Location",
+            "name": "loca",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "acfe_settings": "",
+            "acfe_permissions": "",
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
+            "sub_fields": [
+                {
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_69979d48220e3",
+                    "label": "Address",
+                    "name": "address",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Copy\/Paste the address in <a href=\"https:\/\/www.google.com\/maps\" target=\"_blank\" >Google Maps<\/a> to embed map on post.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "maxlength": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
         },
         {
             "allow_backendsearch": false,
@@ -1844,6 +1919,13 @@
                 "operator": "==",
                 "value": "products"
             }
+        ],
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "venue"
+            }
         ]
     ],
     "menu_order": 0,
@@ -1854,7 +1936,7 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Posts & Profiles - Temporary",
-    "show_in_rest": 1,
+    "show_in_rest": 0,
     "display_title": "Posts - [Temporary Template]",
     "acfe_autosync": [
         "php",
@@ -1862,11 +1944,12 @@
     ],
     "acfe_permissions": "",
     "acfe_form": 1,
-    "qef_simple_location_rules": 1,
+    "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1769576107,
+    "modified": 1771571611,
     "acfe_categories": {
-        "people": "People"
+        "people": "People",
+        "posts": "Posts"
     }
 }

@@ -13,34 +13,39 @@
     <div class="self-centered-scrunch">      
         <!-- TICKETS BLOCK ----------------------->   
         <div class="tickets-block block">
-            <?php 
-                $link = get_field( 'tkt_url', 'option' );
-                $link_text = get_field( 'tkt_stat', 'option' );                  
+            <div class="tickets-block inner-block fill"><!-- Tickets Block Inner Container -->
+                <?php 
+                    $link = get_field( 'tkt_url', 'option' );
+                    $link_text = get_field( 'tkt_stat', 'option' );                  
 
-                if ( $link ) : ?>
-                    <a href="<?php echo esc_url( $link['url'] ); ?>" 
-                    target="<?php echo esc_attr( $link['target'] ); ?>">
-                        <?php echo esc_html( $link_text ); ?>
-                    </a>
-            <?php endif; ?>
+                    if ( $link ) : ?>
+                        <a href="<?php echo esc_url( $link['url'] ); ?>" 
+                        target="<?php echo esc_attr( $link['target'] ); ?>">
+                            <?php echo esc_html( $link_text ); ?>
+                        </a>
+                <?php endif; ?>
+            </div><!-- END Tickets Block Inner Container -->
         </div><!--END TICKETS BLOCK  ------------------->
 
         <!--- PHOTO OPS BLOCK --------------------->
         <div class="ops-block block">
-            <?php 
-                $link = get_field( 'celeb_op_fri_url', 'option' );
+            <div class="ops-block inner-block fill"><!-- Photo Ops Block Inner Container -->
+                <?php 
+                    $link = get_field( 'celeb_op_fri_url', 'option' );
                     $link_text = get_field( 'celeb_ops_stat', 'option' );                  
 
-                if ( $link ) : ?>
-                    <a href="<?php echo esc_url( $link['url'] ); ?>" 
-                    target="<?php echo esc_attr( $link['target'] ); ?>">
-                        <?php echo esc_html( $link_text ); ?>
-                    </a>
-            <?php endif; ?>
+                    if ( $link ) : ?>
+                        <a href="<?php echo esc_url( $link['url'] ); ?>" 
+                        target="<?php echo esc_attr( $link['target'] ); ?>">
+                            <?php echo esc_html( $link_text ); ?>
+                        </a>
+                <?php endif; ?>
+            </div><!-- END Photo Ops Block Inner Container -->
+            
         </div><!--END PHOTO OPS BLOCK-----------------> 
         
     <!-- Mobile Icons Block --------------------->
-        <div class="mobile-icons block">
+        <div class="mobile-icons fill">
             <?php // Photo Ops Icon
                 $link = get_field( 'celeb_op_fri_url', 'option' );
                 $icon = get_field( 'celeb_ops_ico', 'option' );
@@ -64,9 +69,5 @@
             <?php endif; ?>
         </div><!--- End mobile-icons block -->
     </div><!-- END Self-Centered Scrunch ----------------->
-
-
-
-    </div><!--END self-centered-scrunch -->
 </div><!--- END Link Bar -->
 

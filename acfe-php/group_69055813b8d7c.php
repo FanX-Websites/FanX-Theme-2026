@@ -182,6 +182,34 @@ acf_add_local_field_group(array(
 					),
 				),
 				array(
+					'allow_backendsearch' => 0,
+					'show_column_filter' => false,
+					'allow_bulkedit' => 0,
+					'allow_quickedit' => 0,
+					'show_column' => 0,
+					'show_column_weight' => 1000,
+					'show_column_sortable' => false,
+					'key' => 'field_69980a841aae6',
+					'label' => 'Event address',
+					'name' => 'address',
+					'aria-label' => '',
+					'type' => 'text',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'maxlength' => '',
+					'allow_in_bindings' => 0,
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+				),
+				array(
 					'allow_backendsearch' => 1,
 					'show_column_filter' => false,
 					'allow_bulkedit' => 0,
@@ -845,9 +873,9 @@ acf_add_local_field_group(array(
 	'acfe_meta' => '',
 	'acfe_note' => '',
 	'acfe_categories' => array(
-		'event-info' => 'Event Info',
+		'options-pages' => 'Options Pages',
 	),
-	'modified' => 1768939761,
+	'modified' => 1771572714,
 ));
 
 endif;

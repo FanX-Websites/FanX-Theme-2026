@@ -54,6 +54,10 @@ acf_add_local_field_group(array(
 			),
 			'layout' => 'block',
 			'acfe_seamless_style' => 1,
+			'acfe_group_modal' => 0,
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'allow_backendsearch' => false,
@@ -753,10 +757,6 @@ prepend: color_',
 					'columns' => '6/12',
 				),
 			),
-			'acfe_group_modal' => 0,
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'allow_backendsearch' => false,
@@ -807,6 +807,9 @@ prepend: color_',
 			'layout' => 'block',
 			'acfe_seamless_style' => 0,
 			'acfe_group_modal' => 0,
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'allow_backendsearch' => false,
@@ -846,7 +849,7 @@ prepend: color_',
 					'name' => 'head',
 					'aria-label' => '',
 					'type' => 'acfe_code_editor',
-					'instructions' => '',
+					'instructions' => 'theme_head',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -879,7 +882,8 @@ prepend: color_',
 					'name' => 'body',
 					'aria-label' => '',
 					'type' => 'acfe_code_editor',
-					'instructions' => 'For Facebook Tags, Google Analytics, etc',
+					'instructions' => 'theme_body 
+For Facebook Tags, Google Analytics, etc not used in Google Tags',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -912,7 +916,8 @@ prepend: color_',
 					'name' => 'footer',
 					'aria-label' => '',
 					'type' => 'acfe_code_editor',
-					'instructions' => 'For Facebook Tags, Google Analytics, etc',
+					'instructions' => 'theme_footer 
+For Facebook Tags, Google Analytics, etc',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -933,9 +938,6 @@ prepend: color_',
 					'allow_in_bindings' => 1,
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'allow_backendsearch' => false,
@@ -1020,10 +1022,10 @@ prepend: color_',
 	'qef_simple_location_rules' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
+	'modified' => 1771360419,
 	'acfe_categories' => array(
 		'dev' => 'Dev',
 	),
-	'modified' => 1768945665,
 ));
 
 endif;

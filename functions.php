@@ -34,12 +34,12 @@
 	//Enqueue Styles and Scripts --->
 		function fanx_enqueue_assets() {
 
-			//Main Stylesheet
-				wp_enqueue_style('fanx-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get('Version')); //Stylesheet 
+		//Main Stylesheet
+			wp_enqueue_style('fanx-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get('Version')); //Stylesheet 
 
-			//Branding Stylesheets 
-				wp_enqueue_style('fanx-branding', get_template_directory_uri() . '/branding/styles/fanx.css', array(), wp_get_theme()->get('Version')); //Branding CSS
-			
+		//Branding Stylesheets 
+			wp_enqueue_style('fanx-branding', get_template_directory_uri() . '/branding/styles/fanx.css', array(), wp_get_theme()->get('Version')); //Branding CSS
+		
 		}
 		add_action('wp_enqueue_scripts', 'fanx_enqueue_assets');
 
@@ -102,10 +102,12 @@ add_action('wp_enqueue_scripts', function() {
 		//Functions - Front End
 			'functions/shortcode.php',
 			'functions/tag-cats.php',
+			'functions/sitemap.php',
 		//Plugins - Thrird Party	
 			'acf/tweaks.php',
 			'seo/yoast.php',
 			'simply-static/schedule.php',
+			'simply-static/sitemap-integration.php',
 		//Admin Area 	
 			'admin/updates/dashboard.php',
 			'admin/white-label.php',
@@ -164,7 +166,6 @@ add_action('wp_enqueue_scripts', function() {
 //FLUSH THE THINGS --->
 	//remove_action('shutdown', 'wp_ob_end_flush_all', 1);  //Flush error
 	//flush_rewrite_rules(); //Flush Rules
-	
 // Prevent non-production sites from being indexed - DO NOT SYNC TO LIVE
 if ( 'production' !== wp_get_environment_type() ) {
     add_filter( 'wpseo_robots', function() {

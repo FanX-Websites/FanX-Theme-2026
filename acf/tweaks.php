@@ -3,11 +3,15 @@
 //TODO: Support for ACF Fields in WP Menu  
 //TODO: Allow Encoded URL in ACF Link Fields
 
+
+
+/*THEY'RE ON THE LIST:  
+Allow Shortcodes in ACF Fields & Allow Unsafe HTML in Shortcodes (for iframes, svg, etc.)*/
+
 //Shortcodes in ACF 
 add_filter('acf/format_value/type=textarea', 'do_shortcode'); //Text Area
 add_filter('acf/format_value/type=text', 'do_shortcode'); //Text Field
 add_filter('acf/format_value/type=message', 'do_shortcode'); //Message
-
 
 //Allow Unsafe HTML 
 add_filter( 'acf/shortcode/allow_unsafe_html', function( $allowed, $attributes = null, $field_type = null, $field_object = null ) {
@@ -61,3 +65,6 @@ function acf_add_allowed_svg_tag( $tags, $context ) {
 
     return $tags;
 }
+
+/* API Keys & other 3rd Party Hooks*/
+

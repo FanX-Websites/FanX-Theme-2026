@@ -4,9 +4,9 @@
         <head>
             <meta charset="<?php bloginfo('charset'); ?>">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-            <?php echo get_field( //Head Injection Code 
-                'theme_head', 'options')?>
+        
+            <!-- Head Injection Code -->
+            <?php echo get_field('theme_head', 'option')?>
 
             <?php wp_head(); ?>
 
@@ -15,6 +15,9 @@
     <!-- Body -->
         <body <?php body_class(); ?>>
         <?php wp_body_open(); ?>
+        
+        <!-- Body Injection Code -->
+        <?php echo get_field('theme_body', 'option'); ?>
     
         <!-- Header --->
             <header data-id="site-header" class="container">

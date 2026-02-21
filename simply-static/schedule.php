@@ -1,50 +1,92 @@
 <?php 
-/** Plugin Name: Simply Static - Schedule Export
- * @package FanXTheme2026
- *  
- * 
- * Notes: 
- *  - Connects to ACF Field Group: Schedule Exports 
- * 
- */
+/* Export Scheduler for Simply Static 
+* Temp Setup: Cron Plugin 
 
-add_action('acf/save_post', 'schedule_simplystatic_export', 20);
+//TODO: Set Up integrated Post/ Page Scheduler that triggers one-time cron job at on defined date and time. 
+//TODO: Create Admin Dashboard Widget listing all Scheduled Post/ Page Cron Jobs using integrated scheduler  
+*/
 
-function schedule_simplystatic_export($post_id) {
-    // Skip if autosave or revision
-    if (wp_is_post_autosave($post_id) || wp_is_post_revision($post_id)) {
-        return;
-    }
-    
-    // Check if schedule button was clicked
-    if (isset($_POST['acf']['schedule_export'])) {
-        $scheduled_time = get_field('export_datetime', $post_id);
-        
-        if ($scheduled_time) {
-            $timestamp = strtotime($scheduled_time);
-            $hook_name = 'run_simplystatic_export_' . $post_id;
-            
-            // Clear any existing schedule
-            wp_clear_scheduled_hook($hook_name);
-            
-            // Schedule if time is in future
-            if ($timestamp > time()) {
-                wp_schedule_single_event($timestamp, $hook_name, array($post_id));
-            }
-        }
-    }
-    
-    // Check if cancel button was clicked
-    if (isset($_POST['acf']['cancel_export'])) {
-        $hook_name = 'run_simplystatic_export_' . $post_id;
-        wp_clear_scheduled_hook($hook_name);
-        update_field('export_datetime', '', $post_id);
-    }
-}
+/* WP Crontrol Plugin Jobs - 
+//NOTE: Temporary Solution & Backup Method //
+*/
+	/*Simply Static Provided Cron Jobs
+	//INFO: Source/Reference Docs:: https://docs.simplystatic.com/article/69-how-to-schedule-exports-with-wp-crontrol
+	*/
+		//Full Static Export -------------------------------------->
+		function ssp_run_static_export_cron() {
+			// Full static export
+			$simply_static = Simply_Static\Plugin::instance();
+			$simply_static->run_static_export();
+		}
+		add_action( 'static_export_event', 'ssp_run_static_export_cron' ); //Hook: static_export_event (Export Full Site)
 
-add_action('run_simplystatic_export_', 'trigger_simplystatic_export', 10, 1);
+		//Schedule Update Export ----------------------------------->
+		function ssp_run_update_export_cron() {
+			// Get Simply Static instance - and - trigger an Update export
+			$simply_static = Simply_Static\Plugin::instance();
+			$simply_static->run_static_export( 0, 'update' ); // 'update' = Update Export
+		}
+		add_action( 'update_export_event', 'ssp_run_update_export_cron' ); //Hook: update_export_event (Export Updates)
 
-function trigger_simplystatic_export($post_id) {
-    do_action('simplystatic.archive_creation_job');
-    update_field('export_datetime', '', $post_id);
-}
+	//END Simply Static Provided Cron Jobs
+
+//Custom Cron Jobs
+
+	//Url Scheduled Export ----------------------------------->
+
+
+
+	//END Custom Cron Jobs <-------------------------------
+
+//Static Website Backup - [19.02.26]
+
+	//Backup Static Site (Post Export) ----------------------------------->
+		function df_backup_static_export() {
+			$export_dir = get_option( 'simply-static' )['local_dir'] ?? WP_CONTENT_DIR . '/simply-static/temp-files/';
+			$backup_dir = WP_CONTENT_DIR . '/static-backups/' . date( 'Y-m-d_H-i-s' ) . '/';
+
+			if ( ! is_dir( $backup_dir ) ) {
+				wp_mkdir_p( $backup_dir );
+			}
+
+			// Recursive copy
+			$iterator = new RecursiveIteratorIterator(
+				new RecursiveDirectoryIterator( $export_dir, RecursiveDirectoryIterator::SKIP_DOTS ),
+				RecursiveIteratorIterator::SELF_FIRST
+			);
+
+			foreach ( $iterator as $item ) {
+				$dest = $backup_dir . $iterator->getSubPathname();
+				if ( $item->isDir() ) {
+					wp_mkdir_p( $dest );
+				} else {
+					copy( $item, $dest );
+				}
+			}
+		}
+		add_action( 'simply_static_finished', 'df_backup_static_export' );
+
+	// Backup Cleanup & Retention ----------------------------------->
+		$backup_base = WP_CONTENT_DIR . '/static-backups/';
+		$backups = glob( $backup_base . '*', GLOB_ONLYDIR );
+
+		if ( count( $backups ) > 7 ) { // Backup Number
+			sort( $backups ); // oldest first
+			$to_delete = array_slice( $backups, 0, count( $backups ) - 5 );
+
+			foreach ( $to_delete as $old_backup ) {
+				// Recursive delete
+				$files = new RecursiveIteratorIterator(
+					new RecursiveDirectoryIterator( $old_backup, RecursiveDirectoryIterator::SKIP_DOTS ),
+					RecursiveIteratorIterator::CHILD_FIRST
+				);
+				foreach ( $files as $file ) {
+					$file->isDir() ? rmdir( $file ) : unlink( $file );
+				}
+				rmdir( $old_backup );
+			}
+		}
+
+/* End of WP Crontrol Plugin Jobs - Backup Method */
+
+?>
