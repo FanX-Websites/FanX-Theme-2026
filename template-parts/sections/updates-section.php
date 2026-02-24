@@ -13,13 +13,13 @@
         <!-------------- Single Post Container --------------------->
         <div class="updates-post-container">
             <div class="updates-title"><!-- Updates Title Container -->
-                <h2> Latest About <?php single_term_title(); ?> </h2>
+                <h3 class="updates-title"> Latest <?php single_term_title(); ?> Updates</h3>
             </div><!-- END Updates Title -->
 
             <!-------------- Posts Begin --------------------->
             <?php if ( have_posts() ) : ?>
                 <?php $count = 0; ?>
-                <?php while ( have_posts() && $count < 1 ) : the_post(); //Limit Posts ?>
+                <?php while ( have_posts() && $count < 3 ) : the_post(); //Limit Posts ?>
                     <?php $count++; ?>
 
                     <!--------- Article Section - Updates ---------->
@@ -53,10 +53,11 @@
                                 <?php the_excerpt(); ?>
                             </div>
                         
-                            <!-------------- Call to Action Button --------------------->
-                            <footer class="updates-entry-footer">
-                                <a href="<?php the_permalink(); ?>">Read More</a>
-                            </footer>   
+                           <!-- Read More Button/ Footer -->
+                <footer class="entry-footer">
+                <a href="<?php the_permalink(); ?>" class="button">Read More</a>
+                </footer>
+                <!-- END Read More Button/ Footer -->          
 
                     </div><!-- END Post Content -->
                 </article><!-- END News & Updates Post Layout -->

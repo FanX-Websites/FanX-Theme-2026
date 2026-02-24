@@ -1162,16 +1162,16 @@ h3.table-chart-subtext {
   justify-self: center;
   margin: 0;
   padding: 0;
-  width: 100%
 }
 
-.updates-title h2 {
+h3.updates-title{
   color: var(--color_base_brht);
-  font-weight: 700;
+  font-weight: 600;
+  line-height: 2.5em;
   text-transform: uppercase;
-  font-size: clamp(1.5rem,3.5vw,5rem);
+  font-size: clamp(1.5rem,2.5vw,3rem);
   text-align: center;
-  width: 100%
+  width: 100%;
 }
    /** Posts Loop */
 .updates-posts-loop {
@@ -1220,6 +1220,15 @@ h3.updates-entry-title a{
   font-weight: 200;
   color: var(--color_prim_lght);
   text-decoration: none;
+  text-align: center;
+}
+.updates-entry-summary p{
+  font-size: 1em;
+  line-height: 1.5em;
+  text-align: center;
+  color: var(--color_lght);
+  margin: 0;
+  padding: 1% 6%
 }
 /* Updates Section END */
 

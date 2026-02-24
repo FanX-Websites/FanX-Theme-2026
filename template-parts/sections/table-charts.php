@@ -10,25 +10,37 @@
  * //TODO: Use as replacement for Comparison & Pricing Charts - Ticketing, Exhibitor Packages, etc.
 */
 ?>
+
+<?php
+// Check if any ACF fields have content
+$term_id = get_queried_object_id();
+$section_title = get_field( 'tc_section_title', 'term_' . $term_id );
+$section_sub = get_field( 'tc_section_sub', 'term_' . $term_id );
+$section_txt = get_field( 'tc_section_txt', 'term_' . $term_id );
+$blocks = get_field('tc', 'term_' . $term_id );
+
+// Hide entire section if no content exists
+if ( !$section_title && !$section_sub && !$section_txt && !$blocks ) {
+    return;
+}
+?>
+
 <!-- Table Charts Section ------------------------->
 <div class="tc-section">
     <div class="tc-section-inner">  
      
     <!-- Table Chart Section Header -->
         <h2 class="tc-section-title">
-        <?php $term_id = get_queried_object_id(); echo get_field( 'tc_section_title', 'term_' . $term_id ); //Title ?></h2>
+        <?php echo wp_kses_post( $section_title ); ?></h2>
         <h3 class="tc-section-sub">
-        <?php $term_id = get_queried_object_id(); echo get_field( 'tc_section_sub', 'term_' . $term_id ); //Sub Title ?></h3>
+        <?php echo wp_kses_post( $section_sub ); ?></h3>
         <p class="tc-section-txt">
-        <?php $term_id = get_queried_object_id(); echo get_field( 'tc_section_txt', 'term_' . $term_id ); //Sub Text ?></p>
+        <?php echo wp_kses_post( $section_txt ); ?></p>
 
     <!-- END Table Chart Section Header -->
 
     <!-- Table Chart BLOCK ---------------------->
     <?php //Content Block - Repeater
-        $term_id = get_queried_object_id();
-        $blocks = get_field('tc', 'term_' . $term_id); // ACF Repeater Field
-        
         if ($blocks) :
             $block_count = count($blocks);
             // Determine layout class based on block count
@@ -123,5 +135,3 @@
         <?php endif; ?>
     </div><!-- END Table Charts Section - Inner ---------------------->
 </div><!-- END Table Charts Section ----------------------->
-
-

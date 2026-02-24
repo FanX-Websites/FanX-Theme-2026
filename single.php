@@ -63,19 +63,17 @@ get_header();
                  <!-- Appearance Days -->
                     <?php 
                     $days_cats = get_the_terms( get_the_ID(), 'days' );
-                    echo '<div class="days guest-xp">';
-                    echo '<strong>Appearing:</strong> ';
                     
                     if ( ! empty( $days_cats ) && ! is_wp_error( $days_cats ) ) {
+                        echo '<div class="days guest-xp">';
+                        echo '<strong>Appearing:</strong> ';
                         $links = array();
                         foreach ( $days_cats as $cat ) {
                             $links[] = '<a href="' . esc_url( get_term_link( $cat ) ) . '">' . esc_html( $cat->name ) . '</a>';
                         }
                         echo implode( ' | ', $links ) . '*';
-                    } else {
-                        echo 'More info soon*';
-                      }
-                    echo '</div>';
+                        echo '</div>';
+                    }
                     ?> 
                 <!-- END Appearance Days ---> 
             
