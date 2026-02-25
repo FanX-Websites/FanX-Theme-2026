@@ -26,7 +26,7 @@ get_header(); //Body - Main Site
         // Unlimited posts for category/taxonomy pages
         if ( is_category() || is_tax() ) {
             global $wp_query;
-            $wp_query->set( 'posts_per_page', -1 );
+            $wp_query->set( 'nopaging', true );
             $wp_query->query( $wp_query->query_vars );
         }
         if ( have_posts() ) : ?>

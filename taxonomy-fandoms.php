@@ -28,8 +28,7 @@ get_header(); /** body- main-site */
                     'terms' => $term->term_id,
                 ),
             ),
-            'paged' => $paged,
-            'posts_per_page' => -1,
+            'nopaging' => true,
         );
         $query = new WP_Query( $args );
         if ( $query->have_posts() ) : ?>

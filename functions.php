@@ -103,16 +103,20 @@ add_action('wp_enqueue_scripts', function() {
 			'functions/shortcode.php',
 			'functions/tag-cats.php',
 			'functions/sitemap.php',
-		//Plugins - Thrird Party	
+		//Plugins - Third Party	
 			'acf/tweaks.php',
 			'seo/yoast.php',
 			'simply-static/schedule.php',
 			'simply-static/sitemap-integration.php',
 		//Admin Area 	
-			'admin/updates/dashboard.php',
-			'admin/white-label.php',
-			'admin/customadmin.php',	
-			'admin/custommenu.php',
+			'admin/repository-feed/git-widget.php',//Repository Dashboard Widget 
+			'admin/white-label.php', //Admin White Labeling
+			'admin/customadmin.php', //Custom Admin Features	
+			'admin/custommenu.php', //Menu Customizations & Support
+			'admin/backup-feed/static-backups.php', //Static Backup Dashboard Widget
+			'admin/debug-feed/site-debug-log.php', //Debug Log Dashboard Widget
+			'admin/export-check/pre-export-checker.php', //Pre-Export Health Check
+			'admin/export-check/export-health-widget.php', //Export Health Dashboard Widget
 	];
 //END Theme Files <---
 
@@ -188,3 +192,4 @@ add_filter( 'wp_max_upload_size', function() {
 add_filter( 'wp_import_post_data_raw', function( $post_data ) {
     return $post_data;
 } );
+

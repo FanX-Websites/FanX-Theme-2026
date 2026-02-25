@@ -6,7 +6,7 @@
 // Hook to modify the query before it runs
 add_filter( 'pre_get_posts', function( $query ) {
     if ( ! is_admin() && $query->is_main_query() && is_tax( 'blog-category' ) ) {
-        $query->set( 'posts_per_page', -1 );
+        $query->set( 'nopaging', true );
     }
     return $query;
 } );

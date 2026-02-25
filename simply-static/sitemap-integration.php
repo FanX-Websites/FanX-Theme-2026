@@ -1,12 +1,18 @@
 <?php
 /**
- * FanX Theme - Simply Static Integration
+ * FanX Theme - Simply Static Integration + Yoast Sitemap Backup
  * 
  * Enhances Simply Static's URL discovery to include:
  * - All custom post types
  * - All custom taxonomies
  * - Automatic discovery of all publicly queryable content
  * - Smart pagination handling for large archives
+ * 
+ * Yoast Sitemap Backup:
+ * - Automatically backs up Yoast-generated sitemaps
+ * - Provides fallback sitemaps if the site goes down
+ * - Maintains versioned backup history
+ * - Allows manual and scheduled restoration
  * 
  * @package FanXTheme2026
  */
@@ -37,6 +43,9 @@ function fanx_simply_static_init() {
         add_action('simply_static.document_bundle_created', 'fanx_add_urls_to_simply_static_pro', 10, 1);
         add_filter('ssp_additional_urls', 'fanx_add_additional_urls_ssp_pro', 10, 1);
     }
+    
+    // Initialize Yoast sitemap backup system
+    fanx_yoast_sitemap_backup_init();
 }
 add_action('plugins_loaded', 'fanx_simply_static_init', 20);
 
@@ -186,7 +195,7 @@ function fanx_generate_static_sitemap_files() {
         
         $posts = get_posts([
             'post_type' => $post_type->name,
-            'posts_per_page' => -1,
+            'nopaging' => true,
             'post_status' => 'publish',
             'orderby' => 'modified',
             'order' => 'DESC',
@@ -262,6 +271,356 @@ function fanx_generate_static_sitemap_files() {
 }
 
 /**
+ * ============================================================================
+ * YOAST SITEMAP BACKUP SYSTEM
+ * ============================================================================
+ * 
+ * Automatically backups Yoast-generated sitemaps to a versioned backup directory.
+ * If the WordPress site goes down, these backups can be served as a fallback.
+ */
+
+/**
+ * Initialize Yoast sitemap backup system
+ */
+function fanx_yoast_sitemap_backup_init() {
+    // Schedule automatic backups if not already scheduled
+    if (!wp_next_scheduled('fanx_backup_yoast_sitemaps')) {
+        wp_schedule_event(time(), 'daily', 'fanx_backup_yoast_sitemaps');
+    }
+    
+    // Hook for manual/automated backup
+    add_action('fanx_backup_yoast_sitemaps', 'fanx_backup_yoast_sitemaps');
+    
+    // Also backup when Yoast generates new sitemaps
+    add_action('wpseo_sitemaps_cache_clear', 'fanx_backup_yoast_sitemaps');
+    add_action('save_post', 'fanx_backup_yoast_sitemaps_on_post_update', 999);
+    add_action('edit_term', 'fanx_backup_yoast_sitemaps_on_term_update', 999);
+}
+
+/**
+ * Get the backup directory for Yoast sitemaps
+ *
+ * @return string Absolute path to backup directory
+ */
+function fanx_get_yoast_backup_dir() {
+    $upload_dir = wp_upload_dir();
+    $backup_dir = $upload_dir['basedir'] . '/yoast-sitemap-backups';
+    
+    if (!is_dir($backup_dir)) {
+        wp_mkdir_p($backup_dir);
+    }
+    
+    return $backup_dir;
+}
+
+/**
+ * Get the current backups directory structure
+ *
+ * @return array Array with 'current' and 'archive' keys
+ */
+function fanx_get_yoast_backup_paths() {
+    $backup_base = fanx_get_yoast_backup_dir();
+    
+    return [
+        'base' => $backup_base,
+        'current' => $backup_base . '/current',
+        'archive' => $backup_base . '/archive',
+        'metadata' => $backup_base . '/metadata.json',
+    ];
+}
+
+/**
+ * Get path to Yoast sitemaps directory
+ *
+ * @return string Absolute path to Yoast sitemaps
+ */
+function fanx_get_yoast_sitemap_dir() {
+    // Yoast stores sitemaps in the root typically as sitemap.xml, sitemap_index.xml, etc.
+    // But we need to check wp-content for specific Yoast files
+    $upload_dir = wp_upload_dir();
+    $base_dir = dirname($upload_dir['basedir']);
+    
+    // Common Yoast sitemap locations
+    return $base_dir;
+}
+
+/**
+ * Find all Yoast sitemap files
+ *
+ * @return array Array of sitemap file paths found
+ */
+function fanx_find_yoast_sitemap_files() {
+    $files = [];
+    $search_dir = get_home_path();
+    
+    // Look for Yoast sitemap files in root and uploads
+    $patterns = [
+        'sitemap*.xml',
+        'sitemap*.xml.gz',
+    ];
+    
+    foreach ($patterns as $pattern) {
+        $found = glob($search_dir . $pattern);
+        if (!empty($found)) {
+            $files = array_merge($files, $found);
+        }
+    }
+    
+    // Remove duplicates and filter
+    $files = array_unique($files);
+    $files = array_filter($files, function($file) {
+        return is_readable($file) && is_file($file);
+    });
+    
+    return $files;
+}
+
+/**
+ * Create a timestamped backup of current Yoast sitemaps
+ *
+ * @return array Result with success status and details
+ */
+function fanx_backup_yoast_sitemaps() {
+    $paths = fanx_get_yoast_backup_paths();
+    $current_backup_dir = $paths['current'];
+    
+    // Ensure directories exist
+    if (!is_dir($current_backup_dir)) {
+        wp_mkdir_p($current_backup_dir);
+    }
+    if (!is_dir($paths['archive'])) {
+        wp_mkdir_p($paths['archive']);
+    }
+    
+    $sitemap_files = fanx_find_yoast_sitemap_files();
+    $backed_up = [];
+    $failed = [];
+    
+    if (empty($sitemap_files)) {
+        return [
+            'success' => false,
+            'message' => 'No Yoast sitemap files found to backup',
+            'backed_up' => [],
+            'failed' => [],
+            'timestamp' => current_time('mysql'),
+        ];
+    }
+    
+    // Backup each sitemap file
+    foreach ($sitemap_files as $source_file) {
+        $filename = basename($source_file);
+        $dest_file = $current_backup_dir . '/' . $filename;
+        
+        if (@copy($source_file, $dest_file)) {
+            $backed_up[] = $filename;
+        } else {
+            $failed[] = $filename;
+        }
+    }
+    
+    // Archive old backups (keep only last 30 days)
+    fanx_archive_old_backups();
+    
+    // Update metadata file
+    $metadata = [
+        'last_backup' => current_time('mysql'),
+        'timestamp' => time(),
+        'backed_up_files' => $backed_up,
+        'failed_files' => $failed,
+        'total_files' => count($sitemap_files),
+        'site_url' => home_url(),
+        'wordpress_version' => get_bloginfo('version'),
+    ];
+    
+    file_put_contents($paths['metadata'], wp_json_encode($metadata));
+    
+    return [
+        'success' => count($failed) === 0,
+        'message' => sprintf(
+            'Backed up %d Yoast sitemap file(s)',
+            count($backed_up)
+        ),
+        'backed_up' => $backed_up,
+        'failed' => $failed,
+        'timestamp' => current_time('mysql'),
+        'backup_dir' => $current_backup_dir,
+    ];
+}
+
+/**
+ * Conditional backup on post update (throttled)
+ */
+function fanx_backup_yoast_sitemaps_on_post_update() {
+    if (wp_doing_ajax() || wp_doing_cron()) {
+        return;
+    }
+    
+    // Only backup if a full second has passed since last backup
+    $last_backup = get_transient('fanx_yoast_backup_timestamp');
+    if ($last_backup && (time() - $last_backup) < 60) {
+        return;
+    }
+    
+    fanx_backup_yoast_sitemaps();
+    set_transient('fanx_yoast_backup_timestamp', time(), 60);
+}
+
+/**
+ * Conditional backup on term update (throttled)
+ */
+function fanx_backup_yoast_sitemaps_on_term_update() {
+    fanx_backup_yoast_sitemaps_on_post_update();
+}
+
+/**
+ * Archive old backups - keep only recent ones
+ */
+function fanx_archive_old_backups() {
+    $paths = fanx_get_yoast_backup_paths();
+    $current_dir = $paths['current'];
+    $archive_dir = $paths['archive'];
+    $keep_days = 30;
+    $retention_time = time() - ($keep_days * DAY_IN_SECONDS);
+    
+    // Archive old current backups
+    if (is_dir($archive_dir)) {
+        $old_files = glob($archive_dir . '/*');
+        foreach ($old_files as $file) {
+            if (filemtime($file) < $retention_time) {
+                @unlink($file);
+            }
+        }
+    }
+}
+
+/**
+ * Restore Yoast sitemaps from backup to root directory
+ *
+ * @param string $backup_type 'current' or specific archived backup
+ * @return array Result with success status
+ */
+function fanx_restore_yoast_sitemaps_from_backup($backup_type = 'current') {
+    $paths = fanx_get_yoast_backup_paths();
+    $backup_dir = ('current' === $backup_type) ? $paths['current'] : $paths['archive'];
+    
+    if (!is_dir($backup_dir)) {
+        return [
+            'success' => false,
+            'message' => 'Backup directory not found',
+        ];
+    }
+    
+    $backup_files = glob($backup_dir . '/*.xml*');
+    $restored = [];
+    $failed = [];
+    $root_dir = get_home_path();
+    
+    foreach ($backup_files as $backup_file) {
+        $filename = basename($backup_file);
+        $dest_file = $root_dir . $filename;
+        
+        if (@copy($backup_file, $dest_file)) {
+            $restored[] = $filename;
+        } else {
+            $failed[] = $filename;
+        }
+    }
+    
+    return [
+        'success' => count($failed) === 0,
+        'message' => sprintf(
+            'Restored %d sitemap file(s)',
+            count($restored)
+        ),
+        'restored' => $restored,
+        'failed' => $failed,
+        'timestamp' => current_time('mysql'),
+    ];
+}
+
+/**
+ * Get latest backup metadata
+ *
+ * @return array|null Metadata array or null if not found
+ */
+function fanx_get_yoast_backup_metadata() {
+    $paths = fanx_get_yoast_backup_paths();
+    
+    if (!file_exists($paths['metadata'])) {
+        return null;
+    }
+    
+    $data = file_get_contents($paths['metadata']);
+    return json_decode($data, true);
+}
+
+/**
+ * Check if backups are available and recent
+ *
+ * @return array Status information
+ */
+function fanx_check_yoast_backup_status() {
+    $metadata = fanx_get_yoast_backup_metadata();
+    $paths = fanx_get_yoast_backup_paths();
+    $current_files = [];
+    
+    if (is_dir($paths['current'])) {
+        $current_files = glob($paths['current'] . '/*.xml*');
+    }
+    
+    if (!$metadata) {
+        return [
+            'backups_exist' => !empty($current_files),
+            'last_backup' => null,
+            'files_backed_up' => $current_files,
+            'status' => 'No backup metadata found',
+        ];
+    }
+    
+    $last_backup_time = strtotime($metadata['last_backup']);
+    $hours_since = (time() - $last_backup_time) / 3600;
+    
+    return [
+        'backups_exist' => true,
+        'last_backup' => $metadata['last_backup'],
+        'hours_since_backup' => round($hours_since, 1),
+        'backed_up_files' => $metadata['backed_up_files'],
+        'status' => $hours_since < 24 ? 'Current' : 'Outdated',
+    ];
+}
+
+/**
+ * Generate a static fallback sitemap from backups
+ * Useful if Yoast sitemaps are not generating properly
+ */
+function fanx_generate_fallback_sitemap_from_backup() {
+    $paths = fanx_get_yoast_backup_paths();
+    $backup_index = $paths['current'] . '/sitemap_index.xml';
+    $fallback_index = $paths['current'] . '/sitemap-fallback.xml';
+    
+    if (!file_exists($backup_index)) {
+        return [
+            'success' => false,
+            'message' => 'No backup sitemap index found',
+        ];
+    }
+    
+    // Copy as fallback
+    if (@copy($backup_index, $fallback_index)) {
+        return [
+            'success' => true,
+            'message' => 'Fallback sitemap generated from backup',
+            'path' => $fallback_index,
+        ];
+    }
+    
+    return [
+        'success' => false,
+        'message' => 'Failed to create fallback sitemap',
+    ];
+}
+
+/**
  * Generate simple URL list for Simply Static (both free and Pro)
  */
 function fanx_generate_simply_static_url_list_simple() {
@@ -293,7 +652,7 @@ function fanx_generate_simply_static_url_list_simple() {
     foreach ($post_types as $post_type) {
         $posts = get_posts([
             'post_type' => $post_type->name,
-            'posts_per_page' => -1,
+            'nopaging' => true,
             'post_status' => 'publish',
             'orderby' => 'ID',
         ]);
@@ -338,7 +697,7 @@ function fanx_get_simply_static_urls() {
 }
 
 /**
- * Admin notice about Simply Static setup
+ * Admin notice about Simply Static setup and Yoast backup status
  */
 function fanx_simply_static_admin_notice() {
     if (!is_admin() || !current_user_can('manage_options')) {
@@ -367,14 +726,36 @@ function fanx_simply_static_admin_notice() {
     $pro_active = defined('SIMPLY_STATIC_PRO_VERSION') ? ' (Pro v' . SIMPLY_STATIC_PRO_VERSION . ')' : '';
     $nonce = wp_create_nonce('fanx_regenerate_sitemaps');
     
+    // Get backup status
+    $backup_status = fanx_check_yoast_backup_status();
+    $backup_info = '';
+    
+    if ($backup_status['backups_exist']) {
+        $backup_msg = sprintf(
+            'Last backup: %s (%s hours ago)',
+            $backup_status['last_backup'],
+            $backup_status['hours_since_backup']
+        );
+        $backup_class = $backup_status['status'] === 'Current' ? 'notice-success' : 'notice-warning';
+        $backup_info = '<br><strong>Yoast Sitemap Backups:</strong> ' . esc_html($backup_msg);
+    }
+    
     ?>
     <div class="notice notice-info is-dismissible">
         <p>
             <strong>FanX Theme Sitemap Integration:</strong> 
             The FanX theme includes static XML sitemaps that work seamlessly with Simply Static<?php echo esc_html($pro_active); ?>. 
             Your sitemaps are automatically generated in <code>/wp-content/uploads/sitemaps/</code> and will be included in the static export.
+            <?php echo wp_kses_post($backup_info); ?>
+            <br><br>
             <a href="<?php echo wp_nonce_url(add_query_arg('action', 'fanx_regenerate_sitemaps'), 'fanx_regenerate_sitemaps'); ?>" class="button button-small">
-                Regenerate Sitemaps Now
+                Regenerate Sitemaps
+            </a>
+            <a href="<?php echo wp_nonce_url(add_query_arg('action', 'fanx_backup_yoast_now'), 'fanx_backup_yoast'); ?>" class="button button-small">
+                Backup Yoast Sitemaps Now
+            </a>
+            <a href="<?php echo wp_nonce_url(add_query_arg('action', 'fanx_restore_yoast_backup'), 'fanx_restore_backup'); ?>" class="button button-small">
+                Restore from Backup
             </a>
         </p>
     </div>
@@ -383,7 +764,7 @@ function fanx_simply_static_admin_notice() {
 add_action('admin_notices', 'fanx_simply_static_admin_notice');
 
 /**
- * Handle manual sitemap regeneration from admin notice
+ * Handle manual sitemap regeneration and backup actions from admin notice
  */
 function fanx_handle_regenerate_sitemaps() {
     $action = isset($_GET['action']) ? sanitize_text_field($_GET['action']) : '';
@@ -410,6 +791,56 @@ function fanx_handle_regenerate_sitemaps() {
         wp_safe_remote_get(remove_query_arg(['action', '_wpnonce']));
         
         settings_errors('fanx_sitemap');
+        wp_redirect(remove_query_arg(['action', '_wpnonce']));
+        exit;
+    }
+    
+    if ($action === 'fanx_backup_yoast_now') {
+        check_admin_referer('fanx_backup_yoast');
+        
+        if (!current_user_can('manage_options')) {
+            wp_die('Unauthorized');
+        }
+        
+        $result = fanx_backup_yoast_sitemaps();
+        
+        if ($result['success']) {
+            add_settings_error('fanx_backup', 'success', sprintf(
+                'Yoast sitemaps backed up successfully! %s',
+                $result['message']
+            ), 'updated');
+        } else {
+            add_settings_error('fanx_backup', 'error', 'Yoast backup failed: ' . $result['message'], 'error');
+        }
+        
+        wp_safe_remote_get(remove_query_arg(['action', '_wpnonce']));
+        
+        settings_errors('fanx_backup');
+        wp_redirect(remove_query_arg(['action', '_wpnonce']));
+        exit;
+    }
+    
+    if ($action === 'fanx_restore_yoast_backup') {
+        check_admin_referer('fanx_restore_backup');
+        
+        if (!current_user_can('manage_options')) {
+            wp_die('Unauthorized');
+        }
+        
+        $result = fanx_restore_yoast_sitemaps_from_backup('current');
+        
+        if ($result['success']) {
+            add_settings_error('fanx_restore', 'success', sprintf(
+                'Yoast sitemaps restored successfully! %s',
+                $result['message']
+            ), 'updated');
+        } else {
+            add_settings_error('fanx_restore', 'error', 'Restore failed: ' . $result['message'], 'error');
+        }
+        
+        wp_safe_remote_get(remove_query_arg(['action', '_wpnonce']));
+        
+        settings_errors('fanx_restore');
         wp_redirect(remove_query_arg(['action', '_wpnonce']));
         exit;
     }
@@ -544,8 +975,11 @@ function fanx_register_simply_static_rest_route() {
 add_action('rest_api_init', 'fanx_register_simply_static_rest_route');
 
 /**
- * WP-CLI Command for Simply Static URL export
+ * WP-CLI Command for Simply Static URL export and Yoast Sitemap Backups
  * Usage: wp fanx simply-static-urls [--format=json|csv]
+ *        wp fanx backup-yoast-sitemaps
+ *        wp fanx restore-yoast-sitemaps
+ *        wp fanx backup-status
  */
 if (defined('WP_CLI') && WP_CLI) {
     class FanX_Simply_Static_CLI extends WP_CLI_Command {
@@ -668,6 +1102,116 @@ if (defined('WP_CLI') && WP_CLI) {
                 $size_str = size_format($size);
                 $url = str_replace(ABSPATH, home_url('/'), $file);
                 WP_CLI::line("  $filename ($size_str) - $url");
+            }
+        }
+        
+        /**
+         * Backup Yoast-generated sitemaps
+         * 
+         * ## DESCRIPTION
+         * 
+         * Creates an immediate backup of all Yoast XML sitemaps to the backup directory.
+         * These backups can be used to restore sitemaps if the site goes down.
+         * Backups are stored in /wp-content/uploads/yoast-sitemap-backups/
+         * 
+         * ## OPTIONS
+         * 
+         * [--list]
+         * : List the backed-up files
+         * 
+         * ## EXAMPLES
+         * 
+         *     wp fanx backup-yoast-sitemaps
+         *     wp fanx backup-yoast-sitemaps --list
+         */
+        public function backup_yoast_sitemaps($args, $assoc_args) {
+            $result = fanx_backup_yoast_sitemaps();
+            
+            if (!$result['success']) {
+                WP_CLI::warning($result['message']);
+                if (!empty($result['failed'])) {
+                    WP_CLI::warning('Failed files: ' . implode(', ', $result['failed']));
+                }
+                return;
+            }
+            
+            if (isset($assoc_args['list'])) {
+                WP_CLI::line('Backed-up files:');
+                foreach ($result['backed_up'] as $file) {
+                    WP_CLI::line("  " . $file);
+                }
+            }
+            
+            WP_CLI::success($result['message'] . ' at ' . $result['timestamp']);
+        }
+        
+        /**
+         * Restore Yoast sitemaps from backup
+         * 
+         * ## DESCRIPTION
+         * 
+         * Restores Yoast sitemaps from the latest backup to the root directory.
+         * Use this if the live Yoast sitemaps become corrupted or unavailable.
+         * 
+         * ## EXAMPLES
+         * 
+         *     wp fanx restore-yoast-sitemaps
+         */
+        public function restore_yoast_sitemaps($args, $assoc_args) {
+            WP_CLI::confirm('This will overwrite current sitemaps. Continue?');
+            
+            $result = fanx_restore_yoast_sitemaps_from_backup('current');
+            
+            if (!$result['success']) {
+                WP_CLI::error($result['message']);
+            }
+            
+            WP_CLI::line('Restored files:');
+            foreach ($result['restored'] as $file) {
+                WP_CLI::line("  " . $file);
+            }
+            
+            if (!empty($result['failed'])) {
+                WP_CLI::warning('Failed to restore: ' . implode(', ', $result['failed']));
+            }
+            
+            WP_CLI::success($result['message']);
+        }
+        
+        /**
+         * Check Yoast sitemap backup status
+         * 
+         * ## DESCRIPTION
+         * 
+         * Displays the current status of Yoast sitemap backups including
+         * when the last backup was created and which files are backed up.
+         * 
+         * ## EXAMPLES
+         * 
+         *     wp fanx backup-status
+         */
+        public function backup_status($args, $assoc_args) {
+            $status = fanx_check_yoast_backup_status();
+            
+            if (!$status['backups_exist']) {
+                WP_CLI::warning('No backups found yet.');
+                return;
+            }
+            
+            WP_CLI::line('=== Yoast Sitemap Backup Status ===');
+            WP_CLI::line('Status: ' . $status['status']);
+            WP_CLI::line('Last Backup: ' . $status['last_backup']);
+            WP_CLI::line('Hours Since Backup: ' . $status['hours_since_backup']);
+            WP_CLI::line('');
+            WP_CLI::line('Backed-up Files:');
+            
+            foreach ($status['backed_up_files'] as $file) {
+                WP_CLI::line("  - " . $file);
+            }
+            
+            // Check if backups are old
+            if ($status['hours_since_backup'] > 24) {
+                WP_CLI::warning('Backups are older than 24 hours. Consider running `wp fanx backup-yoast-sitemaps` to create a fresh backup.');
             }
         }
         

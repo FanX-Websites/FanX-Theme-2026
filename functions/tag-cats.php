@@ -11,6 +11,9 @@ What this File Does:
 
 */
 
+//URLS 
+
+
 //Add Support ----------------------------------->
     // 1- support for Categories & Tags - Adds to all public post types except attachments and pages
     function df_add_taxonomies_to_all_post_types() {
@@ -63,26 +66,13 @@ What this File Does:
         } );
     //END 3- Archive Page Settings - Remove Archive Prefix
 
-    //NOTE: NO IDEA WHAT or WHY THIS IS
-    // //Default Category Tweaks -------------------> 
-    //     function df_default_category_handler() {
-    //         // Get default category from ACF field
-    //         $default_cat_id = get_field( 'default_category', 'option' );
-            
-    //         // Get default tags from ACF field
-    //         $default_tag_ids = get_field( 'default_tags', 'option' );
-            
-    //         if ( $default_cat_id ) {
-    //             $default_category = get_category( $default_cat_id );
-    //             // Hook here for default category behaviors
-    //             return $default_category;
-    //         }
-            
-    //         return false;
-    //     }
-    //     add_action( 'init', 'df_default_category_handler' );
-    // //END Default Category Tweaks ------------------->
 
-    // //Categories in URLS ----------------------------------------------->
-       
-    // //END Categories in URLS <-----------------------------------------------
+// END Category & Taxonomy Types & Labels ----------------------------------------------->    
+
+
+
+
+
+
+
+

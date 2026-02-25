@@ -8,9 +8,22 @@
 
 //Enable Shortcodes 
     //WP Core - Add Filter Methods 
-    add_filter( 'widget_text', 'do_shortcode'); //Widget Text
-    add_filter( 'the_excerpt', 'do_shortcode'); //Excerpt 
-    add_filter( 'the_content', 'do_shortcode'); //Content
+    // Add null checks to prevent str_contains errors
+    add_filter( 'widget_text', function( $value ) {
+        if ( is_string( $value ) && ! empty( $value ) ) {
+            return do_shortcode( $value );
+        }
+        return $value;
+    }); //Widget Text
+    
+    add_filter( 'the_excerpt', function( $value ) {
+        if ( is_string( $value ) && ! empty( $value ) ) {
+            return do_shortcode( $value );
+        }
+        return $value;
+    }); //Excerpt 
+    
+    add_filter( 'the_content', 'do_shortcode'); //Content (core function already handles null)
 
     //WP Menu 
     add_filter( 'wp_nav_menu_item', 'do_shortcode'); // Nav Label

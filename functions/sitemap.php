@@ -47,7 +47,7 @@ function fanx_sitemap_template_include($template) {
             
             $posts = get_posts(array(
                 'post_type' => $post_type,
-                'posts_per_page' => -1,
+                'nopaging' => true,
                 'post_status' => 'publish',
                 'orderby' => 'ID',
             ));

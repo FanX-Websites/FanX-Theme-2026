@@ -9,9 +9,17 @@
 Allow Shortcodes in ACF Fields & Allow Unsafe HTML in Shortcodes (for iframes, svg, etc.)*/
 
 //Shortcodes in ACF 
-add_filter('acf/format_value/type=textarea', 'do_shortcode'); //Text Area
-add_filter('acf/format_value/type=text', 'do_shortcode'); //Text Field
-add_filter('acf/format_value/type=message', 'do_shortcode'); //Message
+// Wrap do_shortcode to prevent null value errors
+$safe_shortcode = function( $value ) {
+    if ( is_string( $value ) && ! empty( $value ) ) {
+        return do_shortcode( $value );
+    }
+    return $value;
+};
+
+add_filter( 'acf/format_value/type=textarea', $safe_shortcode ); //Text Area
+add_filter( 'acf/format_value/type=text', $safe_shortcode ); //Text Field
+add_filter( 'acf/format_value/type=message', $safe_shortcode ); //Message
 
 //Allow Unsafe HTML 
 add_filter( 'acf/shortcode/allow_unsafe_html', function( $allowed, $attributes = null, $field_type = null, $field_object = null ) {

@@ -26,8 +26,7 @@ get_header(); /** body- main-site */
         $args = array(
             'post_type' => 'guests',
             'cat' => get_queried_object_id(), // Current category ID
-            'paged' => $paged,
-            'posts_per_page' => -1,
+            'nopaging' => true,
             'meta_key' => 'info_display_order',
             'orderby' => 'meta_value_num',
             'order' => 'ASC',

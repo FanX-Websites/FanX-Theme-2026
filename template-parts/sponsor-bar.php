@@ -14,7 +14,7 @@
             $args = array(
                 'post_type' => 'partner',  
                 'category_name' => 'sponsors',  
-                'posts_per_page' => -1,  
+                'nopaging' => true,  
             );
             
             $query = new WP_Query($args);

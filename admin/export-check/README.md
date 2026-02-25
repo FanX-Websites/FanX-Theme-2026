@@ -1,0 +1,403 @@
+# Static Export Health Check System
+
+## Overview
+
+This system provides a **three-layer approach** to detect and prevent plugin conflicts before exporting WordPress sites to static HTML using Simply Static. It prevents broken static site exports by validating the environment and identifying potential issues before they cause problems.
+
+---
+
+## System Architecture
+
+### Layer 1: Pre-Export Health Check Function
+**File:** `admin/export-check/pre-export-checker.php`
+
+Core validation engine that runs comprehensive checks on:
+
+#### Yoast SEO Status (New!)
+**ALWAYS DISPLAYED** - Given Yoast's history of breaking static exports
+
+Checks include:
+- **Plugin Status** - Detect Yoast Free vs Premium
+- **Redirect Rules** - Flag if Yoast redirect manager is configured
+- **Database Tables** - Verify Yoast tables are present
+- **XML Sitemaps** - Confirm sitemap generation status
+- **Advanced Settings** - Check if Yoast advanced features are active
+- **Link Management** - Monitor if Yoast is managing link elements
+
+**Why This Matters:**
+- Yoast redirects can break static links
+- Misconfigured Yoast can add dynamic elements to exports
+- Premium features may create export issues
+- Previously caused broken exports on this installation
+
+#### Plugin Conflict Detection
+- **Redirection Plugin** - Can interfere with URL rewriting
+- **Health Check & Troubleshooting** - May cause translation loading issues
+- **Wordfence Security** - Can block exports or add dynamic content
+- **Jetpack** - Cloud-hosted dependencies can break static exports
+- **Akismet** - Requires API calls that won't work in static sites
+- **WP Super Cache & W3 Total Cache** - Cache conflicts can corrupt exports
+
+#### System Configuration Checks
+- **Debug Mode Status** - Warns if WP_DEBUG is enabled
+- **Debug Log Size** - Alerts if debug.log exceeds 1MB
+- **Simply Static Installation** - Verifies plugin is active
+- **Filesystem Permissions** - Checks if wp-content is writable
+- **Export Directory** - Validates static export path is writable
+
+#### Content Validation
+- **Post/Page Count** - Warns if no published content found
+- **Permalink Structure** - Validates rewrite rules aren't set to default
+
+#### Theme Compatibility
+- **Active Theme Check** - Confirms FanXTheme2026 is active
+- **Parent Theme** - Validates theme compatibility
+
+#### Server Resources
+- **PHP Memory Limit** - Recommends minimum 256MB (warns if < 128MB)
+- **Max Execution Time** - Recommends 5+ minutes (warns if < 5 min)
+
+---
+
+### Layer 2: Dashboard Widget (Manual Verification)
+**File:** `admin/export-check/export-health-widget.php`
+
+Provides visual interface for WordPress admin dashboard showing:
+
+#### Yoast SEO Status Section (Always Visible)
+**Golden/Yellow box at top** - Prominent placement to ensure you never miss Yoast issues
+
+Displays:
+- 🔍 **Yoast SEO Status** header
+- **Warnings** section (if Yoast redirect rules detected)
+- **Status Info** section (what Yoast is doing)
+- ⚠️ Red highlighting for any concerns
+
+This section appears **even if there are no other issues**, giving you constant visibility.
+
+#### Status Badge
+- 🟢 **✓ READY** (Green) - All systems go, safe to export
+- 🟡 **⚠️ CAUTION** (Orange) - Warnings present, review recommended
+- 🔴 **❌ NOT READY** (Red) - Critical issues, fix before export
+
+#### Display Sections
+1. **Critical Issues** - Red box with blocking errors
+2. **Warnings** - Orange box with items to review
+3. **Status Info** - Green box with passing checks
+
+#### Action Buttons
+- **↻ Refresh Check** - Re-run health checks without page reload
+- **Go to Simply Static** - Direct link to export settings
+
+#### Metadata
+- Timestamp of last check in WordPress timezone
+
+---
+
+### Layer 3: Automated Pre-Export Validation
+**File:** `simply-static/schedule.php` (updated)
+
+Hooks into cron jobs to validate before scheduled exports:
+
+#### Full Export (`static_export_event`)
+- Runs health check before export begins
+- Logs all check results to debug log
+- Aborts export if critical issues detected
+- Logs detailed error messages
+
+#### Update Export (`update_export_event`)
+- Same validation as full export
+- Ensures incremental exports don't proceed with issues
+
+#### Logging
+- Outputs structured logs to `wp-content/debug.log`
+- Format: `=== PRE-EXPORT HEALTH CHECK ===` markers
+- Makes troubleshooting easier
+
+---
+
+## How to Use
+
+### For Manual Exports
+
+1. **Go to Dashboard** - WordPress admin homepage
+2. **Review "Static Export Health Check" Widget** - Check status badge
+3. **Review Issues/Warnings** - Address any red flags
+4. **Click "Go to Simply Static"** - Opens export settings if ready
+5. **Perform Export** - Export will proceed with confidence
+
+### For Scheduled Exports
+
+1. **Check Dashboard Widget** - See overall health status
+2. **Address Warnings** - Fix issues before scheduled export time
+3. **System Handles Rest** - Automated check prevents broken exports
+4. **Review Debug Log** - Check `wp-content/debug.log` after export
+
+### For Troubleshooting
+
+1. **Check Debug Log** - Look for `PRE-EXPORT HEALTH CHECK` sections
+2. **Review Widget** - See specific issues that need fixing
+3. **Fix Issues** - Address errors/warnings in order
+4. **Refresh Check** - Click button to revalidate
+5. **Monitor Export** - Watch debug log during export process
+
+---
+
+## Yoast SEO - Special Handling
+
+### Why Yoast Gets Special Attention
+
+Due to a previous incident where Yoast SEO broke a static site export, this system includes dedicated Yoast monitoring:
+
+**The Problem:**
+- Yoast can add dynamic redirects that break static site links
+- Yoast premium features may create export-incompatible content
+- Misconfigured Yoast settings caused a broken export on this installation
+- Yoast issues are subtle and hard to detect without automated checking
+
+**The Solution:**
+- 🔍 Dedicated Yoast status section in dashboard widget
+- **Always visible** - appears at top regardless of other status
+- Golden/yellow background - stands out visually
+- Monitors redirect rules, database status, and plugin version
+- Logged to debug output for troubleshooting
+
+### What Gets Checked
+
+1. **Is Yoast active?** - Detects presence of plugin
+2. **Which version?** - Free vs Premium (Premium has more features to break things)
+3. **Redirect rules?** - ⚠️ WARNING if Yoast redirect manager has rules
+4. **Database status** - Confirms Yoast tables exist
+5. **Sitemap generation** - Reports current configuration
+6. **Link management** - Tracks if Yoast is managing links
+
+### Recommended Best Practices When Exporting
+
+- Check Yoast status widget **before every export**
+- Clear any temporary Yoast redirects
+- Disable Yoast during export if concerned
+- Review debug log for Yoast-related messages
+- Keep Yoast updated to latest stable version
+
+---
+
+### Critical Issues (Blocking)
+These **must be fixed** before export will proceed:
+
+```
+- Simply Static plugin is not active
+- wp-content directory is not writable
+- Static export directory path not writable
+```
+
+### Warnings (Recommended)
+These **should be reviewed** but won't block export:
+
+```
+- Conflicting plugins active
+- WP_DEBUG is enabled
+- Debug log is oversized
+- No published posts found
+- Default permalink structure
+- Low PHP memory limit
+- Low execution timeout
+- Non-FanXTheme2026 active theme
+```
+
+### Info (Status)
+These are **positive confirmations**:
+
+```
+- Simply Static is active
+- wp-content is writable
+- Published posts found
+- Proper permalink structure
+- Adequate PHP resources
+- FanXTheme2026 is active
+```
+
+---
+
+## Function Reference
+
+### `fanx_check_yoast_status()`
+Dedicated Yoast SEO monitoring. Returns array with:
+```php
+[
+    'errors'   => array()  // Blocking Yoast issues
+    'warnings' => array()  // Yoast warnings to review
+    'info'     => array()  // Yoast status info
+]
+```
+
+### `fanx_pre_export_health_check()`
+Main validation function. Returns array with:
+```php
+[
+    'errors'   => array()  // Blocking issues
+    'warnings' => array()  // Warnings to review
+    'info'     => array()  // Passing checks
+    'passed'   => bool     // Overall result
+]
+```
+
+### `fanx_get_export_check_html()`
+Returns formatted HTML of check results with colors and styling.
+
+### `fanx_get_export_status_badge()`
+Returns HTML badge showing status:
+- `✓ READY` (green)
+- `⚠️ CAUTION` (orange)
+- `❌ NOT READY` (red)
+
+### `fanx_log_pre_export_check()`
+Logs check results to `wp-content/debug.log` for review.
+
+---
+
+## Integration Points
+
+### Included Files
+Added to `functions.php` theme loading:
+```php
+'admin/export-check/pre-export-checker.php'
+'admin/export-check/export-health-widget.php'
+```
+
+### Hooks Used
+- `wp_dashboard_setup` - Register dashboard widget
+- `static_export_event` - Pre-export validation (full)
+- `update_export_event` - Pre-export validation (update)
+
+### Dependencies
+- WordPress core functions
+- Simply Static plugin (for full functionality)
+- WP_Rewrite class (for permalink validation)
+
+---
+
+## Troubleshooting
+
+### Widget Not Showing
+1. Verify files are in `admin/export-check/` directory
+2. Check that `pre-export-checker.php` is being included
+3. Ensure `simply-static/schedule.php` is updated
+4. Clear browser cache and reload admin
+
+### Export Still Runs with Errors
+1. Check that `schedule.php` edits are in place
+2. Verify cron jobs are configured correctly
+3. Review `wp-content/debug.log` for cron output
+4. Consider increasing cron frequency for testing
+
+### Widget Shows Wrong Status
+1. Click "↻ Refresh Check" button
+2. Check if Simply Static settings have been updated
+3. Verify plugin status (active/inactive)
+4. Check file permissions on export directory
+
+### Missing Debug Log
+1. Ensure `WP_DEBUG` is enabled in `wp-config.php`
+2. Verify `wp-content/` directory is writable
+3. Check that `WP_DEBUG_LOG` constant is set to true
+
+---
+
+## Future Enhancements
+
+Possible improvements:
+
+1. **Plugin Whitelist** - Allow specific plugins to be marked as compatible
+2. **Custom Checks** - Add site-specific validation rules
+3. **Export History** - Track past exports and their health status
+4. **Email Notifications** - Alert on scheduled export failures
+5. **REST API** - Expose checks via API for integrations
+6. **Performance Metrics** - Track export duration and success rate
+7. **Rollback Alerts** - Detect if static site export differs significantly
+8. **Asset Validation** - Check if all CSS/JS assets exported correctly
+
+---
+
+## File Structure
+
+```
+shared-themes/FanXTheme2026/
+├── admin/
+│   └── export-check/
+│       ├── pre-export-checker.php      (Core validation engine)
+│       ├── export-health-widget.php    (Dashboard widget)
+│       └── README.md                   (This file)
+├── simply-static/
+│   ├── schedule.php                    (Updated with pre-export hooks)
+│   └── sitemap-integration.php
+└── functions.php                       (Includes the export-check files)
+```
+
+---
+
+## Support & Debugging
+
+### Enabling Debug Output
+Add to `wp-config.php`:
+```php
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+```
+
+### Reviewing Logs
+1. Access via SFTP: `/home/ashelizmoore/fillory/[site]/wp-content/debug.log`
+2. Or view via dashboard using Debug Log widget
+3. Look for `=== PRE-EXPORT HEALTH CHECK ===` sections
+
+### Manual Check
+Run in WordPress theme functions:
+```php
+$health = fanx_pre_export_health_check();
+echo wp_kses_post( fanx_get_export_check_html() );
+```
+
+---
+
+## Version History
+
+- **v1.0** - Initial release with three-layer detection system
+- **Created**: 2026-02-24
+- **Theme**: FanXTheme2026
+- **Compatible**: WordPress 6.0+
+
+---
+
+## Notes for Developers
+
+### Adding New Checks
+
+1. Add check logic in `fanx_pre_export_health_check()`
+2. Append to `$issues` (blocking), `$warnings` (non-blocking), or `$info` (passing)
+3. Return value maintains consistent array structure
+4. Widget will automatically display new results
+
+### Modifying Conflicting Plugins List
+
+Edit in `pre-export-checker.php`:
+```php
+$conflicting_plugins = array(
+    'plugin-slug/plugin-file.php' => 'Display Name',
+    // Add more here
+);
+```
+
+### Adjusting Thresholds
+
+Modify in `pre-export-checker.php`:
+- Memory check: `134217728` (128MB) - line ~98
+- Timeout check: `300` (5 min) - line ~103
+- Debug log size: `1048576` (1MB) - line ~37
+
+---
+
+## License & Attribution
+
+Part of FanXTheme2026. Used for static site export validation across multiple WordPress installations in the `/fillory/` directory.
+
+For questions or issues, review the debug log and check the specific error messages for guidance.

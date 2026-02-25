@@ -24,7 +24,7 @@ get_header(); /** body- main-site */
         $term = get_queried_object();
         $args = array(
             'post_type' => 'partner',
-            'posts_per_page' => -1,
+            'nopaging' => true,
             'tax_query' => array(
                 array(
                     'taxonomy' => $term->taxonomy,
