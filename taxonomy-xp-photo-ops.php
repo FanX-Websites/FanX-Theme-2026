@@ -3,8 +3,8 @@
  * Template Name: Guest Category/Archive Pages 
  * @author FanXTheme2026
  * 
- * Notes: 
- * Uses classes: self-centered, self-centered-row, post-block, tax-cat,
+ * //TODO: Buttons: Profile | Purchase  Buttons  
+ * 
  */
 
 get_header(); /** body- main-site */
@@ -34,7 +34,7 @@ get_header(); /** body- main-site */
                 ),
             ),
             'paged' => $paged,
-            'posts_per_page' => get_option( 'posts_per_page' ),
+            'posts_per_page' => -1, //UNLIMITED POSTS 
         );
         $query = new WP_Query( $args );
         if ( $query->have_posts() ) : ?>
@@ -65,14 +65,59 @@ get_header(); /** body- main-site */
                 </header>
                 <!-- END Post Header -->
 
-                 <!-- Photo Ops -->
+                <!-- Photo Ops -->
+                    <!-- Photo Ops -------------------------------------------------------->
+                <div class="guest-op-info guest-xp">
                     <?php 
-                    $op_price = get_field('xp')['op_price'] ?? '';
-                    if ($op_price) : ?>
-                        <div class="photo-ops-price guest-xp">
-                            <strong>Photo Ops:</strong> <?php echo esc_html($op_price); ?> 
+                    $op_price = get_field('xp')['op_price'] ?? ''; //Price
+                    $op_url = get_field('xp')['op_url'] ?? ''; //Leap Link
+                    $xp_terms = get_the_terms( get_the_ID(), 'xp' ); //eXperienece Category
+                    $xp_status_terms = get_the_terms( get_the_ID(), 'xp-status' ); //XP Status 
+                    $has_photo_ops = false;
+                    $is_coming_soon = false;
+                    
+                    // Photo Op XP Category Trigger
+                    if ( $xp_terms && ! is_wp_error( $xp_terms ) ) {
+                        foreach ( $xp_terms as $term ) {
+                            if ( $term->slug === 'photo-ops' ) {
+                                $has_photo_ops = true;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    // Check for coming soon status
+                    if ( $xp_status_terms && ! is_wp_error( $xp_status_terms ) ) {
+                        foreach ( $xp_status_terms as $term ) {
+                            if ( $term->slug === 'photo-ops-coming-soon' ) { //XP Status - Coming Soon Trigger
+                                $is_coming_soon = true;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    // Photo Op Status Messages
+                    if ( $has_photo_ops ) : ?>
+                        <div class="guest-ops-price">
+                            <strong>Photo Ops:</strong> 
+                            <?php 
+                                if ( $op_price ) { //Price
+                                    echo esc_html($op_price);
+                                    if ( $is_coming_soon ) {
+                                        echo ' - Coming Soon'; //COMING SOON
+                                    } else { 
+                                        echo ' - <a href="' . esc_url($op_url) . '">Buy Photo Ops NOW**</a>'; //BUY NOW
+                                    }
+                                } else {
+                                    echo 'More Info Coming Soon*'; //NO PRICE - Coming Soon
+                                }
+                            ?> 
                         </div>
-                    <?php endif; ?><!-- END Photo Ops -->
+                    <?php endif; ?>
+                </div>
+                <!-- END Photo Ops <------------------------------------------->
+                
+                <!-- END Photo Ops -->
 
                 <!-- Appearance Days -->
                     <?php 
@@ -91,6 +136,7 @@ get_header(); /** body- main-site */
                       }
                     echo '</div>';
                     ?> <!-- END Appearance Days ---> 
+
 
 
             </article>

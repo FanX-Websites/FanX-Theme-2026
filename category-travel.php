@@ -1,8 +1,10 @@
 <?php
 /**
- * Template Name: Sponsor Category Page
+ * Template Name: Blog Category Page
  * @author FanXTheme2026
- *
+ * 
+ * Notes: 
+ * Uses classes: self-centered, self-centered-row, post-block, tax-cat,
  */
 
 get_header(); /** body- main-site */
@@ -48,6 +50,24 @@ get_header(); /** body- main-site */
                     </div>
                 <?php endif; ?>
                 <!-- END Post Thumbnail -->
+                 <!-- Post Header -->
+                <header class="entry-header">
+                    <h2 class="entry-title">
+                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                    </h2>
+                </header>
+                <!-- END Post Header -->
+
+                <!-- Post Excerpt -->
+                <div class="entry-summary">
+                    <?php the_excerpt(); ?>
+                </div>
+                <!-- END Post Excerpt -->
+
+                <!-- Read More Button/ Footer -->
+                <footer class="entry-footer">
+                <a href="<?php the_permalink(); ?>" class="button">Read More</a>
+                </footer><!-- END Read More Button/ Footer -->                   
                 
                 
                 

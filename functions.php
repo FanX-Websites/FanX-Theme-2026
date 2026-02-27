@@ -105,7 +105,7 @@ add_action('wp_enqueue_scripts', function() {
 			'functions/sitemap.php',
 		//Plugins - Third Party	
 			'acf/tweaks.php',
-			'seo/yoast.php',
+			'seo/yoast-tweaks.php',
 			'simply-static/schedule.php',
 			'simply-static/sitemap-integration.php',
 		//Admin Area 	

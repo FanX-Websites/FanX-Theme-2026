@@ -1,12 +1,16 @@
 <?php  //Functions File for ACF Features & Tweaks
 
+//FIXME: ACF Shortcode in ACF Fields Not Working  
 //TODO: Support for ACF Fields in WP Menu  
 //TODO: Allow Encoded URL in ACF Link Fields
 
-
-
 /*THEY'RE ON THE LIST:  
 Allow Shortcodes in ACF Fields & Allow Unsafe HTML in Shortcodes (for iframes, svg, etc.)*/
+
+add_action( 'acf/init', 'set_acf_settings' );
+function set_acf_settings() {
+    acf_update_setting( 'enable_shortcode', true ); //Enable Shortcodes in ACF Fields
+}
 
 //Shortcodes in ACF 
 // Wrap do_shortcode to prevent null value errors
