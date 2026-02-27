@@ -1053,7 +1053,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "https:\/\/www.google.com\/maps\/embed\/v1\/place?key=AIzaSyBce2UJABHXQqaRxPgy4J5uWHkBBprVsC0&q=",
+                    "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
                     "placeholder": "",
@@ -1093,7 +1093,7 @@
     "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1772230290,
+    "modified": 1772231849,
     "acfe_categories": {
         "dev": "Dev"
     }
