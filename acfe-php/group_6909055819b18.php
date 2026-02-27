@@ -55,6 +55,9 @@ acf_add_local_field_group(array(
 			'layout' => 'block',
 			'acfe_seamless_style' => 0,
 			'acfe_group_modal' => 0,
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'allow_backendsearch' => false,
@@ -435,9 +438,6 @@ acf_add_local_field_group(array(
 					'columns' => '6/12',
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'allow_backendsearch' => false,
@@ -488,6 +488,9 @@ acf_add_local_field_group(array(
 			'layout' => 'block',
 			'acfe_seamless_style' => 0,
 			'acfe_group_modal' => 0,
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'allow_backendsearch' => false,
@@ -808,8 +811,36 @@ acf_add_local_field_group(array(
 					'show_column_weight' => 1000,
 					'show_column_sortable' => false,
 					'key' => 'field_69090b2d3f1b4',
-					'label' => 'Autographs',
+					'label' => 'Autographs - Status',
 					'name' => 'auto_stat',
+					'aria-label' => '',
+					'type' => 'text',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => 'Purchase at Event',
+					'maxlength' => '',
+					'allow_in_bindings' => 1,
+					'placeholder' => 'Purchase at Event',
+					'prepend' => 'Status:',
+					'append' => '',
+				),
+				array(
+					'allow_backendsearch' => 1,
+					'show_column_filter' => false,
+					'allow_bulkedit' => 0,
+					'allow_quickedit' => 0,
+					'show_column' => 0,
+					'show_column_weight' => 1000,
+					'show_column_sortable' => false,
+					'key' => 'field_69a1f1167dedf',
+					'label' => 'Autographs - Call to Action',
+					'name' => 'auto_act',
 					'aria-label' => '',
 					'type' => 'text',
 					'instructions' => '',
@@ -961,9 +992,6 @@ acf_add_local_field_group(array(
 					'columns' => '6/12',
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 	),
 	'location' => array(
@@ -993,10 +1021,11 @@ acf_add_local_field_group(array(
 	'qef_simple_location_rules' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
+	'modified' => 1772230714,
 	'acfe_categories' => array(
+		'options-pages' => 'Options Pages',
 		'products' => 'Products',
 	),
-	'modified' => 1765697901,
 ));
 
 endif;

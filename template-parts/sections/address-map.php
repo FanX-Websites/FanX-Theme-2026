@@ -21,13 +21,14 @@
         <?php 
         $address = get_field('loca_address');
         $encoded = urlencode($address);
+        $api_key = get_field('google_maps_api_key', 'option'); 
         ?>
         <iframe
             width="100%"
             height="400px"
             frameborder="0"
             style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBce2UJABHXQqaRxPgy4J5uWHkBBprVsC0&q=<?php echo $encoded; ?>"
+            src="https://www.google.com/maps/embed/v1/place?key=<?php echo esc_attr($api_key); ?>&q=<?php echo $encoded; ?>"
             allowfullscreen>
         </iframe>
     </div>

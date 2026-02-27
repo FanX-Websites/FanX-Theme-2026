@@ -449,6 +449,9 @@ acf_add_local_field_group(array(
 			'acfe_group_modal' => 0,
 			'acfe_settings' => '',
 			'acfe_permissions' => '',
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'allow_backendsearch' => false,
@@ -898,9 +901,6 @@ acf_add_local_field_group(array(
 					'columns' => '6/12',
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'allow_backendsearch' => false,
@@ -1934,11 +1934,11 @@ acf_add_local_field_group(array(
 	'qef_simple_location_rules' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
+	'modified' => 1772230713,
 	'acfe_categories' => array(
 		'people' => 'People',
 		'posts' => 'Posts',
 	),
-	'modified' => 1772190407,
 ));
 
 endif;
