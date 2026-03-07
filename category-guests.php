@@ -90,7 +90,7 @@ get_header(); /** body- main-site */
                 <p>
                     <?php 
                         $news_link = get_field('news_url', 'option');
-                        $news_message = get_field('news_message', 'option');
+                        $news_message = get_field('news_message', 'option') ?? '';
                         if ($news_link && isset($news_link['url'])) {
                             echo '<a href="' . esc_url($news_link['url']) . '">' . wp_kses_post($news_message) . '</a>';
                         } else {

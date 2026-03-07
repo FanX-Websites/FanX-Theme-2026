@@ -46,7 +46,7 @@
                             
                             <!-------------- Post Excerpt --------------------->
                             <div class="updates-feed-entry-summary">
-                                <?php echo wp_kses_post( get_the_excerpt() ); ?>
+                                <?php echo wp_kses_post( get_the_excerpt() ?? '' ); ?>
                             </div>
                         
                             <!-------------- Call to Action Button --------------------->
@@ -66,7 +66,7 @@
                         <h3>More Updates Soon</h3>
                         <p>
                             <!-- Newsletter Sign-up Message -->
-                            <?php echo wp_kses_post(get_field('news_message')); ?>
+                            <?php echo wp_kses_post(get_field('news_message') ?? ''); ?>
                             <?php 
                                 $news_link = get_field('news_url');
                                 if ($news_link) {

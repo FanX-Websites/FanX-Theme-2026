@@ -93,42 +93,42 @@ add_filter( 'walker_nav_menu_start_el', function( $item_output, $item, $depth, $
         add_shortcode( 'hr', 'thembreak_df' );
 
 
-// // --- ACF Fields as shortcode --->
-//COMMENTED OUT FOR TESTING - DELETE IF NOT USED/nEEDED 
-//     // -- [acf field="field_name"] -->
-// function acf_field_shortcode( $atts ) {
-//     $a = shortcode_atts( array(
-//         'field' => '',
-//         'post_id' => false,
-//     ), $atts );
+// --- ACF Fields as shortcode --->
 
-//     if ( function_exists( 'get_field' ) && ! empty( $a['field'] ) ) {
-//         $value = get_field( $a['field'], $a['post_id'] );
+    // -- [acf field="field_name"] -->
+function acf_field_shortcode( $atts ) {
+    $a = shortcode_atts( array(
+        'field' => '',
+        'post_id' => false,
+    ), $atts );
+
+    if ( function_exists( 'get_field' ) && ! empty( $a['field'] ) ) {
+        $value = get_field( $a['field'], $a['post_id'] );
         
-//         // If no value found and no specific post_id was set, try options page
-//         if ( empty( $value ) && $a['post_id'] === false ) {
-//             $value = get_field( $a['field'], 'option' );
-//         }
+        // If no value found and no specific post_id was set, try options page
+        if ( empty( $value ) && $a['post_id'] === false ) {
+            $value = get_field( $a['field'], 'option' );
+        }
         
-//         // Handle array returns for common ACF field types
-//         if ( is_array( $value ) ) {
-//             // Image field: return image URL
-//             if ( isset( $value['url'] ) ) {
-//                 return $value['url'];
-//             }
-//             // Gallery field: return comma-separated URLs
-//             if ( isset( $value[0] ) && is_array( $value[0] ) && isset( $value[0]['url'] ) ) {
-//                 $urls = array_map( function( $img ) {
-//                     return isset( $img['url'] ) ? $img['url'] : '';
-//                 }, $value );
-//                 return implode( ',', array_filter( $urls ) );
-//             }
-//             // For other array types, return JSON for debugging/documentation
-//             return json_encode( $value );
-//         }
+        // Handle array returns for common ACF field types
+        if ( is_array( $value ) ) {
+            // Image field: return image URL
+            if ( isset( $value['url'] ) ) {
+                return $value['url'];
+            }
+            // Gallery field: return comma-separated URLs
+            if ( isset( $value[0] ) && is_array( $value[0] ) && isset( $value[0]['url'] ) ) {
+                $urls = array_map( function( $img ) {
+                    return isset( $img['url'] ) ? $img['url'] : '';
+                }, $value );
+                return implode( ',', array_filter( $urls ) );
+            }
+            // For other array types, return JSON for debugging/documentation
+            return json_encode( $value );
+        }
         
-//         return $value;
-//     }
-//     return '';
-// }
-// add_shortcode( 'acf', 'acf_field_shortcode' );
+        return $value;
+    }
+    return '';
+}
+add_shortcode( 'acf', 'acf_field_shortcode' );

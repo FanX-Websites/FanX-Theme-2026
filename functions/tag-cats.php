@@ -62,6 +62,9 @@ What this File Does:
     
     // 3- Archive Page Settings - Remove Archive Prefix on Cat/Tax Page Titles
         add_filter( 'get_the_archive_title', function( $title ) {
+            if ( empty( $title ) ) {
+                return $title;
+            }
             return preg_replace( '/^[^:]+:\s*/', '', $title );
         } );
     //END 3- Archive Page Settings - Remove Archive Prefix

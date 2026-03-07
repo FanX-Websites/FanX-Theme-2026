@@ -31,11 +31,11 @@ if ( !$section_title && !$section_sub && !$section_txt && !$blocks ) {
      
     <!-- Table Chart Section Header -->
         <h2 class="tc-section-title">
-        <?php echo wp_kses_post( $section_title ); ?></h2>
+        <?php echo wp_kses_post( $section_title ?? '' ); ?></h2>
         <h3 class="tc-section-sub">
-        <?php echo wp_kses_post( $section_sub ); ?></h3>
+        <?php echo wp_kses_post( $section_sub ?? '' ); ?></h3>
         <p class="tc-section-txt">
-        <?php echo wp_kses_post( $section_txt ); ?></p>
+        <?php echo wp_kses_post( $section_txt ?? '' ); ?></p>
 
     <!-- END Table Chart Section Header -->
 

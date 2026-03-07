@@ -14,6 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Convert memory string (e.g., "256M") to bytes
  */
 function fanx_convert_memory_to_bytes( $value ) {
+    // Handle null or non-string values
+    if ( empty( $value ) || ! is_string( $value ) ) {
+        return 0;
+    }
+    
     $value = trim( $value );
     if ( is_numeric( $value ) ) {
         return intval( $value );

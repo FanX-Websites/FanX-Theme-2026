@@ -79,4 +79,3 @@ function acf_add_allowed_svg_tag( $tags, $context ) {
 }
 
 /* API Keys & other 3rd Party Hooks*/
-

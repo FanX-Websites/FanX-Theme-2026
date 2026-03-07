@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_69a5f7e8a1bcc",
+    "title": "Features\/Activities & Special Events Statuses",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Features\/Activities & Special Events Statuses",
+    "menu_slug": "feature-options",
+    "parent_slug": "edit.php?post_type=features",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "Features\/Activities & Special Events Statuses",
+    "position": 0,
+    "redirect": false,
+    "description": "This page will update appearance statuses site-wide.",
+    "menu_icon": [],
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "modified": 1772494285
+}

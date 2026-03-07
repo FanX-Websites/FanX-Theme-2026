@@ -1064,6 +1064,31 @@
             "acfe_group_modal_close": 0,
             "acfe_group_modal_button": "",
             "acfe_group_modal_size": "large"
+        },
+        {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
+            "key": "field_69a22239d47a5",
+            "label": "Directions:",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "For security purposes, use this form for all API Keys and other sensitive information in place of inserting them directly into the theme.",
+            "new_lines": "wpautop",
+            "esc_html": 0
         }
     ],
     "location": [
@@ -1093,7 +1118,7 @@
     "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1772231849,
+    "modified": 1772233383,
     "acfe_categories": {
         "dev": "Dev"
     }

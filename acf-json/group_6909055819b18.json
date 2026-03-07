@@ -51,6 +51,9 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "allow_backendsearch": false,
@@ -206,6 +209,31 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "key": "field_690fc004df8e6",
+                    "label": "(Column 6\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "6\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_690905b602b32",
                     "label": "Main Shop Page Link (LEAP)",
                     "name": "url",
@@ -281,137 +309,6 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "key": "field_690fc004df8e6",
-                    "label": "(Column 6\/12)",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "acfe_column",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "columns": "6\/12",
-                    "endpoint": 0,
-                    "allow_in_bindings": 0
-                },
-                {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_690906ec02b35",
-                    "label": "Special Event Ticket Status",
-                    "name": "sp_stat",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "tkt_sp_stat",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "Available SOON",
-                    "maxlength": "",
-                    "allow_in_bindings": 1,
-                    "placeholder": "More Info SOON",
-                    "prepend": "Status:",
-                    "append": ""
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_6909082002b36",
-                    "label": "Special Event Tickets Link",
-                    "name": "sp_url",
-                    "aria-label": "",
-                    "type": "acfe_advanced_link",
-                    "instructions": "tkt_sp_url",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 1
-                },
-                {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_6909083b02b37",
-                    "label": "After Party Ticket Status",
-                    "name": "prt_stat",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "tkt_prt_stat",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "More Info SOON",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_6909087d02b38",
-                    "label": "After Party Ticket Link",
-                    "name": "prt_url",
-                    "aria-label": "",
-                    "type": "acfe_advanced_link",
-                    "instructions": "tkt_prt_url",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 0
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_690fbfefdf8e5",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -429,10 +326,7 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "allow_backendsearch": false,
@@ -483,6 +377,9 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "allow_backendsearch": false,
@@ -979,10 +876,7 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         }
     ],
     "location": [
@@ -1012,8 +906,9 @@
     "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1772221152,
+    "modified": 1772493121,
     "acfe_categories": {
+        "options-pages": "Options Pages",
         "products": "Products"
     }
 }

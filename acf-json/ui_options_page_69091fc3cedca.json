@@ -1,17 +1,17 @@
 {
     "key": "ui_options_page_69091fc3cedca",
-    "title": "Guest Status & Archive Page",
+    "title": "Guest Status & Option Page",
     "active": true,
     "menu_order": 0,
-    "page_title": "Guest Status & Archive Page",
-    "menu_slug": "guests-archives",
+    "page_title": "Guest Status & Option Page",
+    "menu_slug": "guests-options",
     "parent_slug": "edit.php?post_type=guests",
     "advanced_configuration": 1,
     "icon_url": "",
-    "menu_title": "Guest Status & Archive Page",
+    "menu_title": "Guest Appearance Statuses",
     "position": 0,
     "redirect": false,
-    "description": "",
+    "description": "These Changes are Triggered Site-wide on all pages\/menu items.",
     "menu_icon": [],
     "update_button": "Update",
     "updated_message": "Options Updated",
@@ -19,5 +19,5 @@
     "data_storage": "options",
     "post_id": "",
     "autoload": 0,
-    "modified": 1769155311
+    "modified": 1772767233
 }

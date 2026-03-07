@@ -29,6 +29,10 @@ function ssp_run_static_export_cron() {
 	
 	$simply_static = Simply_Static\Plugin::instance();
 	$simply_static->run_static_export();
+	
+	// Create backup only for scheduled cron jobs
+	df_backup_static_export();
+	df_cleanup_old_backups();
 }
 add_action( 'static_export_event', 'ssp_run_static_export_cron' );
 
@@ -51,6 +55,10 @@ function ssp_run_update_export_cron() {
 	
 	$simply_static = Simply_Static\Plugin::instance();
 	$simply_static->run_static_export( 0, 'update' );
+	
+	// Create backup only for scheduled cron jobs
+	df_backup_static_export();
+	df_cleanup_old_backups();
 }
 add_action( 'update_export_event', 'ssp_run_update_export_cron' );
 
@@ -94,25 +102,22 @@ function df_backup_static_export() {
 			$dest = $backup_dir . $iterator->getSubPathname();
 			if ( $file->isDir() ) {
 				wp_mkdir_p( $dest );
+				@chmod( $dest, 0755 );
 			} else {
 				copy( $file, $dest );
+				@chmod( $dest, 0644 );
 				$file_count++;
 			}
 		}
 		error_log( "Backup complete: $file_count files backed up to $backup_dir" );
+		
+		// Mark this as a scheduled backup by creating a marker file
+		file_put_contents( $backup_dir . '.scheduled', 'scheduled backup' );
+		@chmod( $backup_dir . '.scheduled', 0644 );
 	} catch ( Exception $e ) {
 		error_log( 'Backup error: ' . $e->getMessage() );
 	}
 }
-add_action( 'simply_static_finished', 'df_backup_static_export' );
-
-// Also hook to the correct Simply Static completion hooks
-add_action( 'ss_completed', function( $status, $message = '' ) {
-	if ( $status === 'success' || $status === true ) {
-		df_backup_static_export();
-		df_cleanup_old_backups();
-	}
-}, 10, 2 );
 
 // Backup Cleanup & Retention
 function df_cleanup_old_backups() {
@@ -125,12 +130,12 @@ function df_cleanup_old_backups() {
 	
 	$backups = glob( $backup_base . '*', GLOB_ONLYDIR );
 	
-	if ( ! $backups || count( $backups ) <= 7 ) {
+	if ( ! $backups || count( $backups ) <= 12 ) {
 		return;
 	}
 	
 	sort( $backups );
-	$to_delete = array_slice( $backups, 0, count( $backups ) - 7 );
+	$to_delete = array_slice( $backups, 0, count( $backups ) - 12 );
 	
 	foreach ( $to_delete as $old_backup ) {
 		try {
@@ -139,14 +144,16 @@ function df_cleanup_old_backups() {
 				RecursiveIteratorIterator::CHILD_FIRST
 			);
 			foreach ( $files as $file ) {
-				$file->isDir() ? rmdir( $file ) : unlink( $file );
+				if ( $file->isDir() ) {
+					@rmdir( $file );
+				} else {
+					@unlink( $file );
+				}
 			}
-			rmdir( $old_backup );
+			@rmdir( $old_backup );
 			error_log( 'Deleted old backup: ' . $old_backup );
 		} catch ( Exception $e ) {
 			error_log( 'Failed to delete backup ' . $old_backup . ': ' . $e->getMessage() );
 		}
 	}
 }
-add_action( 'simply_static_finished', 'df_cleanup_old_backups' );
-add_action( 'ss_finished_transferring_files_locally', 'df_cleanup_old_backups' );

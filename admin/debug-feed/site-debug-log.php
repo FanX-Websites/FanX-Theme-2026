@@ -3,6 +3,36 @@
 *  Description: A simple widget to display the latest posts from the site's RSS feed for debugging
 */
 
+/**
+ * Convert UTC timestamp in log entry to site's local timezone
+ */
+function df_convert_log_timestamp_to_local( $entry ) {
+    // Match pattern like [03-Mar-2026 01:48:52 UTC]
+    if ( preg_match( '/\[(\d{2})-([A-Za-z]{3})-(\d{4})\s+(\d{2}):(\d{2}):(\d{2})\s+UTC\]/', $entry, $matches ) ) {
+        $day = $matches[1];
+        $month = $matches[2];
+        $year = $matches[3];
+        $hour = $matches[4];
+        $minute = $matches[5];
+        $second = $matches[6];
+        
+        // Create timestamp from UTC time
+        $utc_time = strtotime( "$year-$month-$day $hour:$minute:$second", 0 );
+        
+        // Convert to site's timezone
+        $local_time = wp_date( 'M j, Y g:i:s a', $utc_time );
+        
+        // Replace UTC timestamp with bold local time
+        $entry = preg_replace(
+            '/\[\d{2}-[A-Za-z]{3}-\d{4}\s+\d{2}:\d{2}:\d{2}\s+UTC\]/',
+            "[<strong>$local_time</strong>]",
+            $entry
+        );
+    }
+    
+    return $entry;
+}
+
 function df_reg_debug_widget() {
 	global $wp_meta_boxes;
 
@@ -15,8 +45,8 @@ function df_create_debug_log_box() {
     
     // Timestamp at top
     echo '<div style="margin-bottom: 15px;">';
-    echo '<span style="color: #20848f; font-size: 12px;">Last loaded: '; //Load Timestamp
-    echo wp_kses_post( current_time( 'Y-m-d H:i:s' ) );
+    echo '<span style="color: #20848f; font-size: 12px;"><strong>Last loaded:</strong> '; //Load Timestamp
+    echo wp_kses_post( wp_date( 'F j, Y g:i a' ) );
     echo '</span>';
     echo '</div>';
     
@@ -54,12 +84,30 @@ function df_create_debug_log_box() {
         echo 'Total entries: <strong>' . intval( $total_entries ) . '</strong> | Log size: <strong>' . size_format( $file_size ) . '</strong>';
         echo '</div>';
 
-        echo '<ul style="max-height: 500px; overflow-y: auto; overflow-x: auto; color: #5bc851; background: #000000; padding: 15px; border-radius: 3px; list-style: none; margin: 0; font-family: monospace; font-size: 12px; line-height: 1.6; word-wrap: break-word; white-space: pre-wrap;">';
+        echo '<ul style="max-height: 500px; 
+                        overflow-y: auto; 
+                        overflow-x: auto; 
+                        color: #5bc851; 
+                        background: #000000; 
+                        padding: 5%;
+                        border-bottom: solid 15px #5bc851; 
+                        border-radius: 3; 
+                        list-style: none;
+                        margin: 0; 
+                        font-family: monospace; 
+                        font-size: 12px; 
+                        line-height: 1.6; 
+                        word-wrap: break-word; 
+                        white-space: pre-wrap;">';
+
         foreach ( $recent_entries as $entry ) {
+            // Convert UTC timestamp to site's local timezone
+            $entry = df_convert_log_timestamp_to_local( $entry );
+            
             // Highlight only lines with [error] tag in ORANGE
             $is_error = ( stripos( $entry, '[error]' ) !== false );
             $highlight_style = $is_error ? 'color: #ff6b00; font-weight: bold;' : '';
-            echo '<li style="' . esc_attr( $highlight_style ) . ' margin-bottom: 5px;">' . wp_kses_post( $entry ) . '</li>';
+            echo '<li style="' . esc_attr( $highlight_style ) . ' margin-bottom: 15px;">' . wp_kses_post( $entry ) . '</li>';
         }
         echo '</ul>';
         
@@ -138,7 +186,11 @@ function df_display_full_log_page() {
         <h1>Full Debug Log</h1>
         <p><em>Complete debug log for this site.</em></p>
 
-        <div style="margin-bottom: 15px; background: #f1f1f1; padding: 10px; border-radius: 3px;">
+        <div style="margin-bottom: 15px; 
+                    background: #f1f1f1; 
+                    padding: 10px; 
+                    border-radius: 3px;">
+
             <strong>Log Stats:</strong> 
             <span style="margin-left: 20px;">Total entries: <strong><?php echo intval( $total_entries ); ?></strong></span>
             <span style="margin-left: 20px;">File size: <strong><?php echo size_format( $file_size ); ?></strong></span>
@@ -150,14 +202,29 @@ function df_display_full_log_page() {
         </div>
 
         <?php if ( ! empty( $log_contents ) ) : ?>
-            <div style="background: #000000; color: #5bc851; padding: 15px; border-radius: 3px; font-family: monospace; font-size: 12px; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word; overflow: auto; max-height: 600px;">
+            <div style="background: #000000; 
+                        color: #5bc851; 
+                        padding: 15px; 
+                        border-radius: 3px; 
+                        font-family: monospace; 
+                        font-size: 12px; 
+                        line-height: 1.6; 
+                        white-space: pre-wrap; 
+                        word-wrap: break-word; 
+                        overflow: auto; 
+                        max-height: 600px;">
                 <?php
                 $lines = explode( "\n", trim( $log_contents ) );
                 foreach ( $lines as $line ) {
                     if ( ! empty( $line ) ) {
+                        // Convert UTC timestamp to site's local timezone
+                        $line = df_convert_log_timestamp_to_local( $line );
+                        
                         $is_error = ( stripos( $line, '[error]' ) !== false );
                         if ( $is_error ) {
-                            echo '<div style="color: #ff6b00; font-weight: bold; margin-bottom: 3px;">' . wp_kses_post( $line ) . '</div>';
+                            echo '<div style="color: #ff6b00; 
+                            font-weight: bold; 
+                            margin-bottom: 3px;">' . wp_kses_post( $line ) . '</div>';
                         } else {
                             echo '<div style="margin-bottom: 3px;">' . wp_kses_post( $line ) . '</div>';
                         }

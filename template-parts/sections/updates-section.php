@@ -69,7 +69,7 @@
                 <div class="updates-no-posts-message">
                     <h3>No updates Yet</h3>
                     <p>
-                        <?php echo wp_kses_post(get_field('news_message', get_option('page_on_front'))); ?>
+                        <?php echo wp_kses_post(get_field('news_message', get_option('page_on_front')) ?? ''); ?>
                         <?php 
                             $news_link = get_field('news_url', get_option('page_on_front'));
                             if ($news_link) {

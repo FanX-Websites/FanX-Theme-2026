@@ -85,20 +85,21 @@
                         $button_text    = $block['butt_txt'] ?? '';    // Button Text > .butt_txt
                         $button_subtext = $block['butt_subtxt'] ?? ''; // Button Subtext > .butt_subtxt
                         $button_link    = $block['butt_url'] ?? '';    // Button Link > .butt_url
-                        $button_class   = 'button';
                         
-                        if (!$button_text || !$button_link) {
-                            $button_class .= ' button--hidden';
-                        }
-                        
-                        if ($button_subtext) {
-                            $button_class .= ' button--has-subtext';
+                        if ($button_text && $button_link) {
+                            $button_class = 'button';
+                            
+                            if ($button_subtext) {
+                                $button_class .= ' button--has-subtext';
+                            }
+                            ?>
+                            <a href="<?php echo esc_url($button_link); ?>" class="<?php echo esc_attr($button_class); ?>">
+                                <span class="button-text"><?php echo esc_html($button_text); ?></span>
+                                <span class="button-subtext"><?php echo esc_html($button_subtext); ?></span>
+                            </a>
+                            <?php
                         }
                         ?>
-                        <a href="<?php echo esc_url($button_link); ?>" class="<?php echo esc_attr($button_class); ?>">
-                            <span class="button-text"><?php echo esc_html($button_text); ?></span>
-                            <span class="button-subtext"><?php echo esc_html($button_subtext); ?></span>
-                        </a>
                         <!-- Small Print / Disclaimer ---------------------->
                         <div class="content-block-small-print">
                             <?php echo wp_kses_post($block['small_print'] ?? ''); ?>

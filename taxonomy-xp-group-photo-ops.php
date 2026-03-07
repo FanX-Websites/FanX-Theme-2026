@@ -1,6 +1,10 @@
 <?php
 /**
- * Taxonomy Template - Forwards to category.php
+ * Template Name: Guest Category/Archive Pages 
+ * @author FanXTheme2026
+ * 
+ * //TODO: Buttons: Profile | Purchase  Buttons  
+ * 
  */
 
 get_header(); /** body- main-site */
@@ -14,13 +18,14 @@ get_header(); /** body- main-site */
     <!------------ END Page Header Container -------------------->
 
     <!-------------------------- Main Content Area --------------------->
+    
     <div class="post-grid-container"> 
         <?php
-        // Query guests CPT for the current taxonomy term
+        // Query Products CPT for the current taxonomy term
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
         $term = get_queried_object();
         $args = array(
-            'post_type' => 'guests',
+            'post_type' => 'products', //Post Type - Products
             'tax_query' => array(
                 array(
                     'taxonomy' => $term->taxonomy,
@@ -28,17 +33,32 @@ get_header(); /** body- main-site */
                     'terms' => $term->term_id,
                 ),
             ),
-            'nopaging' => true,
+            'paged' => $paged,
+            'posts_per_page' => -1, //UNLIMITED POSTS 
         );
         $query = new WP_Query( $args );
         if ( $query->have_posts() ) : ?>
         <?php
         while ( $query->have_posts() ) : $query->the_post();
-            ?>
+        ?>
+
         <!------------------- Post Block --------------------->
         <div class="post-block block">
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <?php
+                // Get button data for use throughout the post
+                $button_url = '';
+                $button_title = '';
+                if ( have_rows( 'button' ) ) :
+                    while ( have_rows( 'button' ) ) :
+                        the_row();
+                        $button_url = get_sub_field( 'url' );
+                        $button_title = get_sub_field( 'title' );
+                        break; // Only get first button
+                    endwhile;
+                endif;
+                ?>
                 
             <!-- -- Post Thumbnail -->
                 <?php if ( has_post_thumbnail() ) : ?>
@@ -58,33 +78,38 @@ get_header(); /** body- main-site */
                 </header>
                 <!-- END Post Header -->
 
-                 <!-- Autographs  -->
-                    <?php 
-                    $auto_price = get_field('xp')['auto_price'] ?? '';
-                    if ($auto_price) : ?>
-                        <div class="auto-price guest-xp">
-                            <strong>Autographs:</strong> <?php echo esc_html($auto_price); ?>
-                        </div>
-                    <?php endif; ?><!-- END Autographs -->
+                <!-- Photo Op Price -->
+                <div class="guest-op-info guest-xp">
+                    <?php echo the_field('price'); ?>
+                </div><!-- END Photo Op Price <------------------------------------------->
 
-                <!-- Appearance Days -->
+                <!-- Photo Op Days -->
                     <?php 
                     $days_cats = get_the_terms( get_the_ID(), 'days' );
                     echo '<div class="days guest-xp">';
-                    echo '<strong>Appearing:</strong> ';
+                    
                     
                     if ( ! empty( $days_cats ) && ! is_wp_error( $days_cats ) ) {
                         $links = array();
                         foreach ( $days_cats as $cat ) {
-                            $links[] = '<a href="' . esc_url( get_term_link( $cat ) ) . '">' . esc_html( $cat->name ) . '</a>';
+                            $links[] = esc_html( $cat->name );
                         }
-                        echo implode( ' | ', $links );
+                        echo implode( ' | ', $links ) . '*';
                     } else {
                         echo 'More info soon';
                       }
                     echo '</div>';
-                    ?> <!-- END Appearance Days ---> 
+                    ?> <!-- END Photo Op Days ---> 
 
+                        <!-- Read More Button/ Footer -->
+                
+                <footer class="entry-footer">
+                    <?php if ( $button_title && $button_url ) : ?>
+                        <a href="<?php echo esc_url( $button_url ); ?>" class="button" target="_blank">
+                            <?php echo esc_html( $button_title ); ?>
+                        </a>
+                    <?php endif; ?>
+                </footer><!-- END Read More Button/ Footer -->
 
             </article>
         </div>
@@ -114,6 +139,18 @@ get_header(); /** body- main-site */
         endif;
         wp_reset_postdata();
         ?><!-- END No Posts Message -->
+
+    </div><!-- END Profile Main Div --------------------->
+    <!--- SMALL PRINT -->
+        <div class="small-print">
+            <p>
+                <?php the_field('heafoo_small_print'); //Small Print ?>
+            </p>
+            <p>
+                <?php the_field('heafoo_celeb_small_print'); //Small Print ?>
+            </p>
+        </div>
+        <!-- END Small Print -->
 
     <!----- END Main Content Area----------------->
     </div><!-- END post-grid-container -->

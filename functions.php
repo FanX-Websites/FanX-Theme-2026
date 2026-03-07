@@ -113,7 +113,7 @@ add_action('wp_enqueue_scripts', function() {
 			'admin/white-label.php', //Admin White Labeling
 			'admin/customadmin.php', //Custom Admin Features	
 			'admin/custommenu.php', //Menu Customizations & Support
-			'admin/backup-feed/static-backups.php', //Static Backup Dashboard Widget
+			'simply-static/static-backups.php', //Static Backup Dashboard Widget
 			'admin/debug-feed/site-debug-log.php', //Debug Log Dashboard Widget
 			'admin/export-check/pre-export-checker.php', //Pre-Export Health Check
 			'admin/export-check/export-health-widget.php', //Export Health Dashboard Widget

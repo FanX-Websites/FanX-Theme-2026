@@ -630,22 +630,33 @@ function fanx_generate_simply_static_url_list_simple() {
     $post_types = fanx_get_sitemap_post_types();
     $taxonomies = fanx_get_sitemap_taxonomies();
     
-    // Add main sitemap URL
-    $urls[] = home_url('/sitemap.xml');
+    // Add main sitemap URL (if it exists)
+    $main_sitemap = home_url('/sitemap.xml');
+    if (!empty($main_sitemap)) {
+        $urls[] = $main_sitemap;
+    }
     
-    // Add generated static sitemap URLs
-    $upload_dir = wp_upload_dir();
-    $urls[] = home_url('/wp-content/uploads/sitemaps/sitemap-index.xml');
+    // Add generated static sitemap index URL
+    $sitemap_index = home_url('/sitemaps/sitemap-index.xml');
+    if (!empty($sitemap_index)) {
+        $urls[] = $sitemap_index;
+    }
     
     // Add individual post type sitemaps
     foreach ($post_types as $post_type) {
         if ($post_type->name === 'attachment') continue;
-        $urls[] = home_url('/wp-content/uploads/sitemaps/sitemap-' . $post_type->name . '.xml');
+        $sitemap_url = home_url('/sitemaps/sitemap-' . $post_type->name . '.xml');
+        if (!empty($sitemap_url)) {
+            $urls[] = $sitemap_url;
+        }
     }
     
     // Add individual taxonomy sitemaps
     foreach ($taxonomies as $taxonomy) {
-        $urls[] = home_url('/wp-content/uploads/sitemaps/sitemap-tax-' . $taxonomy->name . '.xml');
+        $sitemap_url = home_url('/sitemaps/sitemap-tax-' . $taxonomy->name . '.xml');
+        if (!empty($sitemap_url)) {
+            $urls[] = $sitemap_url;
+        }
     }
     
     // Collect all post URLs
@@ -658,7 +669,11 @@ function fanx_generate_simply_static_url_list_simple() {
         ]);
         
         foreach ($posts as $post) {
-            $urls[] = get_permalink($post);
+            $permalink = get_permalink($post);
+            // Only add valid, non-empty permalinks
+            if (!empty($permalink) && is_string($permalink) && strpos($permalink, 'http') === 0) {
+                $urls[] = $permalink;
+            }
         }
     }
     
@@ -673,7 +688,8 @@ function fanx_generate_simply_static_url_list_simple() {
         if (!is_wp_error($terms)) {
             foreach ($terms as $term) {
                 $term_link = get_term_link($term);
-                if (!is_wp_error($term_link)) {
+                // Only add valid term links
+                if (!is_wp_error($term_link) && !empty($term_link) && is_string($term_link) && strpos($term_link, 'http') === 0) {
                     $urls[] = $term_link;
                 }
             }
@@ -891,6 +907,11 @@ function fanx_add_urls_directly_to_ssp_db() {
     $added = 0;
     
     foreach ($urls as $url) {
+        // Skip empty URLs
+        if (empty($url)) {
+            continue;
+        }
+        
         // Check if URL already exists
         $exists = $wpdb->get_var($wpdb->prepare(
             "SELECT id FROM $table WHERE original_url = %s LIMIT 1",
@@ -903,10 +924,21 @@ function fanx_add_urls_directly_to_ssp_db() {
             $path = isset($parsed['path']) ? $parsed['path'] : '/';
             $file_path = trim(str_replace(home_url(), '', $url), '/');
             
+            // Ensure file_path is valid - never allow empty or directory-like paths
+            if (empty($file_path) || $file_path === '/' || substr($file_path, -1) === '/') {
+                $file_path = 'index.html';
+            }
+            
+            // Double-check: ensure path doesn't end with slash
+            $file_path = rtrim($file_path, '/');
+            if (empty($file_path)) {
+                $file_path = 'index.html';
+            }
+            
             // Insert into database
             $result = $wpdb->insert($table, [
                 'original_url' => $url,
-                'file_path' => $file_path ?: 'index.html',
+                'file_path' => $file_path,
                 'url_type' => 'additional-url',
                 'started_at' => current_time('mysql'),
                 'completed_at' => current_time('mysql'),

@@ -28,14 +28,14 @@ get_header();
                 The page you requested might have been removed, had its name changed, or is temporarily unavailable.
             </p>
 
-            <!-- Search Form -->
+            <!-- Search Form
             <div class="error-search">
                 <?php
-                if ( function_exists( 'get_search_form' ) ) {
-                    get_search_form();
-                }
+                // if ( function_exists( 'get_search_form' ) ) {
+                //     get_search_form();
+                // }
                 ?>
-            </div>
+            </div> -->
 
             <!-- Back to home link -->
             <div class="error-actions">
