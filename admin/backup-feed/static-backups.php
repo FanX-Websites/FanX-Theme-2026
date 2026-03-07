@@ -46,9 +46,8 @@ function df_create_static_backup_box() {
 	echo '</ul>';
 }
 
-/**
- * Get the size of a directory recursively
- */
+// Get the size of a directory recursively
+						
 function df_get_directory_size( $dir ) {
 	$size = 0;
 	
