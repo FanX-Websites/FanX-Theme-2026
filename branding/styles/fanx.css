@@ -5,17 +5,9 @@ Theme URI: https://dev.DancingFraxinus.com/fanx26
 Author: Elizabeth Moore
 Author URI: https://DancingFraxinus.com/
 
-Notes: 
-- Primary stylesheet for FanX Theme 2026
-- Used for branding the theme to FanX colors and styles
-- Replacing brutal2026.css (Currently in progress) 
-
-Future Updates: 
-- Light/Dark Mode 
-
-View Style.css for the Wireframes 
-
-//FIXME: Clean up unused styles and redundant code 
+//TODO: Light/Dark Mode Versions w/toggle activation
+//INFO: View Style.css for the Wireframes  | template-parts.css for content block styles | fanx.css for Global/Default branding styles
+//FIXME: Clean up unused styles and tighten up redundant code 
 
 **/
 
@@ -24,7 +16,8 @@ View Style.css for the Wireframes
 * {
   font-family: Arial,Helvetica,sans-serif;
 }
-/* Body  & Baic Content */
+/* Body  & Basic Content */
+
 body{
   background-color: var(--color_drk)
 }
@@ -171,8 +164,6 @@ p.small-print{
   max-width: 900px; 
   padding: 10% 3% 3%;
 }
-
-
 
 /* END Text ---------------------------------------------- */
 
@@ -643,8 +634,14 @@ body::after {
   padding: 0;
   margin: 0
 }
+.page-header.block {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 3%;
+}
 
-.page-title {
+div.page-title.block{
   width: 100%;
   text-align: center;
   margin: 0;
@@ -652,15 +649,35 @@ body::after {
 }
 
     /** Page Headers - Text */
-    h1.page-title {
-  width: 90%;
-  margin: 0;
-  padding: 0;
-  font-size: clamp(2.5rem,8vw,4rem);
-  line-height: 1.5em;
-  font-weight: 700;
-  color: var(--color_acc_brht)
-}
+  h1.page-title {
+    width: 90%;
+    margin: 0;
+    padding: 0;
+    font-size: clamp(2.5rem,8vw,4rem);
+    line-height: 1.5em;
+    font-weight: 700;
+    text-align: center; 
+    color: var(--color_acc_brht);
+  }
+  .page-subtitle{
+    width: 90%;
+    margin: 0;
+    padding: 0;
+    font-size: clamp(1.5rem,2vw,2rem);
+    line-height: 1.5em;
+    font-weight: 500;
+    text-align: center;
+    color: var(--color_acc_lght);
+  }
+  .page-subtext{
+    width: 90%;
+    margin: 0;
+    padding: 0;
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+    line-height: 1.5em;
+    text-align: center;
+    color: var(--color_acc_lght);
+  }
 
 .description {
   width: 90%;
@@ -676,7 +693,7 @@ body::after {
   line-height: 1.75em;
   text-align: center;
   font-style: italic;
-  color: var(--color_base_lght)
+  color: var(--color_base_lght);
 }
     /*END Page Headers ----------------------------------*/
 
@@ -845,406 +862,7 @@ body::after {
       font-size: 1em;
       line-height: 1.25em;
     }
-/** ---------------- TEMPLATE PARTS ---------------------------------------*/
 
-/* ------------- Content Blocks Section ------------> 
-- Refer to Wireframes in Style.css for layouts, breakpoints - */
-
-/* Default Content Blocks Section Styles */
-.cb-section {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  border-radius: 0;
-}
-
-.cb-section-inner {
-  width: 100%;
-  padding: 3% 0 9%;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.content-blocks {
-  padding: 0;
-  margin: 0;
-  width: 90%;
-  max-width: 1500px
-}
-
-.content-block {
-  padding: 30px;
-  margin: 0;
-  background-color: var(--color_lght);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; 
-  box-sizing: border-box;
-}
-/* Content Block - Content */
-.content-block p,.content-block ul li {
-  color: var(--color_fnt_blk)
-}
-
-h2.content-block-title {
-  color: var(--color_base);
-  width: 100%;
-  text-transform: uppercase;
-  font-size: clamp(1.5rem, 2vw, 2em);
-  text-align: center;
-  padding: 0;
-  margin: 0
-}
-
-h3.content-block-subtext {
-  font-size: 1.2em;
-  font-weight: 100;
-  text-align: center;
-  color: var(--color_prim);
-  width: 100%;
-  padding: 0 0 15px;
-  margin: 0
-}
-
-.content-block-small-print {
-  font-size: .9em;
-  line-height: 1.25em;
-  color: var(--color_drk);
-  text-align: center;
-  font-style: italic;
-  padding-bottom: 3%;
-  margin: 15px;
-  padding: 0
-}
-/* CB - Ticket Comparison Chart */
-.ticket-info-blocks .content-block {
-  padding: 30px;
-  margin: 0;
-  background-color: var(--color_lght);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column
-}
- /** Ticket Content Block Text Styling */
-.ticket-info-blocks .content-block-title {
-  font-weight: 700;
-  font-size: 3em;
-  line-height: 1.2em;
-  width: 100%;
-  color: var(--color_base);
-  padding: 0;
-  margin: 0
-}
-
-.ticket-info-blocks .content-block-subtext {/** Content Block Subtext*/
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  font-weight: 500;
-  font-size: 1.75em;
-  line-height: 1.35em;
-  color: var(--color_prim)
-}
-
-.ticket-info-blocks .content-block-text {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  font-style: italic;
-  font-weight: 100;
-  font-size: 1.25em;
-  line-height: 1.5em;
-  color: var(--color_base)
-}
-
-.ticket-info-blocks h5 {
-  font-size: 1.5em;
-  font-weight: 300;
-  color: var(--color_acc_lght)
-}
-
-.ticket-info-blocks li {
-  color: var(--color_fnt_blk);
-  text-align: left
-}
-
-.ticket-info-blocks p {
-  color: var(--color_fnt_blk)
-}
-
-    /* CB - Event Hour Content */
-        /** Event Info - Calendar Events List - */
-.event-info-blocks ul {
-  padding: 0;
-  margin: 0;
-  width: 90%
-}
-
-.event-info-blocks ul li {
-  list-style-type: none;
-  padding-left: 15px;
-  position: relative;
-  /*Text */  
-  line-height: 1.25em;
-  font-size: 1.2em;
-  border-top: .1px solid var(--color_acc_lght);
-  border-bottom: .1px solid var(--color_acc_lght);
-  padding: 20px
-}
-
-.event-info-blocks ul li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 2em
-}
-
-  /** Registration */
-  .content-blocks ul li:nth-child(1)::before {
-  background-color: var(--color_acc_brht)
-}
- /** Vendor Floor */
-.content-blocks ul li:nth-child(2)::before {
-  background-color: var(--color_prim_brht)
-}
- /** Panel Programming */
-.content-blocks ul li:nth-child(3)::before {
-  background-color: var(--color_base_brht)
-}
-/** END Event Info - Calendar Events List - */
-
-/* CB - ADA Content Blocks */    
-.ada-blocks .content-block {
-  max-width: 900px;
-  width: 90%;
-  padding: 20px;
-  margin: 0 auto;
-  background-color: transparent;
-  color: white;
-}
-
-.ada-blocks .content-block p,.ada-blocks .content-block li {
-  font-size: 1rem;
-  line-height: 1.2rem;
-  color: white
-}
-/* ---------- END Content Blocks Section ------------->
-/* ---------- Table Charts Section ------------->
-- Shares Wireframes w/content blocks - */
-/* Default Table Charts Section Styles */
-.tc-section {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  border-radius: 0;
-  background-color: var(--color_base);
-}
-
-.tc-section-inner {
-  width: 100%;
-  padding: 3% 0 9%;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-/* shares with content blocks -currently
-.content-blocks {
-  padding: 0;
-  margin: 0;
-  width: 90%;
-  max-width: 1500px
-}*/
-.table-charts{
-  width: 100%; 
-  padding: 0; 
-  margin: 0;
-}
-.table-chart {
-  padding: 30px;
-  margin: 0;
-  background-color: transparent;
-  border: 1px solid var(--color_base_lght);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; 
-  box-sizing: border-box;
-}
-/* Table Chart - Content */
-
-h2.tc-section-title{
-  color: var(--color_fnt_wht);
-  width: 100%;
-  text-transform: uppercase;
-  font-size: 3em;
-  text-align: center;
-  padding: 0;
-  margin: 0
-}
-p.tc-section-txt{
-  font-size: 1.2em;
-  font-weight: 100;
-  text-align: center;
-  color: var(--color_prim);
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-.table-chart p,.table-chart ul li {
-  color: var(--color_fnt_wht)
-}
-
-h2.table-chart-title {
-  color: var(--color_base_brht);
-  width: 100%;
-  text-transform: uppercase;
-  font-size: clamp(1.5rem, 3vw, 2.5em);
-  text-align: center;
-  padding: 0;
-  margin: 0
-}
-
-h3.table-chart-subtext {
-  font-size: clamp(1.2rem, 2vw, 1.75em);
-  font-weight: 100;
-  text-align: center;
-  color: var(--color_prim_lght);
-  width: 100%;
-  padding: 0 0 15px;
-  margin: 0
-}
-
-.table-chart-small-print {
-  font-size: clamp(.9rem, 1.5vw, 1.25em);
-  line-height: 1.25em;
-  color: var(--color_fnt_wht);
-  text-align: center;
-  font-style: italic;
-  padding-bottom: 3%;
-  margin: 15px;
-  padding: 0
-}
-/* ----------END Table Charts Section ------------->
-
-/* Template Part: News & Updates Section */   
- /* Updates Section - Container Styling */
-.updates-section {
-  background-color: transparent;
-  padding: 4% 0 4%;
-  margin: 0;
-  width: 100%;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center
-}
- /*Updates Section - Text Styling */
-.updates-title {
-  display: flex;
-  align-items: center;
-  justify-self: center;
-  margin: 0;
-  padding: 0;
-}
-
-h3.updates-title{
-  color: var(--color_base_brht);
-  font-weight: 600;
-  line-height: 2.5em;
-  text-transform: uppercase;
-  font-size: clamp(1.5rem,2.5vw,3rem);
-  text-align: center;
-  width: 100%;
-}
-   /** Posts Loop */
-.updates-posts-loop {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0;
-  margin: 0
-}
-
- /** Posts Container Styling */
- .updates-post-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 90%;
-  max-width: 1000px;
-  padding: 2%;
-  background-color: var(--color_drk);
-  border: 6px solid var(--color_lght)
-}
-    /** Updates Section - Article Content - Updates */
-
-        /** Post Content - Updates Section */
-.updates-post-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 3% 6%;
-  margin: 0;
-  min-width: 300px
-}
-
-.updates-entry-header {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  text-align: center
-}
-
-h3.updates-entry-title a{
-  font-size: clamp(1.2rem, 2.0vw, 2.0rem);
-  font-weight: 200;
-  color: var(--color_prim_lght);
-  text-decoration: none;
-  text-align: center;
-}
-.updates-entry-summary p{
-  font-size: 1em;
-  line-height: 1.5em;
-  text-align: center;
-  color: var(--color_lght);
-  margin: 0;
-  padding: 1% 6%
-}
-/* Updates Section END */
-
-/* Template Part: Address & Maps Section */
-.map-block {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0
-}
-
-
-/** END TEMPLATE PARTS -----------------------------------*/
 
 /** Basic Post Loop Styling ---> */
 /*Basic Blog List Layouts*/
@@ -1372,84 +990,3 @@ h2.entry-title a {
     height: auto
   }
 }
-/* Front Page Blocks ----------------------------------------------- */ 
-/* Front Page Grid Container - DESKTOP */ 
-.fp-grid {
-  display: grid;
-  grid-template: 1fr 1fr 1fr / 1.5fr 1fr;
-  gap: 20px;
-  padding: 20px 10px;
-  border-radius: 0;
-  font-family: inherit;
-}
-/* Front Page Grid Blocks */
-
-    /** Both Columns */
-.event-details.container { /* Event Details Block */
-  grid-column: 1 / span 2;
-  grid-row: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: var(--color_acc)
-}
-   /** Grid Column 1 */
-.feat-video.container {/* Featured Video Block */
-  grid-column: 1;
-  grid-row: 2 / span 2;
-  display: flex;
-  align-items: center;
-  justify-content: center
-}
-  /** Grid Column 2 */  
-.countdown.container {/* Countdown Block */
-  grid-column: 2;
-  grid-row: 1 / span 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: inherit
-}
-
-.updates-feed.container {/* Updates Feed Block */
-  grid-column: 2;
-  grid-row: 2 / span 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-    /* Responsive Grid for Mobile */
-@media (max-width: 1045px) {
-  .fp-grid {
-    grid-template:repeat(4,auto) / 1fr;
-    gap: 20px
-  }
-
-  .event-details.container {/* Event Details Block */
-    grid-column: 1;
-    grid-row: 1;
-    padding: 20px 10px
-  }
-
-  .feat-video.container{/* Featured Video Block */
-    grid-column: 1;
-    grid-row: 3
-  }
-
-  .countdown.container{/* Countdown Block */
-    grid-column: 1;
-    grid-row: 2;
-    padding: 3%
-  }
-
-  .updates-feed.container{/* Updates Feed Block */
-    grid-column: 1;
-    grid-row: 4;
-    border: 3px solid var(--color_prim_lght);
-    padding: 3%;
-    width: 90%;
-    margin: 0 auto
-  }
-}   /* END Front Page Grid Blocks - Mobile */
-    /* END - Front Page Grid Blocks ---------------------------------- */

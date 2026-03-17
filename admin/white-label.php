@@ -1,7 +1,7 @@
 <?php
 
 
-//Footer Text
+//Admin Area Footer Text
 function et_change_admin_footer_text () {
  return __("Powered by Dan Farr Productions. 
  The FanX [year] Theme was designed & coded with ♥ by <a href='https://dev.dancingfraxinus.com/'>Elizabeth Moore</a>.");

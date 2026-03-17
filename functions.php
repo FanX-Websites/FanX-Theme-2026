@@ -38,8 +38,9 @@
 			wp_enqueue_style('fanx-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get('Version')); //Stylesheet 
 
 		//Branding Stylesheets 
-			wp_enqueue_style('fanx-branding', get_template_directory_uri() . '/branding/styles/fanx.css', array(), wp_get_theme()->get('Version')); //Branding CSS
-		
+			wp_enqueue_style('fanx-branding', get_template_directory_uri() . '/branding/styles/fanx.css', array(), wp_get_theme()->get('Version')); //Branding CSS - 2026
+
+			wp_enqueue_style('template-parts', get_template_directory_uri() . '/template-parts/template-parts.css', array(), wp_get_theme()->get('Version')); //Template Parts CSS - 2026		
 		}
 		add_action('wp_enqueue_scripts', 'fanx_enqueue_assets');
 
@@ -49,7 +50,7 @@
 		}
 		add_action('wp_enqueue_scripts', 'fanx_enqueue_scripts');
 
-	//Admin JavaScript
+	//ADMIN JavaScript
 		function fanx_enqueue_admin_scripts() {
 			wp_enqueue_script('fanx-admin-scripts', get_template_directory_uri() . '/js/admin-scripts.js', array(), '1.0.0', true);
 		}
@@ -107,16 +108,19 @@ add_action('wp_enqueue_scripts', function() {
 			'acf/tweaks.php',
 			'seo/yoast-tweaks.php',
 			'simply-static/schedule.php',
+			'simply-static/enqueue.php',
 			'simply-static/sitemap-integration.php',
 		//Admin Area 	
 			'admin/repository-feed/git-widget.php',//Repository Dashboard Widget 
 			'admin/white-label.php', //Admin White Labeling
 			'admin/customadmin.php', //Custom Admin Features	
 			'admin/custommenu.php', //Menu Customizations & Support
+			'admin/post-rules.php', //Post Editor Locking System
 			'simply-static/static-backups.php', //Static Backup Dashboard Widget
 			'admin/debug-feed/site-debug-log.php', //Debug Log Dashboard Widget
 			'admin/export-check/pre-export-checker.php', //Pre-Export Health Check
 			'admin/export-check/export-health-widget.php', //Export Health Dashboard Widget
+			'admin/activity-feed/index.php', //Activity Logging & Dashboard Widget
 	];
 //END Theme Files <---
 

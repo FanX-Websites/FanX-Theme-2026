@@ -76,14 +76,17 @@ get_header(); /** body- main-site */
                     <?php 
                     $days_cats = get_the_terms( get_the_ID(), 'days' );
                     echo '<div class="days guest-xp">';
-                    echo '<strong>Appearing:</strong> ';
+                    
+                    //Sort by Day Name for correct Appearance Order
+                    $order = ['thursday' => 1, 'friday' => 2, 'saturday' => 3, 'sunday' => 4];
+                    usort($days_cats, fn($a, $b) => ($order[$a->slug] ?? 99) - ($order[$b->slug] ?? 99));
                     
                     if ( ! empty( $days_cats ) && ! is_wp_error( $days_cats ) ) {
                         $links = array();
                         foreach ( $days_cats as $cat ) {
-                            $links[] = '<a href="' . esc_url( get_term_link( $cat ) ) . '">' . esc_html( $cat->name ) . '</a>';
+                            $links[] = esc_html( $cat->name );
                         }
-                        echo implode( ' | ', $links );
+                        echo implode( ' | ', $links ) . '*';
                     } else {
                         echo 'More info soon';
                       }

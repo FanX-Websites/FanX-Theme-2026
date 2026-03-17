@@ -9,7 +9,7 @@
         
         deleteLinks.forEach(link => {
             link.addEventListener('click', function(e) {
-                if (!confirm('Are you sure you want to delete this menu?')) {
+                if (!confirm('Are you sure you want to DELETE this menu?')) {
                     e.preventDefault();
                 }
             });

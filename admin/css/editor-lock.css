@@ -1,0 +1,216 @@
+/* Editor Lock System Styles */
+
+/* Access Response Modal Overlay */
+.fanx-access-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10000;
+}
+
+.fanx-access-modal.active {
+	display: flex;
+}
+
+/* Modal Content Box */
+.fanx-modal-content {
+	background: white;
+	border-radius: 5px;
+	padding: 30px;
+	max-width: 450px;
+	box-shadow: 0 5px 40px rgba(0, 0, 0, 0.3);
+	text-align: center;
+	animation: fanx-modal-slide-in 0.3s ease-out;
+}
+
+@keyframes fanx-modal-slide-in {
+	from {
+		opacity: 0;
+		transform: translateY(-30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.fanx-modal-content h3 {
+	margin-top: 0;
+	color: #23282d;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.fanx-modal-content p {
+	color: #555;
+	line-height: 1.6;
+	margin: 15px 0;
+}
+
+/* Pending State */
+.fanx-access-pending {
+	text-align: center;
+}
+
+.fanx-access-pending .spinner {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 3px solid #f3f3f3;
+	border-top: 3px solid #0073aa;
+	border-radius: 50%;
+	animation: fanx-spin 1s linear infinite;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+@keyframes fanx-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.fanx-access-pending p {
+	margin: 0;
+}
+
+/* Status Messages */
+.fanx-access-allowed {
+	color: #28a745;
+}
+
+.fanx-access-denied {
+	color: #dc3545;
+}
+
+.fanx-access-allowed h3 {
+	color: #28a745;
+}
+
+.fanx-access-denied h3 {
+	color: #dc3545;
+}
+
+/* Access Request Modal for Editor */
+.fanx-editor-approval-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: white;
+	border: 2px solid #00a0d2;
+	border-radius: 5px;
+	padding: 25px;
+	max-width: 500px;
+	box-shadow: 0 5px 50px rgba(0, 0, 0, 0.4);
+	z-index: 100001;
+	animation: fanx-editor-modal-appear 0.4s ease-out;
+}
+
+@keyframes fanx-editor-modal-appear {
+	from {
+		opacity: 0;
+		transform: translate(-50%, -60%);
+	}
+	to {
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+}
+
+.fanx-editor-approval-modal h3 {
+	margin-top: 0;
+	color: #00a0d2;
+	font-size: 20px;
+}
+
+.fanx-editor-approval-info {
+	background-color: #f8f9fa;
+	padding: 15px;
+	border-radius: 4px;
+	margin: 15px 0;
+	border-left: 4px solid #00a0d2;
+}
+
+.fanx-editor-approval-info strong {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.fanx-editor-approval-buttons {
+	display: flex;
+	gap: 10px;
+	margin-top: 20px;
+}
+
+.fanx-editor-approval-buttons button {
+	flex: 1;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 4px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.fanx-allow-btn {
+	background-color: #28a745;
+	color: white;
+}
+
+.fanx-allow-btn:hover {
+	background-color: #218838;
+}
+
+.fanx-deny-btn {
+	background-color: #dc3545;
+	color: white;
+}
+
+.fanx-deny-btn:hover {
+	background-color: #c82333;
+}
+
+/* Request status text */
+#fanx-request-status {
+	color: #0073aa;
+	font-weight: 500;
+}
+
+#fanx-request-status.pending {
+	color: #f39c12;
+}
+
+#fanx-request-status.allowed {
+	color: #28a745;
+}
+
+#fanx-request-status.denied {
+	color: #dc3545;
+}
+
+/* Overlay for editor approval modal */
+.fanx-editor-modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 100000;
+	display: none;
+}
+
+.fanx-editor-modal-overlay.active {
+	display: block;
+}

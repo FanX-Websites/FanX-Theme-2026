@@ -64,6 +64,10 @@ get_header();
                     <?php 
                     $days_cats = get_the_terms( get_the_ID(), 'days' );
                     
+                    //Sort by Day Name for correct Appearance Order
+                    $order = ['thursday' => 1, 'friday' => 2, 'saturday' => 3, 'sunday' => 4];
+                    usort($days_cats, fn($a, $b) => ($order[$a->slug] ?? 99) - ($order[$b->slug] ?? 99));
+
                     if ( ! empty( $days_cats ) && ! is_wp_error( $days_cats ) ) {
                         echo '<div class="days guest-xp">';
                         echo '<strong>Appearing:</strong> ';

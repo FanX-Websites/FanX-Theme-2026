@@ -77,5 +77,35 @@ function acf_add_allowed_svg_tag( $tags, $context ) {
 
     return $tags;
 }
+//Custom ACF Shortcode Attributes 
+    remove_shortcode('acf');
+    add_shortcode('acf', function($atts) {
+        $atts = shortcode_atts([
+            'field'        => '',
+            'post_id'      => null,
+            'format_value' => true,
+            'format'       => 'raw', // change default format/output of shortcode
+            'url'          => '',
+            'orderby'      => '', //See below for option settings
+
+
+        ], $atts);
+    //order elements by Date, Title, ID, Rand(dom), Menu Order, Name (slug), etc.
+        $allowed = ['date', 'title', 'ID', 'rand', 'menu_order', 'name', ]; 
+        $orderby = in_array($atts['orderby'], $allowed) ? $atts['orderby'] : 'date';
+
+        $value = get_field($atts['field'], $atts['post_id']);
+
+            if (is_array($value)) { //Replace Array with String (Dynamic Links Fix)
+                return '<a href="' . esc_url($value['url']) . '" target="' . esc_attr($value['target']) . '">' . esc_html($value['title']) . '</a>';
+            }
+
+            if ($atts['format'] === 'name' && is_numeric($value)) { //Term ID > Term Name (Cateogory Name as Content Fix)
+                $term = get_term((int) $value);
+                return (!is_wp_error($term) && $term) ? $term->name : $value;
+            }
+
+        return $value;
+    });
 
 /* API Keys & other 3rd Party Hooks*/

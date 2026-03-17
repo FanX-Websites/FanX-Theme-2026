@@ -3,10 +3,10 @@
 /** Template Part: Content-Blocks Section
  * @package FanXTheme2026 
  * 
- * Notes: 
+ * //NOTE: 
  * - Classes used: 
- * - Pages using this template part: Ticket-Info, Event-Info, Exhibitor-Info 
- * - CSS Wireframes in style.css, Styling in FanX.css (differs by page ^)
+ * - Pages using this template part: Ticket-Info, Event-Info, Exhibitor-Info, Programming-info,
+ * - CSS Wireframes in style.css, Styling in template-parts.css (styling differs by page_id^)
 */
 ?>
 <!-- Content Blocks Section ------------------------->
@@ -15,10 +15,32 @@
 
     <!-- Content BLOCK ---------------------->
     <?php //Content Block - Repeater
-        $term_id = get_queried_object_id();
-        $blocks = get_field('cb', 'term_' . $term_id); // ACF Repeater Field
+        $queried_object = get_queried_object();
+        $field_key = '';
         
-        if ($blocks) :
+        // Determine correct ACF field key based on object type
+        if ($queried_object && isset($queried_object->taxonomy)) {
+            // It's a term/taxonomy
+            $field_key = 'term_' . $queried_object->term_id;
+        } else {
+            // It's a post/page
+            $field_key = get_the_ID();
+        }
+        
+        $blocks = get_field('cb', $field_key); // ACF Repeater Field
+        
+        // Check if blocks exist and have any content
+        $has_content = false;
+        if ($blocks) {
+            foreach ($blocks as $block) {
+                if (!empty($block['title']) || !empty($block['subtext']) || !empty($block['content']) || !empty($block['butt_txt']) || !empty($block['small_print'])) {
+                    $has_content = true;
+                    break;
+                }
+            }
+        }
+        
+        if ($has_content) :
             $block_count = count($blocks);
             // Determine layout class based on block count
             $layout_class = 'content-blocks'; // container class > .content-blocks
@@ -113,5 +135,3 @@
         <?php endif; ?>
     </div><!-- END Content Blocks Section - Inner ---------------------->
 </div><!-- END Content Blocks Section ----------------------->
-
-

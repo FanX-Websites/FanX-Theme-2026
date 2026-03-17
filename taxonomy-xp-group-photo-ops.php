@@ -83,11 +83,14 @@ get_header(); /** body- main-site */
                     <?php echo the_field('price'); ?>
                 </div><!-- END Photo Op Price <------------------------------------------->
 
-                <!-- Photo Op Days -->
+               <!-- Appearance Days -->
                     <?php 
                     $days_cats = get_the_terms( get_the_ID(), 'days' );
                     echo '<div class="days guest-xp">';
                     
+                    //Sort by Day Name for correct Appearance Order
+                    $order = ['thursday' => 1, 'friday' => 2, 'saturday' => 3, 'sunday' => 4];
+                    usort($days_cats, fn($a, $b) => ($order[$a->slug] ?? 99) - ($order[$b->slug] ?? 99));
                     
                     if ( ! empty( $days_cats ) && ! is_wp_error( $days_cats ) ) {
                         $links = array();
@@ -99,7 +102,7 @@ get_header(); /** body- main-site */
                         echo 'More info soon';
                       }
                     echo '</div>';
-                    ?> <!-- END Photo Op Days ---> 
+                    ?> <!-- END Appearance Days ---> 
 
                         <!-- Read More Button/ Footer -->
                 

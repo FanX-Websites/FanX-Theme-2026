@@ -366,11 +366,11 @@ acf_add_local_field_group(array(
 	'qef_simple_location_rules' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
+	'modified' => 1773255289,
 	'acfe_categories' => array(
 		'options-pages' => 'Options Pages',
 		'people' => 'People',
 	),
-	'modified' => 1772783174,
 ));
 
 endif;

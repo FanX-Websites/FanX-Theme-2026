@@ -13,11 +13,22 @@
 
 <?php
 // Check if any ACF fields have content
-$term_id = get_queried_object_id();
-$section_title = get_field( 'tc_section_title', 'term_' . $term_id );
-$section_sub = get_field( 'tc_section_sub', 'term_' . $term_id );
-$section_txt = get_field( 'tc_section_txt', 'term_' . $term_id );
-$blocks = get_field('tc', 'term_' . $term_id );
+$queried_object = get_queried_object();
+$field_key = '';
+
+// Determine correct ACF field key based on object type
+if ($queried_object && isset($queried_object->taxonomy)) {
+    // It's a term/taxonomy
+    $field_key = 'term_' . $queried_object->term_id;
+} else {
+    // It's a post/page
+    $field_key = get_the_ID();
+}
+
+$section_title = get_field( 'tc_section_title', $field_key );
+$section_sub = get_field( 'tc_section_sub', $field_key );
+$section_txt = get_field( 'tc_section_txt', $field_key );
+$blocks = get_field('tc', $field_key );
 
 // Hide entire section if no content exists
 if ( !$section_title && !$section_sub && !$section_txt && !$blocks ) {
@@ -41,7 +52,18 @@ if ( !$section_title && !$section_sub && !$section_txt && !$blocks ) {
 
     <!-- Table Chart BLOCK ---------------------->
     <?php //Content Block - Repeater
-        if ($blocks) :
+     // Check if blocks exist and have any content
+        $has_content = false;
+        if ($blocks) {
+            foreach ($blocks as $block) {
+                if (!empty($block['title']) || !empty($block['subtext']) || !empty($block['content']) || !empty($block['butt_txt']) || !empty($block['small_print'])) {
+                    $has_content = true;
+                    break;
+                }
+            }
+        }
+        
+        if ($has_content) :
             $block_count = count($blocks);
             // Determine layout class based on block count
             $layout_class = 'content-blocks'; // container class > .content-blocks

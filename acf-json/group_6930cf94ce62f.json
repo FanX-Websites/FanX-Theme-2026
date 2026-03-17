@@ -1119,6 +1119,13 @@
                 "operator": "==",
                 "value": "days"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
         ]
     ],
     "menu_order": 0,
@@ -1145,8 +1152,9 @@
         }
     },
     "acfe_note": "TO DO: \r\n- Updatre Table Chart into Group & change theme accordingly",
-    "modified": 1772237372,
+    "modified": 1773341415,
     "acfe_categories": {
-        "categories": "Categories"
+        "categories": "Categories",
+        "info-pages": "Info Pages"
     }
 }

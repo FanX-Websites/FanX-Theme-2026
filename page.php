@@ -1,6 +1,7 @@
 <?php
 /**
  * Template Name: Default Page Template - Basic Layout 
+ * 
  */
 
 get_header(); 
@@ -11,7 +12,6 @@ get_header();
     <?php get_template_part('template-parts/page-header'); ?>
 </div>
 <!------------ END Page Header Container -------------------->
-
 
 <!------------- Main Page Div ----------------------->
 <div class="page full">

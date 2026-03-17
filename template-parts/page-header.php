@@ -12,13 +12,10 @@
 <div class="page-header-section self-centered-top">          
     <div class="page-header block">
 
-        <!--------- Submenu --- [Template Part] -->
-        <div class="sub-menu container">
-            <?php get_template_part('template-parts/sub-menu'); ?>
-        </div>
+        <!--------- Submenu --- [Template Part] //NOTE: Removed until template part fixed --> 
         <!--------- END Submenu -------->
         
-        <!--Page Title Block -------->
+        <!---------------------- Page Title Block ----------------------->
             <!-- Category/Page Title -->
                 <div class="page-title block">    
                     <h1 class="page-title">
@@ -33,29 +30,30 @@
                         ?>
                     </h1>
                     
-            <!-- Subtitle -->        
+            <!-- Subtitle -->   
                 <?php 
-                if ( is_category() || is_tax() ) {
-                    $term_id = get_queried_object_id();
-                    $subtitle = get_field('subtitle', 'term_' . $term_id);
+                $queried_object = get_queried_object();
+                $field_key = '';
+                
+                // Determine correct ACF field key based on object type
+                if ($queried_object && isset($queried_object->taxonomy)) {
+                    // It's a term/taxonomy
+                    $field_key = 'term_' . $queried_object->term_id;
                 } else {
-                    $subtitle = get_field('heafoo_subtitle');
+                    // It's a post/page
+                    $field_key = get_the_ID();
                 }
+                
+                $subtitle = get_field('heafoo_subtitle', $field_key);
                 if ( $subtitle ) {
-                    printf( '<h4 class="cat-subtitle">%s</h4>', esc_html( $subtitle ) );
+                    printf( '<p class="page-subtitle">%s</p>', ( $subtitle ) );
                 } 
                 ?>
-            
             <!-- Subtext -->
                 <?php 
-                if ( is_category() || is_tax() ) {
-                    $term = get_queried_object();
-                    $subtext = get_field('subtext', 'term_' . $term->term_id);
-                } else {
-                    $subtext = get_field('heafoo_subtext');
-                }
+                $subtext = get_field('heafoo_subtext', $field_key);
                 if ( $subtext ) {
-                    printf( '<p class="cat-subtext">%s</p>', esc_html( $subtext ) );
+                    printf( '<p class="page-subtext">%s</p>', ( $subtext ) );
                 } 
                 ?>
         

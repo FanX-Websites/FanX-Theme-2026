@@ -3,9 +3,8 @@
 *  Description: A simple widget to display the latest posts from the site's RSS feed for debugging
 */
 
-/**
- * Convert UTC timestamp in log entry to site's local timezone
- */
+
+//Convert UTC timestamp in log entry to site's local timezone
 function df_convert_log_timestamp_to_local( $entry ) {
     // Match pattern like [03-Mar-2026 01:48:52 UTC]
     if ( preg_match( '/\[(\d{2})-([A-Za-z]{3})-(\d{4})\s+(\d{2}):(\d{2}):(\d{2})\s+UTC\]/', $entry, $matches ) ) {
