@@ -12,6 +12,9 @@ function df_display_github_pushes_feed() {
 	// Get RSS Feed(s)
 	include_once( ABSPATH . WPINC . '/feed.php' );
 
+	// Clear SimplePie cache for this feed to ensure fresh data
+	wp_cache_delete( md5( 'https://github.com/FanX-Websites/FanX-Theme-2026/commits.atom' ), 'feed' );
+
 	// Repository Feeds list
 	$git_feeds = array(
 		'https://github.com/FanX-Websites/FanX-Theme-2026/commits.atom'
@@ -22,6 +25,11 @@ function df_display_github_pushes_feed() {
 
 		// Get a SimplePie feed object from the specified feed source.
 		$rss = fetch_feed( $feed );
+		
+		// Debug: Log any errors
+		if ( is_wp_error( $rss ) ) {
+			echo '<!-- GitHub Feed Error: ' . esc_html( $rss->get_error_message() ) . ' -->';
+		}
 		if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
 			// Figure out how many total items there are, and choose a limit
 			$maxitems = $rss->get_item_quantity( 5 );
