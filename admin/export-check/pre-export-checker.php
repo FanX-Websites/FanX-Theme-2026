@@ -108,6 +108,50 @@ function fanx_check_yoast_status() {
 }
 
 /**
+ * Check Redirection plugin status and configuration
+ * Redirection integrates with Simply Static on this installation
+ */
+function fanx_check_redirection_status() {
+    $errors = array();
+    $warnings = array();
+    $info = array();
+    
+    if ( ! function_exists( 'is_plugin_active' ) ) {
+        include_once ABSPATH . 'wp-admin/includes/plugin.php';
+    }
+    
+    $redirection_active = is_plugin_active( 'redirection/redirection.php' );
+    
+    if ( ! $redirection_active ) {
+        $info[] = 'Redirection plugin is not active.';
+        return compact( 'errors', 'warnings', 'info' );
+    }
+    
+    // === Redirection is active ===
+    $info[] = 'Redirection plugin is active and integrated with Simply Static.';
+    
+    // Check if Redirection has any redirect rules configured
+    global $wpdb;
+    $redirect_count = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}redirection_items WHERE status = 1" );
+    
+    if ( $redirect_count > 0 ) {
+        $info[] = 'Redirection has ' . intval( $redirect_count ) . ' active redirect rule(s).';
+    } else {
+        $info[] = 'No active redirect rules configured.';
+    }
+    
+    // Check Redirection database tables
+    $redirection_tables = $wpdb->get_results( "SHOW TABLES LIKE '" . $wpdb->prefix . "redirection%'" );
+    if ( empty( $redirection_tables ) ) {
+        $warnings[] = 'Redirection database tables not found. Plugin may not be fully initialized.';
+    } else {
+        $info[] = 'Redirection database tables are present and accessible.';
+    }
+    
+    return compact( 'errors', 'warnings', 'info' );
+}
+
+/**
  * Perform comprehensive pre-export checks
  */
 function fanx_pre_export_health_check() {
@@ -115,15 +159,27 @@ function fanx_pre_export_health_check() {
     $warnings = array();
     $info = array();
     
+    // === REDIRECTION STATUS CHECK (new dedicated check) ===
+    $redirection_status = fanx_check_redirection_status();
+    if ( ! empty( $redirection_status['errors'] ) ) {
+        $issues = array_merge( $issues, $redirection_status['errors'] );
+    }
+    if ( ! empty( $redirection_status['warnings'] ) ) {
+        $warnings = array_merge( $warnings, $redirection_status['warnings'] );
+    }
+    if ( ! empty( $redirection_status['info'] ) ) {
+        $info = array_merge( $info, $redirection_status['info'] );
+    }
+    
     // === PLUGIN CONFLICT CHECKS ===
     $conflicting_plugins = array(
-        'redirection/redirection.php' => 'Redirection Plugin',
         'health-check/health-check.php' => 'Health Check & Troubleshooting',
         'wordfence/wordfence.php' => 'Wordfence Security',
         'jetpack/jetpack.php' => 'Jetpack',
         'akismet/akismet.php' => 'Akismet',
         'wp-super-cache/wp-cache.php' => 'WP Super Cache',
         'w3-total-cache/w3-total-cache.php' => 'W3 Total Cache',
+        // Note: Redirection plugin intentionally excluded - it integrates with Simply Static
     );
     
     $active_plugins = get_option( 'active_plugins', array() );
@@ -152,17 +208,18 @@ function fanx_pre_export_health_check() {
     }
     
     // === DEBUG MODE CHECK ===
-    if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-        if ( defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
-            $log_file = WP_CONTENT_DIR . '/debug.log';
-            if ( file_exists( $log_file ) ) {
-                $file_size = filesize( $log_file );
-                if ( $file_size > 1048576 ) { // > 1MB
-                    $warnings[] = 'Debug log is large (' . size_format( $file_size ) . '). Consider clearing it.';
-                }
+    // Note: WP_DEBUG is intentionally enabled to support the debug-log widget
+    // Only warn if the log file gets too large, which could impact performance
+    if ( defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
+        $log_file = WP_CONTENT_DIR . '/debug.log';
+        if ( file_exists( $log_file ) ) {
+            $file_size = filesize( $log_file );
+            if ( $file_size > 1048576 ) { // > 1MB
+                $warnings[] = 'Debug log is large (' . size_format( $file_size ) . '). Consider clearing it before export for better performance.';
+            } else {
+                $info[] = 'Debug logging is enabled (for debug-log widget).';
             }
         }
-        $warnings[] = 'WP_DEBUG is enabled. Consider disabling before export.';
     }
     
     // === SIMPLY STATIC CHECK ===
@@ -185,8 +242,31 @@ function fanx_pre_export_health_check() {
     }
     
     $export_dir = get_option( 'simply-static-local-dir' );
-    if ( $export_dir && ! wp_is_writable( dirname( $export_dir ) ) ) {
-        $issues[] = 'Static export directory is not writable: ' . $export_dir;
+    if ( $export_dir ) {
+        $export_parent = dirname( $export_dir );
+        
+        // Check basic writeability
+        if ( ! wp_is_writable( $export_parent ) ) {
+            $issues[] = 'Static export directory is not writable: ' . $export_parent;
+        }
+        
+        // Check ownership - detect permission issues from forced restores
+        if ( file_exists( $export_parent ) ) {
+            $dir_stat = @stat( $export_parent );
+            $dir_owner = @posix_getpwuid( $dir_stat['uid'] );
+            $dir_owner_name = $dir_owner ? $dir_owner['name'] : 'UID ' . $dir_stat['uid'];
+            
+            // Get current process user
+            $current_user = @get_current_user();
+            $php_user = get_current_user() ? get_current_user() : (function_exists('posix_getuid') ? @posix_getpwuid(@posix_getuid())['name'] : 'PHP-FPM/Apache');
+            
+            // Check if owned by root - likely from forced restore
+            if ( $dir_stat['uid'] === 0 ) {
+                $warnings[] = '⚠️ Export directory is owned by root. May cause permission issues during export. Consider: <code>chown -R ' . htmlspecialchars( $php_user ) . ':' . htmlspecialchars( $php_user ) . ' ' . htmlspecialchars( $export_parent ) . '</code>';
+            } elseif ( wp_is_writable( $export_parent ) ) {
+                $info[] = 'Static export directory is writable by current process: ' . htmlspecialchars( $export_parent );
+            }
+        }
     }
     
     // === POSTS & CONTENT CHECK ===

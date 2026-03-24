@@ -30,8 +30,21 @@ Checks include:
 - Premium features may create export issues
 - Previously caused broken exports on this installation
 
+#### Redirection Plugin Status (Dedicated Check)
+**ALWAYS DISPLAYED** - Redirection integrates with Simply Static on this installation
+
+Checks include:
+- **Plugin Status** - Confirm Redirection is active
+- **Redirect Rules Count** - Shows how many active redirects are configured
+- **Database Tables** - Verify Redirection tables are present and accessible
+
+**Why This Matters:**
+- Simply Static is configured to work with Redirection redirects
+- Monitoring redirect count helps track configuration complexity
+- Database table health ensures proper operation
+- Unlike generic plugins, Redirection is *intentionally* integrated here
+
 #### Plugin Conflict Detection
-- **Redirection Plugin** - Can interfere with URL rewriting
 - **Health Check & Troubleshooting** - May cause translation loading issues
 - **Wordfence Security** - Can block exports or add dynamic content
 - **Jetpack** - Cloud-hosted dependencies can break static exports
@@ -39,11 +52,14 @@ Checks include:
 - **WP Super Cache & W3 Total Cache** - Cache conflicts can corrupt exports
 
 #### System Configuration Checks
-- **Debug Mode Status** - Warns if WP_DEBUG is enabled
-- **Debug Log Size** - Alerts if debug.log exceeds 1MB
+- **Debug Mode Status** - Monitors debug.log file size (not whether debug is on)
+- **Debug Log Size** - Alerts if debug.log exceeds 1MB (can impact performance)
 - **Simply Static Installation** - Verifies plugin is active
 - **Filesystem Permissions** - Checks if wp-content is writable
-- **Export Directory** - Validates static export path is writable
+- **Export Directory** - Validates static export path is writable and ownership
+
+**Note on WP_DEBUG:**
+Debug mode (`WP_DEBUG` and `WP_DEBUG_LOG`) is intentionally enabled on this installation to support the debug-log dashboard widget. The only concern is if the log file grows very large (> 1MB), which can slow down page rendering. The widget explicitly checks log file size rather than flagging debug mode itself.
 
 #### Content Validation
 - **Post/Page Count** - Warns if no published content found

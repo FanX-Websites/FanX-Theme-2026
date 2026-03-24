@@ -23,21 +23,21 @@
                 "class": "",
                 "id": ""
             },
-            "open": 1,
+            "open": 0,
             "multi_expand": 0,
             "endpoint": 0
         },
         {
-            "allow_backendsearch": 1,
+            "allow_backendsearch": 0,
             "show_column_filter": false,
             "allow_bulkedit": 0,
-            "allow_quickedit": 1,
+            "allow_quickedit": 0,
             "show_column": 0,
             "show_column_weight": 1000,
             "show_column_sortable": false,
-            "key": "field_69093c05af102",
+            "key": "field_69bb3dd7b9531",
             "label": "Post Notes",
-            "name": "pad",
+            "name": "notes",
             "aria-label": "",
             "type": "textarea",
             "instructions": "",
@@ -53,7 +53,7 @@
             "maxlength": "",
             "allow_in_bindings": 0,
             "rows": "",
-            "placeholder": "Put whatever you need here: shortcode, reminders, content you'll need later...",
+            "placeholder": "",
             "new_lines": ""
         },
         {
@@ -90,7 +90,7 @@
             "show_column_weight": 1000,
             "show_column_sortable": false,
             "key": "field_69b4862f2b76b",
-            "label": "Info",
+            "label": "ACF Short code",
             "name": "",
             "aria-label": "",
             "type": "message",
@@ -102,8 +102,8 @@
                 "class": "",
                 "id": ""
             },
-            "message": "[acf field=\"\" post_id=\"options\" ]",
-            "new_lines": "wpautop",
+            "message": "- Basic: [acf field=\"\" post_id=\"options\" ]\r\n\r\n<b>Additional:<\/b>\r\n- Dynamic Links Field: link_format=\"url\"\r\n-",
+            "new_lines": "br",
             "esc_html": 0
         },
         {
@@ -127,7 +127,7 @@
                 "class": "",
                 "id": ""
             },
-            "open": 0,
+            "open": 1,
             "multi_expand": 0,
             "endpoint": 0
         },
@@ -196,6 +196,20 @@
                 "operator": "==",
                 "value": "participant-info"
             }
+        ],
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "all"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy_list",
+                "operator": "==",
+                "value": "all"
+            }
         ]
     ],
     "menu_order": 0,
@@ -216,7 +230,7 @@
     "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1773440800,
+    "modified": 1773878887,
     "acfe_categories": {
         "dev": "Dev"
     }

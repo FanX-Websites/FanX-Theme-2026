@@ -86,6 +86,7 @@ function acf_add_allowed_svg_tag( $tags, $context ) {
             'format_value' => true,
             'format'       => 'raw', // change default format/output of shortcode
             'url'          => '',
+            'link_format'  => 'html', // 'html' for full <a> tag, 'url' for just the URL
             'orderby'      => '', //See below for option settings
 
 
@@ -96,7 +97,12 @@ function acf_add_allowed_svg_tag( $tags, $context ) {
 
         $value = get_field($atts['field'], $atts['post_id']);
 
-            if (is_array($value)) { //Replace Array with String (Dynamic Links Fix)
+            if (is_array($value) && isset($value['url']) && isset($value['title'])) { //Replace Array with String (Dynamic Links Fix) - only for link fields
+                // If link_format is 'url', return just the URL for use in href attributes
+                if ($atts['link_format'] === 'url') {
+                    return esc_url($value['url']);
+                }
+                // Otherwise return full HTML link tag
                 return '<a href="' . esc_url($value['url']) . '" target="' . esc_attr($value['target']) . '">' . esc_html($value['title']) . '</a>';
             }
 

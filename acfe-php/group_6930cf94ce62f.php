@@ -1159,11 +1159,11 @@ acf_add_local_field_group(array(
 	),
 	'acfe_note' => 'TO DO: 
 - Updatre Table Chart into Group & change theme accordingly',
+	'modified' => 1774046200,
 	'acfe_categories' => array(
 		'categories' => 'Categories',
-		'info-pages' => 'Info Pages',
+		'event-info' => 'Event Info',
 	),
-	'modified' => 1773341415,
 ));
 
 endif;

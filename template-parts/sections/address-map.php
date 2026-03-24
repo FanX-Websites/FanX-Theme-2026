@@ -20,7 +20,7 @@
     <div class="map-block block">
         <?php 
         $address = get_field('loca_address');
-        $encoded = urlencode($address);
+        $encoded = !empty($address) ? urlencode($address) : '';
         $api_key = get_field('google_maps_api_key', 'option'); 
         ?>
         <iframe

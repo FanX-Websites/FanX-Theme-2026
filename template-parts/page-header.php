@@ -3,16 +3,14 @@
  * Template Part Name: Page Header 
  * @author FanXTheme2026
  * 
- * Notes: 
- * 
- * 
  */
 ?>
 <!--------- Page Header ----------------------->
 <div class="page-header-section self-centered-top">          
     <div class="page-header block">
 
-        <!--------- Submenu --- [Template Part] //NOTE: Removed until template part fixed --> 
+        <!--------- Submenu --- [Template Part] 
+        //NOTE: Removed until template part fixed --> 
         <!--------- END Submenu -------->
         
         <!---------------------- Page Title Block ----------------------->

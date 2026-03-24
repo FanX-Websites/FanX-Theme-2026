@@ -111,12 +111,14 @@ add_action('wp_enqueue_scripts', function() {
 			'simply-static/enqueue.php',
 			'simply-static/sitemap-integration.php',
 		//Admin Area 	
-			'admin/repository-feed/git-widget.php',//Repository Dashboard Widget 
 			'admin/white-label.php', //Admin White Labeling
 			'admin/customadmin.php', //Custom Admin Features	
 			'admin/custommenu.php', //Menu Customizations & Support
 			'admin/post-rules.php', //Post Editor Locking System
-			'simply-static/static-backups.php', //Static Backup Dashboard Widget
+			'admin/backup-feed/static-backups.php', //Static Backups Feed
+			'admin/backup-feed/wordpress-backups.php', //WordPress Backups Feed
+			'admin/backup-feed/github-pushes.php', //GitHub Pushes Feed
+			'admin/backup-feed/backup-widget.php', //Consolidated Backup & Repository Widget with Tabs
 			'admin/debug-feed/site-debug-log.php', //Debug Log Dashboard Widget
 			'admin/export-check/pre-export-checker.php', //Pre-Export Health Check
 			'admin/export-check/export-health-widget.php', //Export Health Dashboard Widget
