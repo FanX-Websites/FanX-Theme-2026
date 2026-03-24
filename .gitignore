@@ -1,0 +1,53 @@
+# OS and Editor Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/settings.json
+.idea/
+
+# Environment and Configuration
+.env
+.env.local
+.env.*.local
+wp-config.php
+config.php
+secrets.php
+
+# Dependencies
+node_modules/
+vendor/
+composer.lock
+
+# Build and Temporary Files
+dist/
+build/
+*.log
+*.tmp
+temp/
+cache/
+
+# Database and Backups
+*.sql
+*.sql.gz
+*.sql.bak
+*.bak
+*.backup
+database.backup
+
+# IDE and Development
+.vscode/workspace.code-workspace
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+
+# WordPress Specific
+wp-config-local.php
+local-config.php
