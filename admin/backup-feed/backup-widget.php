@@ -4,6 +4,18 @@
 *  with tabbed interface for easy switching between backup/push methods.
 */
 
+// Shared utility: Format bytes to human-readable size
+if ( ! function_exists( 'df_format_size_to_human' ) ) {
+	function df_format_size_to_human( $bytes ) {
+		$units = array( 'B', 'KB', 'MB', 'GB', 'TB' );
+		$bytes = max( $bytes, 0 );
+		$pow = floor( ( $bytes ? log( $bytes ) : 0 ) / log( 1024 ) );
+		$pow = min( $pow, count( $units ) - 1 );
+		$bytes /= ( 1 << ( 10 * $pow ) );
+		return round( $bytes, 2 ) . ' ' . $units[ $pow ];
+	}
+}
+
 //Dashboard Widget Registration
 function df_reg_backup_widget() {
 	wp_add_dashboard_widget(

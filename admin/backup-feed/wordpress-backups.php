@@ -6,7 +6,7 @@
 
 // Display WordPress backups for current site only
 function df_display_wordpress_backups_feed() {
-	echo '<p><i>Daily WordPress installation backups for this site. Kept for 7 days.</i></p>';
+	echo '<p><i>Monitor WP Backups here. Alert WebDev of any inconsistencies that need addressing.</i></p>';
 	
 	// Display next scheduled backup
 	df_display_next_wordpress_backup_info();
@@ -159,21 +159,10 @@ function df_get_current_site_name() {
 	// Get the WordPress installation base path
 	$wp_path = rtrim( ABSPATH, '/' );
 	
-	// Map of site paths to site names
-	$site_mapping = array(
-		'/home/ashelizmoore/fillory/fanx' => 'fanx',
-		'/home/ashelizmoore/fillory/TBCC' => 'tbcc',
-		'/home/ashelizmoore/fillory/ICC' => 'icc',
-		'/home/ashelizmoore/fillory/ATL' => 'atl',
-		'/home/ashelizmoore/fillory/Hub' => 'hub',
-		'/home/ashelizmoore/fillory/dev' => 'dev',
-	);
-	
-	// Check if current path matches any known site
-	foreach ( $site_mapping as $path => $site_name ) {
-		if ( strpos( $wp_path, $path ) === 0 ) {
-			return $site_name;
-		}
+	// Extract site folder from ABSPATH (dynamic, no hardcoding needed)
+	// e.g., /home/ashelizmoore/fillory/fanx/ → 'fanx'
+	if ( preg_match( '#/fillory/([^/]+)/?$#', $wp_path, $matches ) ) {
+		return strtolower( $matches[1] );
 	}
 	
 	return null;

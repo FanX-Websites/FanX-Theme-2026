@@ -1,6 +1,126 @@
 <?php
 /**
- * Taxonomy Template - Forwards to category.php
+ * Taxonomy Template: eXperiences (XP) Category/Archive Pages
+ * @author FanXTheme2026
+ * Default template for XP categories. 
+ * //TODO: Create Sections (template-parts) w/Headers for guests, latest updates, features, events, etc. (as needed)
  */
-get_template_part( 'category-guests' );
+get_header(); /** body- main-site */
+?>
+<!-- Category Page Body -->
+
+    <!--------------- Page Header Container [Template Part] ----------------------->
+    <div class="page-header container">
+        <?php get_template_part('template-parts/page-header'); ?>
+    </div><!-- END page-header Container -->
+    <!------------ END Page Header Container -------------------->
+
+    <!-------------------------- Basic Guest list --------------------->
+    <div class="post-grid-container"> 
+        <?php 
+        // Query guests CPT for the current xp taxonomy, excluding postponed xp-status
+        $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+        $args = array(
+            'post_type' => 'guests',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'xp', //Filter by current XP taxonomy term
+                    'field' => 'term_id',
+                    'terms' => get_queried_object_id(),
+                ),
+                array(
+                    'taxonomy' => 'xp-status',
+                    'field' => 'slug',
+                    'terms' => 'postponed', //Excluded Terms 
+                    'operator' => 'NOT IN',
+                ),
+            ),
+            'nopaging' => true,
+            'meta_key' => 'info_display_order', 
+            'orderby' => 'meta_value_num',
+            'order' => 'ASC',
+        );
+        $query = new WP_Query( $args );
+        if ( $query->have_posts() ) : ?>
+        <?php
+        while ( $query->have_posts() ) : $query->the_post();
+            ?>
+        <!------------------- Post (Guest) Block --------------------->
+        <div class="post-block block">
+
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                
+            <!-- -- Post Thumbnail -->
+                <?php if ( has_post_thumbnail() ) : ?>
+                    <div class="post-thumbnail">
+                        <a href="<?php the_permalink(); ?>">
+                            <?php the_post_thumbnail( 'medium' ); ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
+                <!-- END Post Thumbnail -->
+                
+                <!-- Post Header -->
+                <header class="entry-header">
+                    <h2 class="entry-title">
+                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                    </h2>
+                </header>
+                <!-- END Post Header -->
+
+                <!-- Fandom Tags -->
+                <div class="fandom-tags">
+                    <?php
+                    $fandoms = get_the_terms( get_the_ID(), 'fandoms' );
+                    if ( $fandoms && ! is_wp_error( $fandoms ) ) {
+                        echo '<div class="tags-list">';
+                        $tags = array();
+                        foreach ( $fandoms as $fandom ) {
+                            $tags[] = '<span class="fandom-tag">' . esc_html( $fandom->name ) . '</span>';
+                        }
+                        echo implode( ' | ', $tags );
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
+                <!-- END Fandom Tags -->
+
+            </article>
+        </div>
+        <!-- END Post Block -------------------->
+
+        <!-- No Posts Message -->
+        <?php
+            endwhile;
+        else :
+            ?>
+            <div class="no-posts-container">
+                <h3>COMING SOON</h3>
+                <p>
+                    <?php 
+                        $news_link = get_field('news_url', 'option');
+                        $news_message = get_field('news_message', 'option') ?? '';
+                        if ($news_link && isset($news_link['url'])) {
+                            echo '<a href="' . esc_url($news_link['url']) . '">' . wp_kses_post($news_message) . '</a>';
+                        } else {
+                            echo wp_kses_post($news_message);
+                        }
+                    ?>
+                </p>
+            </div>
+            <?php
+        endif;
+        wp_reset_postdata();
+        ?><!-- END No Posts Message -->
+    </div><!-- END post-grid-container -->
+    <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
+
+    <!----- END Guest List ----------------->
+
+    <!-- Latests News ------->
+     <?php get_template_part( 'template-parts/latest-news' ); ?>
+    <!-- END Latest News ------->
+
+<?php
+get_footer();
 ?>

@@ -93,6 +93,38 @@ Author URI: https://DancingFraxinus.com/
   }
 }   /* END Front Page Grid Blocks - Mobile */
 
+
+/** Event Details FP Block **/
+.event-details-fp-block {
+  /** The Block size & positioning in Partent Div*/
+  color: var(--color_fnt_wht);
+  display: flex;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding: 3% 5%;
+  margin: 0;
+  max-width: 600px;
+}
+
+.fp-event-name h1 {
+  font-size: 2rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+}
+
+.fp-event-date h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+}
+
+.fp-event-location h3 {
+  font-size: 1.2rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+}
+
 /* ------------------------------ END - Front Page Grid Blocks ---------------------------------- */
 
 
@@ -289,6 +321,7 @@ h3.content-block-subtext {
   color: white
 }
 /* ---------- END Content Blocks Section ------------->
+
 /* ---------- Table Charts Section ------------->
 - Shares Wireframes w/content blocks - */
 /* Default Table Charts Section Styles */
@@ -491,6 +524,49 @@ h3.updates-entry-title a{
   justify-content: center;
   border-radius: 0
 }
+/* END Address & Maps Section */
 
+/* PROFILE PAGE TEMPLATE PARTS --------------------------------------- */
 
-/** END TEMPLATE PARTS -----------------------------------*/
+/* Profile/Blog Headers */
+
+.profile h2{
+  font-size: 1.5em;
+  line-height: 1.75em; 
+}
+.profile h3{
+  font-size: 1em;
+  font-style: italic;
+  line-height: 1.75em;
+  padding: 0 0 1%; 
+  margin: 0; 
+}
+
+/* Guest Experiences ---- GUEST-XP */
+.guest-xp h3{
+  width: 100%; 
+}
+.guest-xp-block{ 
+  padding: 3%;
+  /* border: 1px solid var(--color_base_lght);
+  border-radius: 0; */
+  max-width: 400px;
+  width: 90%;
+}
+.guest-xp li{
+  margin: 0; 
+  padding: 0 0;
+  line-height: 1.5em;
+}
+ .guest-xp-block h3{
+    font-size: 1em;
+    font-weight: 300;
+ }
+
+ .xp-soon, .xp-now{
+  font-size: .9em; 
+  font-style: italic; 
+  
+ }
+
+/* END Profile Page Template Parts --------------------------------------- */

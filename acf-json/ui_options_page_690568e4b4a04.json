@@ -1,9 +1,9 @@
 {
     "key": "ui_options_page_690568e4b4a04",
-    "title": "Participant Info",
+    "title": "Partner\/Participant Info",
     "active": true,
     "menu_order": 0,
-    "page_title": "Participant Info",
+    "page_title": "Partner\/Participant Info",
     "menu_slug": "participant-info",
     "parent_slug": "edit.php?post_type=partner",
     "advanced_configuration": 1,
@@ -19,5 +19,5 @@
     "data_storage": "options",
     "post_id": "",
     "autoload": 0,
-    "modified": 1766005744
+    "modified": 1775076423
 }

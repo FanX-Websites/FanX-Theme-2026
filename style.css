@@ -189,36 +189,42 @@ For divs that hold template parts*/
 
 /* ----------- Div Dimensions ------------------------>*/
 /* Widths */
-.full{
-    width: 100%;
-    padding: 0; 
-    margin: 0; 
-    box-sizing: border-box;
-}
+    /* Viewport Widths */
+    .quarter{ width: 25vw !important;}
+    .third{ width: 33.33vw !important;}
+    .half{ width: 50vw !important;}
+    .two-thirds{ width: 66.66vw !important;}
+    .three-quarters{ width: 75vw !important;}
 
-.framed-900{
-    width: 90%;
-    max-width: 900px; 
-    padding: 1% 0 6%; 
-    margin: 0 auto; 
-    box-sizing: border-box;
-}
+    /* Percentages */
+    .full{
+        width: 100%;
+        padding: 0; 
+        margin: 0; 
+        box-sizing: border-box;
+    }
+    .framed-900{
+        width: 90%;
+        max-width: 900px; 
+        padding: 1% 0 6%; 
+        margin: 0 auto; 
+        box-sizing: border-box;
+    }
+    .framed-1300{
+        width: 90%;
+        max-width: 1300px; 
+        padding: 1% 0 6%; 
+        margin: 0 auto; 
+        box-sizing: border-box;
+    }
+    .framed-1500{
+        width: 90%;
+        max-width: 1500px; 
+        padding: 1% 0 6%; 
+        margin: 0 auto; 
+        box-sizing: border-box;
+    }
 
-.framed-1300{
-    width: 90%;
-    max-width: 1300px; 
-    padding: 1% 0 6%; 
-    margin: 0 auto; 
-    box-sizing: border-box;
-}
-
-.framed-1500{
-    width: 90%;
-    max-width: 1500px; 
-    padding: 1% 0 6%; 
-    margin: 0 auto; 
-    box-sizing: border-box;
-}
 /* Heights */
 .min-50{
     min-height: 50vh; 

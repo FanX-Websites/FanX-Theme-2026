@@ -57,7 +57,7 @@ function fanx_activity_log_dashboard_widget() {
 function fanx_add_activity_log_widget() {
     wp_add_dashboard_widget(
         'fanx_activity_log_widget',
-        'Site Activity Feed',
+        'User Activity Feed',
         'fanx_activity_log_dashboard_widget'
     );
 }

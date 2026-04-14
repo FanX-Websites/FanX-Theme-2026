@@ -74,6 +74,18 @@ get_header(); /** body- main-site */
                 </header>
                 <!-- END Post Header -->
 
+                <!-- Subtitle -->
+                <?php 
+                $heafoo = get_field( 'heafoo' );
+                $subtitle = isset( $heafoo['subtitle'] ) ? $heafoo['subtitle'] : '';
+                if ( $subtitle ) : 
+                ?>
+                    <div class="entry-subtitle"> 
+                        <?php echo wp_kses_post( $subtitle ); ?>
+                    </div>
+                <?php endif; ?>
+                <!-- END Subtitle -->
+
                  <!-- Post Excerpt -->
                 <div class="entry-summary">
                     <?php the_excerpt(); ?>

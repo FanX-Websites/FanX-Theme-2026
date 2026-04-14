@@ -3,5 +3,14 @@
         "activityBar.background": "#06314A",
         "titleBar.activeBackground": "#084468",
         "titleBar.activeForeground": "#F5FBFE"
-    }
+    },
+    "github.copilot.enable": false,
+    "github.copilot.autocomplete.enable": false,
+    "github.copilot.inlineCompletion.enabled": false,
+    "github.copilot.chat.enabled": false,
+    "editor.inlineSuggest.enabled": false,
+    "editor.inlineSuggest.suppressSuggestions": true,
+    "editor.suggest.enabled": false,
+    "editor.acceptSuggestionOnTab": false,
+    "editor.quickSuggestions": false
 }

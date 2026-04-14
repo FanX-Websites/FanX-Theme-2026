@@ -37,7 +37,7 @@ if ( !$section_title && !$section_sub && !$section_txt && !$blocks ) {
 ?>
 
 <!-- Table Charts Section ------------------------->
-<div class="tc-section">
+<div class="tc-section" id="table-charts">
     <div class="tc-section-inner">  
      
     <!-- Table Chart Section Header -->

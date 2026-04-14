@@ -15,6 +15,7 @@ Author URI: https://DancingFraxinus.com/
 /* Universal Font Family - Applied to all elements */
 * {
   font-family: Arial,Helvetica,sans-serif;
+  color: var(--color_fnt_wht);
 }
 /* Body  & Basic Content */
 
@@ -35,7 +36,7 @@ div{
   box-shadow: -5px -5px 8px var(--color_prim),5px 5px 8px var(--color_prim)
 }
 /* Text -------------------------------------------  */
-p {
+p{
   font-size: 1em;
   font-weight: 100;
   line-height: 1.25em;
@@ -43,20 +44,26 @@ p {
   text-align: left;
 }
 
-a {
+a{
   color: var(--color_fnt_wht);
   font-family: Arial,Helvetica,sans-serif;
   font-size: 1em;
   font-weight: 200;
   line-height: 1.5em;
-  color: var(--color_acc_lght)
+  color: var(--color_acc_lght);
 }
+
+p strong{
+  font-weight: 500;
+}
+
+
 /* Headers - Default */
 h1,h2,h3,h4,h5,h6 {
   font-family: Arial,Helvetica,sans-serif
 }
 
-h1 {
+h1{
   font-size: 3em;
   font-weight: 700;
   line-height: 1.2em;
@@ -65,7 +72,7 @@ h1 {
   margin: 0;
 }
 
-h2 {
+h2{
   font-size: 2.5em;
   font-weight: 600;
   line-height: 1.3em;
@@ -74,7 +81,7 @@ h2 {
   margin: 0;
 }
 
-h3 {
+h3{
   font-size: 2em;
   font-weight: 100;
   line-height: 1.4em;
@@ -83,7 +90,7 @@ h3 {
   margin: 0;
 }
 
-h4 {
+h4{
   font-size: 1.75em;
   font-weight: 100;
   line-height: 1.5em;
@@ -92,7 +99,7 @@ h4 {
   margin: 0;
 }
 
-h5 {
+h5{
   font-size: 1.5em;
   font-weight: 300;
   line-height: 1.6em;
@@ -101,7 +108,7 @@ h5 {
   margin: 0;
 }
 
-h6 {
+h6{
   font-size: 1.25em;
   font-weight: 200;
   line-height: 1.7em;
@@ -328,7 +335,7 @@ body::after {
   border-radius: 0;
 }
  /*Text*/
-.alert-bar a {
+.alert-bar a{
   color: white;
   text-align: center;
   text-decoration: none;
@@ -611,45 +618,12 @@ body::after {
 
    /* END ----------- Sub Menus ---------- */
 
-    /** Page Headers - Taxonomies & Categories */    
-.page-header-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0
-}
+/** Page Headers - Taxonomies & Categories */
+/* //NOTE: Header styling commented out for testing - Template Part// 
+*/   
 
-.page-header.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  border-radius: 0;
-  padding: 0;
-  margin: 0
-}
-.page-header.block {
-  width: 100%;
-  text-align: center;
-  margin: 0;
-  padding: 3%;
-}
-
-div.page-title.block{
-  width: 100%;
-  text-align: center;
-  margin: 0;
-  padding: 0
-}
-
-    /** Page Headers - Text */
-  h1.page-title {
+/** Page Headers - Text */
+  .page-title h1{
     width: 90%;
     margin: 0;
     padding: 0;
@@ -659,43 +633,55 @@ div.page-title.block{
     text-align: center; 
     color: var(--color_acc_brht);
   }
-  .page-subtitle{
-    width: 90%;
+  .page-subtitle, .page-subtitle a{ 
+    width: 1000px;
+    max-width: 90%;
     margin: 0;
     padding: 0;
     font-size: clamp(1.5rem,2vw,2rem);
-    line-height: 1.5em;
+    line-height: 1.75em;
     font-weight: 500;
     text-align: center;
     color: var(--color_acc_lght);
+    text-decoration: none; 
   }
   .page-subtext{
-    width: 90%;
+    width: 900px;
+    max-width: 90%;
     margin: 0;
-    padding: 0;
-    font-size: clamp(1rem, 1.25vw, 1.25rem);
+    padding:  1% 0;
+    font-size: clamp(.8rem, 1vw, 1rem);
     line-height: 1.5em;
+    font-weight: 100;
     text-align: center;
-    color: var(--color_acc_lght);
+    font-style: italic;
+    color: var(--color_lght);
+  }
+  .page-subtext a{
+    color: var(--color_base_brht);
+  }
+  .page-subtext strong{
+    font-weight: 700;
   }
 
-.description {
-  width: 90%;
-  max-width: 1000px;
-  padding: 0;
-  margin: 0
-}
+  /*Taxonomy Description Fields*/
+    .description { 
+      width: 1000px;
+      max-width: 90%;
+      padding: 0;
+      margin: 0
+    }
 
-.description p {
-  margin: 0;
-  padding: 0 0 2%;
-  font-size: 1em;
-  line-height: 1.75em;
-  text-align: center;
-  font-style: italic;
-  color: var(--color_base_lght);
-}
-    /*END Page Headers ----------------------------------*/
+    .description p{
+      margin: 0;
+      padding: 0 0 2%;
+      font-size: 1em;
+      line-height: 1.75em;
+      text-align: center;
+      font-style: italic;
+      color: var(--color_base_lght);
+    }
+/*END Page Headers ----------------------------------*/
 
 
 
@@ -807,7 +793,8 @@ div.page-title.block{
   .mobile-icons a {
     padding:0 7px;
     color: var(--color_fnt_wht);
-    font-size: 2.5em
+    font-size: 3em;
+    gap: 0 1.5rem; 
   }
   .ops-block,.tickets-block {
     display: none
@@ -822,9 +809,6 @@ div.page-title.block{
     padding: 0
   }
 
-  .mobile-icons.block {
-    gap: 10px
-  }
   .link-bar{
     background-color: var(--color_prim_brht);
     padding: 0 20px; 
@@ -939,7 +923,6 @@ h2.entry-title a {
   margin: 0;
   padding: 0
 }
-
 .profile-cat-header h1,.profile-cat-header a {
   text-decoration: none;
   color: var(--color_base_lght);
@@ -974,14 +957,13 @@ h2.entry-title a {
   margin: 0
 }
 
-
 @media (max-width: 1000px) {
   .profile {
     width:90%;
     padding: 3 0;
     align-items: center;
     justify-content: center;
-    flex-flow: wrap
+    flex-flow: wrap;
   }
 
   .profile-img img {

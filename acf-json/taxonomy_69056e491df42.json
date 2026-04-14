@@ -7,7 +7,8 @@
     "object_type": [
         "guests",
         "features",
-        "post"
+        "post",
+        "products"
     ],
     "advanced_configuration": 1,
     "import_source": "",
@@ -22,17 +23,17 @@
         "update_item": "Update Day",
         "add_new_item": "Add New Day",
         "new_item_name": "New Day Name",
+        "parent_item": "",
+        "parent_item_colon": "",
         "search_items": "Search Days",
-        "popular_items": "Popular Days",
-        "separate_items_with_commas": "Separate days with commas",
-        "add_or_remove_items": "Add or remove days",
-        "choose_from_most_used": "Choose from the most used days",
         "most_used": "",
         "not_found": "No days found",
         "no_terms": "No days",
         "name_field_description": "",
         "slug_field_description": "",
+        "parent_field_description": "",
         "desc_field_description": "",
+        "filter_by_item": "",
         "items_list_navigation": "Days list navigation",
         "items_list": "Days list",
         "back_to_items": "← Go to days",
@@ -48,7 +49,7 @@
     },
     "public": 1,
     "publicly_queryable": 1,
-    "hierarchical": 0,
+    "hierarchical": 1,
     "show_ui": 1,
     "show_in_menu": 1,
     "show_in_nav_menus": 1,
@@ -73,5 +74,7 @@
     "meta_box": "default",
     "meta_box_cb": "",
     "meta_box_sanitize_cb": "",
-    "modified": 1772184994
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1775004534
 }

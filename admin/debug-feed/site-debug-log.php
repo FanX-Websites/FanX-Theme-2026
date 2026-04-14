@@ -35,7 +35,7 @@ function df_convert_log_timestamp_to_local( $entry ) {
 function df_reg_debug_widget() {
 	global $wp_meta_boxes;
 
-	wp_add_dashboard_widget('widget_debug_feed', __('The Debug Log', 'df'), 'df_create_debug_log_box');
+	wp_add_dashboard_widget('widget_debug_feed', __('Debug Log & Activity Feed', 'df'), 'df_create_debug_log_box');
 }
 add_action('wp_dashboard_setup', 'df_reg_debug_widget');
 
@@ -100,6 +100,11 @@ function df_create_debug_log_box() {
                         white-space: pre-wrap;">';
 
         foreach ( $recent_entries as $entry ) {
+            // Skip cron event logs to keep feed clean
+            if ( stripos( $entry, '[WP_CRON]' ) !== false ) {
+                continue;
+            }
+            
             // Convert UTC timestamp to site's local timezone
             $entry = df_convert_log_timestamp_to_local( $entry );
             
@@ -216,6 +221,11 @@ function df_display_full_log_page() {
                 $lines = explode( "\n", trim( $log_contents ) );
                 foreach ( $lines as $line ) {
                     if ( ! empty( $line ) ) {
+                        // Skip cron event logs to keep log cleaner
+                        if ( stripos( $line, '[WP_CRON]' ) !== false ) {
+                            continue;
+                        }
+                        
                         // Convert UTC timestamp to site's local timezone
                         $line = df_convert_log_timestamp_to_local( $line );
                         

@@ -3,13 +3,6 @@
     "title": "Products - Tickets\/ Photo Ops",
     "fields": [
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_690fbf9559074",
             "label": "Tickets",
             "name": "",
@@ -23,11 +16,6 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
             "allow_backendsearch": false,
             "show_column_filter": false,
             "allow_bulkedit": false,
@@ -35,6 +23,11 @@
             "show_column": false,
             "show_column_weight": 1000,
             "show_column_sortable": false,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "key": "field_6909055802b30",
             "label": "Ticket Links & Status",
             "name": "tkt",
@@ -48,6 +41,13 @@
                 "class": "",
                 "id": ""
             },
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
@@ -56,13 +56,6 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_690fbfe1df8e4",
                     "label": "(Column 6\/12)",
                     "name": "",
@@ -76,11 +69,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "columns": "6\/12",
-                    "endpoint": 0,
-                    "allow_in_bindings": 0
-                },
-                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -88,6 +76,11 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "columns": "6\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
                     "key": "field_693e61d97df71",
                     "label": "Ticket Icon",
                     "name": "ico",
@@ -101,6 +94,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "icon_sets": [
                         "solid",
                         "regular",
@@ -118,13 +118,6 @@
                     "choices": []
                 },
                 {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_6909057d02b31",
                     "label": "Ticket Sales Status",
                     "name": "stat",
@@ -138,6 +131,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "Tickets Available SOON",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -146,13 +146,6 @@
                     "append": ""
                 },
                 {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69276e9c11d29",
                     "label": "Ticket Sales  - Call to Action",
                     "name": "act",
@@ -166,6 +159,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -174,13 +174,6 @@
                     "append": ""
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_693a1b9eab7d4",
                     "label": "Ticket Discount",
                     "name": "dis",
@@ -194,6 +187,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -202,13 +202,6 @@
                     "append": ""
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_690fc004df8e6",
                     "label": "(Column 6\/12)",
                     "name": "",
@@ -222,11 +215,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "columns": "6\/12",
-                    "endpoint": 0,
-                    "allow_in_bindings": 0
-                },
-                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -234,6 +222,11 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "columns": "6\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
                     "key": "field_690905b602b32",
                     "label": "Main Shop Page Link (LEAP)",
                     "name": "url",
@@ -247,11 +240,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 1
-                },
-                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -259,6 +247,11 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 1
+                },
+                {
                     "key": "field_690905d702b33",
                     "label": "Ticket Sale Link- Weekend",
                     "name": "wk_url",
@@ -272,11 +265,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 1
-                },
-                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -284,6 +272,11 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 1
+                },
+                {
                     "key": "field_690906a402b34",
                     "label": "Ticket Sales Link - Days",
                     "name": "day_url",
@@ -297,11 +290,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 1
-                },
-                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -309,6 +297,11 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 1
+                },
+                {
                     "key": "field_690fbfefdf8e5",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -322,6 +315,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "endpoint": 1,
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
@@ -329,13 +329,6 @@
             ]
         },
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_690fbfa559075",
             "label": "Ops\/Autos Links & Status",
             "name": "",
@@ -349,11 +342,6 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
             "allow_backendsearch": false,
             "show_column_filter": false,
             "allow_bulkedit": false,
@@ -361,6 +349,11 @@
             "show_column": false,
             "show_column_weight": 1000,
             "show_column_sortable": false,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "key": "field_690908f202b39",
             "label": "Photo Ops\/Autographs",
             "name": "celeb",
@@ -374,6 +367,13 @@
                 "class": "",
                 "id": ""
             },
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
@@ -382,15 +382,8 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_691bd31e40c6e",
-                    "label": "(Column 6\/12)",
+                    "key": "field_69d446aa0bdfd",
+                    "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
                     "type": "acfe_column",
@@ -402,18 +395,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "columns": "6\/12",
+                    "columns": "4\/12",
                     "endpoint": 0,
                     "allow_in_bindings": 0
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_693e63307df72",
                     "label": "Photo Op Icon",
                     "name": "ops_ico",
@@ -427,6 +413,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "icon_sets": [
                         "solid",
                         "regular",
@@ -444,13 +437,6 @@
                     "choices": []
                 },
                 {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_6909093502b3a",
                     "label": "Photo Ops Status",
                     "name": "ops_stat",
@@ -464,6 +450,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "Coming SOON",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -472,13 +465,6 @@
                     "append": ""
                 },
                 {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_692774437466e",
                     "label": "Photo Ops - Call to Action",
                     "name": "ops_act",
@@ -492,6 +478,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -500,19 +493,12 @@
                     "append": ""
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_6909096302b3b",
                     "label": "Photo Ops Link - Friday",
                     "name": "op_fri_url",
                     "aria-label": "",
                     "type": "acfe_advanced_link",
-                    "instructions": "",
+                    "instructions": "celeb_op_fri_url",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -525,19 +511,12 @@
                     "allow_in_bindings": 1
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_6909099b02b3d",
                     "label": "Photo Ops Link - Saturday",
                     "name": "op_sat_url",
                     "aria-label": "",
                     "type": "acfe_advanced_link",
-                    "instructions": "",
+                    "instructions": "celeb_op_sat_url",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -550,19 +529,12 @@
                     "allow_in_bindings": 1
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_690909a802b3e",
                     "label": "Photo Ops Link - Sunday\/ Thursday",
                     "name": "op_sun_url",
                     "aria-label": "",
                     "type": "acfe_advanced_link",
-                    "instructions": "",
+                    "instructions": "op_sun_url",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -575,68 +547,8 @@
                     "allow_in_bindings": 1
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_690909c902b3f",
-                    "label": "Group Photo Ops",
-                    "name": "grp_ops_stat",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "Coming SOON",
-                    "maxlength": "",
-                    "allow_in_bindings": 1,
-                    "placeholder": "Coming SOON",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_690909f002b40",
-                    "label": "Group Photo Ops LInk",
-                    "name": "grp_ops_url",
-                    "aria-label": "",
-                    "type": "acfe_advanced_link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 1
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_691bd33140c6f",
-                    "label": "(Column 6\/12)",
+                    "key": "field_69d446c30bdfe",
+                    "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
                     "type": "acfe_column",
@@ -648,21 +560,14 @@
                         "class": "",
                         "id": ""
                     },
-                    "columns": "6\/12",
+                    "columns": "4\/12",
                     "endpoint": 0,
                     "allow_in_bindings": 0
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_693e64157df74",
-                    "label": "Autograph Icon",
-                    "name": "auto_ico",
+                    "key": "field_69d9f48d23003",
+                    "label": "Group Ops Icon",
+                    "name": "grp_ops_ico",
                     "aria-label": "",
                     "type": "font-awesome",
                     "instructions": "auto_ico",
@@ -690,13 +595,142 @@
                     "choices": []
                 },
                 {
-                    "allow_backendsearch": 1,
+                    "key": "field_690909c902b3f",
+                    "label": "Group Photo Ops Status",
+                    "name": "grp_ops_stat",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Coming SOON",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "Coming SOON",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69d9f4321fe4e",
+                    "label": "Group Photo Ops  - Call to Action",
+                    "name": "grp_ops_act",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Coming SOON",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "Coming SOON",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69d8737fb4720",
+                    "label": "Group Photo Ops link",
+                    "name": "grp_ops_url",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "celeb_grp_ops_url",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69c747f2b238d",
+                    "label": "Photo Ops FAQ",
+                    "name": "ops_faq",
+                    "aria-label": "",
+                    "type": "acfe_advanced_link",
+                    "instructions": "celeb_ops_faq",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 1
+                },
+                {
+                    "key": "field_69d446d90bdff",
+                    "label": "(Column 4\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "4\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_693e64157df74",
+                    "label": "Autograph Icon",
+                    "name": "auto_ico",
+                    "aria-label": "",
+                    "type": "font-awesome",
+                    "instructions": "auto_ico",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_backendsearch": false,
                     "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "icon_sets": [
+                        "solid",
+                        "regular",
+                        "brands"
+                    ],
+                    "custom_icon_set": "",
+                    "default_label": "&lt;i class=\"fa-classic fa-solid fa-images fa-fw\"&gt;&lt;\/i&gt; Images",
+                    "default_value": "{\"family\" : \"classic\", \"style\" : \"solid\", \"id\" : \"images\", \"label\" : \"Images\", \"unicode\" : \"f302\"}",
+                    "save_format": "element",
+                    "allow_null": 1,
+                    "show_preview": 1,
+                    "enqueue_fa": 1,
+                    "allow_in_bindings": 1,
+                    "fa_live_preview": "",
+                    "choices": []
+                },
+                {
                     "key": "field_69090b2d3f1b4",
                     "label": "Autographs - Status",
                     "name": "auto_stat",
@@ -710,6 +744,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "Purchase at Event",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -718,13 +759,6 @@
                     "append": ""
                 },
                 {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69a1f1167dedf",
                     "label": "Autographs - Call to Action",
                     "name": "auto_act",
@@ -738,6 +772,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "Purchase at Event",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -746,19 +787,12 @@
                     "append": ""
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69090b883f1b5",
                     "label": "Autographs Link",
                     "name": "auto_url",
                     "aria-label": "",
                     "type": "acfe_advanced_link",
-                    "instructions": "",
+                    "instructions": "celeb_auto_url",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -771,19 +805,12 @@
                     "allow_in_bindings": 1
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_69090ba33f1b6",
-                    "label": "Celeb Row eXtras",
-                    "name": "row_xtra_stat",
+                    "key": "field_69c74822b238e",
+                    "label": "Autographs FAQ",
+                    "name": "autos_faq",
                     "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
+                    "type": "acfe_advanced_link",
+                    "instructions": "celeb_autos_faq",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -791,51 +818,17 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Purchase at Event",
-                    "maxlength": "",
-                    "allow_in_bindings": 1,
-                    "placeholder": "Status:",
-                    "prepend": "",
-                    "append": ""
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 1
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_69090bd23f1b7",
-                    "label": "Celeb Row eXtras - Link",
-                    "name": "row_xtra_url",
+                    "key": "field_69d9f54ced39c",
+                    "label": "Celeb eXtras Link #1",
+                    "name": "extras_url_1",
                     "aria-label": "",
-                    "type": "acfe_advanced_link",
-                    "instructions": "",
-                    "required": false,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [],
-                    "taxonomy": []
-                },
-                {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_69090c193f1b9",
-                    "label": "Celeb Row eXtras - Details",
-                    "name": "_row_xtra_deet",
-                    "aria-label": "",
-                    "type": "textarea",
-                    "instructions": "",
+                    "type": "text",
+                    "instructions": "celeb_extras_url_1",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -844,27 +837,19 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "acfe_textarea_code": 0,
                     "maxlength": "",
-                    "allow_in_bindings": 1,
-                    "rows": 4,
+                    "allow_in_bindings": 0,
                     "placeholder": "",
-                    "new_lines": ""
+                    "prepend": "",
+                    "append": ""
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_691bd34940c70",
-                    "label": "(Column Endpoint)",
-                    "name": "",
+                    "key": "field_69d9f5bded39d",
+                    "label": "Celeb eXtras Link #2",
+                    "name": "extras_url_2",
                     "aria-label": "",
-                    "type": "acfe_column",
-                    "instructions": "",
+                    "type": "text",
+                    "instructions": "celeb_extras_url_2",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -872,9 +857,12 @@
                         "class": "",
                         "id": ""
                     },
-                    "endpoint": 1,
+                    "default_value": "",
+                    "maxlength": "",
                     "allow_in_bindings": 0,
-                    "columns": "6\/12"
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         }
@@ -898,15 +886,16 @@
     "description": "Tickets. Autographs. Photo Ops. Special Events",
     "show_in_rest": 1,
     "display_title": "Products Options Page",
+    "allow_ai_access": false,
+    "ai_description": "",
     "acfe_autosync": [
         "php",
         "json"
     ],
     "acfe_form": 0,
-    "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1772493121,
+    "modified": 1775892415,
     "acfe_categories": {
         "options-pages": "Options Pages",
         "products": "Products"

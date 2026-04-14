@@ -1,6 +1,10 @@
 <?php
 /**
- * Taxonomy Template - Forwards to category.php
+ * Template Name: XP Status Category/Archive Pages 
+ * @author FanXTheme2026
+ * 
+ * Notes: 
+ * //TODO: 
  */
 
 get_header(); /** body- main-site */
@@ -16,32 +20,28 @@ get_header(); /** body- main-site */
     <!-------------------------- Main Content Area --------------------->
     <div class="post-grid-container"> 
         <?php
-        // Query guests CPT for the current taxonomy term, excluding postponed xp-status
+        // Query guests CPT for the current xp-status taxonomy
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-        $term = get_queried_object();
         $args = array(
             'post_type' => 'guests',
             'tax_query' => array(
                 array(
-                    'taxonomy' => $term->taxonomy,
-                    'field' => 'term_id',
-                    'terms' => $term->term_id,
-                ),
-                array(
                     'taxonomy' => 'xp-status',
-                    'field' => 'slug',
-                    'terms' => 'postponed',
-                    'operator' => 'NOT IN',
+                    'field' => 'term_id',
+                    'terms' => get_queried_object_id(),
                 ),
             ),
             'nopaging' => true,
+            'meta_key' => 'info_display_order',
+            'orderby' => 'meta_value_num',
+            'order' => 'ASC',
         );
         $query = new WP_Query( $args );
         if ( $query->have_posts() ) : ?>
         <?php
         while ( $query->have_posts() ) : $query->the_post();
             ?>
-        <!------------------- Post Block --------------------->
+        <!------------------- Post (Guest) Block --------------------->
         <div class="post-block block">
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -64,33 +64,22 @@ get_header(); /** body- main-site */
                 </header>
                 <!-- END Post Header -->
 
-                 <!-- Autographs  -->
-                    <?php 
-                    $auto_price = get_field('xp')['auto_price'] ?? '';
-                    if ($auto_price) : ?>
-                        <div class="auto-price guest-xp">
-                            <strong>Autographs:</strong> <?php echo esc_html($auto_price); ?>
-                        </div>
-                    <?php endif; ?><!-- END Autographs -->
-
-                <!-- Appearance Days -->
-                    <?php 
-                    $days_cats = get_the_terms( get_the_ID(), 'days' );
-                    echo '<div class="days guest-xp">';
-                    echo '<strong>Appearing:</strong> ';
-                    
-                    if ( ! empty( $days_cats ) && ! is_wp_error( $days_cats ) ) {
-                        $links = array();
-                        foreach ( $days_cats as $cat ) {
-                            $links[] = '<a href="' . esc_url( get_term_link( $cat ) ) . '">' . esc_html( $cat->name ) . '</a>';
+                <!-- Fandom Tags -->
+                <div class="fandom-tags">
+                    <?php
+                    $fandoms = get_the_terms( get_the_ID(), 'fandoms' );
+                    if ( $fandoms && ! is_wp_error( $fandoms ) ) {
+                        echo '<div class="tags-list">';
+                        $tags = array();
+                        foreach ( $fandoms as $fandom ) {
+                            $tags[] = '<span class="fandom-tag">' . esc_html( $fandom->name ) . '</span>';
                         }
-                        echo implode( ' | ', $links );
-                    } else {
-                        echo 'More info soon';
-                      }
-                    echo '</div>';
-                    ?> <!-- END Appearance Days ---> 
-
+                        echo implode( ' | ', $tags );
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
+                <!-- END Fandom Tags -->
 
             </article>
         </div>
@@ -99,7 +88,6 @@ get_header(); /** body- main-site */
         <!-- No Posts Message -->
         <?php
             endwhile;
-            wp_reset_postdata();
         else :
             ?>
             <div class="no-posts-container">
@@ -120,10 +108,9 @@ get_header(); /** body- main-site */
         endif;
         wp_reset_postdata();
         ?><!-- END No Posts Message -->
-
+    </div><!-- END post-grid-container -->
     <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
     <!----- END Main Content Area----------------->
-    </div><!-- END post-grid-container -->
 
 <?php
 get_footer();

@@ -102,69 +102,6 @@ Custom Admin Area, Dashboard, Admin Columns,etc
 
 // <---- END Admin Bar --
 
-//--- Admin Columns ---> 
-    //Custom Column Layout ---> 
-    function df_custom_admin_columns($columns) {
-        $columns = array(
-            'cb' => $columns['cb'], //Checkbox
-            'thumbnail' => __('Thumbnail'), //Thumbnail
-            'title' => __('Title'), //Post Title
-            'slug' => __('Slug'), //Slug
-            'categories' => __('Main Cats'), //Main Category
-            'tags' => __('XP Status'), //Xp Status
-            'date' => __('Date'), //Date Published
-            );
-            return $columns;
-        }
-        function df_apply_columns_to_all_post_types() {
-            $all_post_types = get_post_types(array('public' => true), 'names'); // Get all public post types
-        
-            foreach ($all_post_types as $post_type) {
-                add_filter("manage_edit-{$post_type}_columns", 'df_custom_admin_columns');
-            }
-        }
-        add_action('admin_init', 'df_apply_columns_to_all_post_types');
-
-    // Populate custom column data
-        function df_custom_admin_columns_content($column, $post_id){
-            switch ($column) {
-                case 'thumbnail':
-                    echo get_the_post_thumbnail($post_id, array(150, 150));
-                    break;
-                case 'slug':
-                    $post = get_post($post_id);
-                    echo $post->post_name;
-                    break;
-        
-        }
-    }
-    //Apply to all post types dynamically
-        function df_apply_columns_content_to_all_post_types() {
-            $all_post_types = get_post_types(array('public' => true), 'names'); // Get all public post types
-
-            foreach ($all_post_types as $post_type) {
-                add_action("manage_{$post_type}_posts_custom_column", 'df_custom_admin_columns_content', 10, 2);
-            }
-        }
-        add_action('admin_init', 'df_apply_columns_content_to_all_post_types');
-    
-    //Title Column 
-        function df_custom_column_title($column, $post_id) {
-            if ($column === 'title') { 
-                $post = get_post($post_id);
-
-                // Display the title
-                echo '<strong>' . get_the_title($post_id) . '</strong>';
-                
-                // Append the slug below the title
-                echo '<br><small style="color: #888;">Slug: ' . esc_html($post->post_name) . '</small>';
-            }
-        }
-        add_action('manage_posts_custom_column', 'df_custom_column_title', 10, 2);
-        add_action('manage_pages_custom_column', 'df_custom_column_title', 10, 2);
-
-// --- END Admin Columns <-- 
-
 
 
 // -- Admin Menu --->

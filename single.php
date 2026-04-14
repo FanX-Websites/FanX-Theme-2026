@@ -6,7 +6,7 @@
  * Notes: 
  * Uses classes: profile, profile-header, profile-details, profile-img, profile-content, small-print
  * Needs: Small Print at Bottom - Not showing 
- * //FIXME: Replace current layout with CSS BLocks 
+ * //FIXME: Replace current layout with CSS Grid Blocks 
  * //TODO: Guest eXperience Conditionals - ie PhotoOps 'coming soon' conditional to guest expereince status 
  */
 
@@ -40,7 +40,7 @@ get_header();
                             echo '</div>';
                         }
                     ?><!-- END Main Category -->
-                </h1><!-- Profile Header Text --> 
+                </h1 class="profile"><!-- Profile Header Text --> 
         </div><!--END Profile Header -->
         </div><!-- END Self Centered -->
 
@@ -51,7 +51,7 @@ get_header();
             <!-- Profile Main Section ------------------->
             <div class="profile self-centered-row"> <!-- Profile Responsive Section-->   
 
-            <!-- Profile Image and Links -------------->
+            <!-- Profile Image and Links ----------------------------------------->
             <?php if ( has_post_thumbnail() ) : ?>
             <div class="profile-details block">
 
@@ -60,121 +60,26 @@ get_header();
                     <?php the_post_thumbnail(); //Thumbnail ?> 
                 </div><!-- END profile-img -->
 
-                 <!-- Appearance Days -->
+                <!-- Appearance Days //NOTE: Conditional on Guest/Feature remove/update when seprate post templates 
+                 -->
                     <?php 
-                    $days_cats = get_the_terms( get_the_ID(), 'days' );
-                    
-                    if ( ! empty( $days_cats ) && ! is_wp_error( $days_cats ) ) {
-                        //Sort by Day Name for correct Appearance Order
-                        $order = ['thursday' => 1, 'friday' => 2, 'saturday' => 3, 'sunday' => 4];
-                        usort($days_cats, fn($a, $b) => ($order[$a->slug] ?? 99) - ($order[$b->slug] ?? 99));
-                        echo '<div class="days guest-xp">';
-                        echo '<strong>Appearing:</strong> ';
-                        $links = array();
-                        foreach ( $days_cats as $cat ) {
-                            $links[] = '<a href="' . esc_url( get_term_link( $cat ) ) . '">' . esc_html( $cat->name ) . '</a>';
-                        }
-                        echo implode( ' | ', $links ) . '*';
-                        echo '</div>';
+                    if ( get_post_type() === 'guests' || get_post_type() === 'features' ) {
+                        get_template_part( 'template-parts/profiles/appearance-days' ); 
                     }
-                    ?> 
+                    ?>
                 <!-- END Appearance Days ---> 
-            
-                <!-- Photo Ops -------------------------------------------------------->
-                <div class="guest-op-info guest-xp">
-                    <?php 
-                    $op_price = get_field('xp')['op_price'] ?? ''; //Price
-                    $op_url = get_field('xp')['op_url'] ?? ''; //Leap Link
-                    $xp_terms = get_the_terms( get_the_ID(), 'xp' ); //eXperienece Category
-                    $xp_status_terms = get_the_terms( get_the_ID(), 'xp-status' ); //XP Status 
-                    $has_photo_ops = false;
-                    $is_coming_soon = false;
-                    
-                    // Photo Op XP Category Trigger
-                    if ( $xp_terms && ! is_wp_error( $xp_terms ) ) {
-                        foreach ( $xp_terms as $term ) {
-                            if ( $term->slug === 'photo-ops' ) {
-                                $has_photo_ops = true;
-                                break;
-                            }
-                        }
-                    }
-                    
-                    // Check for coming soon status
-                    if ( $xp_status_terms && ! is_wp_error( $xp_status_terms ) ) {
-                        foreach ( $xp_status_terms as $term ) {
-                            if ( $term->slug === 'photo-ops-coming-soon' ) { //XP Status - Coming Soon Trigger
-                                $is_coming_soon = true;
-                                break;
-                            }
-                        }
-                    }
-                    
-                    // Photo Op Status Messages
-                    if ( $has_photo_ops ) : ?>
-                        <div class="guest-ops-price">
-                            <strong>Photo Ops:</strong> 
-                            <?php 
-                                if ( $op_price ) { //Price
-                                    echo esc_html($op_price);
-                                    if ( $is_coming_soon ) {
-                                        echo ' - Coming Soon'; //COMING SOON
-                                    } else { 
-                                        echo ' - <a href="' . esc_url($op_url) . '">Buy Photo Ops NOW**</a>'; //BUY NOW
-                                    }
-                                } else {
-                                    echo 'More Info Coming Soon*'; //NO PRICE - Coming Soon
-                                }
-                            ?> 
-                        </div>
-                    <?php endif; ?>
-                </div>
-                <!-- END Photo Ops <------------------------------------------->
 
-            <!-- Autographs ------------------------------>
+                <!-- Guest Experiences //NOTE: Conditional on Guest/Feature remove/update when seprate post templates 
+                 -->
                     <?php 
-                    $auto_price = get_field('xp')['auto_price'] ?? '';
-                    $xp_terms = get_the_terms( get_the_ID(), 'xp' ); //eXperienece Category
-                    $xp_status_terms = get_the_terms( get_the_ID(), 'xp-status' ); //XP Status
-                    $has_autographs = false;
-                    $has_pre_purchase_autographs = false;
-                    
-                    // Autographs XP Category Trigger
-                    if ( $xp_terms && ! is_wp_error( $xp_terms ) ) {
-                        foreach ( $xp_terms as $term ) {
-                            if ( $term->slug === 'autographs' ) {
-                                $has_autographs = true;
-                                break;
-                            }
-                        }
+                    if ( get_post_type() === 'guests' || get_post_type() === 'features' ) {
+                        get_template_part( 'template-parts/profiles/experiences' ); 
                     }
-                    // Check for pre-purchase autographs status
-                    if ( $xp_status_terms && ! is_wp_error( $xp_status_terms ) ) {
-                        foreach ( $xp_status_terms as $term ) {
-                            if ( $term->slug === 'pre-purchase-autographs' ) {
-                                $has_pre_purchase_autographs = true;
-                                break;
-                            }
-                        }
-                    } 
-                    if ( $has_autographs ) : ?>
-                        <div class="auto-price guest-xp">
-                            <strong>Autographs:</strong> 
-                                <?php 
-                                    echo esc_html($auto_price);
-                                    if ( $has_pre_purchase_autographs ) { 
-                                        $celeb_auto_link = get_field('celeb_auto_url', 'option'); 
-                                        $link_url = is_array($celeb_auto_link) ? ($celeb_auto_link['url'] ?? '') : $celeb_auto_link;
-                                        echo ' - <a href="' . esc_url($link_url) . '">Pre-Purchase NOW***</a>'; //Pre-Purchase Link
-                                    } else {
-                                        echo ' - Available at Event***'; //Available at Event - Default
-                                    } 
-                                ?>
-                        </div>
-                    <?php endif; ?>
-                    <!-- END Autographs -->
-                    
-                </div><!--END Profile Details block --> 
+                    ?>
+                <!-- END Guest Experiences -->
+            
+            
+            </div><!--END Profile Details block --> 
             <?php endif; ?>
                 <!-- END Profile Image and Links -------------->
                 
@@ -243,34 +148,14 @@ get_header();
             </div><!-- END Profile Details Block -->
         </div><!-- END Profile Main Section ------------------->
         
-        <!--- SMALL PRINT -->
-        <div class="small-print">
-            <p>
-                <?php the_field('heafoo_small_print'); //Small Print ?>
-            </p>
-            <?php 
-                $xp_terms = get_the_terms( get_the_ID(), 'xp' );
-                $has_autographs = false;
-                
-                if ( $xp_terms && ! is_wp_error( $xp_terms ) ) {
-                    foreach ( $xp_terms as $term ) {
-                        if ( $term->slug === 'autographs' ) {
-                            $has_autographs = true;
-                            break;
-                        }
-                    }
-                }
-                
-                if ( $has_autographs ) : 
-            ?>
-            <p>
-                <?php the_field('heafoo_celeb_small_print'); //Small Print ?>
-            </p>
-            <?php endif; ?>
-        </div>
-        <!-- END Small Print -->
+        <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
     </div>
     <!-- END Profile Main Div --------------------->
+
+    <!-- Latest Posts ------> 
+        <get template_part( 'template-parts/sections/updates-section' ); ?>
+
+    <!-- END Latest Posts ------>
             
             <?php
             endwhile; //Post Loop End - while

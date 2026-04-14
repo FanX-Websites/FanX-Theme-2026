@@ -107,6 +107,7 @@ add_action('wp_enqueue_scripts', function() {
 		//Plugins - Third Party	
 			'acf/tweaks.php',
 			'seo/yoast-tweaks.php',
+			'simply-static/system-level-exports.php', //System-level scheduled exports & backups
 			'simply-static/schedule.php',
 			'simply-static/enqueue.php',
 			'simply-static/sitemap-integration.php',

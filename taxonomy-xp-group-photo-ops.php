@@ -143,18 +143,7 @@ get_header(); /** body- main-site */
         ?><!-- END No Posts Message -->
 
     </div><!-- END Profile Main Div --------------------->
-    <!--- SMALL PRINT -->
-        <div class="small-print">
-            <p>
-                <?php the_field('heafoo_small_print'); //Small Print ?>
-            </p>
-            <p>
-                <?php the_field('heafoo_celeb_small_print'); //Small Print ?>
-            </p>
-        </div>
-        <!-- END Small Print -->
-
-    <!----- END Main Content Area----------------->
+    <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
     </div><!-- END post-grid-container -->
 
 <?php

@@ -26,6 +26,7 @@ function fanx_activity_logs_page() {
     $action_filter = isset($_GET['action_filter']) ? sanitize_text_field($_GET['action_filter']) : '';
     $user_filter = isset($_GET['user_filter']) ? intval($_GET['user_filter']) : 0;
     $object_type_filter = isset($_GET['object_type_filter']) ? sanitize_text_field($_GET['object_type_filter']) : '';
+    $object_search = isset($_GET['object_search']) ? sanitize_text_field($_GET['object_search']) : '';
     $from_date = isset($_GET['from_date']) ? sanitize_text_field($_GET['from_date']) : '';
     $to_date = isset($_GET['to_date']) ? sanitize_text_field($_GET['to_date']) : '';
     $paged = isset($_GET['paged']) ? intval($_GET['paged']) : 1;
@@ -49,6 +50,11 @@ function fanx_activity_logs_page() {
     if ($object_type_filter) {
         $where_clauses[] = 'object_type = %s';
         $where_values[] = $object_type_filter;
+    }
+    
+    if ($object_search) {
+        $where_clauses[] = 'object_title LIKE %s';
+        $where_values[] = '%' . $wpdb->esc_like($object_search) . '%';
     }
     
     if ($from_date) {
@@ -84,10 +90,14 @@ function fanx_activity_logs_page() {
     }
     
     // Get unique actions for filter dropdown
-    $actions = $wpdb->get_col("SELECT DISTINCT action FROM {$table_name} ORDER BY action");
+    $actions = $wpdb->get_col($wpdb->prepare(
+        "SELECT DISTINCT action FROM {$table_name} ORDER BY action"
+    ));
     
     // Get unique object types for filter dropdown
-    $object_types = $wpdb->get_col("SELECT DISTINCT object_type FROM {$table_name} WHERE object_type IS NOT NULL ORDER BY object_type");
+    $object_types = $wpdb->get_col($wpdb->prepare(
+        "SELECT DISTINCT object_type FROM {$table_name} WHERE object_type IS NOT NULL ORDER BY object_type"
+    ));
     
     // Get users for filter dropdown
     $users = get_users(array(
@@ -144,6 +154,11 @@ function fanx_activity_logs_page() {
                     </div>
                     
                     <div>
+                        <label for="object_search" style="display: block; margin-bottom: 5px; font-weight: bold;">Search Title/Name:</label>
+                        <input type="text" name="object_search" id="object_search" value="<?php echo esc_attr($object_search); ?>" placeholder="Search by name..." style="padding: 5px;" />
+                    </div>
+                    
+                    <div>
                         <label for="from_date" style="display: block; margin-bottom: 5px; font-weight: bold;">From:</label>
                         <input type="date" name="from_date" id="from_date" value="<?php echo esc_attr($from_date); ?>" style="padding: 5px;" />
                     </div>
@@ -171,7 +186,7 @@ function fanx_activity_logs_page() {
                     <th style="width: 15%;">Date/Time</th>
                     <th style="width: 20%;">User</th>
                     <th style="width: 25%;">Action</th>
-                    <th style="width: 20%;">Object</th>
+                    <th style="width: 20%;">Title/Name</th>
                     <th style="width: 20%;">IP Address</th>
                 </tr>
             </thead>

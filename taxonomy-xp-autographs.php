@@ -20,7 +20,7 @@ get_header(); /** body- main-site */
     <!-------------------------- Main Content Area --------------------->
     <div class="post-grid-container"> 
         <?php
-        // Query guests CPT for the current taxonomy term
+        // Query guests CPT for the current taxonomy term, excluding postponed xp-status
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
         $term = get_queried_object();
         $args = array(
@@ -30,6 +30,12 @@ get_header(); /** body- main-site */
                     'taxonomy' => $term->taxonomy,
                     'field' => 'term_id',
                     'terms' => $term->term_id,
+                ),
+                array(
+                    'taxonomy' => 'xp-status',
+                    'field' => 'slug',
+                    'terms' => 'postponed',
+                    'operator' => 'NOT IN',
                 ),
             ),
             'paged' => $paged,
@@ -122,16 +128,7 @@ get_header(); /** body- main-site */
         wp_reset_postdata();
         ?><!-- END No Posts Message -->
     </div><!-- END post-grid-container -->
-    <!--- SMALL PRINT -->
-        <div class="small-print">
-            <p>
-                <?php the_field('heafoo_small_print'); //Small Print ?>
-            </p>
-            <p>
-                <?php the_field('heafoo_celeb_small_print'); //Small Print ?>
-            </p>
-        </div>
-        <!-- END Small Print -->
+    <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
     <!----- END Main Content Area----------------->
 
 
