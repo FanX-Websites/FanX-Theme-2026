@@ -207,7 +207,7 @@ function fanx_activity_logs_page() {
                         <tr>
                             <td>
                                 <span title="<?php echo esc_attr($log->created_at); ?>">
-                                    <?php echo esc_html(wp_date('M d, Y H:i', strtotime($log->created_at))); ?>
+                                    <?php echo esc_html(wp_date('M d, Y H:i', strtotime($log->created_at . ' UTC'))); ?>
                                 </span>
                             </td>
                             <td>

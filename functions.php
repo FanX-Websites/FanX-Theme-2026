@@ -106,6 +106,8 @@ add_action('wp_enqueue_scripts', function() {
 			'functions/sitemap.php',
 		//Plugins - Third Party	
 			'acf/tweaks.php',
+			'acf/acf-admin-columns.php', //ACF Admin Columns Manager
+			'acf/acf-admin-quick-edits.php', //ACF Admin Quick Edits
 			'seo/yoast-tweaks.php',
 			'simply-static/system-level-exports.php', //System-level scheduled exports & backups
 			'simply-static/schedule.php',
