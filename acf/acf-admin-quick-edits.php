@@ -42,25 +42,29 @@ function add_acf_field_to_quick_edit( $post_type, $acf_field, $field_label ) {
 		}
 		acf_render_bulk_edit_field( $post_type, $acf_field, $field_label );
 	}, 10, 2 );
-	
-	// Hook into wp_insert_post_data to handle saves from all sources
-	// (quick edit, bulk edit, and full editor)
-	add_filter( 'wp_insert_post_data', function( $data, $postarr ) use ( $post_type, $acf_field ) {
-		if ( $data['post_type'] !== $post_type ) {
-			return $data;
+
+	// Hook into save_post to handle quick-edit/bulk-edit field saves
+	add_action( 'save_post', function( $post_id ) use ( $post_type, $acf_field ) {
+		// Skip during autosave or if not the right post type
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+		
+		$post = get_post( $post_id );
+		if ( ! $post || $post->post_type !== $post_type ) {
+			return;
 		}
 
-		// Check if the field value is in POST
+		// Check if the field value is in POST (quick edit/bulk edit context)
 		if ( isset( $_POST[ $acf_field ] ) && $_POST[ $acf_field ] !== '' ) {
-			$post_id = isset( $postarr['ID'] ) ? $postarr['ID'] : 0;
-			if ( $post_id && current_user_can( 'edit_post', $post_id ) ) {
-				$value = sanitize_text_field( $_POST[ $acf_field ] );
-				update_field( $acf_field, $value, $post_id );
+			if ( current_user_can( 'edit_post', $post_id ) ) {
+				// Directly update post meta without ACF processing
+				// This bypasses ACF's form validation which isn't present in quick-edit
+				$value = wp_unslash( $_POST[ $acf_field ] );
+				update_post_meta( $post_id, $acf_field, $value );
 			}
 		}
-
-		return $data;
-	}, 10, 2 );
+	}, 20 );
 }
 
 /**

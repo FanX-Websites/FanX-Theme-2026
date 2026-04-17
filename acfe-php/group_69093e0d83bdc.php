@@ -163,7 +163,9 @@ acf_add_local_field_group(array(
 					'name' => 'display_order',
 					'aria-label' => '',
 					'type' => 'number',
-					'instructions' => '<b>Celebrities:</b>Top 100 - Mid 150 | <b>Voice:</b> Mid 150 - 200 | <b>Comics:</b> 200 | <b>Authors:</b> 300 | <b>Artists:</b> 400 | <b>Panelists/Vendors:</b> 500',
+					'instructions' => '<b>Celebrities:</b>100 | <b>Voice:</b> 200 | <b>Comics:</b> 300 | <b>Authors:</b> 400 | <b>Artists:</b> 500 | <b>Panelists/Vendors:</b> 600
+
+<b>Special Events:</b> 1000 | <b>Features/Activities:</b> 2000 |	<b>Vehicles:</b> 4000 | <b>Vendors:</b> 5000',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -171,13 +173,6 @@ acf_add_local_field_group(array(
 						'class' => '',
 						'id' => '',
 					),
-					'allow_backendsearch' => 1,
-					'show_column_filter' => false,
-					'allow_bulkedit' => 1,
-					'allow_quickedit' => 1,
-					'show_column' => 1,
-					'show_column_weight' => 1000,
-					'show_column_sortable' => 1,
 					'default_value' => '',
 					'acfe_settings' => '',
 					'acfe_validate' => '',
@@ -1726,7 +1721,7 @@ acf_add_local_field_group(array(
 	'acfe_form' => 1,
 	'acfe_meta' => '',
 	'acfe_note' => '',
-	'modified' => 1776141796,
+	'modified' => 1776313107,
 	'acfe_categories' => array(
 		'people' => 'People',
 		'posts' => 'Posts',

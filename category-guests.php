@@ -39,11 +39,26 @@ get_header(); /** body- main-site */
                 ),
             ),
             'nopaging' => true,
-            'meta_key' => 'info_display_order',
-            'orderby' => 'meta_value_num',
-            'order' => 'ASC',
+            'posts_per_page' => -1,
         );
         $query = new WP_Query( $args );
+        
+        // Sort posts by info_display_order in PHP, with empty fields at bottom
+        if ( $query->have_posts() ) {
+            $posts = $query->posts;
+            usort($posts, function($a, $b) {
+                $order_a = get_post_meta($a->ID, 'info_display_order', true);
+                $order_b = get_post_meta($b->ID, 'info_display_order', true);
+                
+                // Empty values go to bottom (999999)
+                $order_a = $order_a !== '' ? (int)$order_a : 999999;
+                $order_b = $order_b !== '' ? (int)$order_b : 999999;
+                
+                return $order_a - $order_b;
+            });
+            $query->posts = $posts;
+        }
+        
         if ( $query->have_posts() ) : ?>
         <?php
         while ( $query->have_posts() ) : $query->the_post();

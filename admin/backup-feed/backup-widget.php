@@ -20,7 +20,7 @@ if ( ! function_exists( 'df_format_size_to_human' ) ) {
 function df_reg_backup_widget() {
 	wp_add_dashboard_widget(
 		'widget_consolidated_backups',
-		__('Backup & Repository Feed', 'df'),
+		__('Auto Backup & Repository Feed', 'df'),
 		'df_create_consolidated_backup_widget'
 	);
 }
@@ -34,7 +34,7 @@ function df_create_consolidated_backup_widget() {
 	echo '<div class="df-backup-tabs" style="border-bottom: 2px solid #e5e5e5; margin-bottom: 16px; display: flex; gap: 0;">';
 	
 	$tabs = array(
-		'static' => 'Static Exports',
+		'static' => 'Static Backups/Exports',
 		'wordpress' => 'WordPress Backups',
 		'github' => 'GitHub Pushes'
 	);

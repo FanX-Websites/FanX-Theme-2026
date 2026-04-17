@@ -1,0 +1,86 @@
+/* Export Widget Styles */
+
+.fanx-export-widget {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Tab Navigation */
+.fanx-export-tabs-nav {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    background: #fafafa;
+    margin: 0 -12px;
+    padding: 0;
+}
+
+.fanx-export-tab-button {
+    flex: 1;
+    padding: 12px 15px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.2s ease;
+    margin: 0;
+    text-align: center;
+}
+
+.fanx-export-tab-button:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.fanx-export-tab-button.active {
+    color: #0073aa;
+    border-bottom-color: #0073aa;
+    background: white;
+}
+
+/* Tab Content */
+.fanx-export-tabs-content {
+    flex: 1;
+    overflow: auto;
+}
+
+.fanx-export-tab-pane {
+    display: none;
+}
+
+.fanx-export-tab-pane.active {
+    display: block;
+}
+
+/* Spinner (native WordPress style) */
+.spinner {
+    background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2240%22%20fill%3D%22none%22%20stroke%3D%22%230073aa%22%20stroke-width%3D%222%22%20stroke-dasharray%3D%2265%22%20stroke-dashoffset%3D%220%22%20stroke-linecap%3D%22round%22/%3E%3CanimateTransform%20attributeName%3D%22transform%22%20attributeType%3D%22XML%22%20type%3D%22rotate%22%20from%3D%220%2050%2050%22%20to%3D%22360%2050%2050%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22/%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    margin: 0 8px 0 0;
+    vertical-align: middle;
+}
+
+/* Status Message Styles */
+.fanx-export-message-success {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 12px;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.fanx-export-message-error {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 3px;
+    margin: 10px 0;
+}
