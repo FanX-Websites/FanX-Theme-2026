@@ -88,7 +88,25 @@
                 "class": "",
                 "id": ""
             },
-            "message": "- Basic: [acf field=\"\" post_id=\"options\" ]\r\n- Links: <a href=\"[acf field='' post_id='options']\">\r\n\r\n<b>Additional:<\/b>\r\n- Dynamic Links Field: link_format=\"url\"\r\n-",
+            "message": "- Basic: [acf field=\"\" post_id=\"options\" ]\r\n- Links: <a href=\"[acf field='' post_id='options']\">\r\n\r\n<b>Additional:<\/b>\r\n- Dynamic Links Field: link_format=\"url\"",
+            "new_lines": "br",
+            "esc_html": 1
+        },
+        {
+            "key": "field_69e954243361a",
+            "label": "Snippets",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "HELP DESK: \r\nFor more information, <a href=\"[acf field='cs_zen_url' post_id='options']\">\r\nvisit our Help Desk<\/a>",
             "new_lines": "br",
             "esc_html": 1
         },
@@ -217,7 +235,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1775086148,
+    "modified": 1776899131,
     "acfe_categories": {
         "dev": "Dev"
     }

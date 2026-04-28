@@ -4,8 +4,26 @@ if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
 	'key' => 'group_69091d610fde2',
-	'title' => 'Guest Appearance Statuses',
+	'title' => 'Guest Info - Options Page',
 	'fields' => array(
+		array(
+			'key' => 'field_69e94bb5ff585',
+			'label' => 'Guest Statuses',
+			'name' => '',
+			'aria-label' => '',
+			'type' => 'tab',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'placement' => 'top',
+			'endpoint' => 0,
+			'selected' => 0,
+		),
 		array(
 			'key' => 'field_69091d6174a9f',
 			'label' => 'Guest Statuses',
@@ -137,6 +155,31 @@ acf_add_local_field_group(array(
 					'append' => '',
 				),
 				array(
+					'key' => 'field_691b93b823b37',
+					'label' => '(Column 6/12)',
+					'name' => '',
+					'aria-label' => '',
+					'type' => 'acfe_column',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'allow_backendsearch' => false,
+					'show_column_filter' => false,
+					'allow_bulkedit' => false,
+					'allow_quickedit' => false,
+					'show_column' => false,
+					'show_column_weight' => 1000,
+					'show_column_sortable' => false,
+					'columns' => '6/12',
+					'endpoint' => 0,
+					'allow_in_bindings' => 0,
+				),
+				array(
 					'key' => 'field_69091e2574aa3',
 					'label' => 'Comic Creators',
 					'name' => 'comic',
@@ -163,31 +206,6 @@ acf_add_local_field_group(array(
 					'placeholder' => '',
 					'prepend' => '',
 					'append' => '',
-				),
-				array(
-					'key' => 'field_691b93b823b37',
-					'label' => '(Column 6/12)',
-					'name' => '',
-					'aria-label' => '',
-					'type' => 'acfe_column',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array(
-						'width' => '',
-						'class' => '',
-						'id' => '',
-					),
-					'allow_backendsearch' => false,
-					'show_column_filter' => false,
-					'allow_bulkedit' => false,
-					'allow_quickedit' => false,
-					'show_column' => false,
-					'show_column_weight' => 1000,
-					'show_column_sortable' => false,
-					'columns' => '6/12',
-					'endpoint' => 0,
-					'allow_in_bindings' => 0,
 				),
 				array(
 					'key' => 'field_69091e4174aa4',
@@ -245,7 +263,78 @@ acf_add_local_field_group(array(
 					'prepend' => '',
 					'append' => '',
 				),
+				array(
+					'key' => 'field_69e94cb1935db',
+					'label' => '(Column Endpoint)',
+					'name' => '',
+					'aria-label' => '',
+					'type' => 'acfe_column',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'endpoint' => 1,
+					'allow_in_bindings' => 0,
+					'columns' => '6/12',
+				),
+				array(
+					'key' => 'field_69e94c2c700e0',
+					'label' => 'Postponed Guest Default Message',
+					'name' => 'postponed',
+					'aria-label' => '',
+					'type' => 'wysiwyg',
+					'instructions' => 'stat_postponed',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '[page_title] unfortunately, canceled their appearance at the upcoming [acf field="event_title" post_id="options" ] due to scheduling conflicts. We are so sad they needed to postpone, but we hope to have them again in the near future!
+
+If [page_title] had Photo Ops or Autographs that you pre-purchased, you have two options:
+
+<strong>1. Upgrade or swap to another product.</strong>
+You may upgrade or swap your photo op and/or group photo op with [page_title] to another guest appearing at the show. Service fees will apply. All transactions are final.
+
+To upgrade your Voucher, open the Photo Op confirmation email that was sent to you from GrowTix, and view your order. Click the purple button that says “Upgrade” or the purple button that says “Swap”. A new window will appear with a drop-down list of eligible guests. Select the product you would like to upgrade or Swap to and pay the difference if applicable.
+
+<em>Note: We highly recommend you bring a printed copy of the QR code for each Photo Op that you purchased.</em>
+
+<strong>2. Issue yourself a self-service refund.</strong>
+You may receive a full refund for the Photo Op and/or Group Photo Op with [page_title ]. <a href="[acf field=\'cs_leap_user_url\' post_id=\'options\']">Log in to your LEAP account</a> and view your order. You will see a red button below the [page_title ] Photo Op product that says “Refund Product”. Click “Refund Product”.
+
+For more information,<a href="[acf field=\'cs_zen_url\' post_id=\'options\']">visit our Help Desk</a>',
+					'allow_in_bindings' => 1,
+					'tabs' => 'all',
+					'toolbar' => 'basic',
+					'media_upload' => 0,
+					'delay' => 1,
+				),
 			),
+		),
+		array(
+			'key' => 'field_69e94bc48d8cc',
+			'label' => 'Small Print/Footer Info',
+			'name' => '',
+			'aria-label' => '',
+			'type' => 'tab',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'placement' => 'top',
+			'endpoint' => 0,
+			'selected' => 0,
 		),
 		array(
 			'key' => 'field_69c74394ea0a8',
@@ -347,7 +436,7 @@ acf_add_local_field_group(array(
 	'acfe_form' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
-	'modified' => 1775076338,
+	'modified' => 1777316969,
 	'acfe_categories' => array(
 		'options-pages' => 'Options Pages',
 		'people' => 'People',

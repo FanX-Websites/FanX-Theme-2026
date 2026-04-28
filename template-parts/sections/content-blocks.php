@@ -100,7 +100,12 @@
                             <?php echo wp_kses_post($block['subtext'] ?? ''); //Subtext ?>
                         </h3>
                         <p class="content-block-text">   
-                            <?php echo wp_kses_post($block['content'] ?? ''); //Content ?>
+                            <?php 
+                            $content = $block['content'] ?? '';
+                            // Remove wrapping <p> tags from ACF field
+                            $content = preg_replace('/<\/?p[^>]*>/', '', $content);
+                            echo wp_kses_post($content); //Content 
+                            ?>
                         </p>
                         <?php
                         // Content Block - Button

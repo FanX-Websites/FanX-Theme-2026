@@ -38,9 +38,10 @@
                 echo '<ul class="social-links">';
                 foreach ($socials as $social) {
                     $link = esc_url($social['url']);
+                    $title = esc_attr($social['name'] ?? '');
                     echo '<li class="social-link">';
                     if ($link) {
-                        echo '<a href="' . $link . '" target="_blank" rel="noopener">';
+                        echo '<a href="' . $link . '" target="_blank" rel="noopener"' . ($title ? ' alt="' . $title . '"' : '') . '>';
                     }
                 echo $social['logo'];
                     if ($link) {

@@ -10,7 +10,7 @@
     <div class="page-header block">
 
         <!--------- Submenu --- [Template Part] 
-            //NOTE: Removed until template part fixed --> 
+            <?php get_template_part( 'template-parts/sub-menu' ); ?>
         <!--------- END Submenu -------->
         
         <!---------------------- Page Title Block ----------------------->
@@ -29,7 +29,6 @@
             
                     
                 <!-- Subtitle -->   
-                    <h2 class="page-subtitle">
                         <?php 
                             $queried_object = get_queried_object();
                             $field_key = '';
@@ -44,27 +43,33 @@
                                 }
                             $subtitle = get_field('heafoo_subtitle', $field_key);
                                 if ( $subtitle ) {
-                                    echo $subtitle;
-                                } 
                         ?>
+                    <h2 class="page-subtitle">
+                        <?php echo $subtitle; ?>
                     </h2><!-- END Subtitle -->
+                        <?php } ?>
                 
                 <!-- Subtext -->
-                    <p class="page-subtext">  
                         <?php 
                             $subtext = get_field('heafoo_subtext', $field_key);
                                 if ( $subtext ) {
-                                    echo $subtext;
-                                } 
                         ?>
+                    <p class="page-subtext">  
+                        <?php echo $subtext; ?>
                     </p><!-- END Subtext -->
+                        <?php } ?>
                 
-                <!--Taxonomy Description -->    
+                <!--Taxonomy Description -->
+                        <?php 
+                            $archive_description = get_the_archive_description();
+                            if ( $archive_description ) {
+                        ?>
                     <div class="description block">
                         <p class="description">
-                            <?php the_archive_description(); ?>
+                            <?php echo $archive_description; ?>
                         </p><!-- END Taxonomy Description Text -->
                     </div><!-- END description block -->
+                        <?php } ?>
 
                     <!-- END Taxonomy Description -->
         </div><!-- END Page Title Block -->

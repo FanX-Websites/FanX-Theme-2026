@@ -1,7 +1,10 @@
 <?php 
 /* Template Part: Guest Profile Experiences 
 @author FanXTheme2026
-//TODO: 
+//INFO: All Guest/Feature Experiences featured here. 
+//NOTE: Uses the template-parts.css Stylesheet 
+//TODO: Create a CSS Grid for easy restructuring. Each eXperience gets it own box. 
+//TODO: Update to cater to Postponed related tags ie: Photo Op Swaps/Refunds Available (template-part currently completely hidden) 
 */
 ?>
 

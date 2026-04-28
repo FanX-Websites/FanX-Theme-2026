@@ -258,8 +258,42 @@ button.xp {
 }
 /* Overlays ------------------------ */
     /* Static Overlay - Animated - Sitewide */
+    /* CONVERTED TO HTML DIV - See header.php for .noise-overlay element */
+/*
 body::after {
   content: "";
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  pointer-events: none;
+  z-index: 999999;
+  opacity: .25;
+  animation: static 0.15s steps(8) infinite;
+        background-image: 
+            repeating-linear-gradient(
+                0deg,
+                transparent 0px,
+                rgba(255, 255, 255, 0.05) 1px,
+                transparent 2px,
+                rgba(0, 0, 0, 0.05) 3px,
+                transparent 4px
+            ),
+            repeating-linear-gradient(
+                90deg,
+                transparent 0px,
+                rgba(255, 255, 255, 0.05) 1px,
+                transparent 2px,
+                rgba(0, 0, 0, 0.05) 3px,
+                transparent 4px
+            ),
+            url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        background-size: 100% 100%, 100% 100%, 256px 256px;
+    }
+*/
+
+.noise-overlay {
   position: fixed;
   top: -100%;
   left: -100%;
@@ -876,7 +910,8 @@ h2.entry-title a {
   align-items: center;
   justify-content: center;
   padding: 0;
-  margin: 0
+  margin: 0;
+  position: relative
 }
 
 .post-thumbnail img {
@@ -898,23 +933,74 @@ h2.entry-title a {
   margin: 0;
   align-items: center;
   justify-content: center;
-  gap: 20px
+  gap: 20px;
 }
+
+/** Card Div **/ 
+/* .card{
+  border: 1px solid var(--color_lght);
+  padding: 2%;
+  margin: 2% 0; 
+  max-height: 60vh;
+  overflow: scroll; 
+} */
 /** Default Post Content Styling */
-.the-content { 
+.main-content { 
   padding: 2%;
   text-align: left;
   font-family: inherit;
   color: inherit; 
   font-size: 1em;
   line-height: 1.6em;
+  
 }
+
 .profile-content{
   display: flex;
   align-items: center;
   justify-content: center;
   flex-flow: column; 
 }
+.profile-img {
+  position: relative;
+  display: inline-block;
+}
+
+/** Postponed Content/Instructions & Image */
+.postponed-notice{ 
+  border: 1px solid var(--color_lght);
+  padding: 4%;
+  margin: 3% 0%;
+}
+  /* Postponed Image Overlay - Applies to both Posts & Cateogires */
+  .postponed-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color_drk);
+    opacity: 0.45;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    pointer-events: none; 
+
+  }
+
+  span.postponed-text {
+    color: var(--color_fnt_wht);
+    font-size: 5em;
+    font-weight: bold;
+    transform: rotate(-15deg);
+    text-transform: uppercase;
+  }
+
+  span.postponed-text.cat { 
+    font-size: 3em;
+  }
 
 .profile-img img {
   max-width: 400px;

@@ -6,8 +6,8 @@ What this File Does:
     1 - Adds Category & Tag Support to All Post Types
     2 - Allows Child Categories to Use Parent Category Templates
     3 - Removes "Category: " Prefix from Category Archive Titles
-    4 - //TODO: Removes Parent Category Slug from Child Categories - Partners 
-    5 - //TODO: REmove Category Base from URLs
+    4 - //TODO: Remove Parent Category Slug from Child Categories - Partners 
+        //NOTE: Look into Hierarchies in URLS for categories/tags
 
 */
 
@@ -28,9 +28,19 @@ What this File Does:
     }
         add_action('init', 'df_add_taxonomies_to_all_post_types');
 
+    // 2- Support for Tags ON Taxonomies - Adds post_tag to multiple taxonomies
+    function df_register_taxonomy_for_objects() {
+        $objects = apply_filters('df_tag_taxonomy_objects', array('category', 'fandoms', 'xp'));
+        
+        foreach ($objects as $object) {
+            register_taxonomy_for_object_type('post_tag', $object);
+        }
+    }
+    add_action('init', 'df_register_taxonomy_for_objects', 11); 
+
 //END Add Support ----------------------------------->
 
-//Parent & Child Category Tweaks ----------------------------------->
+//Parent & Child Category Page Tweaks ----------------------------------->
 
     // 2- Templates - Child Copy Cats the Parents  ------------------->
         add_filter( 'category_template', function( $template ) {
@@ -61,7 +71,7 @@ What this File Does:
 //Category & Taxonomy Types & Labels ----------------------------------------------->
     
     // 3- Archive Page Settings - Remove Archive Prefix on Cat/Tax Page Titles
-        add_filter( 'get_the_archive_title', function( $title ) {
+        add_filter( 'get_the_archive_title', function( $title ) { 
             if ( empty( $title ) ) {
                 return $title;
             }

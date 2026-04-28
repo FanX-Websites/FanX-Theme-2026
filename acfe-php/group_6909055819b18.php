@@ -666,10 +666,10 @@ acf_add_local_field_group(array(
 				),
 				array(
 					'key' => 'field_69c747f2b238d',
-					'label' => 'Photo Ops FAQ',
+					'label' => 'Photo Ops FAQ Link',
 					'name' => 'ops_faq',
 					'aria-label' => '',
-					'type' => 'acfe_advanced_link',
+					'type' => 'link',
 					'instructions' => 'celeb_ops_faq',
 					'required' => 0,
 					'conditional_logic' => 0,
@@ -678,8 +678,7 @@ acf_add_local_field_group(array(
 						'class' => '',
 						'id' => '',
 					),
-					'post_type' => '',
-					'taxonomy' => '',
+					'return_format' => 'url',
 					'allow_in_bindings' => 1,
 				),
 				array(
@@ -903,11 +902,11 @@ acf_add_local_field_group(array(
 	'acfe_form' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
-	'modified' => 1776141796,
 	'acfe_categories' => array(
 		'options-pages' => 'Options Pages',
 		'products' => 'Products',
 	),
+	'modified' => 1777333232,
 ));
 
 endif;

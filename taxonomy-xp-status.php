@@ -52,6 +52,11 @@ get_header(); /** body- main-site */
                         <a href="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail( 'medium' ); ?>
                         </a>
+                        <?php if ( has_term( 'postponed', 'xp-status', get_the_ID() ) ) : ?>
+                            <div class="postponed-overlay">
+                                <span class="postponed-text">Postponed</span>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
                 <!-- END Post Thumbnail -->

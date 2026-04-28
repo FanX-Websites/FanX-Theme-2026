@@ -96,8 +96,27 @@ acf_add_local_field_group(array(
 - Links: <a href="[acf field=\'\' post_id=\'options\']">
 
 <b>Additional:</b>
-- Dynamic Links Field: link_format="url"
--',
+- Dynamic Links Field: link_format="url"',
+			'new_lines' => 'br',
+			'esc_html' => 1,
+		),
+		array(
+			'key' => 'field_69e954243361a',
+			'label' => 'Snippets',
+			'name' => '',
+			'aria-label' => '',
+			'type' => 'message',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => 'HELP DESK: 
+For more information, <a href="[acf field=\'cs_zen_url\' post_id=\'options\']">
+visit our Help Desk</a>',
 			'new_lines' => 'br',
 			'esc_html' => 1,
 		),
@@ -226,7 +245,7 @@ acf_add_local_field_group(array(
 	'acfe_form' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
-	'modified' => 1775793850,
+	'modified' => 1777316970,
 	'acfe_categories' => array(
 		'dev' => 'Dev',
 	),

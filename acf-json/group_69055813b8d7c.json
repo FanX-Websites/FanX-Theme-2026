@@ -3,13 +3,6 @@
     "title": "Basic Event Info",
     "fields": [
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_690fa3f0a95f1",
             "label": "Basic Event Info",
             "name": "",
@@ -28,13 +21,6 @@
             "selected": 0
         },
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_69090285b3559",
             "label": "Basic Info",
             "name": "event",
@@ -53,13 +39,6 @@
             "acfe_group_modal": 0,
             "sub_fields": [
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_690e94e71a188",
                     "label": "(Column 4\/12)",
                     "name": "",
@@ -78,13 +57,6 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 1,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69055816fee00",
                     "label": "Event Logo",
                     "name": "logo",
@@ -110,16 +82,12 @@
                     "max_size": "",
                     "mime_types": "",
                     "allow_in_bindings": 1,
-                    "preview_size": "medium"
+                    "preview_size": "medium",
+                    "show_column": 0,
+                    "allow_quickedit": 1,
+                    "allow_bulkedit": 0
                 },
                 {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_6905599efee01",
                     "label": "Full Event Name",
                     "name": "name",
@@ -138,16 +106,13 @@
                     "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 1
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": 0,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_690901ee390b2",
                     "label": "Event Venue",
                     "name": "venue",
@@ -172,18 +137,15 @@
                         "acfe_bidirectional_enabled": "0"
                     },
                     "allow_in_bindings": 1,
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "show_column_filter": 0,
                     "bidirectional": 0,
                     "multiple": 0,
                     "bidirectional_target": []
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69980a841aae6",
                     "label": "Event address",
                     "name": "address",
@@ -202,16 +164,13 @@
                     "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 0
                 },
                 {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69090148390ae",
                     "label": "Event Nickname\/hashtag",
                     "name": "hashtag",
@@ -230,16 +189,13 @@
                     "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 1
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_690901cf390b1",
                     "label": "Event Dates",
                     "name": "date",
@@ -258,16 +214,13 @@
                     "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 0
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_6927faaea0712",
                     "label": "Event Countdown",
                     "name": "timer",
@@ -285,16 +238,12 @@
                     "return_format": "Y-m-d H:i:s",
                     "first_day": 0,
                     "default_to_current_date": 0,
-                    "allow_in_bindings": 1
+                    "allow_in_bindings": 1,
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_690e94f31a189",
                     "label": "(Column 6\/12)",
                     "name": "",
@@ -313,13 +262,6 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69090169390af",
                     "label": "Event Summary",
                     "name": "sum",
@@ -339,16 +281,13 @@
                     "allow_in_bindings": 1,
                     "rows": 3,
                     "placeholder": "",
-                    "new_lines": "br"
+                    "new_lines": "br",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 1
                 },
                 {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_690901a6390b0",
                     "label": "Event Description",
                     "name": "des",
@@ -368,16 +307,13 @@
                     "allow_in_bindings": 1,
                     "rows": "",
                     "placeholder": "",
-                    "new_lines": ""
+                    "new_lines": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 1
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_690e94fd1a18a",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -401,13 +337,6 @@
             "acfe_group_modal_size": "large"
         },
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_690fa3f9a95f2",
             "label": "Connect - Socials\/Apps",
             "name": "",
@@ -426,13 +355,6 @@
             "selected": 0
         },
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_696fdf07bcaaa",
             "label": "(Column 4\/12)",
             "name": "",
@@ -451,13 +373,6 @@
             "allow_in_bindings": 0
         },
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_6917d594f3499",
             "label": "Social Accounts",
             "name": "socials",
@@ -481,13 +396,6 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_6917d5adf349a",
                     "label": "logo",
                     "name": "logo",
@@ -519,13 +427,28 @@
                     "parent_repeater": "field_6917d594f3499"
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
+                    "key": "field_69e2ffba3b247",
+                    "label": "Platform Name",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6917d594f3499"
+                },
+                {
                     "key": "field_6917d5d7f349b",
                     "label": "Account Link",
                     "name": "url",
@@ -540,20 +463,13 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "allow_in_bindings": 0,
+                    "allow_in_bindings": 1,
                     "placeholder": "",
                     "parent_repeater": "field_6917d594f3499"
                 }
             ]
         },
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_696fdf0cbcaab",
             "label": "(Column 4\/12)",
             "name": "",
@@ -572,13 +488,6 @@
             "allow_in_bindings": 0
         },
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_696fde35f3c37",
             "label": "Event Apps",
             "name": "app",
@@ -597,13 +506,6 @@
             "acfe_group_modal": 0,
             "sub_fields": [
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_696fde03f3c36",
                     "label": "Event App Status (all)",
                     "name": "app_stat",
@@ -622,16 +524,13 @@
                     "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 0
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_6917d746d48fe",
                     "label": "Apple Store Status",
                     "name": "stat",
@@ -650,16 +549,13 @@
                     "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 0
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_6917d781d4900",
                     "label": "Apple Store Link",
                     "name": "url",
@@ -675,16 +571,13 @@
                     },
                     "default_value": "",
                     "allow_in_bindings": 1,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 0
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_6917d76ad48ff",
                     "label": "Google Play Store Status",
                     "name": "goog_stat",
@@ -703,16 +596,13 @@
                     "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 0
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_6917d7aed4901",
                     "label": "Google Play Store Link",
                     "name": "goog_url",
@@ -728,7 +618,11 @@
                     },
                     "default_value": "",
                     "allow_in_bindings": 1,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 0
                 }
             ],
             "acfe_group_modal_close": 0,
@@ -736,13 +630,6 @@
             "acfe_group_modal_size": "large"
         },
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_696fdf69e07a9",
             "label": "(Column 4\/12)",
             "name": "",
@@ -761,13 +648,6 @@
             "allow_in_bindings": 0
         },
         {
-            "allow_backendsearch": 0,
-            "show_column_filter": false,
-            "allow_bulkedit": 0,
-            "allow_quickedit": 0,
-            "show_column": 0,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_696fe01793dc6",
             "label": "Newsletter Message",
             "name": "news_message",
@@ -786,16 +666,13 @@
             "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "show_column": 0,
+            "allow_quickedit": 0,
+            "allow_bulkedit": 0,
+            "allow_backendsearch": 0
         },
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_696fe04193dc8",
             "label": "Newsletter Link",
             "name": "news_url",
@@ -814,13 +691,6 @@
             "allow_in_bindings": 1
         },
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_696fe02393dc7",
             "label": "(Column Endpoint)",
             "name": "",
@@ -858,15 +728,16 @@
     "description": "Event Logo, name, dates, social media, etc",
     "show_in_rest": 1,
     "display_title": "Event Info Options Page",
+    "allow_ai_access": false,
+    "ai_description": "",
     "acfe_autosync": [
         "php",
         "json"
     ],
     "acfe_form": 0,
-    "qef_simple_location_rules": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1773703824,
+    "modified": 1776484469,
     "acfe_categories": {
         "options-pages": "Options Pages"
     }

@@ -80,7 +80,7 @@ Author URI: https://DancingFraxinus.com/
   .countdown.container{/* Countdown Block */
     grid-column: 1;
     grid-row: 2;
-    padding: 3%
+    padding: 3%content
   }
 
   .updates-feed.container{/* Updates Feed Block */
@@ -312,14 +312,22 @@ h3.content-block-subtext {
   padding: 20px;
   margin: 0 auto;
   background-color: transparent;
-  color: white;
+  color: var(--color_fnt_wht);
 }
 
 .ada-blocks .content-block p,.ada-blocks .content-block li {
   font-size: 1rem;
   line-height: 1.2rem;
-  color: white
+  color: var(--color_fnt_wht);
 }
+
+.ada-blocks .content-block h2{
+  color: var(--color_base_brht);
+}
+.ada-blocks .content-block h3{
+  color: var(--color_prim_lght);
+}
+
 /* ---------- END Content Blocks Section ------------->
 
 /* ---------- Table Charts Section ------------->

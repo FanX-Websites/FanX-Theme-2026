@@ -49,7 +49,7 @@ get_header();
             while ( have_posts() ) : the_post(); ?>
 
             <!-- Profile Main Section ------------------->
-            <div class="profile self-centered-row"> <!-- Profile Responsive Section-->   
+            <div class="profile card self-centered-row"> <!-- Profile Responsive Section-->   
 
             <!-- Profile Image and Links ----------------------------------------->
             <?php if ( has_post_thumbnail() ) : ?>
@@ -58,7 +58,13 @@ get_header();
                 <!-- Profile Image -------------->
                 <div class="profile-img">
                     <?php the_post_thumbnail(); //Thumbnail ?> 
-                </div><!-- END profile-img -->
+                    <?php 
+                     if ( has_term( 'postponed', 'xp-status' ) ) : ?>
+                        <div class="postponed-overlay">
+                            <span class="postponed-text">Postponed</span>
+                        </div>
+                    <?php endif;?>
+                </div><!-- END profile-img ------------>
 
                 <!-- Appearance Days //NOTE: Conditional on Guest/Feature remove/update when seprate post templates 
                  -->
@@ -72,8 +78,8 @@ get_header();
                 <!-- Guest Experiences //NOTE: Conditional on Guest/Feature remove/update when seprate post templates 
                  -->
                     <?php 
-                    if ( get_post_type() === 'guests' || get_post_type() === 'features' ) {
-                        get_template_part( 'template-parts/profiles/experiences' ); 
+                    if ( ( get_post_type() === 'guests' || get_post_type() === 'features' ) && ! has_term( 'postponed', 'xp-status' ) ) {
+                        get_template_part( 'template-parts/profiles/experiences' );
                     }
                     ?>
                 <!-- END Guest Experiences -->
@@ -110,11 +116,22 @@ get_header();
                     ?>
                 </div>
                 <!-- END Fandom Tags -->
-                    
+
+                <!-- Post Main Content -->
+                 <div class="main-content">
+                    <!-- Postponed Notice -->
+                    <?php if ( has_term( 'postponed', 'xp-status' ) ) : ?>
+                        <div class="postponed-notice"> 
+                            <?php the_field('stat_postponed', 'option'); //Postponed Message ?>
+                        </div>
+                    <?php endif; ?> 
+                    <!-- END Postponed Notice -->
+
                     <!-- Profile Content -->
                     <div class="the-content">
                         <?php the_content(); //Content ?>
                     </div><!-- END Profile Content-->
+                </div><!-- END Post Main Content -->
 
                 <!-- Guest Xperience Links --->
                     <!-- Featured Links Buttons --> 

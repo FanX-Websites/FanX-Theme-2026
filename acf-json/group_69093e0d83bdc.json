@@ -88,12 +88,17 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 1,
+                    "show_column_weight": 1,
+                    "show_column_sortable": false,
                     "uploader": "",
                     "return_format": "array",
                     "library": "all",
                     "acfe_thumbnail": 1,
-                    "acfe_settings": "",
-                    "acfe_validate": "",
                     "min_width": "",
                     "min_height": "",
                     "min_size": "",
@@ -101,7 +106,6 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
-                    "acfe_permissions": "",
                     "allow_in_bindings": 1,
                     "preview_size": "medium"
                 },
@@ -135,8 +139,8 @@
                     "new_lines": ""
                 },
                 {
-                    "key": "field_6909950a3e814",
-                    "label": "(Column 4\/12)",
+                    "key": "field_690994ea3e813",
+                    "label": "(Column 6\/12)",
                     "name": "",
                     "aria-label": "",
                     "type": "acfe_column",
@@ -148,7 +152,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "columns": "4\/12",
+                    "columns": "6\/12",
                     "endpoint": 0,
                     "acfe_permissions": "",
                     "allow_in_bindings": 0
@@ -159,7 +163,7 @@
                     "name": "display_order",
                     "aria-label": "",
                     "type": "number",
-                    "instructions": "<b>Celebrities:<\/b>100 | <b>Voice:<\/b> 200 | <b>Comics:<\/b> 300 | <b>Authors:<\/b> 400 | <b>Artists:<\/b> 500 | <b>Panelists\/Vendors:<\/b> 600\r\n\r\n<b>Special Events:<\/b> 1000 | <b>Features\/Activities:<\/b> 2000 |  <b>Vehicles:<\/b> 4000 | <b>Vendors:<\/b> 5000",
+                    "instructions": "<b>Celebrities:<\/b>Top 100 - Mid 150 | <b>Voice:<\/b> Mid 150 - 200 | <b>Comics:<\/b> 200 | <b>Authors:<\/b> 300 | <b>Artists:<\/b> 400 | <b>Panelists\/Vendors:<\/b> 500",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -167,6 +171,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 1,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": 1,
                     "default_value": "",
                     "acfe_settings": "",
                     "acfe_validate": "",
@@ -193,19 +204,23 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": false,
+                    "show_column_filter": 0,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "taxonomy": "category",
                     "add_term": 1,
                     "save_terms": 1,
                     "load_terms": 1,
                     "return_format": "id",
-                    "field_type": "multi_select",
+                    "field_type": "select",
                     "allow_null": 0,
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": "0"
                     },
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "acfe_permissions": "",
                     "allow_in_bindings": 1,
                     "bidirectional": 0,
                     "multiple": 0,
@@ -258,6 +273,45 @@
                         "id": ""
                     },
                     "taxonomy": "blog",
+                    "add_term": 1,
+                    "save_terms": 1,
+                    "load_terms": 1,
+                    "return_format": "id",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": "0"
+                    },
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "bidirectional": 0,
+                    "multiple": 0,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_69e7ecb06c314",
+                    "label": "Targeted Tags (BLOG ONLY)",
+                    "name": "targeted_tags",
+                    "aria-label": "",
+                    "type": "taxonomy",
+                    "instructions": "info_targeted_tags \r\nFandoms: Choose Main Category of Fandom (ie: Anime, Marvel) \r\nBlog Posts: Chose Post Purpose (ie: updates, resources) to appear in related cat page section.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_69423abd00ab9",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "post_tag",
                     "add_term": 1,
                     "save_terms": 1,
                     "load_terms": 1,
@@ -843,9 +897,6 @@
             "acfe_group_modal": 0,
             "acfe_settings": "",
             "acfe_permissions": "",
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_69098285576b2",
@@ -905,7 +956,7 @@
                     "new_lines": ""
                 },
                 {
-                    "key": "field_69c7420d968df",
+                    "key": "field_69e7f1c87f3b2",
                     "label": "Footer Smallprint Update",
                     "name": "",
                     "aria-label": "",
@@ -924,7 +975,10 @@
                     "acfe_settings": "",
                     "acfe_permissions": ""
                 }
-            ]
+            ],
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
         },
         {
             "key": "field_6909850a576b7",
@@ -1704,7 +1758,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1776301061,
+    "modified": 1776836946,
     "acfe_categories": {
         "people": "People",
         "posts": "Posts"

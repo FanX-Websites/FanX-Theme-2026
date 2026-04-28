@@ -21,7 +21,7 @@ get_header(); /** body- main-site */
     <!-------------------------- Main Content Area --------------------->
     <div class="post-grid-container"> 
         <?php
-        // Query guests CPT for the current category, excluding postponed xp-status
+        // Query guests CPT for the current category, including postponed
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
         $args = array(
             'post_type' => 'guests',
@@ -31,33 +31,14 @@ get_header(); /** body- main-site */
                     'field' => 'term_id',
                     'terms' => get_queried_object_id(),
                 ),
-                array(
-                    'taxonomy' => 'xp-status',
-                    'field' => 'slug',
-                    'terms' => 'postponed',
-                    'operator' => 'NOT IN',
-                ),
             ),
             'nopaging' => true,
             'posts_per_page' => -1,
+            'meta_key' => 'info_display_order',
+            'orderby' => 'meta_value_num',
+            'order' => 'ASC',
         );
         $query = new WP_Query( $args );
-        
-        // Sort posts by info_display_order in PHP, with empty fields at bottom
-        if ( $query->have_posts() ) {
-            $posts = $query->posts;
-            usort($posts, function($a, $b) {
-                $order_a = get_post_meta($a->ID, 'info_display_order', true);
-                $order_b = get_post_meta($b->ID, 'info_display_order', true);
-                
-                // Empty values go to bottom (999999)
-                $order_a = $order_a !== '' ? (int)$order_a : 999999;
-                $order_b = $order_b !== '' ? (int)$order_b : 999999;
-                
-                return $order_a - $order_b;
-            });
-            $query->posts = $posts;
-        }
         
         if ( $query->have_posts() ) : ?>
         <?php
@@ -74,6 +55,11 @@ get_header(); /** body- main-site */
                         <a href="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail( 'medium' ); ?>
                         </a>
+                        <?php if ( has_term( 'postponed', 'xp-status', get_the_ID() ) ) : ?>
+                            <div class="postponed-overlay">
+                                <span class="postponed-text cat">Postponed</span>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
                 <!-- END Post Thumbnail -->

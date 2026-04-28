@@ -85,8 +85,8 @@
                     "label": "LEAP User Account LInk",
                     "name": "leap_user_url",
                     "aria-label": "",
-                    "type": "acfe_advanced_link",
-                    "instructions": "",
+                    "type": "text",
+                    "instructions": "cs_leap_user_url",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -94,16 +94,12 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 1
+                    "default_value": "https:\/\/register.growtix.com\/my_profile",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 },
                 {
                     "key": "field_6909005b07a2e",
@@ -111,7 +107,7 @@
                     "name": "zen_url",
                     "aria-label": "",
                     "type": "acfe_advanced_link",
-                    "instructions": "",
+                    "instructions": "cs_zen_url",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -119,13 +115,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "post_type": "",
                     "taxonomy": "",
                     "allow_in_bindings": 0
@@ -360,6 +349,8 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "ADA & Customer Service",
+    "allow_ai_access": false,
+    "ai_description": "",
     "acfe_autosync": [
         "php",
         "json"
@@ -367,7 +358,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1774669578,
+    "modified": 1776898543,
     "acfe_categories": {
         "hospitality": "Hospitality",
         "options-pages": "Options Pages"

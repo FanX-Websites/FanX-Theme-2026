@@ -97,6 +97,8 @@ function acf_add_allowed_svg_tag( $tags, $context ) {
 
         $value = get_field($atts['field'], $atts['post_id']);
 
+        //FIXME: Advanced Link Field Output Troubleshooing. Adds Shortcode Support for buttons using text field.  
+        //TODO: Fix issues with Advanced links showing portion of array string after link.  
             if (is_array($value) && isset($value['url']) && isset($value['title'])) { //Replace Array with String (Dynamic Links Fix) - only for link fields
                 // If link_format is 'url', return just the URL for use in href attributes
                 if ($atts['link_format'] === 'url') {
