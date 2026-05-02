@@ -6,16 +6,17 @@
  */
 ?>
 <!--------- Page Header ----------------------->
-<div class="page-header-section self-centered-top">          
-    <div class="page-header block">
+<div class="page-header-section self-centered-top"><!--------- Page Header Section -->          
+    <div class="page-header block"> <!---------- Page Header Block -->
 
         <!--------- Submenu --- [Template Part] 
-            <?php get_template_part( 'template-parts/sub-menu' ); ?>
+            <?php get_template_part( 'template-parts/sub-menu' ); // SUBMENU
+            ?> 
         <!--------- END Submenu -------->
         
         <!---------------------- Page Title Block ----------------------->
-        <div class="page-title block self-centered-column">    
-                <h1 class="page-title">
+        <div class="page-title block self-centered-column">    <!-- Page Title Block -->
+                <h1> 
                     <?php 
                         if ( is_tax() || is_category() || is_tag() ) { //Category as Page Title 
                             single_term_title();
@@ -44,7 +45,7 @@
                             $subtitle = get_field('heafoo_subtitle', $field_key);
                                 if ( $subtitle ) {
                         ?>
-                    <h2 class="page-subtitle">
+                    <h2 class="page-subtitle"> <!--- Subtitle -->
                         <?php echo $subtitle; ?>
                     </h2><!-- END Subtitle -->
                         <?php } ?>
@@ -54,7 +55,7 @@
                             $subtext = get_field('heafoo_subtext', $field_key);
                                 if ( $subtext ) {
                         ?>
-                    <p class="page-subtext">  
+                    <p class="page-subtext">  <!--- Subtext -->
                         <?php echo $subtext; ?>
                     </p><!-- END Subtext -->
                         <?php } ?>
@@ -64,7 +65,7 @@
                             $archive_description = get_the_archive_description();
                             if ( $archive_description ) {
                         ?>
-                    <div class="description block">
+                    <div class="description block"> <!--- Taxonomy Description -->
                         <p class="description">
                             <?php echo $archive_description; ?>
                         </p><!-- END Taxonomy Description Text -->

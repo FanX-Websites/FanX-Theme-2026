@@ -58,7 +58,7 @@ get_header(); /** body- main-site */
                 
                 <!-- -- Post Thumbnail -->
                 <?php if ( has_post_thumbnail() ) : ?>
-                    <div class="post-thumbnail">
+                    <div class="post-thumbnail no-frame">
                         <a href="<?php echo esc_url( $button_url ); ?>" target="_blank">
                             <?php the_post_thumbnail( 'medium' ); ?>
                         </a>
@@ -88,7 +88,7 @@ get_header(); /** body- main-site */
 
                  <!-- Post Excerpt -->
                 <div class="entry-summary">
-                    <?php the_excerpt(); ?>
+                    <p><?php the_content(); ?><p>
                 </div><!-- END entry-summary -->
                 <!-- END Post Excerpt -->
 
@@ -106,29 +106,30 @@ get_header(); /** body- main-site */
         </div>
         <!-- END Post Block -------------------->
 
-        <!-- No Posts Message -->
+        <!-- No Posts Message  & filler posts -->
         <?php
             endwhile;
             wp_reset_postdata();
+            
+            // Add filler blocks to complete the last row dynamically
+            $posts_per_row = 4; // Typical desktop column count
+            $total_posts = $query->found_posts;
+            $remainder = $total_posts % $posts_per_row;
+            if ( $remainder > 0 ) :
+                $filler_count = $posts_per_row - $remainder;
+                for ( $i = 0; $i < $filler_count; $i++ ) {
+                    echo '<div class="post-block block"></div>';
+                }
+            endif;
         else :
             ?>
             <div class="no-posts-container">
-                <h3>Coming Soon</h3>
-                <p>
-                    <?php 
-                        $news_link = get_field('news_url', 'option');
-                        $news_message = get_field('news_message', 'option') ?? '';
-                        if ($news_link && isset($news_link['url'])) {
-                            echo '<a href="' . esc_url($news_link['url']) . '">' . wp_kses_post($news_message) . '</a>';
-                        } else {
-                            echo wp_kses_post($news_message);
-                        }
-                    ?>
-                </p>
+                <h3>COMING SOON</h3>
             </div>
             <?php
         endif;
-        ?><!-- END No Posts Message -->
+        ?>
+        <!-- END No Posts Message -->
 
     <!----- END Main Content Area ----------------->
     </div><!-- END post-grid-container -->

@@ -63,18 +63,21 @@
                         $menu_args['walker'] = new Child_Only_Walker();
                     }
                     wp_nav_menu( $menu_args );
-                } elseif ( $post_type === 'features' ) {
-                    $menu_args = array(
-                        'theme_location' => 'feature',
-                        'menu_class' => 'horizontal-menu',
-                        'container' => false,
-                        'depth' => 2
-                    );
-                    if ( menu_has_submenus( 'feature' ) ) {
-                        $menu_args['walker'] = new Child_Only_Walker();
-                    }
-                    wp_nav_menu( $menu_args );
-                } elseif ( $is_category ) {
+                } 
+                // Features MENU Does not Exist Yet - IGNORE
+                // elseif ( $post_type === 'features' ) {
+                //     $menu_args = array(
+                //         'theme_location' => 'feature',
+                //         'menu_class' => 'horizontal-menu',
+                //         'container' => false,
+                //         'depth' => 2
+                //     );
+                //     if ( menu_has_submenus( 'feature' ) ) {
+                //         $menu_args['walker'] = new Child_Only_Walker();
+                //     }
+                //     wp_nav_menu( $menu_args );
+                // } 
+                elseif ( $is_category ) {
                     // Category menus (check before fallback)
                     $cat = get_queried_object();
                     
@@ -87,7 +90,7 @@
                     
                     $category_menus = array(
                         'guests' => 'guests',
-                        'features' => 'features'
+                        // 'features' => 'features'
                     );
                     
                     if ( isset( $category_menus[$parent_slug] ) ) {

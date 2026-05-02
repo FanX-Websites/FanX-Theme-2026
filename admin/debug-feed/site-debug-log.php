@@ -105,6 +105,11 @@ function df_create_debug_log_box() {
                 continue;
             }
             
+            // Skip frequent POST EXPORT CRON status updates
+            if ( stripos( $entry, '[POST EXPORT CRON]' ) !== false ) {
+                continue;
+            }
+            
             // Convert UTC timestamp to site's local timezone
             $entry = df_convert_log_timestamp_to_local( $entry );
             

@@ -9,7 +9,7 @@ get_header(); //Body - Main Site
 ?>
 
 <!--------------- Page Header Container [Template Part] ----------------------->
-    <div class="page-header container">
+    <div class="container">
         <?php get_template_part('template-parts/page-header'); ?> 
     </div>
 <!------------ END Page Header Container -------------------->

@@ -3,6 +3,24 @@
     "title": "Participant Application Info",
     "fields": [
         {
+            "key": "field_69f03b3186518",
+            "label": "Exhibitors",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "key": "field_690566b041964",
             "label": "Exhibitor Space Applications",
             "name": "app",
@@ -19,9 +37,6 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_697d2ee7de12e",
@@ -43,7 +58,7 @@
                 },
                 {
                     "key": "field_69cd9ca6421fc",
-                    "label": "(Column 3\/12)",
+                    "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
                     "type": "acfe_column",
@@ -55,17 +70,17 @@
                         "class": "",
                         "id": ""
                     },
-                    "columns": "3\/12",
+                    "columns": "4\/12",
                     "endpoint": 0,
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_69cd99cab87d7",
+                    "key": "field_69f39bd638e44",
                     "label": "Exhibitor\/Vendor Booths",
                     "name": "",
                     "aria-label": "",
-                    "type": "message",
-                    "instructions": "",
+                    "type": "accordion",
+                    "instructions": "ie: Merchent Vendor",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -73,17 +88,17 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "ie: Merchant Vendor",
-                    "new_lines": "",
-                    "esc_html": 0
+                    "open": 1,
+                    "multi_expand": 0,
+                    "endpoint": 0
                 },
                 {
-                    "key": "field_6971e56f12c2a",
+                    "key": "field_69f3c411b0853",
                     "label": "Exhibitor\/Vendor Icon",
-                    "name": "ex_icon",
+                    "name": "ex_ico",
                     "aria-label": "",
-                    "type": "font-awesome",
-                    "instructions": "",
+                    "type": "icon_picker",
+                    "instructions": "[app_ex_ico] <\/br>\r\nFor More Icons: https:\/\/fonts.google.com\/icons. Copy 'Icon_name' and add to icons.php",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -91,21 +106,16 @@
                         "class": "",
                         "id": ""
                     },
-                    "icon_sets": [
-                        "solid",
-                        "regular",
-                        "brands"
+                    "tabs": [
+                        "google"
                     ],
-                    "custom_icon_set": "",
-                    "default_label": "&lt;i class=\"fa-classic fa-solid fa-book-open-reader fa-fw\"&gt;&lt;\/i&gt; Book Open Reader",
-                    "default_value": "{\"family\" : \"classic\", \"style\" : \"solid\", \"id\" : \"store\", \"label\" : \"Store\", \"unicode\" : \"f54e\"}",
-                    "save_format": "element",
-                    "allow_null": 0,
-                    "show_preview": 1,
-                    "enqueue_fa": 0,
-                    "allow_in_bindings": 0,
-                    "fa_live_preview": "",
-                    "choices": []
+                    "return_format": "array",
+                    "allow_in_bindings": 1,
+                    "library": "all",
+                    "default_value": {
+                        "type": null,
+                        "value": null
+                    }
                 },
                 {
                     "key": "field_6908f682debb9",
@@ -147,7 +157,7 @@
                     "allow_in_bindings": 1
                 },
                 {
-                    "key": "field_69cd89e5d9b9f",
+                    "key": "field_69f39dbea2198",
                     "label": "Exhibitor\/Vendor Waitlist",
                     "name": "ex_wait",
                     "aria-label": "",
@@ -165,8 +175,148 @@
                     "allow_in_bindings": 1
                 },
                 {
+                    "key": "field_69f39db1a2194",
+                    "label": "Cosplay Alley Booths",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "ie: Merchent Vendor",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0
+                },
+                {
+                    "key": "field_69f39db4a2195",
+                    "label": "Cosplay Icon",
+                    "name": "cos_icon",
+                    "aria-label": "",
+                    "type": "font-awesome",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "icon_sets": [
+                        "solid",
+                        "regular",
+                        "brands"
+                    ],
+                    "custom_icon_set": "",
+                    "default_label": "&lt;i class=\"fa-classic fa-solid fa-book-open-reader fa-fw\"&gt;&lt;\/i&gt; Book Open Reader",
+                    "default_value": "{\"family\" : \"classic\", \"style\" : \"solid\", \"id\" : \"store\", \"label\" : \"Store\", \"unicode\" : \"f54e\"}",
+                    "save_format": "element",
+                    "allow_null": 0,
+                    "show_preview": 1,
+                    "enqueue_fa": 0,
+                    "allow_in_bindings": 0,
+                    "fa_live_preview": "",
+                    "choices": []
+                },
+                {
+                    "key": "field_69f39db7a2196",
+                    "label": "Cosplay Alley Status",
+                    "name": "cos_stat",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "app_cos_stat",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Appy SOON",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "Apply SOON",
+                    "prepend": "Status:",
+                    "append": ""
+                },
+                {
+                    "key": "field_69f3a3af6c41e",
+                    "label": "Cosplay Alley Link",
+                    "name": "cos_url",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "app_cos_url",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69cd89e5d9b9f",
+                    "label": "Cosplay Alley Waitlist",
+                    "name": "cos_wait",
+                    "aria-label": "",
+                    "type": "acfe_advanced_link",
+                    "instructions": "app_ex_wait",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 1
+                },
+                {
+                    "key": "field_69f39ca338e4a",
+                    "label": "Accordian END",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "Comic Creator & 2D Artist",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 1
+                },
+                {
+                    "key": "field_69f39dcfa2199",
+                    "label": "Accordian END (copy)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "Comic Creator & 2D Artist",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 1
+                },
+                {
                     "key": "field_69c572df54c45",
-                    "label": "(Column 3\/12)",
+                    "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
                     "type": "acfe_column",
@@ -178,7 +328,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "columns": "3\/12",
+                    "columns": "4\/12",
                     "endpoint": 0,
                     "allow_in_bindings": 0
                 },
@@ -196,7 +346,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "open": 1,
+                    "open": 0,
                     "multi_expand": 0,
                     "endpoint": 0
                 },
@@ -429,12 +579,12 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_69cd9a1b3fc77",
-                    "label": "Artisan Crafter Booths",
+                    "key": "field_69f39bfa38e45",
+                    "label": "Artisan Crafters",
                     "name": "",
                     "aria-label": "",
-                    "type": "message",
-                    "instructions": "",
+                    "type": "accordion",
+                    "instructions": "incudes 3D Artists",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -442,9 +592,9 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "includes 3D Artists",
-                    "new_lines": "wpautop",
-                    "esc_html": 0
+                    "open": 1,
+                    "multi_expand": 0,
+                    "endpoint": 0
                 },
                 {
                     "key": "field_6971e59912c2b",
@@ -534,12 +684,12 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_697d2ee9de12f",
-                    "label": "(Column 3\/12)",
+                    "key": "field_69f39c7b38e48",
+                    "label": "Accordian END",
                     "name": "",
                     "aria-label": "",
-                    "type": "acfe_column",
-                    "instructions": "",
+                    "type": "accordion",
+                    "instructions": "Comic Creator & 2D Artist",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -547,17 +697,17 @@
                         "class": "",
                         "id": ""
                     },
-                    "columns": "3\/12",
-                    "endpoint": 0,
-                    "allow_in_bindings": 0
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 1
                 },
                 {
-                    "key": "field_69cd9a463fc78",
-                    "label": "Author\/Publisher Booths",
+                    "key": "field_69f39c2638e46",
+                    "label": "Authors & Publishers",
                     "name": "",
                     "aria-label": "",
-                    "type": "message",
-                    "instructions": "",
+                    "type": "accordion",
+                    "instructions": "Comic Creator & 2D Artist",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -565,9 +715,9 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "",
-                    "new_lines": "wpautop",
-                    "esc_html": 0
+                    "open": 1,
+                    "multi_expand": 0,
+                    "endpoint": 0
                 },
                 {
                     "key": "field_6971e5f112c2d",
@@ -657,6 +807,24 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "key": "field_69f39c9c38e49",
+                    "label": "Accordian END",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "Comic Creator & 2D Artist",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 1
+                },
+                {
                     "key": "field_69cd887af9286",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -674,7 +842,160 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
+            ],
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
+        },
+        {
+            "key": "field_69f03c62fe1d8",
+            "label": "Exhibitor Information Packets",
+            "name": "info",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "Links created by Web Dev as needed. Use this section to manage all outgoing links\/docs across all websites.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
+            "sub_fields": [
+                {
+                    "key": "field_69f042179c385",
+                    "label": "(Column 4\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "4\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69f041760b635",
+                    "label": "Exhibitor Package Status",
+                    "name": "exhibitor_package_status_",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69f042209c386",
+                    "label": "(Column 6\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "6\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69f03d510b634",
+                    "label": "Exhibitor Package PDF\/ Published Google Doc Link",
+                    "name": "ex_pkg_url",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "info_ex_pkg_url",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69f03cca0b633",
+                    "label": "Exhibitor Booth Breakdown (Chart) Link",
+                    "name": "booth_chrt_url",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "[info_booth_chrt_url] <\/br>\r\nFor Published Google Doc of Exhibitor Packages Chart",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "allow_in_bindings": 1
+                },
+                {
+                    "key": "field_69f042309c387",
+                    "label": "(Column Endpoint)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "endpoint": 1,
+                    "allow_in_bindings": 0,
+                    "columns": "6\/12"
+                }
             ]
+        },
+        {
+            "key": "field_69f03b3fc8147",
+            "label": "Panelists",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6908fa1692c4f",
@@ -915,7 +1236,7 @@
                 {
                     "key": "field_6908fcb3ad734",
                     "label": "Cosplay Contestant",
-                    "name": "cos_stat",
+                    "name": "cos_con_stat",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -926,13 +1247,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "Apply SOON",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -943,7 +1257,7 @@
                 {
                     "key": "field_6908fd0bad735",
                     "label": "Cosplay Contestant Link",
-                    "name": "cos_url",
+                    "name": "cos_con_url",
                     "aria-label": "",
                     "type": "acfe_advanced_link",
                     "instructions": "",
@@ -954,13 +1268,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "post_type": "",
                     "taxonomy": "",
                     "allow_in_bindings": 1
@@ -1062,6 +1369,24 @@
                     "columns": "6\/12"
                 }
             ]
+        },
+        {
+            "key": "field_69f03b43c8148",
+            "label": "Media Partners & Sponsors",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6908fc1f9196d",
@@ -1384,9 +1709,9 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Applications for vendors, panelists, etc",
+    "description": "Applications & Info for vendors, panelists, etc",
     "show_in_rest": 1,
-    "display_title": "Participant Info - Applications",
+    "display_title": "Participant\/Partner Info - Options Page",
     "allow_ai_access": false,
     "ai_description": "",
     "acfe_autosync": [
@@ -1396,7 +1721,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1775694052,
+    "modified": 1777590967,
     "acfe_categories": {
         "options-pages": "Options Pages",
         "people": "People"

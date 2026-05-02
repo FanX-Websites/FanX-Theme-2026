@@ -39,6 +39,10 @@
             "acfe_seamless_style": 1,
             "acfe_settings": "",
             "acfe_permissions": "",
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_69e2f69eabc61",
@@ -89,52 +93,6 @@
                     "acfe_permissions": "",
                     "allow_in_bindings": 1,
                     "preview_size": "medium"
-                },
-                {
-                    "key": "field_69e7f05f0d16a",
-                    "label": "Targeted Tags",
-                    "name": "targeted_tags",
-                    "aria-label": "",
-                    "type": "acfe_taxonomy_terms",
-                    "instructions": "heafoo_targeted_tags <\/br>\r\n<b>Fandoms: <\/b>Choose Main Category of Fandom (ie: Anime, Marvel) <\/br>\r\n<b>Blog Posts:<\/b> Choose Post Purpose (ie: updates, resources) to appear in related cat page section.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "taxonomy": [
-                        "post_tag"
-                    ],
-                    "allow_terms": [
-                        "246",
-                        "250",
-                        "251",
-                        "249",
-                        "247"
-                    ],
-                    "allow_level": "",
-                    "field_type": "select",
-                    "default_value": [],
-                    "return_format": "id",
-                    "ui": 1,
-                    "allow_null": 0,
-                    "placeholder": "",
-                    "multiple": 1,
-                    "ajax": 0,
-                    "save_terms": 1,
-                    "load_terms": 0,
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 0,
-                    "choices": [],
-                    "search_placeholder": "",
-                    "layout": "",
-                    "toggle": 0,
-                    "allow_custom": 0,
-                    "other_choice": 0
                 },
                 {
                     "key": "field_69e2f6a6abc62",
@@ -247,11 +205,7 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal": 0,
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "key": "field_6930d5c8f75d8",
@@ -1174,7 +1128,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "TO DO: \r\n- Update Table Chart into Group & change theme accordingly",
-    "modified": 1776833012,
+    "modified": 1777488498,
     "acfe_categories": {
         "categories": "Categories",
         "event-info": "Event Info",

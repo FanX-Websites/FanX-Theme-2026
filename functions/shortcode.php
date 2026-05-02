@@ -39,96 +39,60 @@ add_filter( 'walker_nav_menu_start_el', function( $item_output, $item, $depth, $
        
 
 //---CREATE SHORTCODES ---->       
-    // -- [page_title] -->
-    function page_title_df( ){
+    // -- PAGE TITLE -->
+    function page_title_df( ){ // [page_title]
     return get_the_title();
     }
     add_shortcode( 'page_title', 'page_title_df' );
 
-    // -- [page_content] -->
-    function page_content_df( ){
+    // -- PAGE CONTENT -->
+    function page_content_df( ){ // [page_content]
     return get_the_content();
     }
     add_shortcode( 'page_content', 'page_content_df' );
 
-    // -- [post_content] -->
-    function post_content_df( ){
+    // -- POST CONTENT -->
+    function post_content_df( ){ // [post_content]
     return get_the_content();
     }
     add_shortcode( 'post_content', 'post_content_df' );
 
 
-    // --[sitemap] -->
-    function sitemap_df($atts){
+    // -- SITEMAP -->
+    function sitemap_df($atts){ // [sitemap]
     return get_template_part('sitemap');
     }
     add_shortcode( 'sitemap', 'sitemap_df' );
     
-    //--- [year] -->
-    function year_df () {
+    //--- CURRENT YEAR -->
+    function year_df () { // [year]
         $year = date_i18n ('Y');
         return $year;
         }
     add_shortcode ('year', 'year_df');
 
-    // -- [site_url] --> 
-    function generate_site_url_shortcode() {
+    // -- SITE URL -->  
+    function generate_site_url_shortcode() { // [site_url]
     return get_site_url();
     }
     add_shortcode( 'site_url', 'generate_site_url_shortcode' );
 
 
     // -- Content Specific Shortcodes --->>>
-        // -- [br] -->
-        function linebreak_df() {
+        // -- LINE BREAK -->
+        function linebreak_df() { // [br]
             return '<br />';
         }
         add_shortcode( 'br', 'linebreak_df' );
 
-        // -- [hr] -->
-        function thembreak_df() {
+        // -- HORIZONTAL RULE -->
+        function thembreak_df() { // [hr]
             return '<hr style="width:50%; text-align:left; ; margin: 3%; border-top: 1px solid gold;">';
             return '<hr style="width:50%; text-align:left; margin: 3%; border-top: 1px solid gold;">';
         }    
         add_shortcode( 'hr', 'thembreak_df' );
 
 
-// --- ACF Fields as shortcode --->
-
-    // -- [acf field="field_name"] -->
-function acf_field_shortcode( $atts ) {
-    $a = shortcode_atts( array(
-        'field' => '',
-        'post_id' => false,
-    ), $atts );
-
-    if ( function_exists( 'get_field' ) && ! empty( $a['field'] ) ) {
-        $value = get_field( $a['field'], $a['post_id'] );
-        
-        // If no value found and no specific post_id was set, try options page
-        if ( empty( $value ) && $a['post_id'] === false ) {
-            $value = get_field( $a['field'], 'option' );
-        }
-        
-        // Handle array returns for common ACF field types
-        if ( is_array( $value ) ) {
-            // Image field: return image URL
-            if ( isset( $value['url'] ) ) {
-                return $value['url'];
-            }
-            // Gallery field: return comma-separated URLs
-            if ( isset( $value[0] ) && is_array( $value[0] ) && isset( $value[0]['url'] ) ) {
-                $urls = array_map( function( $img ) {
-                    return isset( $img['url'] ) ? $img['url'] : '';
-                }, $value );
-                return implode( ',', array_filter( $urls ) );
-            }
-            // For other array types, return JSON for debugging/documentation
-            return json_encode( $value );
-        }
-        
-        return $value;
-    }
-    return '';
-}
-add_shortcode( 'acf', 'acf_field_shortcode' );
+// NOTE: ACF FIELD SHORTCODE is registered in acf/tweaks.php
+// This provides a unified implementation with comprehensive field handling
+// Supports: field, post_id, format_value, format, link_format attributes

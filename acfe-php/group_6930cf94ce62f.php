@@ -99,56 +99,6 @@ acf_add_local_field_group(array(
 					'preview_size' => 'medium',
 				),
 				array(
-					'key' => 'field_69e7f05f0d16a',
-					'label' => 'Targeted Tags',
-					'name' => 'targeted_tags',
-					'aria-label' => '',
-					'type' => 'acfe_taxonomy_terms',
-					'instructions' => 'heafoo_targeted_tags </br>
-<b>Fandoms: </b>Choose Main Category of Fandom (ie: Anime, Marvel) </br>
-<b>Blog Posts:</b> Choose Post Purpose (ie: updates, resources) to appear in related cat page section.',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array(
-						'width' => '',
-						'class' => '',
-						'id' => '',
-					),
-					'taxonomy' => array(
-						0 => 'post_tag',
-					),
-					'allow_terms' => array(
-						0 => '246',
-						1 => '250',
-						2 => '251',
-						3 => '249',
-						4 => '247',
-					),
-					'allow_level' => '',
-					'field_type' => 'select',
-					'default_value' => array(
-					),
-					'return_format' => 'id',
-					'ui' => 1,
-					'allow_null' => 0,
-					'placeholder' => '',
-					'multiple' => 1,
-					'ajax' => 0,
-					'save_terms' => 1,
-					'load_terms' => 0,
-					'acfe_settings' => '',
-					'acfe_validate' => '',
-					'acfe_permissions' => '',
-					'allow_in_bindings' => 0,
-					'choices' => array(
-					),
-					'search_placeholder' => '',
-					'layout' => '',
-					'toggle' => 0,
-					'allow_custom' => 0,
-					'other_choice' => 0,
-				),
-				array(
 					'key' => 'field_69e2f6a6abc62',
 					'label' => '(Column 9/12)',
 					'name' => '',
@@ -1183,7 +1133,7 @@ acf_add_local_field_group(array(
 	'acfe_meta' => '',
 	'acfe_note' => 'TO DO: 
 - Update Table Chart into Group & change theme accordingly',
-	'modified' => 1777316970,
+	'modified' => 1777579358,
 	'acfe_categories' => array(
 		'categories' => 'Categories',
 		'event-info' => 'Event Info',

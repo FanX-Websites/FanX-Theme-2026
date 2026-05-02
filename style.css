@@ -121,31 +121,31 @@ For divs that hold template parts*/
             justify-content: center;
             flex-direction: column; 
         }
-    .self-centered-row{/* Centered Row  */
-        display: flex; 
-        flex-direction: row; 
-        align-items: center; 
-        justify-content: center;
-    }
-    .self-centered-row-top{/* Centered Row  */
-        display: flex; 
-        flex-direction: row; 
-        align-items: flex-start; 
-        justify-content: center;
-    }
-     .self-centered-scrunch{/* Centered Row no wrap/mobile -  */
-        display: flex; 
-        flex-direction: row; 
-        align-items: center; 
-        justify-content: center;
-    }
+        .self-centered-row{/* Centered Row  */
+            display: flex; 
+            flex-direction: row; 
+            align-items: center; 
+            justify-content: center;
+        }
+        .self-centered-row-top{/* Centered Row  */
+            display: flex; 
+            flex-direction: row; 
+            align-items: flex-start; 
+            justify-content: center;
+        }
+        .self-centered-scrunch{/* Centered Row no wrap/mobile -  */
+            display: flex; 
+            flex-direction: row; 
+            align-items: center; 
+            justify-content: center;
+        }
 
-     .self-centered-stretch{/* Centered Row with stretch  */
-        display: flex; 
-        flex-direction: row; 
-        align-items: stretch; 
-        justify-content: center;
-    }
+        .self-centered-stretch{/* Centered Row with stretch  */
+            display: flex; 
+            flex-direction: row; 
+            align-items: stretch; 
+            justify-content: center;
+        }
          /*Self Centered Mobile*/
             @media (max-width: 900px){
                 .self-centered-row, .self-centered-stretch{
@@ -183,8 +183,7 @@ For divs that hold template parts*/
         height: 100%;
         padding: 0; 
         margin: 0; 
-    }
-
+    }   
 
 
 /* ----------- Div Dimensions ------------------------>*/
@@ -225,7 +224,7 @@ For divs that hold template parts*/
         box-sizing: border-box;
     }
 
-/* Heights */
+/* Heights -Viewport //TODO: update to use vw */
 .min-50{
     min-height: 50vh; 
     box-sizing: border-box;
@@ -233,6 +232,12 @@ For divs that hold template parts*/
 .min-80{
     min-height: 80vh; 
     box-sizing: border-box;
+}
+
+/* Widths - Pixels */
+.max-pxw-300{
+    max-width: 300px; 
+    width: 100%;
 }
 
 

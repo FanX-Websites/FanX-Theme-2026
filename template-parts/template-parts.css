@@ -194,28 +194,23 @@ h3.content-block-subtext {
   margin: 0
 }
 
-.content-block-small-print {
+.content-block-small-print p{
   font-size: .9em;
   line-height: 1.25em;
-  color: var(--color_drk);
+  color: var(--color_fnt_blk);
   text-align: center;
   font-style: italic;
   padding-bottom: 3%;
   margin: 15px;
   padding: 0
 }
-/* CB - Ticket Comparison Chart */
+/* CB - Ticket Comparison Chart ---------------------------- */
 .ticket-info-blocks .content-block {
-  padding: 30px;
-  margin: 0;
-  background-color: var(--color_lght);
-  display: flex;
-  align-items: center;
+  color: var(--color_fnt_blk);
   justify-content: flex-start;
-  flex-direction: column
 }
  /** Ticket Content Block Text Styling */
-.ticket-info-blocks .content-block-title {
+.ticket-info-blocks h2{ /** Content Block Title */
   font-weight: 700;
   font-size: 3em;
   line-height: 1.2em;
@@ -225,31 +220,33 @@ h3.content-block-subtext {
   margin: 0
 }
 
-.ticket-info-blocks .content-block-subtext {/** Content Block Subtext*/
+.ticket-info-blocks h3{/** Content Block Subtext*/
   width: 100%;
   padding: 0;
   margin: 0;
-  font-weight: 500;
-  font-size: 1.75em;
+  font-weight: 800;
+  font-size: 2.75em;
   line-height: 1.35em;
-  color: var(--color_prim)
+  color: var(--color_acc_brht); 
 }
 
-.ticket-info-blocks .content-block-text {
+.ticket-info-blocks em{ 
   width: 100%;
   padding: 0;
   margin: 0;
+  text-align: center;
   font-style: italic;
   font-weight: 100;
-  font-size: 1.25em;
-  line-height: 1.5em;
-  color: var(--color_base)
+  font-size: 1em;
+  line-height: 1.2em;
+  color: var(--color_prim);
 }
 
-.ticket-info-blocks h5 {
+.ticket-info-blocks h5{
   font-size: 1.5em;
   font-weight: 300;
-  color: var(--color_acc_lght)
+  color: var(--color_acc);
+  text-align: center;
 }
 
 .ticket-info-blocks li {
@@ -261,14 +258,14 @@ h3.content-block-subtext {
   color: var(--color_fnt_blk)
 }
 
-    /* CB - Event Hour Content */
-        /** Event Info - Calendar Events List - */
+/* CB - Event Hour Content ----------------------------------------- */
+
+/** Event Info - Calendar Events List  */
 .event-info-blocks ul {
   padding: 0;
   margin: 0;
   width: 90%
 }
-
 .event-info-blocks ul li {
   list-style-type: none;
   padding-left: 15px;
@@ -280,7 +277,6 @@ h3.content-block-subtext {
   border-bottom: .1px solid var(--color_acc_lght);
   padding: 20px
 }
-
 .event-info-blocks ul li::before {
   content: "";
   position: absolute;
@@ -291,21 +287,43 @@ h3.content-block-subtext {
   height: 2em
 }
 
-  /** Registration */
+/** Registration */
   .content-blocks ul li:nth-child(1)::before {
-  background-color: var(--color_acc_brht)
+    background-color: var(--color_acc_brht)
 }
  /** Vendor Floor */
-.content-blocks ul li:nth-child(2)::before {
-  background-color: var(--color_prim_brht)
+  .content-blocks ul li:nth-child(2)::before {
+    background-color: var(--color_prim_brht)
 }
  /** Panel Programming */
-.content-blocks ul li:nth-child(3)::before {
-  background-color: var(--color_base_brht)
+  .content-blocks ul li:nth-child(3)::before {
+    background-color: var(--color_base_brht)
 }
 /** END Event Info - Calendar Events List - */
 
-/* CB - ADA Content Blocks */    
+/* Event Info - Text Styling ---------------*/
+.event-info-blocks .small-print p em{
+  color: var(--color_drk);
+}
+.event-info-blocks .small-print p strong{
+  color: var(--color_drk);
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.event-info-blocks .small-print h5{
+  color: var(--color_base);
+  font-size: 1.15em;
+  line-height: 1.25em;
+  font-weight: 300;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+
+}
+
+
+/* CB - ADA Content Blocks ------------------------- */    
 .ada-blocks .content-block {
   max-width: 900px;
   width: 90%;
@@ -550,6 +568,26 @@ h3.updates-entry-title a{
   margin: 0; 
 }
 
+/* Guest Appearance Days */
+
+.days.guest-xp .small-print p{
+  margin: 0; 
+  padding: 0;
+}
+
+/* .appearance-days{
+  padding: 2% 0 0; 
+  margin: 0; 
+} */
+
+.days.guest-xp .small-print{
+  padding: 0;
+  margin: 0;
+  font-size: .8em;
+  line-height: 1.5em;
+}
+
+
 /* Guest Experiences ---- GUEST-XP */
 .guest-xp h3{
   width: 100%; 
@@ -576,5 +614,85 @@ h3.updates-entry-title a{
   font-style: italic; 
   
  }
+
+ /* XP Buttons - Profiles ---- */
+ button.xp {
+   width: 90%;
+   padding: 3%;
+   margin: 3%;
+   border: 1px solid var(--color_base_lght);
+   color: var(--color_fnt_wht);
+   background-color: var(--color_base)
+ }
+
+ .xp-buttons {
+   flex-flow: column;
+ }
+
+ .guest-xp {
+   width: 100%;
+   padding: 2%;
+   margin: 0;
+   color: var(--color_fnt_wht);
+ }
+
+ /* END Buttons ------------------------------ */
+
+/* Multi-Post Gallery */
+.featured-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 5% 0;
+}
+.multi-post-gallery.title {
+  font-size: 2em;
+  font-weight: 500;
+  color: var(--color_fnt_wht);
+  text-align: center;
+  width: 100%;
+
+}
+.multi-post-gallery.subtitle {
+  font-size: 1em;
+  line-height: 1.25em;
+  font-weight: 100;
+  color: var(--color_prim_lght);
+  text-align: center;
+  font-style: italic;
+  width: 100%;
+} 
+.multi-post-gallery.posts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 3% 0;
+}
+/* Gallery Post Content */
+.gallery-post {
+  padding: 0; 
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.gallery-post img {
+  max-height: 250px; 
+  width: auto; 
+}
+.gallery-post a{
+  font-size: 1.5em;
+  font-weight: 500;
+  color: var(--color_fnt_wht);
+  text-align: center;
+  padding: 2%;
+  margin: 0;
+  text-decoration: none;
+}
 
 /* END Profile Page Template Parts --------------------------------------- */

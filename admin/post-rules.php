@@ -463,6 +463,9 @@ function fanx_request_edit_access_ajax() {
 	$request_id = fanx_create_access_request($lock_key);
 
 	if ($request_id) {
+		// UNTESTED: Activity logger integration - no known listener for 'fanx_activity_logger_log' hook
+		// Commented out to verify if functionality breaks without it
+		/*
 		// Log to activity feed if available
 		if (function_exists('do_action')) {
 			$request_data = fanx_get_access_request($request_id);
@@ -474,6 +477,7 @@ function fanx_request_edit_access_ajax() {
 				]);
 			}
 		}
+		*/
 
 		wp_send_json_success([
 			'request_id' => $request_id,
@@ -505,6 +509,9 @@ function fanx_respond_access_request_ajax() {
 	$result = fanx_respond_to_access_request($request_id, $action);
 
 	if ($result) {
+		// UNTESTED: Activity logger integration - no known listener for 'fanx_activity_logger_log' hook
+		// Commented out to verify if functionality breaks without it
+		/*
 		// Log to activity feed if available
 		if ($request_data && function_exists('do_action')) {
 			$object_info = fanx_parse_lock_key_to_object($request_data['lock_key']);
@@ -515,6 +522,7 @@ function fanx_respond_access_request_ajax() {
 				'decision' => $action
 			]);
 		}
+		*/
 
 		wp_send_json_success([
 			'message' => 'Response recorded',

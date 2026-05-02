@@ -67,28 +67,55 @@
                             if ( $is_coming_soon ) {
                                 echo ' - <span class="xp-soon">Available for Pre-Purchase SOON</span>'; //COMING SOON
                             } else { 
-                                //FIXME: Temporary fix until shortcut link issue is resolved
-                                // Determine Photo Ops URL based on current site
-                                $site_url = home_url();
-                                $photo_ops_url = '';
-                                
-                                if ( strpos( $site_url, 'fanxsaltlake' ) !== false ) {
-                                    $photo_ops_url = 'https://checkout.conventions.leapevent.tech/eh/FanX_Salt_Lake_Comic_Convention_2026/56010?cc=ops';
-                                } elseif ( strpos( $site_url, 'indianacomicconvention' ) !== false ) {
-                                    $photo_ops_url = 'https://checkout.conventions.leapevent.tech/eh/Indiana_Comic_Convention_2026/55749?cc=ops';
-                                } elseif ( strpos( $site_url, 'tampabaycomicconvention' ) !== false ) {
-                                    $photo_ops_url = 'https://checkout.conventions.leapevent.tech/eh/Tampa_Bay_Comic_Convention_2026/55768?cc=ops';
-                                } else {
-                                    $photo_ops_url = $op_url; // Fallback to custom field
-                                }
-                                
-                                echo ' - <span class="xp-now"><a href="' . esc_url($photo_ops_url) . '">Buy Photo Ops NOW**</a></span>'; //BUY NOW
+                                echo ' - <span class="xp-now">Buy Photo Ops NOW**</span>'; //BUY NOW
                             }
                         } else {
                             echo ' - <span class="xp-soon">More Info Coming Soon*</span>'; //NO PRICE - Coming Soon
                         }
                     ?> 
                 </div>
+                
+                <!-- Photo Op Days/Links -->
+                <div class="days guest-xp">
+                    <?php 
+                    $days_cats = get_the_terms( get_the_ID(), 'days' );
+                    
+                    if ( ! empty( $days_cats ) && ! is_wp_error( $days_cats ) ) {
+                        //Sort by Day Name for correct Appearance Order
+                        $order = ['thursday' => 1, 'friday' => 2, 'saturday' => 3, 'sunday' => 4];
+                        usort($days_cats, fn($a, $b) => ($order[$a->slug] ?? 99) - ($order[$b->slug] ?? 99));
+                        
+                        // Map day slugs to ACF field names for photo ops URLs
+                        $day_url_map = [
+                            'thursday' => 'celeb_op_sun_url',
+                            'friday'   => 'celeb_op_fri_url',
+                            'saturday' => 'celeb_op_sat_url',
+                            'sunday'   => 'celeb_op_sun_url',
+                        ];
+                        
+                        $links = array();
+                        foreach ( $days_cats as $cat ) {
+                            // Get the URL field for this day
+                            $field_name = $day_url_map[$cat->slug] ?? null;
+                            $day_url = '';
+                            
+                            if ( $field_name ) {
+                                $day_link = get_field($field_name, 'option');
+                                $day_url = is_array($day_link) ? ($day_link['url'] ?? '') : $day_link;
+                            }
+                            
+                            // Build the link with URL if available, otherwise just the text
+                            if ( $day_url ) {
+                                $links[] = '<a href="' . esc_url($day_url) . '">' . esc_html($cat->name) . '</a>';
+                            } else {
+                                $links[] = esc_html($cat->name);
+                            }
+                        }
+                        echo implode( ' | ', $links );
+                    }
+                    ?>
+                </div>
+                <!-- END Photo Op Days/Links -->
             <?php endif; ?>
         </div>
         <!-- END Photo Ops <--------------------------------------------->
@@ -170,10 +197,37 @@
             <?php endif; ?>
             <!-- END Celebrity Row eXtras --->
             <!--- Group Photo Ops -->
-
-                <div class="grp-ops guest-xp"> 
-                    
+            <?php
+            $group_op_posts = $xp['group_op'] ?? array();
+            if ( $group_op_posts ) : ?>
+                <div class="grp-ops guest-xp">
+                    <strong>Group Photo Ops:</strong>
+                    <?php
+                    foreach ( (array)$group_op_posts as $post_id ) {
+                        $ops_xp = get_field('xp', $post_id);  
+                        $price = is_array($ops_xp) ? ($ops_xp['op_price'] ?? '') : ''; //Price
+                        $button_url = '';
+                        if ( have_rows('button', $post_id) ) {
+                            while ( have_rows('button', $post_id) ) {
+                                the_row();
+                                $button_url = get_sub_field('url');
+                                break; // Get first button only
+                            }
+                        }
+                        $title = get_the_title($post_id); //Title
+                        ?>
+                        <div class="grp-op guest-xp">
+                            <?php echo esc_html($title); ?> - 
+                            <?php echo esc_html($price); ?>
+                            <?php if ($button_url) { ?>
+                                - <span class="xp-now"><a href="<?php echo esc_url($button_url); ?>">Buy Group Ops NOW</a></span>
+                            <?php } ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
+            <?php endif; ?>
             <!-- END Group Photo Ops --->
             
             <!-- Panel Programming(Panels)--->

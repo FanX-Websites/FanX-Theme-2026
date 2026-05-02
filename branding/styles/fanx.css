@@ -152,7 +152,7 @@ blockquote::before {
 }
 
 
-/*Small Print Text - Default */
+/*Small Print Text - Default //FIXME: duplicated code */
 p.small-print{
   font-size: .9em;
   line-height: 1.25em;
@@ -213,29 +213,52 @@ a.button {
 .button-subtext {
   color: var(--color_lght);
   font-size: 1em;
-  font-weight: 100
+  font-weight: 100;
+  flex-flow: row;
 }
-/* XP Buttons - Profiles ---- */  
-button.xp {
-  width: 90%;
-  padding: 3%;
-  margin: 3%;
-  border: 1px solid var(--color_base_lght);
-  color: var(--color_fnt_wht);
-  background-color: var(--color_base)
+.button:disabled {
+  opacity: 0.8;
+  cursor: none;
+  border-radius: 0;
 }
 
-.xp-buttons {
-  flex-flow: column
-}
-
-.guest-xp{
+/* Button Groups */
+.button-group{
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  flex-flow: row;
+  margin: 2%; 
+  padding: 1px;
+  border-radius: 0;
   width: 100%;
-  padding: 2%;
-  margin: 0;
-  color: white; 
+  gap: 6px; 
 }
-/* END Buttons ------------------------------ */
+.button-group .button{
+  border-radius: 0;
+  width: 48%;
+  min-width: 0px; 
+  max-width: 150px; 
+  font-size: 1em;
+  padding: 10px; 
+  margin: 0;
+  height: auto;
+  border: solid 2px var(--color_lght);
+}
+.button-group .button.button-left {
+  border-radius: 0 25px 0 0;
+}
+.button-group .button.button-right {
+  border-radius: 0 0 0 25px;
+}
+.button-group .button .small-print {
+  padding: 0;
+  margin: 0;
+  color: var(--color_lght);
+  font-size: .8em;
+  line-height: .8em;
+}
+
 
 /* Backgrounds  -------------------- */
 
@@ -656,9 +679,19 @@ body::after {
 /* //NOTE: Header styling commented out for testing - Template Part// 
 */   
 
-/** Page Headers - Text */
+/** Page Headers */ 
+  /* Page Header Block */
+  .page-header-section > .page-header .block{ 
+    padding: 1%;
+    gap: 0;
+  }
+  .page-header > .page-title.block {
+    padding: 0; 
+    margin: 0; 
+  }
+  /*- Page Header Text */
   .page-title h1{
-    width: 90%;
+    width: 100%;
     margin: 0;
     padding: 0;
     font-size: clamp(2.5rem,8vw,4rem);
@@ -668,8 +701,8 @@ body::after {
     color: var(--color_acc_brht);
   }
   .page-subtitle, .page-subtitle a{ 
-    width: 1000px;
-    max-width: 90%;
+    max-width: 1000px;
+    width: 90%;
     margin: 0;
     padding: 0;
     font-size: clamp(1.5rem,2vw,2rem);
@@ -680,10 +713,10 @@ body::after {
     text-decoration: none; 
   }
   .page-subtext{
-    width: 900px;
-    max-width: 90%;
+    max-width: 900px;
+    width: 90%;
     margin: 0;
-    padding:  1% 0;
+    padding: 0;
     font-size: clamp(.8rem, 1vw, 1rem);
     line-height: 1.5em;
     font-weight: 100;
@@ -857,18 +890,27 @@ body::after {
         display: grid;
         grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
         max-width: 1500px;
-        gap: 30px 10px;
+        gap: 1px;
         width: 90%;
-        padding: 2% 0 8%;
-        margin: 0 auto
+        margin: 2% 0 8%;
+        padding: 0;
+        background-color: var(--color_prim);
+        /* border: 2px solid var(--color_lght); */
       }
 
     .post-block {
         width: 100%;
-        max-width: 500px;
-        padding: 5px;
-        margin: 0 auto
+        /* max-width: 300px; */
+        padding: 25px;
+        margin: 0 auto;
+        border-radius: 20px;
+        background-color: var(--color_drk);
+        outline: 1px solid var(--color_drk);
+        border: 2px solid var(--color_lght);
+        
       }
+    
+    /* .post-block .placeholder .block{} */
 
     .no-posts-container,.no-posts-container p {
       text-align: center
@@ -884,25 +926,37 @@ body::after {
 
 /** Basic Post Loop Styling ---> */
 /*Basic Blog List Layouts*/
-h2.entry-title a {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  line-height: 1em;
-  color: var(--color_base_lght);
-  font-weight: 200;
-  text-decoration: none;
-  padding: 0;
-  margin: 0
+
+.entry-header {
+  padding: 3% 0;
+  margin: 0;
+  text-align: center;
+  gap: 0;
 }
 
-.entry-summary p {
+h2.entry-title{
+font-size: clamp(0.8rem, 5cqw, 1.5rem);
+  line-height: 1em;
+  font-weight: 200;
+  padding: 0;
+  margin: 0;
+}
+
+h2.entry-title a{
+  text-decoration: none;
+  color: var(--color_base_lght);
+}
+
+.entry-summary p{
   font-size: 1em;
-  line-height: 1.5em;
+  line-height: 1.25em;
   text-align: center;
   color: var(--color_lght);
   margin: 0;
-  padding: 1% 6%
+  padding: 0;
 }
 
+/* Default Thumbnail */
 .post-thumbnail {
   width: 100%;
   height: auto;
@@ -911,7 +965,7 @@ h2.entry-title a {
   justify-content: center;
   padding: 0;
   margin: 0;
-  position: relative
+  position: relative;
 }
 
 .post-thumbnail img {
@@ -920,7 +974,32 @@ h2.entry-title a {
   display: block;
   margin: 0;
   padding: 4% 4% 2%;
-  border-radius: 0
+  border-radius: 0;
+}
+
+/* For images with no frame */
+.post-thumbnail.no-frame{
+  height: 200px;
+  width: 100%;
+  max-width: 300px; 
+  margin: 3% 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 25px;
+}
+.post-thumbnail.no-frame a{
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.post-thumbnail.no-frame a img{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+  object-fit: cover;
 }
 
 /** Single Post Styling **/ 
@@ -952,9 +1031,7 @@ h2.entry-title a {
   color: inherit; 
   font-size: 1em;
   line-height: 1.6em;
-  
 }
-
 .profile-content{
   display: flex;
   align-items: center;

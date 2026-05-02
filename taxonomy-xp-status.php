@@ -12,7 +12,7 @@ get_header(); /** body- main-site */
 <!-- Category Page Body -->
 
     <!--------------- Page Header Container [Template Part] ----------------------->
-    <div class="page-header container">
+    <div class="container">
         <?php get_template_part('template-parts/page-header'); ?>
     </div><!-- END page-header Container -->
     <!------------ END Page Header Container -------------------->
@@ -93,6 +93,7 @@ get_header(); /** body- main-site */
         <!-- No Posts Message -->
         <?php
             endwhile;
+            wp_reset_postdata();
         else :
             ?>
             <div class="no-posts-container">

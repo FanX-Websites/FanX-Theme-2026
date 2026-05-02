@@ -28,7 +28,7 @@ get_header();
                 </div><!-- END Submenu -->
 
                 <!-- Main Category --->
-                <h1>
+                <h1 class="profile">
                     <?php 
                         $categories = get_the_category(); //Main Category 
                         if ( ! empty( $categories ) ) {
@@ -40,7 +40,7 @@ get_header();
                             echo '</div>';
                         }
                     ?><!-- END Main Category -->
-                </h1 class="profile"><!-- Profile Header Text --> 
+                </h1><!-- Profile Header Text --> 
         </div><!--END Profile Header -->
         </div><!-- END Self Centered -->
 
@@ -119,6 +119,7 @@ get_header();
 
                 <!-- Post Main Content -->
                  <div class="main-content">
+
                     <!-- Postponed Notice -->
                     <?php if ( has_term( 'postponed', 'xp-status' ) ) : ?>
                         <div class="postponed-notice"> 
@@ -133,6 +134,8 @@ get_header();
                     </div><!-- END Profile Content-->
                 </div><!-- END Post Main Content -->
 
+
+                
                 <!-- Guest Xperience Links --->
                     <!-- Featured Links Buttons --> 
                     <div class="featured-links"> 
@@ -162,7 +165,17 @@ get_header();
                         ?>
                     </div><!-- END Featured Links--> 
                 <!-- END Buttons -->
+
+                  <!-- Featured Content/Links - Galleries, etc. //TODO: All Gallery Types -->
+                <div class= "featured-content">
+                    <!-- Multi-Post Gallery [Template Part] -->
+                        <?php get_template_part( 'template-parts/profiles/multi-post-gallery' ); ?>
+                    <!-- END Multi-Post Gallery -->
+                </div>
+            <!-- END Featured Content -->
+
             </div><!-- END Profile Details Block -->
+            
         </div><!-- END Profile Main Section ------------------->
         
         <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
@@ -170,7 +183,6 @@ get_header();
     <!-- END Profile Main Div --------------------->
 
     <!-- Latest Posts ------> 
-        <get template_part( 'template-parts/sections/updates-section' ); ?>
 
     <!-- END Latest Posts ------>
             

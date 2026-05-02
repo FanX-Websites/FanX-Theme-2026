@@ -87,13 +87,13 @@
             <div class="<?php echo esc_attr($layout_class); ?>">
                 <?php
                 foreach ($blocks as $index => $block) :
-                    $block_class = 'content-block';
+                    $block_class = 'content-block'; // content block class > .content-block
                     // Add position class for styling purposes
                     $block_class .= ' block-' . ($index + 1);
                     ?>
-      
-                    <div class="<?php echo esc_attr($block_class); ?>">
-                        <h2 class="content-block-title">
+                <!--- Div Layout/Content ---> 
+                    <div class="<?php echo esc_attr($block_class); ?>"> <!-- Generates .[Template-Class]-block -->
+                        <h2 class="content-block-title"> 
                             <?php echo wp_kses_post($block['title'] ?? ''); //Title ?> 
                         </h2>
                         <h3 class="content-block-subtext">   
@@ -101,10 +101,10 @@
                         </h3>
                         <p class="content-block-text">   
                             <?php 
-                            $content = $block['content'] ?? '';
+                            $content = $block['content'] ?? ''; // Main Content
                             // Remove wrapping <p> tags from ACF field
                             $content = preg_replace('/<\/?p[^>]*>/', '', $content);
-                            echo wp_kses_post($content); //Content 
+                            echo wp_kses_post($content); 
                             ?>
                         </p>
                         <?php
@@ -128,8 +128,10 @@
                         }
                         ?>
                         <!-- Small Print / Disclaimer ---------------------->
-                        <div class="content-block-small-print">
-                            <?php echo wp_kses_post($block['small_print'] ?? ''); ?>
+                        <div class="content-block-small-print small-print">
+                            <p>
+                                <?php echo wp_kses_post($block['small_print'] ?? ''); ?>
+                            </p>    
                         </div><!-- END Small Print / Disclaimer ----------------------->
      
                     </div><!-- END Individual Content Block -->

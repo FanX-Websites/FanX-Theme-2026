@@ -8,7 +8,7 @@ get_header();
 //END Header ?>
     
 <!--------------- Page Header Container [Template Part] ----------------------->
-<div class="page-header container">
+<div class="container">
     <?php get_template_part('template-parts/page-header'); ?>
 </div>
 <!------------ END Page Header Container -------------------->

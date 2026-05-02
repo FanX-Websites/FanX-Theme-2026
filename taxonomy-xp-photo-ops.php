@@ -51,7 +51,7 @@ get_header(); /** body- main-site */
         <!------------------- Post Block --------------------->
         <div class="post-block block">
 
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <article id="post-<?php the_ID(); ?>" class="fill">
                 
             <!-- -- Post Thumbnail -->
                 <?php if ( has_post_thumbnail() ) : ?>
@@ -76,7 +76,6 @@ get_header(); /** body- main-site */
                 <div class="guest-op-info guest-xp">
                     <?php 
                     $op_price = get_field('xp')['op_price'] ?? ''; //Price
-                    $op_url = get_field('xp')['op_url'] ?? ''; //Leap Link
                     $xp_terms = get_the_terms( get_the_ID(), 'xp' ); //eXperienece Category
                     $xp_status_terms = get_the_terms( get_the_ID(), 'xp-status' ); //XP Status 
                     $has_photo_ops = false;
@@ -95,7 +94,7 @@ get_header(); /** body- main-site */
                     // Check for coming soon status
                     if ( $xp_status_terms && ! is_wp_error( $xp_status_terms ) ) {
                         foreach ( $xp_status_terms as $term ) {
-                            if ( $term->slug === 'photo-ops-coming-soon' ) { //XP Status - Coming Soon Trigger
+                            if ( $term->slug === 'photo-ops-coming-soon' ) { //XP Status - Coming Soon Triggers Available Soon
                                 $is_coming_soon = true;
                                 break;
                             }
@@ -109,13 +108,8 @@ get_header(); /** body- main-site */
                             <?php 
                                 if ( $op_price ) { //Price
                                     echo esc_html($op_price);
-                                    if ( $is_coming_soon ) {
-                                        echo ' - Coming Soon'; //COMING SOON
-                                    } else { 
-                                        echo ' - <a href="' . esc_url($op_url) . '">Buy Photo Ops NOW**</a>'; //BUY NOW
-                                    }
                                 } else {
-                                    echo 'More Info Coming Soon*'; //NO PRICE - Coming Soon
+                                    echo 'More Info Available Soon*'; //NO PRICE - Available Soon
                                 }
                             ?> 
                         </div>
@@ -125,7 +119,7 @@ get_header(); /** body- main-site */
                 
                 <!-- END Photo Ops -->
 
-                <!-- Appearance Days -->
+                <!-- Photo Op Days/Links -->
                     <?php 
                     $days_cats = get_the_terms( get_the_ID(), 'days' );
                     echo '<div class="days guest-xp">';
@@ -134,18 +128,69 @@ get_header(); /** body- main-site */
                         //Sort by Day Name for correct Appearance Order
                         $order = ['thursday' => 1, 'friday' => 2, 'saturday' => 3, 'sunday' => 4];
                         usort($days_cats, fn($a, $b) => ($order[$a->slug] ?? 99) - ($order[$b->slug] ?? 99));
+                        
+                        // Map day slugs to ACF field names for photo ops URLs
+                        $day_url_map = [
+                            'thursday' => 'celeb_op_sun_url',
+                            'friday'   => 'celeb_op_fri_url',
+                            'saturday' => 'celeb_op_sat_url',
+                            'sunday'   => 'celeb_op_sun_url',
+                        ];
+                        
                         $links = array();
                         foreach ( $days_cats as $cat ) {
-                            $links[] = esc_html( $cat->name );
+                            // Get the URL field for this day
+                            $field_name = $day_url_map[$cat->slug] ?? null;
+                            $day_url = '';
+                            
+                            if ( $field_name ) {
+                                $day_link = get_field($field_name, 'option');
+                                $day_url = is_array($day_link) ? ($day_link['url'] ?? '') : $day_link;
+                            }
+                            
+                            // Build the link with URL if available, otherwise just the text
+                            if ( $day_url ) {
+                                $links[] = '<a href="' . esc_url($day_url) . '">' . esc_html($cat->name) . '</a>';
+                            } else {
+                                $links[] = esc_html($cat->name);
+                            }
                         }
                         echo implode( ' | ', $links ) . '*';
                     } else {
                         echo 'More info soon';
                       }
                     echo '</div>';
-                    ?> <!-- END Appearance Days ---> 
+                    ?> 
+                <!-- END Photo Op Days/Links ---> 
 
-
+                <!-- Footer Buttons Button Group -->
+                <footer class="entry-footer">
+                    <div class="button-group">
+                        <!-- View Profile Button -->
+                        <a href="<?php the_permalink(); ?>" class="button button-left">
+                            View Profile
+                        </a>
+                        
+                        <!-- Buy Photo Ops Button -->
+                        <?php if ( $has_photo_ops && $op_price ) : ?>
+                            <?php 
+                                // Get Photo Ops URL from options page
+                                $celeb_op_link = get_field('celeb_op_fri_url', 'option'); 
+                                $photo_ops_url = is_array($celeb_op_link) ? ($celeb_op_link['url'] ?? '') : $celeb_op_link;
+                                if ( $photo_ops_url ) {
+                                    $button_text = $is_coming_soon ? 'Coming Soon' : 'BUY NOW';
+                                    ?>
+                                    <a href="<?php echo esc_url($photo_ops_url); ?>" class="button button-right" target="_blank">
+                                        <div class="small-print">Photo Ops:</div>
+                                        <?php echo $button_text; ?>
+                                    </a>
+                                    <?php
+                                }
+                            ?>
+                        <?php endif; ?>
+                    </div><!-- END Button Group -->
+                </footer>
+                <!-- END Footer Buttons -->
 
             </article>
         </div>
@@ -155,26 +200,26 @@ get_header(); /** body- main-site */
         <?php
             endwhile;
             wp_reset_postdata();
+            
+            // Add filler blocks to complete the last row dynamically
+            $posts_per_row = 4; // Typical desktop column count
+            $total_posts = $query->found_posts;
+            $remainder = $total_posts % $posts_per_row;
+            if ( $remainder > 0 ) :
+                $filler_count = $posts_per_row - $remainder;
+                for ( $i = 0; $i < $filler_count; $i++ ) {
+                    echo '<div class="post-block block"></div>';
+                }
+            endif;
         else :
             ?>
             <div class="no-posts-container">
                 <h3>COMING SOON</h3>
-                <p>
-                    <?php 
-                        $news_link = get_field('news_url', 'option');
-                        $news_message = get_field('news_message', 'option') ?? '';
-                        if ($news_link && isset($news_link['url'])) {
-                            echo '<a href="' . esc_url($news_link['url']) . '">' . wp_kses_post($news_message) . '</a>';
-                        } else {
-                            echo wp_kses_post($news_message);
-                        }
-                    ?>
-                </p>
             </div>
             <?php
         endif;
-        wp_reset_postdata();
-        ?><!-- END No Posts Message -->
+        ?>
+        <!-- END No Posts Message -->
 
     </div><!-- END Profile Main Div --------------------->
     <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>

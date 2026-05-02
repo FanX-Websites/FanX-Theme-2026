@@ -37,6 +37,9 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_690e94e71a188",
@@ -331,10 +334,7 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "key": "field_690fa3f9a95f2",
@@ -396,12 +396,12 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_6917d5adf349a",
-                    "label": "logo",
-                    "name": "logo",
+                    "key": "field_69f41c41d79f8",
+                    "label": "Platform Icon",
+                    "name": "ico",
                     "aria-label": "",
-                    "type": "font-awesome",
-                    "instructions": "socials_logo",
+                    "type": "icon_picker",
+                    "instructions": "To add Social Platform Icons: https:\/\/simpleicons.org\/",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -409,21 +409,16 @@
                         "class": "",
                         "id": ""
                     },
-                    "icon_sets": [
-                        "solid",
-                        "regular",
-                        "brands"
+                    "tabs": [
+                        "google"
                     ],
-                    "custom_icon_set": "",
-                    "default_label": "",
-                    "default_value": "",
-                    "save_format": "element",
-                    "allow_null": 0,
-                    "show_preview": 1,
-                    "enqueue_fa": 0,
+                    "return_format": "string",
                     "allow_in_bindings": 1,
-                    "fa_live_preview": "",
-                    "choices": [],
+                    "library": "all",
+                    "default_value": {
+                        "type": null,
+                        "value": null
+                    },
                     "parent_repeater": "field_6917d594f3499"
                 },
                 {
@@ -504,6 +499,9 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_696fde03f3c36",
@@ -624,10 +622,7 @@
                     "allow_bulkedit": 0,
                     "allow_backendsearch": 0
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "key": "field_696fdf69e07a9",
@@ -737,8 +732,9 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1776484469,
+    "modified": 1777606305,
     "acfe_categories": {
+        "event-info": "Event Info",
         "options-pages": "Options Pages"
     }
 }

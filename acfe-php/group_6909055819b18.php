@@ -902,11 +902,11 @@ acf_add_local_field_group(array(
 	'acfe_form' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
+	'modified' => 1777488502,
 	'acfe_categories' => array(
 		'options-pages' => 'Options Pages',
 		'products' => 'Products',
 	),
-	'modified' => 1777333232,
 ));
 
 endif;

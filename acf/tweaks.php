@@ -12,7 +12,7 @@ function set_acf_settings() {
     acf_update_setting( 'enable_shortcode', true ); //Enable Shortcodes in ACF Fields
 }
 
-//Shortcodes in ACF 
+//Safe Shortcodes in ACF 
 // Wrap do_shortcode to prevent null value errors
 $safe_shortcode = function( $value ) {
     if ( is_string( $value ) && ! empty( $value ) ) {
@@ -30,7 +30,10 @@ add_filter( 'acf/shortcode/allow_unsafe_html', function( $allowed, $attributes =
     return true;
 }, 10, 4 );
 
-// //Allow iframe Tags:  
+// UNTESTED: Abandoned ACF iframe and guest schedule integration
+// Commented out - no known use case. Uncomment only if needed for iframe/guest schedule features.
+// 
+// // Allow iframe Tags:  
 // add_filter( 'wp_kses_allowed_html', 'acf_add_allowed_iframe_tag', 10, 2 );
 // function acf_add_allowed_iframe_tag( $tags, $context ) {
 //     if ( $context === 'acf' ) {
@@ -43,11 +46,10 @@ add_filter( 'acf/shortcode/allow_unsafe_html', function( $allowed, $attributes =
 //             'name'            => true,
 //         );
 //     }
-
 //     return $tags;
 // }
 
-// //Allow iframe Guest Schedule
+// // Allow iframe Guest Schedule
 // add_filter( 'acf/shortcode/allow_unsafe_html', 
 // function ( $allowed, $atts ) {
 //     if ( is_array( $atts ) && isset( $atts['field'] ) && $atts['field'] === 'sched_url' ) {
@@ -77,43 +79,70 @@ function acf_add_allowed_svg_tag( $tags, $context ) {
 
     return $tags;
 }
-//Custom ACF Shortcode Attributes 
-    remove_shortcode('acf');
-    add_shortcode('acf', function($atts) {
-        $atts = shortcode_atts([
-            'field'        => '',
-            'post_id'      => null,
-            'format_value' => true,
-            'format'       => 'raw', // change default format/output of shortcode
-            'url'          => '',
-            'link_format'  => 'html', // 'html' for full <a> tag, 'url' for just the URL
-            'orderby'      => '', //See below for option settings
 
 
-        ], $atts);
-    //order elements by Date, Title, ID, Rand(dom), Menu Order, Name (slug), etc.
-        $allowed = ['date', 'title', 'ID', 'rand', 'menu_order', 'name', ]; 
-        $orderby = in_array($atts['orderby'], $allowed) ? $atts['orderby'] : 'date';
+//Custom ACF Shortcode - Unified Implementation
+// Combines features from both tweaks.php and shortcode.php for comprehensive field output
+remove_shortcode('acf');
+add_shortcode('acf', function($atts) {
+    $atts = shortcode_atts([
+        'field'        => '',                      // Field name (required)
+        'post_id'      => null,                    // Post ID (defaults to current post)
+        'format_value' => true,                    // Format the value
+        'format'       => 'raw',                   // Output format: raw, name, url, html
+        'link_format'  => 'html',                  // Link output: html (full <a> tag) or url (just URL)
+        'orderby'      => '',                      // Sort by: date, title, ID, rand, menu_order, name
+    ], $atts);
 
-        $value = get_field($atts['field'], $atts['post_id']);
+    if ( ! function_exists( 'get_field' ) || empty( $atts['field'] ) ) {
+        return '';
+    }
 
-        //FIXME: Advanced Link Field Output Troubleshooing. Adds Shortcode Support for buttons using text field.  
-        //TODO: Fix issues with Advanced links showing portion of array string after link.  
-            if (is_array($value) && isset($value['url']) && isset($value['title'])) { //Replace Array with String (Dynamic Links Fix) - only for link fields
-                // If link_format is 'url', return just the URL for use in href attributes
-                if ($atts['link_format'] === 'url') {
-                    return esc_url($value['url']);
-                }
-                // Otherwise return full HTML link tag
-                return '<a href="' . esc_url($value['url']) . '" target="' . esc_attr($value['target']) . '">' . esc_html($value['title']) . '</a>';
-            }
+    $value = get_field( $atts['field'], $atts['post_id'] );
 
-            if ($atts['format'] === 'name' && is_numeric($value)) { //Term ID > Term Name (Cateogory Name as Content Fix)
-                $term = get_term((int) $value);
-                return (!is_wp_error($term) && $term) ? $term->name : $value;
-            }
+    // If no value found and no specific post_id was set, try options page
+    if ( empty( $value ) && $atts['post_id'] === null ) {
+        $value = get_field( $atts['field'], 'option' );
+    }
 
-        return $value;
-    });
+    if ( empty( $value ) ) {
+        return '';
+    }
+
+    // Handle ACF Link Fields (Advanced Link Field)
+    // Returns array with url, title, target keys
+    if ( is_array( $value ) && isset( $value['url'] ) && isset( $value['title'] ) ) {
+        if ( $atts['link_format'] === 'url' ) {
+            return esc_url( $value['url'] );
+        }
+        return '<a href="' . esc_url( $value['url'] ) . '" target="' . esc_attr( $value['target'] ?? '_self' ) . '">' . esc_html( $value['title'] ) . '</a>';
+    }
+
+    // Handle Image Field (returns array with url, id, alt, etc.)
+    if ( is_array( $value ) && isset( $value['url'] ) && isset( $value['id'] ) ) {
+        return esc_url( $value['url'] );
+    }
+
+    // Handle Gallery Field (returns array of image arrays)
+    if ( is_array( $value ) && isset( $value[0] ) && is_array( $value[0] ) && isset( $value[0]['url'] ) ) {
+        $urls = array_map( function( $img ) {
+            return isset( $img['url'] ) ? esc_url( $img['url'] ) : '';
+        }, $value );
+        return implode( ',', array_filter( $urls ) );
+    }
+
+    // Handle Term ID to Term Name conversion (format="name")
+    if ( $atts['format'] === 'name' && is_numeric( $value ) ) {
+        $term = get_term( (int) $value );
+        return ( ! is_wp_error( $term ) && $term ) ? esc_html( $term->name ) : $value;
+    }
+
+    // For other array types, return JSON for debugging
+    if ( is_array( $value ) ) {
+        return wp_json_encode( $value );
+    }
+
+    return $value;
+});
 
 /* API Keys & other 3rd Party Hooks*/

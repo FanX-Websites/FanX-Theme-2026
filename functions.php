@@ -45,7 +45,14 @@
 		//Branding Stylesheets 
 			wp_enqueue_style('fanx-branding', get_template_directory_uri() . '/branding/styles/fanx.css', array(), wp_get_theme()->get('Version')); //Branding CSS - 2026
 
-			wp_enqueue_style('template-parts', get_template_directory_uri() . '/template-parts/template-parts.css', array(), wp_get_theme()->get('Version')); //Template Parts CSS - 2026		
+			wp_enqueue_style('template-parts', get_template_directory_uri() . '/template-parts/template-parts.css', array(), wp_get_theme()->get('Version')); //Template Parts CSS - 2026
+
+			wp_enqueue_style('icons-styles', get_template_directory_uri() . '/branding/fonts/icons.css', array(), wp_get_theme()->get('Version')); //Icons CSS		
+
+		//External Stylesheets
+			wp_enqueue_style('google-material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), wp_get_theme()->get('Version')); //Google Material Icons
+
+		
 		}
 		add_action('wp_enqueue_scripts', 'fanx_enqueue_assets');
 
@@ -58,6 +65,7 @@
 	//ADMIN JavaScript
 		function fanx_enqueue_admin_scripts() {
 			wp_enqueue_script('fanx-admin-scripts', get_template_directory_uri() . '/js/admin-scripts.js', array(), '1.0.0', true);
+			wp_enqueue_style('google-material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons'); //Google Material Icons (Admin)
 		}
 		add_action('admin_enqueue_scripts', 'fanx_enqueue_admin_scripts');
 	
@@ -109,14 +117,20 @@ add_action('wp_enqueue_scripts', function() {
 			'functions/shortcode.php',
 			'functions/tag-cats.php',
 			'functions/sitemap.php',
+		//Branding
+			
 		//Plugins - Third Party	
-			'acf/tweaks.php',
+			//ACF
+			'acf/tweaks.php', //ACF Tweaks & Shortcode Support
 			'acf/acf-admin-columns.php', //ACF Admin Columns Manager
 			'acf/acf-admin-quick-edits.php', //ACF Admin Quick Edits
-			'seo/yoast-tweaks.php',
+			'acf/fields/icon_picker/tabs.php', //ACF Icon Picker Tabs
+			//Yoast SEO
+			'seo/yoast-tweaks.php', //Yoast SEO Tweaks
+			//Simply Static
 			'simply-static/system-level-exports.php', //System-level scheduled exports & backups
-			'simply-static/schedule.php',
-			'simply-static/enqueue.php',
+			'simply-static/schedule.php', //Simply Static Schedule Management
+			'simply-static/enqueue.php', //Simply Static Enqueue Tweaks
 			'simply-static/sitemap-integration.php',
 		//Admin Area 	
 			'admin/white-label.php', //Admin White Labeling
@@ -131,9 +145,9 @@ add_action('wp_enqueue_scripts', function() {
 			'admin/exports/pre-export-checker.php', //Pre-Export Health Check
 			'admin/exports/export-health-widget.php', //Export Manager Dashboard Widget
 			'admin/exports/export-scheduler.php', //Export Scheduler - One-Time Exports via wp-cron
-		'admin/exports/single/post-export-table.php', //Post Export Database Table Manager
-		'admin/exports/single/post-export-metabox.php', //Post Export Metabox
-		'admin/exports/single/post-export-scheduler.php', //Post Export Scheduler - Single Post Exports via Custom Table
+			'admin/exports/single/post-export-table.php', //Post Export Database Table Manager
+			'admin/exports/single/post-export-metabox.php', //Post Export Metabox
+			'admin/exports/single/post-export-scheduler.php', //Post Export Scheduler - Single Post Exports via Custom Table
 			'admin/activity-feed/index.php', //Activity Logging & Dashboard Widget
 	];
 //END Theme Files <---
