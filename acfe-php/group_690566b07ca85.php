@@ -41,6 +41,9 @@ acf_add_local_field_group(array(
 			'layout' => 'block',
 			'acfe_seamless_style' => 0,
 			'acfe_group_modal' => 0,
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'key' => 'field_697d2ee7de12e',
@@ -853,9 +856,6 @@ For More Icons: https://fonts.google.com/icons. Copy \'Icon_name\' and add to ic
 					'columns' => '6/12',
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'key' => 'field_69f03c62fe1d8',
@@ -1733,11 +1733,11 @@ For Published Google Doc of Exhibitor Packages Chart',
 	'acfe_form' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
+	'modified' => 1778014196,
 	'acfe_categories' => array(
 		'options-pages' => 'Options Pages',
 		'people' => 'People',
 	),
-	'modified' => 1777590967,
 ));
 
 endif;

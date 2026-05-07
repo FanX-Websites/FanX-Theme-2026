@@ -5,6 +5,7 @@
  * 
  * Notes: 
  * Uses classes: self-centered, self-centered-row, post-block, tax-cat,
+ * //FIXME: This layout needs love
  */
 
 get_header(); /** body- main-site */
@@ -87,6 +88,7 @@ get_header(); /** body- main-site */
 
     <!----- END Main Content Area ----------------->
     </div><!-- END self-centered-inside -->
+
 
 <?php
 get_footer();

@@ -1,9 +1,9 @@
 {
-    "key": "group_69093e0d83bdc",
-    "title": "Profiles Pages",
+    "key": "group_69fa746487ed1",
+    "title": "Blog Posts",
     "fields": [
         {
-            "key": "field_690983c0576b4",
+            "key": "field_69fa74648f975",
             "label": "Basic Info",
             "name": "",
             "aria-label": "",
@@ -28,7 +28,7 @@
             "selected": 0
         },
         {
-            "key": "field_6909820ffcf2b",
+            "key": "field_69fa74648f9ae",
             "label": "Basics\/Categories",
             "name": "info",
             "aria-label": "",
@@ -56,7 +56,7 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_690994dc3e812",
+                    "key": "field_69fa74649d40e",
                     "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
@@ -75,7 +75,7 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_69093e0d212c7",
+                    "key": "field_69fa74649d44b",
                     "label": "Featured Image",
                     "name": "feat_img",
                     "aria-label": "",
@@ -110,7 +110,7 @@
                     "preview_size": "medium"
                 },
                 {
-                    "key": "field_690995593e817",
+                    "key": "field_69fa74649d484",
                     "label": "Featured Info",
                     "name": "feat",
                     "aria-label": "",
@@ -139,7 +139,7 @@
                     "new_lines": ""
                 },
                 {
-                    "key": "field_690994ea3e813",
+                    "key": "field_69fa74649d4bc",
                     "label": "(Column 6\/12)",
                     "name": "",
                     "aria-label": "",
@@ -158,40 +158,7 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_691fb32d72580",
-                    "label": "Post Display Order",
-                    "name": "display_order",
-                    "aria-label": "",
-                    "type": "number",
-                    "instructions": "<b>Celebrities:<\/b>Top 100 - Mid 150 | <b>Voice:<\/b> Mid 150 - 200 | <b>Comics:<\/b> 200 | <b>Authors:<\/b> 300 | <b>Artists:<\/b> 400 | <b>Panelists\/Vendors:<\/b> 500",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": 1,
-                    "default_value": "",
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "min": "",
-                    "max": "",
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "placeholder": "",
-                    "step": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "key": "field_69093efbfcf29",
+                    "key": "field_69fa74649d52e",
                     "label": "Main Cat",
                     "name": "main_cat",
                     "aria-label": "",
@@ -227,12 +194,12 @@
                     "bidirectional_target": []
                 },
                 {
-                    "key": "field_691fa14a8775e",
-                    "label": "Guest List",
-                    "name": "guest_list",
+                    "key": "field_69fa74649d5d7",
+                    "label": "Post Categories",
+                    "name": "post_cat",
                     "aria-label": "",
                     "type": "taxonomy",
-                    "instructions": "info_guest_list",
+                    "instructions": "[info_post_cat]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -240,7 +207,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "taxonomy": "guest-list",
+                    "taxonomy": "blog",
                     "add_term": 1,
                     "save_terms": 1,
                     "load_terms": 1,
@@ -259,49 +226,7 @@
                     "bidirectional_target": []
                 },
                 {
-                    "key": "field_69fa640081616",
-                    "label": "Announcements & Updates Included in:",
-                    "name": "feat_updates",
-                    "aria-label": "",
-                    "type": "post_object",
-                    "instructions": "[info_feat_updates] <\/br>\r\nAutomatically populates when a Blog Post Features this Profile in an Announcement or Update.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "post"
-                    ],
-                    "post_status": "",
-                    "taxonomy": [
-                        "blog:event-updates-announcements"
-                    ],
-                    "return_format": "id",
-                    "multiple": 1,
-                    "save_custom": 0,
-                    "save_post_status": "publish",
-                    "acfe_bidirectional": {
-                        "acfe_bidirectional_enabled": true,
-                        "acfe_bidirectional_related": [
-                            "field_69fa7465a763d",
-                            "field_69fa774448d6d"
-                        ]
-                    },
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "allow_null": 0,
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "bidirectional": 0,
-                    "ui": 1,
-                    "bidirectional_target": [],
-                    "save_post_type": ""
-                },
-                {
-                    "key": "field_6909950e3e815",
+                    "key": "field_69fa74649d610",
                     "label": "(Column Endpoint)",
                     "name": "",
                     "aria-label": "",
@@ -328,7 +253,7 @@
             ]
         },
         {
-            "key": "field_69795c5e3bb11",
+            "key": "field_69fa74648f9e7",
             "label": "Guest eXperiences",
             "name": "",
             "aria-label": "",
@@ -354,8 +279,8 @@
             "selected": 0
         },
         {
-            "key": "field_69795c743bb12",
-            "label": "Guest Xperiences\/Statuses",
+            "key": "field_69fa74648fa1f",
+            "label": "Guest Xperiences\/Statuses (Update for EVENTS)",
             "name": "xp",
             "aria-label": "",
             "type": "group",
@@ -367,25 +292,15 @@
                 "class": "",
                 "id": ""
             },
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
             "acfe_settings": "",
             "acfe_permissions": "",
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_69795c743bb21",
-                    "label": "(Column 4\/12)",
+                    "key": "field_69fa746512c4c",
+                    "label": "(Column 3\/12)",
                     "name": "",
                     "aria-label": "",
                     "type": "acfe_column",
@@ -397,13 +312,19 @@
                         "class": "",
                         "id": ""
                     },
-                    "columns": "4\/12",
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "columns": "3\/12",
                     "endpoint": 0,
-                    "acfe_permissions": "",
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_69795c743bb2b",
+                    "key": "field_69fa746512c86",
                     "label": "Days Appearing",
                     "name": "days",
                     "aria-label": "",
@@ -442,7 +363,7 @@
                     "bidirectional_target": []
                 },
                 {
-                    "key": "field_69795c743bb2a",
+                    "key": "field_69fa746512cbf",
                     "label": "Fandoms",
                     "name": "fandom",
                     "aria-label": "",
@@ -478,7 +399,7 @@
                     "bidirectional_target": []
                 },
                 {
-                    "key": "field_69795c743bb27",
+                    "key": "field_69fa746512cf8",
                     "label": "eXperiences",
                     "name": "xp",
                     "aria-label": "",
@@ -515,7 +436,7 @@
                     "bidirectional_target": []
                 },
                 {
-                    "key": "field_69795c743bb28",
+                    "key": "field_69fa746512d30",
                     "label": "eXperience Status",
                     "name": "xp_stat",
                     "aria-label": "",
@@ -554,8 +475,8 @@
                     "bidirectional_target": []
                 },
                 {
-                    "key": "field_69795c743bb24",
-                    "label": "(Column 4\/12)",
+                    "key": "field_69fa746512d69",
+                    "label": "(Column 3\/12)",
                     "name": "",
                     "aria-label": "",
                     "type": "acfe_column",
@@ -567,13 +488,19 @@
                         "class": "",
                         "id": ""
                     },
-                    "columns": "4\/12",
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "columns": "3\/12",
                     "endpoint": 0,
-                    "acfe_permissions": "",
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_69795db83bb31",
+                    "key": "field_69fa746512da1",
                     "label": "Autograph Price",
                     "name": "auto_price",
                     "aria-label": "",
@@ -604,7 +531,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_69795d253bb30",
+                    "key": "field_69fa746512dd9",
                     "label": "Photo Op Price",
                     "name": "op_price",
                     "aria-label": "",
@@ -635,7 +562,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_69795e003bb32",
+                    "key": "field_69fa746512e12",
                     "label": "Photo Ops Link",
                     "name": "",
                     "aria-label": "",
@@ -655,8 +582,8 @@
                     "acfe_permissions": ""
                 },
                 {
-                    "key": "field_69795c743bb29",
-                    "label": "(Column 4\/12)",
+                    "key": "field_69fa746512e4b",
+                    "label": "(Column 3\/12)",
                     "name": "",
                     "aria-label": "",
                     "type": "acfe_column",
@@ -668,13 +595,19 @@
                         "class": "",
                         "id": ""
                     },
-                    "columns": "4\/12",
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "columns": "3\/12",
                     "endpoint": 0,
-                    "acfe_permissions": "",
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_69795e4c3bb33",
+                    "key": "field_69fa746512e83",
                     "label": "Group Photo Ops Involved in:",
                     "name": "group_op",
                     "aria-label": "",
@@ -684,7 +617,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_69795c743bb2a",
+                                "field": "field_69fa746512cbf",
                                 "operator": "!=empty"
                             }
                         ]
@@ -703,12 +636,14 @@
                     ],
                     "return_format": "id",
                     "multiple": 1,
-                    "save_custom": 0,
+                    "save_custom": 1,
+                    "save_post_type": "products",
+                    "save_post_status": "draft",
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": true,
-                        "acfe_bidirectional_related": [
-                            "field_69fa774569713"
-                        ]
+                        "acfe_bidirectional_related": {
+                            "1": "field_69fa7465a763d"
+                        }
                     },
                     "acfe_settings": "",
                     "acfe_validate": "",
@@ -717,12 +652,10 @@
                     "allow_in_bindings": 1,
                     "bidirectional": 0,
                     "ui": 1,
-                    "bidirectional_target": [],
-                    "save_post_type": "",
-                    "save_post_status": ""
+                    "bidirectional_target": []
                 },
                 {
-                    "key": "field_69795f3b781ca",
+                    "key": "field_69fa746512ebc",
                     "label": "Celebrity Row Extras",
                     "name": "celeb_extras",
                     "aria-label": "",
@@ -747,7 +680,32 @@
                     "new_lines": ""
                 },
                 {
-                    "key": "field_69795c743bb2f",
+                    "key": "field_69fa746512ef4",
+                    "label": "(Column 3\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "columns": "3\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69fa746512f2d",
                     "label": "(Column Endpoint)",
                     "name": "",
                     "aria-label": "",
@@ -771,10 +729,13 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ]
+            ],
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
         },
         {
-            "key": "field_690983ea576b5",
+            "key": "field_69fa74648fa58",
             "label": "Header\/Footer",
             "name": "",
             "aria-label": "",
@@ -799,7 +760,7 @@
             "selected": 0
         },
         {
-            "key": "field_6909843a576b6",
+            "key": "field_69fa74648fa91",
             "label": "Header\/ Footer Info",
             "name": "heafoo",
             "aria-label": "",
@@ -822,7 +783,7 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_69098285576b2",
+                    "key": "field_69fa7465845cb",
                     "label": "Subtitle",
                     "name": "subtitle",
                     "aria-label": "",
@@ -850,7 +811,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_690982b5576b3",
+                    "key": "field_69fa746584607",
                     "label": "Subtext",
                     "name": "subtext",
                     "aria-label": "",
@@ -879,7 +840,7 @@
                     "new_lines": ""
                 },
                 {
-                    "key": "field_69e7f1c87f3b2",
+                    "key": "field_69fa74658463f",
                     "label": "Footer Smallprint Update",
                     "name": "",
                     "aria-label": "",
@@ -901,7 +862,579 @@
             ]
         },
         {
-            "key": "field_6942422263f78",
+            "key": "field_69fa74648fac9",
+            "label": "Featured Posts\/Galleries",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": "",
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_69fa74648fb02",
+            "label": "Featured Posts\/ Image Galleries",
+            "name": "gal",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "acfe_settings": "",
+            "acfe_permissions": "",
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
+            "sub_fields": [
+                {
+                    "key": "field_69fa7465a7522",
+                    "label": "Featured Profiles  - Multi-Post Gallery",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 1,
+                    "multi_expand": 0,
+                    "endpoint": 0,
+                    "acfe_permissions": ""
+                },
+                {
+                    "key": "field_69fa7465a755c",
+                    "label": "(Column 4\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "columns": "4\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69fa7465a7594",
+                    "label": "Featured Profiles Multi-Post Gallery - Title",
+                    "name": "multi_post_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "maxlength": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69fa7465a75cd",
+                    "label": "Featured Profiles - Multi-Post Gallery - Subtitle",
+                    "name": "multi_post_sub",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "acfe_textarea_code": 0,
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "maxlength": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_69fa7465a7605",
+                    "label": "(Column 8\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "8\/12",
+                    "endpoint": 0,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69fa7465a763d",
+                    "label": "Featured Profiles - Mutli-Post Gallery - Post IDs",
+                    "name": "multi_post_ids",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "[gal_multi_post_ids]",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "guests",
+                        "features",
+                        "partner",
+                        "products"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "id",
+                    "multiple": 1,
+                    "save_custom": 0,
+                    "save_post_status": "publish",
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": true,
+                        "acfe_bidirectional_related": [
+                            "field_69fa774448d6d",
+                            "field_69fa640081616"
+                        ]
+                    },
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "allow_null": 0,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "save_post_type": ""
+                },
+                {
+                    "key": "field_69fa7465a77b2",
+                    "label": "(Column Endpoint)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "endpoint": 1,
+                    "allow_in_bindings": 0,
+                    "columns": "6\/12"
+                },
+                {
+                    "key": "field_69fa7465a77ea",
+                    "label": "Featured Post Gallery",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0,
+                    "acfe_permissions": ""
+                },
+                {
+                    "key": "field_69fa7465a7823",
+                    "label": "(Column 4\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "4\/12",
+                    "endpoint": 0,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69fa7465a785b",
+                    "label": "Featured Post - Title",
+                    "name": "feat_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69fa7465a7893",
+                    "label": "Featured Post - Subtitle",
+                    "name": "feat_sub",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "default_value": "",
+                    "acfe_textarea_code": 0,
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_69fa7465a78cb",
+                    "label": "(Column 8\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "8\/12",
+                    "endpoint": 0,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69fa7465a7904",
+                    "label": "Featured Post- Post ID",
+                    "name": "feat_post_id",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "post",
+                        "partner",
+                        "guests"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "id",
+                    "multiple": 1,
+                    "save_custom": 0,
+                    "save_post_status": "publish",
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": true,
+                        "acfe_bidirectional_related": [
+                            "field_69fa640081616"
+                        ]
+                    },
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "allow_null": 0,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "save_post_type": ""
+                },
+                {
+                    "key": "field_69fa7465a793d",
+                    "label": "(Column Endpoint)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "endpoint": 1,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 0,
+                    "columns": "6\/12"
+                },
+                {
+                    "key": "field_69fa7465a7975",
+                    "label": "Dynamic Gallery (Images)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0,
+                    "acfe_permissions": ""
+                },
+                {
+                    "key": "field_69fa7465a79ad",
+                    "label": "(Column 4\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "4\/12",
+                    "endpoint": 0,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69fa7465a79e6",
+                    "label": "Dynamic Gallery Title",
+                    "name": "dyn_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69fa7465a7a1e",
+                    "label": "Dynamic Gallery Subtitle",
+                    "name": "dyn_sub",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "default_value": "",
+                    "acfe_textarea_code": 0,
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_69fa7465a7a57",
+                    "label": "(Column 8\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "columns": "8\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69fa7465a7a7d",
+                    "label": "Dynamic Gallery Images",
+                    "name": "dyn_img",
+                    "aria-label": "",
+                    "type": "gallery",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "return_format": "array",
+                    "library": "all",
+                    "min": "",
+                    "max": "",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "insert": "append",
+                    "preview_size": "thumbnail"
+                },
+                {
+                    "key": "field_69fa7465a7ab5",
+                    "label": "(Column Endpoint)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "endpoint": 1,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 0,
+                    "columns": "6\/12"
+                }
+            ]
+        },
+        {
+            "key": "field_69fa74648fb3a",
             "label": "Schedule\/ Location",
             "name": "",
             "aria-label": "",
@@ -926,7 +1459,7 @@
             "selected": 0
         },
         {
-            "key": "field_6942422f63f79",
+            "key": "field_69fa74648fb73",
             "label": "Schedule",
             "name": "sched",
             "aria-label": "",
@@ -949,13 +1482,13 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
-            "sub_fields": [],
             "acfe_group_modal_close": 0,
             "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            "acfe_group_modal_size": "large",
+            "sub_fields": []
         },
         {
-            "key": "field_69979d07220e2",
+            "key": "field_69fa74648fbb0",
             "label": "Location",
             "name": "loca",
             "aria-label": "",
@@ -985,7 +1518,7 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_69979d48220e3",
+                    "key": "field_69fa7466a3867",
                     "label": "Address",
                     "name": "address",
                     "aria-label": "",
@@ -1015,7 +1548,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_69979dfa220e4",
+                    "key": "field_69fa7466a38a3",
                     "label": "Map",
                     "name": "map",
                     "aria-label": "",
@@ -1046,7 +1579,7 @@
             ]
         },
         {
-            "key": "field_694265bfb3f83",
+            "key": "field_69fa74648fbe8",
             "label": "Buttons \/ Links",
             "name": "",
             "aria-label": "",
@@ -1071,7 +1604,7 @@
             "selected": 0
         },
         {
-            "key": "field_69705d543efc4",
+            "key": "field_69fa74648fc21",
             "label": "Buttons",
             "name": "button",
             "aria-label": "",
@@ -1101,7 +1634,7 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_69706e537ffb9",
+                    "key": "field_69fa7466c1413",
                     "label": "Button Title",
                     "name": "title",
                     "aria-label": "",
@@ -1127,10 +1660,10 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_69705d543efc4"
+                    "parent_repeater": "field_69fa74648fc21"
                 },
                 {
-                    "key": "field_69706e777ffba",
+                    "key": "field_69fa7466c144e",
                     "label": "Button Subtext",
                     "name": "subtext",
                     "aria-label": "",
@@ -1156,10 +1689,10 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_69705d543efc4"
+                    "parent_repeater": "field_69fa74648fc21"
                 },
                 {
-                    "key": "field_69706e8a7ffbb",
+                    "key": "field_69fa7466c1487",
                     "label": "Button Link",
                     "name": "url",
                     "aria-label": "",
@@ -1185,7 +1718,7 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_69705d543efc4"
+                    "parent_repeater": "field_69fa74648fc21"
                 }
             ]
         }
@@ -1195,21 +1728,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "features"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "guests"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "partner"
+                "value": "post"
             }
         ]
     ],
@@ -1220,9 +1739,9 @@
     "instruction_placement": "tooltip",
     "hide_on_screen": "",
     "active": true,
-    "description": "Guests, Features & Partners",
+    "description": "Announcements & Updates",
     "show_in_rest": 0,
-    "display_title": "Profile Pages",
+    "display_title": "Blog Posts",
     "allow_ai_access": false,
     "ai_description": "",
     "acfe_autosync": [
@@ -1233,9 +1752,8 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1778029430,
+    "modified": 1778029319,
     "acfe_categories": {
-        "people": "People",
-        "profile-pages": "Profile Pages"
+        "blog-posts": "Blog Posts"
     }
 }

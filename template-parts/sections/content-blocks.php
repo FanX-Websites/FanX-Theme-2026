@@ -94,10 +94,10 @@
                 <!--- Div Layout/Content ---> 
                     <div class="<?php echo esc_attr($block_class); ?>"> <!-- Generates .[Template-Class]-block -->
                         <h2 class="content-block-title"> 
-                            <?php echo wp_kses_post($block['title'] ?? ''); //Title ?> 
+                            <?php echo wp_kses_post($block['title'] ?? ''); //Title -------------- ?> 
                         </h2>
                         <h3 class="content-block-subtext">   
-                            <?php echo wp_kses_post($block['subtext'] ?? ''); //Subtext ?>
+                            <?php echo wp_kses_post($block['subtext'] ?? ''); //Subtext ------------ ?>
                         </h3>
                         <p class="content-block-text">   
                             <?php 

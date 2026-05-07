@@ -30,6 +30,12 @@ get_header(); /** body- main-site */
     </div>
 <!---------------------------END ADDRESS MAP Template Part ---------------------> 
 
+<!------------------- Latest News Post Block --------------------->
+    <div class="container full">
+        <?php get_template_part('template-parts/sections/updates-section'); ?>
+    </div>
+<!----------- END Latest News Post Block -->
+
     <!-- END Main Content Area --> 
 
          

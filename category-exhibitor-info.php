@@ -28,7 +28,7 @@ get_header(); /** body- main-site */
     <!---------------------------END Table Charts Template Part --------------------->
 
     <!-------------------------- Updates Section Template Part --------------------->
-    <div class="section-full-width container">
+    <div class="container full">
         <?php get_template_part('template-parts/sections/updates-section'); ?>
     </div>
     <!---------------------------END Updates Section Template Part --------------------->

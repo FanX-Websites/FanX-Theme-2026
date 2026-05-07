@@ -214,7 +214,7 @@ function fanx_pre_export_health_check() {
         $log_file = WP_CONTENT_DIR . '/debug.log';
         if ( file_exists( $log_file ) ) {
             $file_size = filesize( $log_file );
-            if ( $file_size > 1048576 ) { // > 1MB
+            if ( $file_size > 15728640 ) { // > 15MB
                 $warnings[] = 'Debug log is large (' . size_format( $file_size ) . '). Consider clearing it before export for better performance.';
             } else {
                 $info[] = 'Debug logging is enabled (for debug-log widget).';

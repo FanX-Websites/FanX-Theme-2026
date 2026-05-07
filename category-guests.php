@@ -122,6 +122,12 @@ get_header(); /** body- main-site */
     <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
     <!----- END Main Content Area----------------->
 
+<!------------------- Latest News Post Block --------------------->
+    <div class="container full">
+        <?php get_template_part('template-parts/sections/updates-section'); ?>
+    </div>
+<!----------- END Latest News Post Block -->
+
 <?php
 get_footer();
 ?>

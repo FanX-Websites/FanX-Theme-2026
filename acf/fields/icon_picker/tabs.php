@@ -51,5 +51,33 @@ function add_google_icons( array $icons ): array {
 add_filter( 'acf/fields/icon_picker/google/icons', 'add_google_icons' );
 
 
+//Social Icon Picker Tab 
+function add_social_icon_picker_tab( array $tabs ): array {
+    $tabs['social'] = 'Social';
+    return $tabs;
+}
+add_filter( 'acf/fields/icon_picker/tabs', 'add_social_icon_picker_tab' );
+
+//Social Icons List
+function add_social_icons( array $icons ): array {
+    $base_url = get_template_directory_uri() . '/acf/fields/icon_picker/social/icons/'; // Base URL for the icons
+
+    return array_merge(
+        $icons,
+        array(
+        
+            array(
+                'url'   => $base_url . 'icon_one.svg',
+                'key'   => 'icon-one', 
+                'label' => 'Icon One', 
+            ),
+        )
+    );
+}
+
+add_filter( 'acf/fields/icon_picker/social/icons', 'add_social_icons' );
+
+
+
 
 ?>

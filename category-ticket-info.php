@@ -24,7 +24,7 @@ get_header(); /** body- main-site */
     <!----------- END Comparison Chart Section -->
 
     <!------------------- Latest News Post Block --------------------->
-    <div class="updates container">
+    <div class="container full">
         <?php get_template_part('template-parts/sections/updates-section'); ?>
     </div>
     <!----------- END Latest News Post Block -->

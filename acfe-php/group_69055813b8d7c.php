@@ -401,12 +401,12 @@ acf_add_local_field_group(array(
 			'rows_per_page' => 20,
 			'sub_fields' => array(
 				array(
-					'key' => 'field_69f41c41d79f8',
+					'key' => 'field_69f93af4514ab',
 					'label' => 'Platform Icon',
 					'name' => 'ico',
 					'aria-label' => '',
 					'type' => 'icon_picker',
-					'instructions' => 'To add Social Platform Icons: https://simpleicons.org/',
+					'instructions' => '',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -415,7 +415,9 @@ acf_add_local_field_group(array(
 						'id' => '',
 					),
 					'tabs' => array(
-						0 => 'google',
+						0 => 'url',
+						1 => 'google',
+						2 => 'social',
 					),
 					'return_format' => 'string',
 					'allow_in_bindings' => 1,
@@ -737,11 +739,11 @@ acf_add_local_field_group(array(
 	'acfe_form' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
+	'modified' => 1778023881,
 	'acfe_categories' => array(
 		'event-info' => 'Event Info',
 		'options-pages' => 'Options Pages',
 	),
-	'modified' => 1777606305,
 ));
 
 endif;

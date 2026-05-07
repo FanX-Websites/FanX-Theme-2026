@@ -170,21 +170,29 @@
             <!-- Celebrity Row eXtras --->
             <?php 
             $has_celeb_xtras_purchase_now = false;
+            $has_celeb_xtras_onsite = false;
             
             // Celebrity Row eXtras XP Status Trigger
             if ( $xp_status_terms && ! is_wp_error( $xp_status_terms ) ) {
                 foreach ( $xp_status_terms as $term ) {
-                    if ( $term->slug === 'celeb-extras-purchase-now' ) {
+                    if ( $term->slug === 'celeb-extras-purchase-now' ) { //Celebrity Row eXtras Purchace NOW - XP Status
                         $has_celeb_xtras_purchase_now = true;
+                        break;
+                    } elseif ( $term->slug === 'celeb-extras-onsite' ) { //Celebrity Row eXtras Onsite - XP Status
+                        $has_celeb_xtras_onsite = true;
                         break;
                     }
                 }
             }
             
-            if ( $has_celeb_xtras_purchase_now ) : ?>
+            if ( $has_celeb_xtras_purchase_now || $has_celeb_xtras_onsite ) : ?>
                 <div class="celeb-xtras guest-xp">
                     <strong>Celebrity Row Extras:</strong> 
-                    <span class="xp-now">Available NOW</span>
+                    <?php if ( $has_celeb_xtras_purchase_now ) : ?>
+                        <span class="xp-now">Available NOW</span>
+                    <?php elseif ( $has_celeb_xtras_onsite ) : ?>
+                        <span class="xp-now">Available onsite</span>
+                    <?php endif; ?>
                     <?php 
                         $celeb_xtras_content = $xp['celeb_extras'] ?? '';
                         if ( $celeb_xtras_content ) {

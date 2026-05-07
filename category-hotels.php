@@ -133,6 +133,12 @@ get_header(); /** body- main-site */
 
     <!----- END Main Content Area ----------------->
     </div><!-- END post-grid-container -->
+     <!--- Latest Updates ----> 
+    
+     <div class="container full">
+        <?php get_template_part('template-parts/sections/updates-section'); ?>
+    </div>
+    <!--- END Latest Updates ---->
 
 <?php
 get_footer();

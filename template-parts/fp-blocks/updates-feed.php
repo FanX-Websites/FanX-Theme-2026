@@ -40,9 +40,9 @@
 
                         <!-------------- Post Content --------------------->
                         <div class="updates-feed-post-content">
-                            <header><!-- Post Title Header -->
+                            <!-- Post Title Header -->
                                 <h3><a href="<?php the_permalink(); ?>"><?php echo esc_html( get_the_title() ); ?></a></h3>
-                            </header><!-- END Post Title Header -->
+                            <!-- END Post Title Header -->
                             
                             <!-------------- Post Excerpt --------------------->
                             <div class="updates-feed-entry-summary">
@@ -54,7 +54,9 @@
                             <a href="<?php the_permalink(); ?>" class="button">Read More</a>
                             </footer>   
                         </div><!-- END Post Content -->
+                        <hr>
                     </article><!-- END News & Updates Post Layout -->
+                    
                 <?php 
                     endwhile;
                     wp_reset_postdata();
@@ -86,8 +88,6 @@
             </div><!-- END Updates Layout column -->
     </div><!-- END Updates Block -->
 
-
-
 <style>
 
 /** FP BLOCK - UPDATES FEED ----------------- */
@@ -97,6 +97,11 @@
     font-family: inherit;
     overflow: scroll; 
 }
+
+.updates-layout{
+    padding: 3%;
+}
+
 .updates-feed-post-container{
     border-bottom: solid 1px var(--color_acc_lght);
     border-top: solid 1px var(--color_acc_lght);
@@ -104,21 +109,40 @@
     padding: 20px;
 }
 article.updates-feed{
-    margin-bottom: 20px; 
+    margin-bottom: 1%; 
 }
-.updates-feed-post-content header h3 a{
-    font-size: 1.5rem;
-    line-height: 1.75rem;
+/** Post Title */
+article.updates-feed > .updates-feed-post-content h3 a{
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
     font-weight: 400;
+    text-align: center;
     color: var(--color_prim_lght);
     text-decoration: none;
 }
-.updates-feed-entry-summary{
-    color: white; 
+
+div.updates-feed-entry-summary{
+    font-size: 1em;
+    line-height: 1.5em;
+    color: var(--color_lght);
+    font-weight: 100;
+    margin: 0;
+    padding: 1%;
+  }
+
+/* .updates-feed-entry-summary{
+    color: var(--color_lght); 
     margin: 0; 
     padding: 10px; 
     font-size: 1.15em;
+} */
+
+.updates-feed-entry-footer{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
+
 .updates-feed-entry-footer .button{
     margin-top: 10px;
     padding: 1px;
@@ -126,11 +150,32 @@ article.updates-feed{
     max-width: 150px;  
 }
 
+/** The Updates Div Title */
 h3.updates-feed{
     color: var(--color_fnt_wht);
     margin-bottom: 10px;
     text-align: center; 
     text-transform: uppercase;
 }
+
+/** Restricted Height/Scroll for Large Desktop */
+@media (min-width: 1300px) {
+    .updates-feed.container{
+    display: flex;
+    align-items: start; 
+    max-height: 55vh;
+}
+
+}
+/** Restricted height/scroll for smaller desktop/tablets */
+@media (min-width: 1045px) and (max-width: 1300px) {
+    .updates-feed.container{
+    display: flex;
+    align-items: start; 
+    max-height: 40vh;
+}
+
+}
 /** END FP BLOCK - UPDATES FEED ----------------- */
+
 </style>

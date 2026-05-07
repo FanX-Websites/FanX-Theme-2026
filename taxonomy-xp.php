@@ -120,9 +120,11 @@ get_header(); /** body- main-site */
 
     <!----- END Guest List ----------------->
 
-    <!-- Latests News ------->
-     <?php get_template_part( 'template-parts/latest-news' ); ?>
-    <!-- END Latest News ------->
+   <!------------------- Latest News Post Block --------------------->
+    <div class="container full">
+        <?php get_template_part('template-parts/sections/updates-section'); ?>
+    </div>
+<!----------- END Latest News Post Block -->
 
 <?php
 get_footer();

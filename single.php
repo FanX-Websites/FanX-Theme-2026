@@ -4,10 +4,7 @@
  * @fanxtheme2026
  * 
  * Notes: 
- * Uses classes: profile, profile-header, profile-details, profile-img, profile-content, small-print
- * Needs: Small Print at Bottom - Not showing 
- * //FIXME: Replace current layout with CSS Grid Blocks 
- * //TODO: Guest eXperience Conditionals - ie PhotoOps 'coming soon' conditional to guest expereince status 
+ * //TODO: Replace current layout with CSS Grid Blocks 
  */
 
 get_header();
@@ -130,12 +127,11 @@ get_header();
 
                     <!-- Profile Content -->
                     <div class="the-content">
-                        <?php the_content(); //Content ?>
+                        <?php the_content(); //Content ?> 
                     </div><!-- END Profile Content-->
                 </div><!-- END Post Main Content -->
 
-
-                
+       
                 <!-- Guest Xperience Links --->
                     <!-- Featured Links Buttons --> 
                     <div class="featured-links"> 
@@ -169,7 +165,7 @@ get_header();
                   <!-- Featured Content/Links - Galleries, etc. //TODO: All Gallery Types -->
                 <div class= "featured-content">
                     <!-- Multi-Post Gallery [Template Part] -->
-                        <?php get_template_part( 'template-parts/profiles/multi-post-gallery' ); ?>
+                        <?php get_template_part( 'template-parts/profiles/multi-post-gallery' ); ?><!-- Multi-Post Gallery -->
                     <!-- END Multi-Post Gallery -->
                 </div>
             <!-- END Featured Content -->
@@ -178,12 +174,13 @@ get_header();
             
         </div><!-- END Profile Main Section ------------------->
         
-        <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
+        <?php get_template_part( 'template-parts/profiles/smallprint' ); ?> <!-- Small Print at Bottom -->
     </div>
     <!-- END Profile Main Div --------------------->
 
-    <!-- Latest Posts ------> 
-
+    <!-- Latest Posts //NOTE: For Profiles ONLY - not needed for blog
+     ------> 
+        <?php get_template_part( 'template-parts/profiles/updates-section' ); ?><!-- Latest Posts -->
     <!-- END Latest Posts ------>
             
             <?php

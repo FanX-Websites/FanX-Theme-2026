@@ -24,73 +24,87 @@ Author URI: https://DancingFraxinus.com/
 }
 /* Front Page Grid Blocks */
 
-    /** Both Columns */
-.event-details.container { /* Event Details Block */
-  grid-column: 1 / span 2;
-  grid-row: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: var(--color_acc)
-}
-   /** Grid Column 1 */
-.feat-video.container {/* Featured Video Block */
-  grid-column: 1;
-  grid-row: 2 / span 2;
-  display: flex;
-  align-items: center;
-  justify-content: center
-}
-  /** Grid Column 2 */  
-.countdown.container {/* Countdown Block */
-  grid-column: 2;
-  grid-row: 1 / span 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: inherit
-}
-
-.updates-feed.container {/* Updates Feed Block */
-  grid-column: 2;
-  grid-row: 2 / span 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-    /* Responsive Grid for Mobile */
-@media (max-width: 1045px) {
-  .fp-grid {
-    grid-template:repeat(4,auto) / 1fr;
-    gap: 20px
-  }
-
-  .event-details.container {/* Event Details Block */
-    grid-column: 1;
+/** Both Columns */
+  /* Event Details Block */
+  .event-details.container { 
+    grid-column: 1 / span 2;
     grid-row: 1;
-    padding: 20px 10px
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--color_acc);
+  }
+/** Grid Column 1 */
+  /* Featured Video Block */
+  .feat-video.container {
+    grid-column: 1;
+    grid-row: 2 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .feat-video.container{/* Featured Video Block */
-    grid-column: 1;
-    grid-row: 3
-  }
+/** Grid Column 2 */  
+  .countdown.container {/* Countdown Block */
+    grid-column: 2;
+    grid-row: 1 / span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+}
 
-  .countdown.container{/* Countdown Block */
-    grid-column: 1;
-    grid-row: 2;
-    padding: 3%content
-  }
 
-  .updates-feed.container{/* Updates Feed Block */
-    grid-column: 1;
-    grid-row: 4;
-    border: 3px solid var(--color_prim_lght);
-    padding: 3%;
-    width: 90%;
-    margin: 0 auto
-  }
+/** Grid Column 2 - FP Updates Feed */
+
+  /* Updates Feed Block -- DESKTOP --- */
+/** //NOTE: CSS Styling is on the template part until styling conflicts are resolved. 
+*/
+
+    .updates-feed.container {
+      grid-column: 2;
+      grid-row: 2 / span 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      /* Scrollbar Styling */
+    }
+
+
+/* Responsive Grid for Mobile ------------------- */
+  @media (max-width: 1045px) {
+    .fp-grid {
+      grid-template:repeat(4,auto) / 1fr;
+      gap: 20px
+    }
+
+    .event-details.container {/* Event Details Block - MOBILE */
+      grid-column: 1;
+      grid-row: 1;
+      padding: 20px 10px
+    }
+
+    .feat-video.container{/* Featured Video Block - MOBILE */
+      grid-column: 1;
+      grid-row: 3
+    }
+
+    .countdown.container{/* Countdown Block - MOBILE */
+      grid-column: 1;
+      grid-row: 2;
+      padding: 3%content
+    }
+
+    .updates-feed.container{/* Updates Feed Block - MOBILE */
+      grid-column: 1;
+      grid-row: 4;
+      border: 3px solid var(--color_prim_lght);
+      padding: 3%;
+      width: 90%;
+      margin: 0 auto
+    }
 }   /* END Front Page Grid Blocks - Mobile */
 
 
@@ -185,6 +199,7 @@ h2.content-block-title {
 }
 
 h3.content-block-subtext {
+  display: block;
   font-size: 1.2em;
   font-weight: 100;
   text-align: center;
@@ -224,6 +239,7 @@ h3.content-block-subtext {
   width: 100%;
   padding: 0;
   margin: 0;
+  text-align: center;
   font-weight: 800;
   font-size: 2.75em;
   line-height: 1.35em;
@@ -453,27 +469,28 @@ h3.table-chart-subtext {
 
 /* Template Part: News & Updates Section */   
  /* Updates Section - Container Styling */
-.updates-section {
-  background-color: transparent;
+
+.updates-section{
+  background-color: var(--color_prim_brht);
   padding: 4% 0 4%;
   margin: 0;
   width: 100%;
   border-radius: 0;
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
+  
 }
  /*Updates Section - Text Styling */
-.updates-title {
+.updates-section-title{ /* Updates Section Title Container */
   display: flex;
   align-items: center;
   justify-self: center;
   margin: 0;
   padding: 0;
 }
-
-h3.updates-title{
-  color: var(--color_base_brht);
+.updates-section-title h3{ /* Updates Section Title */
+  color: var(--color_base);
   font-weight: 600;
   line-height: 2.5em;
   text-transform: uppercase;
@@ -481,28 +498,69 @@ h3.updates-title{
   text-align: center;
   width: 100%;
 }
-   /** Posts Loop */
-.updates-posts-loop {
+
+.updates-posts-loop { /* Updates Section - Posts Loop Container */
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  padding: 0%;
+  margin: 0;
+  border-radius: 0;
+  background-color: var(--color_drk);
+}
+
+.updates-entry-title h4 a{ /* Updates Section - Post Title */
+  font-size: clamp(1.2rem, 2.0vw, 2.0rem);
+  font-weight: 200;
+  color: var(--color_prim);
+  text-decoration: none;
+  text-align: center;
+}
+
+.updates-entry-summary{ /* Updates Section - Post Summary */
+  font-size: 1em;
+  line-height: 1.5em;
+  text-align: center;
+  color: var(--color_fnt_blk);
+  margin: 0;
+  padding: 1% 6%
+}
+   
+
+/** Posts Loop */
+/* .updates-posts-loop {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   padding: 0;
   margin: 0
-}
+} */
 
  /** Posts Container Styling */
- .updates-post-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 90%;
-  max-width: 1000px;
-  padding: 2%;
-  background-color: var(--color_drk);
-  border: 6px solid var(--color_lght)
-}
+
+ .updates-post.self-centered{
+   width: 80%;
+   max-width: 1000px;
+   padding: 2%;
+   background-color: var(--color_lght);
+   border: 6px solid var(--color_drk);
+   margin: 0;
+
+ }
+
+ /* .updates-post-container { Replace with post container above ^
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 90%;
+      max-width: 1000px;
+      padding: 2%;
+      background-color: var(--color_drk);
+      border: 6px solid var(--color_lght)
+} */
+
     /** Updates Section - Article Content - Updates */
 
         /** Post Content - Updates Section */
@@ -638,7 +696,60 @@ h3.updates-entry-title a{
 
  /* END Buttons ------------------------------ */
 
-/* Multi-Post Gallery */
+
+ /** Gallery Grids */
+
+ .gallery-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   gap: 2rem;
+   width: 100%;
+ }
+
+ /* Gallery Grid Responsive Breakpoints */
+ @media (max-width: 1024px) {
+   .gallery-grid {
+     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+     gap: 1.5rem;
+   }
+ }
+
+ @media (max-width: 768px) {
+   .gallery-grid {
+     grid-template-columns: 1fr;
+     gap: 1.5rem;
+   }
+ }
+
+ @media (max-width: 480px) {
+   .gallery-grid {
+     gap: 1rem;
+   }
+ }
+
+ /* Gallery Grid Layout Variants */
+ .gallery-grid.layout-single {
+   grid-template-columns: 1fr;
+ }
+
+ .gallery-grid.layout-two-col {
+   grid-template-columns: repeat(2, 1fr);
+ }
+
+ /* Layout Variant Responsive Breakpoints */
+ @media (max-width: 1024px) {
+   .gallery-grid.layout-two-col {
+     grid-template-columns: 1fr;
+   }
+ }
+
+ @media (max-width: 768px) {
+   .gallery-grid.layout-two-col {
+     grid-template-columns: 1fr;
+   }
+ }
+
+/* Multi-Post Gallery ---- Profile Pages & Posts */
 .featured-content{
   display: flex;
   align-items: center;
@@ -663,15 +774,18 @@ h3.updates-entry-title a{
   text-align: center;
   font-style: italic;
   width: 100%;
-} 
+}
+
+/* Multi-Post Gallery Wrapper - Isolates grid behavior from parent flex layout */
+.multi-post-gallery-wrapper {
+  width: 100%;
+  display: block;
+}
+
 .multi-post-gallery.posts {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
   padding: 3% 0;
 }
+
 /* Gallery Post Content */
 .gallery-post {
   padding: 0; 
@@ -680,10 +794,15 @@ h3.updates-entry-title a{
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
+  border-radius: 0;
 }
 .gallery-post img {
-  max-height: 250px; 
-  width: auto; 
+  max-height: 250px;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 .gallery-post a{
   font-size: 1.5em;
@@ -694,5 +813,29 @@ h3.updates-entry-title a{
   margin: 0;
   text-decoration: none;
 }
+
+/** Multi-Post Gallery - Hotels & Travel Pages */
+
+.multi-post-gallery-wrapper.hotels-post .gallery-post.feat-img {
+  height: 200px;
+  width: 100%;
+  max-width: 300px;
+  margin: 3% 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 25px;
+  background-color: white;
+}
+
+.multi-post-gallery-wrapper.hotels-post .gallery-post.feat-img img {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+  object-fit: cover;
+}
+
+
 
 /* END Profile Page Template Parts --------------------------------------- */

@@ -105,6 +105,14 @@ get_header(); /** body- main-site */
         ?><!-- END No Posts Message -->
     </div><!-- END post-grid-container -->
     <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
+
+
+<!------------------- Latest News Post Block --------------------->
+    <div class="container full">
+        <?php get_template_part('template-parts/sections/updates-section'); ?>
+    </div>
+<!----------- END Latest News Post Block -->
+
     <!----- END Main Content Area----------------->
 
 <?php

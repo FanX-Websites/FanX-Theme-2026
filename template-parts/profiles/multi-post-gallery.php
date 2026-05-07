@@ -20,13 +20,50 @@ if( $post_ids ) :  //IF Gallery links to any Posts - THEN display gallery - ELSE
         <?php echo  get_field('gal_multi_post_sub'); ?>
     </div>
 
-<!-- Multi-Post Gallery Content --->
-    <div class= "multi-post-gallery posts">
-        <?php 
-        foreach( (array)$post_ids as $post_id ) {
+<!-- Multi-Post Gallery Wrapper --->
+    <?php
+    // Get the first category for this post for block-specific styling (e.g., 'hotels-post')
+    $categories = get_the_category();
+    if ( $categories ) {
+        $category = $categories[0];
+        $block_class = $category->slug . '-post';
+    } else {
+        $block_class = 'default-post'; // fallback
+    }
+    ?>
+    <div class="multi-post-gallery-wrapper <?php echo $block_class; ?>">
+    <!-- Multi-Post Gallery Content -->
+        <?php
+        $post_count = count( (array)$post_ids );
+        $layout_class = 'layout-two-col'; // default for 2+ posts
+        
+        if ( $post_count === 1 ) {
+            $layout_class = 'layout-single';
+        }
+        ?>
+        <div class= "multi-post-gallery posts gallery-grid <?php echo $layout_class; ?>">
+            <?php 
+            foreach( (array)$post_ids as $post_id ) {
+                // Determine the link URL based on post type
+                $link_url = get_permalink( $post_id ); // default
+                
+                // For partners CPT, use first button URL if available
+                if ( in_array( get_post_type( $post_id ), array( 'partner' ) ) ) {
+                    $button_url = '';
+                    if ( have_rows( 'button', $post_id ) ) {
+                        while ( have_rows( 'button', $post_id ) ) {
+                            the_row();
+                            $button_url = get_sub_field( 'url' );
+                            break; // Only get first button
+                        }
+                    }
+                    if ( $button_url ) {
+                        $link_url = $button_url;
+                    }
+                }
             ?>
-            <div class="gallery-post"><!-- Featured Post -->
-                <a href="<?php echo esc_url( get_permalink( $post_id ) ); ?>">
+            <div class="gallery-post"><!-- Featured Posts -->
+                <a href="<?php echo esc_url( $link_url ); ?>">
                     <?php if( has_post_thumbnail( $post_id ) ) : ?>
                         <div class="gallery-post feat-img"><!-- Featured Image -->
                             <?php echo get_the_post_thumbnail( $post_id, 'medium' ); ?>
@@ -41,5 +78,6 @@ if( $post_ids ) :  //IF Gallery links to any Posts - THEN display gallery - ELSE
         }
         ?>
     </div><!-- END Multi-Post Gallery Content -->
+    </div><!-- END Multi-Post Gallery Wrapper -->
 <?php 
 endif;

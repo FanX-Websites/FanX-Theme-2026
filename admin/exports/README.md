@@ -482,7 +482,7 @@ $conflicting_plugins = array(
 Modify in `pre-export-checker.php`:
 - Memory check: `134217728` (128MB) - line ~98
 - Timeout check: `300` (5 min) - line ~103
-- Debug log size: `1048576` (1MB) - line ~37
+- Debug log size: `15728640` (15MB) - line ~217
 
 ---
 
