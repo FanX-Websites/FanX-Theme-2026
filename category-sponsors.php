@@ -15,7 +15,7 @@ get_header(); /** body- main-site */
     <!------------ END Page Header Container -------------------->
 
     <!-------------------------- Main Content Area --------------------->
-    <div class="post-grid-container"> 
+    <div class="cat-tax grid-container">
         <?php
         // Query partners CPT filtered by current category
         $term = get_queried_object();
@@ -58,6 +58,18 @@ get_header(); /** body- main-site */
         <!-- No Posts Message -->
         <?php
             endwhile;
+            wp_reset_postdata();
+            
+            // Add filler blocks to complete the last row dynamically
+            $posts_per_row = 4; // Typical desktop column count
+            $total_posts = $query->found_posts;
+            $remainder = $total_posts % $posts_per_row;
+            if ( $remainder > 0 ) :
+                $filler_count = $posts_per_row - $remainder;
+                for ( $i = 0; $i < $filler_count; $i++ ) {
+                    echo '<div class="post-block block"></div>';
+                }
+            endif;
         else :
             ?>
             <div class="no-posts-container">
@@ -79,7 +91,7 @@ get_header(); /** body- main-site */
         ?><!-- END No Posts Message -->
 
     <!----- END Main Content Area ----------------->
-    </div><!-- END post-grid-container -->
+    </div><!-- END cat-tax grid-container -->
 
     <!------------------- Latest News Post Block --------------------->
     <div class="container full">

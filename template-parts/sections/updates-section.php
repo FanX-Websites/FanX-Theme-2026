@@ -19,15 +19,23 @@
             <!-------------- Posts Begin --------------------->
             <?php 
                 // Query only blog posts (post type 'post') from the current category/taxonomy
+                // Exclude posts that use community-events term
                 $term = get_queried_object();
                 $args = array(
                     'post_type' => 'post',
                     'posts_per_page' => 3,
                     'tax_query' => array(
+                        'relation' => 'AND',
                         array(
                             'taxonomy' => $term->taxonomy,
                             'field' => 'term_id',
                             'terms' => $term->term_id,
+                        ),
+                        array(
+                            'taxonomy' => 'blog',
+                            'field' => 'slug',
+                            'terms' => 'community-events',
+                            'operator' => 'NOT IN',
                         ),
                     ),
                 );
@@ -83,7 +91,7 @@
             <!----------- No Posts Message -------------->
             <?php else : ?>
                 <div class="updates-no-posts-message">
-                    <h3>No updates Yet</h3>
+                   No updates Yet
                         <?php echo wp_kses_post(get_field('news_message', get_option('page_on_front')) ?? ''); ?>
                         <?php 
                             $news_link = get_field('news_url', get_option('page_on_front'));

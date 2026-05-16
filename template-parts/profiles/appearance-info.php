@@ -5,7 +5,8 @@
  */
 ?>
 
-<div class="appearance-days">
+<div class="appearance-info block">
+    <div class="appear-block">
     <?php 
         $days_cats = get_the_terms( get_the_ID(), 'days' );
         
@@ -27,4 +28,15 @@
             echo '</div><!-- END days guest-xp -->';
         }
     ?> 
-</div><!-- END Appearance Days -->
+    </div><!-- END appear-days -->
+    <div class="appear-block">
+        <?php 
+            $sched = get_field('sched', get_the_ID());
+            $vend_booth = is_array($sched) ? ($sched['room_booth'] ?? '') : '';
+            
+            if ( $vend_booth ) {
+                echo wp_kses_post($vend_booth);
+            }
+            ?>
+    </div><!-- END appear-loca -->
+</div><!-- END Appearance Info Block -->

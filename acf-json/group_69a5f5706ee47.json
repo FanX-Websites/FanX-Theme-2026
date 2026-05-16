@@ -3,13 +3,6 @@
     "title": "Features\/Activities and Special Events Statuses",
     "fields": [
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_69a61a7e8805f",
             "label": "Feature\/ Group\/ Special Event Statuses",
             "name": "stat",
@@ -28,13 +21,6 @@
             "acfe_group_modal": 0,
             "sub_fields": [
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69a61a7e88060",
                     "label": "(Column 6\/12)",
                     "name": "",
@@ -53,13 +39,6 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69a61a7e88067",
                     "label": "Features\/ Activities",
                     "name": "feature",
@@ -78,16 +57,13 @@
                     "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 0
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69a61a7e8806a",
                     "label": "Special Events",
                     "name": "event",
@@ -106,16 +82,13 @@
                     "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 0
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69a61a7e88065",
                     "label": "(Column 6\/12)",
                     "name": "",
@@ -134,13 +107,6 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69a61a7e88068",
                     "label": "Featured Vendors",
                     "name": "vendor",
@@ -159,16 +125,13 @@
                     "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 0
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69a61a7e88069",
                     "label": "Featured Cosplayers",
                     "name": "cosplayer",
@@ -187,7 +150,11 @@
                     "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "show_column": 0,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "allow_backendsearch": 0
                 }
             ],
             "acfe_group_modal_close": 0,
@@ -195,13 +162,6 @@
             "acfe_group_modal_size": "large"
         },
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_69a617b6cf166",
             "label": "Special Events Links & Statuses",
             "name": "tkt",
@@ -215,6 +175,13 @@
                 "class": "",
                 "id": ""
             },
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
@@ -223,13 +190,6 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69a617b6cf17a",
                     "label": "(Column 6\/12)",
                     "name": "",
@@ -243,18 +203,18 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "columns": "6\/12",
                     "endpoint": 0,
                     "allow_in_bindings": 0
                 },
                 {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69a617b6cf17b",
                     "label": "Special Event Ticket Status",
                     "name": "sp_stat",
@@ -268,6 +228,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "Available SOON",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -276,13 +243,6 @@
                     "append": ""
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69a617b6cf17c",
                     "label": "Special Event Tickets Link",
                     "name": "sp_url",
@@ -296,11 +256,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 1
-                },
-                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -308,6 +263,11 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 1
+                },
+                {
                     "key": "field_69a617e6cf180",
                     "label": "(Column 6\/12)",
                     "name": "",
@@ -321,18 +281,18 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "columns": "6\/12",
                     "endpoint": 0,
                     "allow_in_bindings": 0
                 },
                 {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69a617b6cf17d",
                     "label": "After Party Ticket Status",
                     "name": "prt_stat",
@@ -346,6 +306,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "More Info SOON",
                     "maxlength": "",
                     "allow_in_bindings": 0,
@@ -354,13 +321,6 @@
                     "append": ""
                 },
                 {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "key": "field_69a617b6cf17e",
                     "label": "After Party Ticket Link",
                     "name": "prt_url",
@@ -374,11 +334,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 0
-                },
-                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -386,6 +341,11 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 0
+                },
+                {
                     "key": "field_69a617b6cf17f",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -399,6 +359,13 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "endpoint": 1,
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
@@ -425,6 +392,8 @@
     "description": "",
     "show_in_rest": 1,
     "display_title": "Features\/Activities Options Page",
+    "allow_ai_access": false,
+    "ai_description": "",
     "acfe_autosync": [
         "php",
         "json"

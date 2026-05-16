@@ -22,7 +22,18 @@ get_header(); /** body- main-site */
         <!-- Content Blocks - Event Hours -[Template Part] -->
         <div class="event-info container" id="hours">        
             <?php get_template_part('template-parts/sections/content-blocks'); ?>
-        </div><!-- END Comparison Chart Section -->
+        </div>
+    <!-- END Comparison Chart Section -->
+
+    <!-- Floor Maps & Room List Section --->
+     <?php get_template_part('template-parts/sections/floor-maps'); ?>
+    <!-- END Floor Maps & Room List Section -->     
+     
+<!------------------- Latest News Post Block --------------------->
+    <div class="container full">
+        <?php get_template_part('template-parts/sections/updates-section'); ?>
+    </div>
+<!----------- END Latest News Post Block -->
 
 <!-------------------------- ADDRESS MAP Template Part --------------------->
     <div class="section-full-width">
@@ -30,11 +41,7 @@ get_header(); /** body- main-site */
     </div>
 <!---------------------------END ADDRESS MAP Template Part ---------------------> 
 
-<!------------------- Latest News Post Block --------------------->
-    <div class="container full">
-        <?php get_template_part('template-parts/sections/updates-section'); ?>
-    </div>
-<!----------- END Latest News Post Block -->
+
 
     <!-- END Main Content Area --> 
 

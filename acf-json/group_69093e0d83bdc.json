@@ -1,6 +1,6 @@
 {
     "key": "group_69093e0d83bdc",
-    "title": "Profiles Pages",
+    "title": "Guest Profile Pages",
     "fields": [
         {
             "key": "field_690983c0576b4",
@@ -287,7 +287,9 @@
                         "acfe_bidirectional_enabled": true,
                         "acfe_bidirectional_related": [
                             "field_69fa7465a763d",
-                            "field_69fa774448d6d"
+                            "field_69fa774448d6d",
+                            "field_6a039ab5557f3",
+                            "field_6a039ab5557fa"
                         ]
                     },
                     "acfe_settings": "",
@@ -655,6 +657,26 @@
                     "acfe_permissions": ""
                 },
                 {
+                    "key": "field_69fd0d48e7eb8",
+                    "label": "Dedicated Product Category Link",
+                    "name": "ded_prod_cat",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "<p>[xp_ded_prod_cat] Use when a guest has their own product category in the shop<\/p>\r\n<i>*Currently replaces the Photo Op, Autograph links on their profile, and adds a link to the Celebrity Row eXtras status, when said products are on sale<\/i>",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1
+                },
+                {
                     "key": "field_69795c743bb29",
                     "label": "(Column 4\/12)",
                     "name": "",
@@ -720,6 +742,47 @@
                     "bidirectional_target": [],
                     "save_post_type": "",
                     "save_post_status": ""
+                },
+                {
+                    "key": "field_6a039d348ee12",
+                    "label": "Vendor Booths Featured in:",
+                    "name": "vend_booth",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "[xp_vend_booth] <\/br>\r\nAutomatically populates when Group Photo Op Product is pushed live.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "features"
+                    ],
+                    "post_status": "",
+                    "taxonomy": [
+                        "xp:vendor-floor"
+                    ],
+                    "return_format": "id",
+                    "multiple": 1,
+                    "save_custom": 0,
+                    "save_post_status": "publish",
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": "1",
+                        "acfe_bidirectional_related": [
+                            "field_69fa7465a763d"
+                        ]
+                    },
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "allow_null": 0,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "save_post_type": ""
                 },
                 {
                     "key": "field_69795f3b781ca",
@@ -1195,13 +1258,6 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "features"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
                 "value": "guests"
             }
         ],
@@ -1217,12 +1273,12 @@
     "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
-    "instruction_placement": "tooltip",
+    "instruction_placement": "field",
     "hide_on_screen": "",
     "active": true,
-    "description": "Guests, Features & Partners",
+    "description": "",
     "show_in_rest": 0,
-    "display_title": "Profile Pages",
+    "display_title": "Guest Profile Pages",
     "allow_ai_access": false,
     "ai_description": "",
     "acfe_autosync": [
@@ -1233,7 +1289,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1778029430,
+    "modified": 1778623906,
     "acfe_categories": {
         "people": "People",
         "profile-pages": "Profile Pages"

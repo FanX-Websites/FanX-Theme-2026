@@ -17,8 +17,7 @@ get_header(); /** body- main-site */
     <!------------ END Page Header Container -------------------->
 
     <!-------------------------- Main Content Area --------------------->
-    <div class="post-grid-container"> 
-        
+    <div class="cat-tax grid-container">
         <?php
         // Query partners CPT filtered by current category
         $term = get_queried_object();
@@ -32,6 +31,9 @@ get_header(); /** body- main-site */
                     'terms' => $term->term_id,
                 ),
             ),
+            'meta_key' => 'info_display_order',
+            'orderby' => 'meta_value_num',
+            'order' => 'ASC',
         );
         $query = new WP_Query( $args );
         if ( $query->have_posts() ) : ?>
@@ -62,6 +64,11 @@ get_header(); /** body- main-site */
                         <a href="<?php echo esc_url( $button_url ); ?>" target="_blank">
                             <?php the_post_thumbnail( 'medium' ); ?>
                         </a>
+                        <?php if ( has_term( 'rooms-booked', 'xp-status', get_the_ID() ) ) : ?>
+                            <div class="postponed-overlay">
+                                <span class="postponed-text cat">ROOMS BOOKED</span>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
                 <!-- END Post Thumbnail -->
@@ -95,7 +102,7 @@ get_header(); /** body- main-site */
                 <!-- Read More Button/ Footer -->
                 
                 <footer class="entry-footer">
-                    <?php if ( $button_title && $button_url ) : ?>
+                    <?php if ( $button_title && $button_url && ! has_term( 'rooms-booked', 'xp-status', get_the_ID() ) ) : ?>
                         <a href="<?php echo esc_url( $button_url ); ?>" class="button" target="_blank">
                             <?php echo esc_html( $button_title ); ?>
                         </a>
@@ -132,7 +139,7 @@ get_header(); /** body- main-site */
         <!-- END No Posts Message -->
 
     <!----- END Main Content Area ----------------->
-    </div><!-- END post-grid-container -->
+    </div><!-- END cat-tax grid-container -->
      <!--- Latest Updates ----> 
     
      <div class="container full">

@@ -154,7 +154,7 @@ blockquote::before {
 }
 
 
-/*Small Print Text - Default //FIXME: duplicated code */
+/*Small Print Text - Default //FIXME: duplicated code? */
 p.small-print{
   font-size: .9em;
   line-height: 1.25em;
@@ -171,7 +171,7 @@ p.small-print{
   text-align: left;
   font-style: italic;
   max-width: 900px; 
-  padding: 10% 3% 3%;
+  padding: 3% 3% 3%;
 }
 
 /* END Text ---------------------------------------------- */
@@ -888,9 +888,9 @@ body::after {
 /** ---------------- POSTS & CONTENT GRIDS --------------------------- */
     
   /* Post Grid Container - Category Page - Post Grids */
-    .post-grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    .cat-tax.grid-container{
+        /* display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); */
         max-width: 1500px;
         gap: 1px;
         width: 90%;
@@ -902,7 +902,7 @@ body::after {
 
     .post-block {
         width: 100%;
-        /* max-width: 300px; */
+        min-width: 300px;
         padding: 25px;
         margin: 0 auto;
         border-radius: 20px;
@@ -923,6 +923,7 @@ body::after {
       color: var(--color_acc_lght);
       font-size: 1em;
       line-height: 1.25em;
+      text-align: center;
     }
 
 
@@ -1006,25 +1007,31 @@ h2.entry-title a{
 
 /** Single Post Styling **/ 
 /*Post Styles */ 
-    /*** Profile - Desktop */
+/*** Profile - Desktop */
+
 .profile {
   width: 90%;
-  max-width: 1100px;
-  padding: 0 1% 6%;
-  margin: 0;
+  /* max-width: 1100px; */
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  flex-flow: column;
+  /* gap: 20px; */
+
 }
 
-/** Card Div **/ 
-/* .card{
+.profile-card{
   border: 1px solid var(--color_lght);
   padding: 2%;
-  margin: 2% 0; 
-  max-height: 60vh;
-  overflow: scroll; 
-} */
+  margin: 0 auto;
+  max-width: 1200px; 
+  border-top-left-radius: 45px;
+  border-bottom-left-radius: 45px;
+
+}
+
 
 /** Default Post Content Styling */
 .main-content { 
@@ -1036,14 +1043,19 @@ h2.entry-title a{
   line-height: 1.6em;
 }
 .profile-content{
+  flex-flow: column; 
+}
+.profile-details{
+ flex-flow: column;
+}
+.profile-img {
+  /* position: relative;
+  display: inline-block; */
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-flow: column; 
-}
-.profile-img {
-  position: relative;
-  display: inline-block;
+  margin:0 auto;
+  padding: 0;
 }
 
 /** Postponed Content/Instructions & Image */
@@ -1086,10 +1098,10 @@ h2.entry-title a{
   max-width: 400px;
   height: auto;
   width: 90%;
-  margin: 0;
+  margin: 0 auto;
   padding: 0
 }
-.profile-cat-header h1,.profile-cat-header a {
+/* .profile-cat-header h1,.profile-cat-header a {
   text-decoration: none;
   color: var(--color_base_lght);
   font-size: 1.2em;
@@ -1097,40 +1109,40 @@ h2.entry-title a{
   line-height: 1.7em;
   padding: 0;
   margin: 0
-}
+} */
 
-.profile-header {
-  padding: 2% 0 4%;
+.profile-name, .blog-post-header {
+  padding: 2% 0;
   margin: 0;
   text-align: center
 }
 
-.profile-header h1 {
+.profile-name h1, .blog-post-header h1 {
   font-size: 2.5em;
   line-height: 1.5em;
   font-weight: 300;
   color: var(--color_acc_brht);
   padding: 0;
-  margin: 0
+  margin: 0;
 }
 
-.profile-header h2 {
+.profile-name h2, .blog-post-header h2 {
   font-size: 1.75em;
   line-height: 1.2em;
   font-weight: 100;
   color: var(--color_acc_lght);
   padding: 0;
-  margin: 0
+  margin: 0;
 }
 
 @media (max-width: 1000px) {
-  .profile {
+  /* .profile {
     width:90%;
     padding: 3% 0;
     align-items: center;
     justify-content: center;
     flex-flow: wrap;
-  }
+  } */
 
   .profile-img img {
     width: 90%;

@@ -4,7 +4,7 @@ if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
 	'key' => 'group_69fa774433c59',
-	'title' => 'Product Pages',
+	'title' => 'Product Profile Pages',
 	'fields' => array(
 		array(
 			'key' => 'field_69fa77443b6ea',
@@ -258,11 +258,13 @@ Automatically populates when a Blog Post Features this Profile in an Announcemen
 					'save_custom' => 0,
 					'save_post_status' => 'publish',
 					'acfe_bidirectional' => array(
-						'acfe_bidirectional_enabled' => '1',
+						'acfe_bidirectional_enabled' => true,
 						'acfe_bidirectional_related' => array(
 							0 => 'field_69fa640081616',
 							2 => 'field_69fa774569713',
 							3 => 'field_69fa7465a763d',
+							4 => 'field_6a03999f79446',
+							5 => 'field_6a039ab5557f3',
 						),
 					),
 					'acfe_settings' => '',
@@ -928,9 +930,10 @@ Currently Set to guests and bi-directional with Group Op Products',
 					'save_custom' => 0,
 					'save_post_status' => 'publish',
 					'acfe_bidirectional' => array(
-						'acfe_bidirectional_enabled' => '1',
+						'acfe_bidirectional_enabled' => true,
 						'acfe_bidirectional_related' => array(
 							0 => 'field_69795e4c3bb33',
+							1 => 'field_6a03999fdfa76',
 						),
 					),
 					'acfe_settings' => '',
@@ -1637,11 +1640,11 @@ Currently Set to guests and bi-directional with Group Op Products',
 	'acfe_form' => 1,
 	'acfe_meta' => '',
 	'acfe_note' => '',
-	'modified' => 1778124888,
 	'acfe_categories' => array(
 		'products' => 'Products',
 		'profile-pages' => 'Profile Pages',
 	),
+	'modified' => 1778621157,
 ));
 
 endif;

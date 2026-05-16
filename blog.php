@@ -1,8 +1,6 @@
 <?php
-// Blog Template - Forwards Blog Page to Updates & Announcements Category
+/**
+ * Blog Page Template
+ * //NOTE: this template intentionally left blank. /blog is being forwarded to /blog/event-updates-announcements until page issues can be properly troubleshooted. 
+ */
 
-if (is_home()) {
-    wp_redirect(home_url('/blog/event-updates-announcements/'));
-    exit;
-}
-?>

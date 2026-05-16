@@ -4,7 +4,7 @@ if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
 	'key' => 'group_69093e0d83bdc',
-	'title' => 'Profiles Pages',
+	'title' => 'Guest Profile Pages',
 	'fields' => array(
 		array(
 			'key' => 'field_690983c0576b4',
@@ -295,6 +295,8 @@ Automatically populates when a Blog Post Features this Profile in an Announcemen
 						'acfe_bidirectional_related' => array(
 							0 => 'field_69fa7465a763d',
 							1 => 'field_69fa774448d6d',
+							2 => 'field_6a039ab5557f3',
+							3 => 'field_6a039ab5557fa',
 						),
 					),
 					'acfe_settings' => '',
@@ -667,6 +669,27 @@ Automatically populates when a Blog Post Features this Profile in an Announcemen
 					'acfe_permissions' => '',
 				),
 				array(
+					'key' => 'field_69fd0d48e7eb8',
+					'label' => 'Dedicated Product Category Link',
+					'name' => 'ded_prod_cat',
+					'aria-label' => '',
+					'type' => 'link',
+					'instructions' => '<p>[xp_ded_prod_cat] Use when a guest has their own product category in the shop</p>
+<i>*Currently replaces the Photo Op, Autograph links on their profile, and adds a link to the Celebrity Row eXtras status, when said products are on sale</i>',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'return_format' => 'array',
+					'acfe_settings' => '',
+					'acfe_validate' => '',
+					'acfe_permissions' => '',
+					'allow_in_bindings' => 1,
+				),
+				array(
 					'key' => 'field_69795c743bb29',
 					'label' => '(Column 4/12)',
 					'name' => '',
@@ -734,6 +757,49 @@ Automatically populates when Group Photo Op Product is pushed live.',
 					),
 					'save_post_type' => '',
 					'save_post_status' => '',
+				),
+				array(
+					'key' => 'field_6a039d348ee12',
+					'label' => 'Vendor Booths Featured in:',
+					'name' => 'vend_booth',
+					'aria-label' => '',
+					'type' => 'post_object',
+					'instructions' => '[xp_vend_booth] </br>
+Automatically populates when Group Photo Op Product is pushed live.',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'post_type' => array(
+						0 => 'features',
+					),
+					'post_status' => '',
+					'taxonomy' => array(
+						0 => 'xp:vendor-floor',
+					),
+					'return_format' => 'id',
+					'multiple' => 1,
+					'save_custom' => 0,
+					'save_post_status' => 'publish',
+					'acfe_bidirectional' => array(
+						'acfe_bidirectional_enabled' => '1',
+						'acfe_bidirectional_related' => array(
+							0 => 'field_69fa7465a763d',
+						),
+					),
+					'acfe_settings' => '',
+					'acfe_validate' => '',
+					'allow_null' => 0,
+					'acfe_permissions' => '',
+					'allow_in_bindings' => 1,
+					'bidirectional' => 0,
+					'ui' => 1,
+					'bidirectional_target' => array(
+					),
+					'save_post_type' => '',
 				),
 				array(
 					'key' => 'field_69795f3b781ca',
@@ -1210,13 +1276,6 @@ Automatically populates when Group Photo Op Product is pushed live.',
 			array(
 				'param' => 'post_type',
 				'operator' => '==',
-				'value' => 'features',
-			),
-		),
-		array(
-			array(
-				'param' => 'post_type',
-				'operator' => '==',
 				'value' => 'guests',
 			),
 		),
@@ -1232,12 +1291,12 @@ Automatically populates when Group Photo Op Product is pushed live.',
 	'position' => 'acf_after_title',
 	'style' => 'default',
 	'label_placement' => 'top',
-	'instruction_placement' => 'tooltip',
+	'instruction_placement' => 'field',
 	'hide_on_screen' => '',
 	'active' => true,
-	'description' => 'Guests, Features & Partners',
+	'description' => '',
 	'show_in_rest' => 0,
-	'display_title' => 'Profile Pages',
+	'display_title' => 'Guest Profile Pages',
 	'allow_ai_access' => false,
 	'ai_description' => '',
 	'acfe_autosync' => array(
@@ -1248,11 +1307,11 @@ Automatically populates when Group Photo Op Product is pushed live.',
 	'acfe_form' => 1,
 	'acfe_meta' => '',
 	'acfe_note' => '',
-	'modified' => 1778124888,
 	'acfe_categories' => array(
 		'people' => 'People',
-		'posts' => 'Posts',
+		'profile-pages' => 'Profile Pages',
 	),
+	'modified' => 1778623906,
 ));
 
 endif;

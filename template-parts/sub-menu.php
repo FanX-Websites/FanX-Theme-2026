@@ -30,7 +30,7 @@
     <!-- END Menu Children ONLY -->
 
 <!------------ Sub-Menu Section----------->
- <div class="sub-menu-section self-centered-row ">
+ <div class="sub-menu-section self-centered-inside block">
     <div class="sub-menu block">
         <div class="hor-nav block"><!-- Horizontal Navigation---------->
             <?php 
@@ -50,6 +50,7 @@
 
                 $post_type = get_post_type();
                 $is_category = is_category();
+                $menu_displayed = false;
 
                 // Custom Post Types
                 if ( $post_type === 'guests' ) {
@@ -63,6 +64,7 @@
                         $menu_args['walker'] = new Child_Only_Walker();
                     }
                     wp_nav_menu( $menu_args );
+                    $menu_displayed = true;
                 } 
                 // Features MENU Does not Exist Yet - IGNORE
                 // elseif ( $post_type === 'features' ) {
@@ -76,6 +78,7 @@
                 //         $menu_args['walker'] = new Child_Only_Walker();
                 //     }
                 //     wp_nav_menu( $menu_args );
+                //     $menu_displayed = true;
                 // } 
                 elseif ( $is_category ) {
                     // Category menus (check before fallback)
@@ -105,9 +108,12 @@
                             $menu_args['walker'] = new Child_Only_Walker();
                         }
                         wp_nav_menu( $menu_args );
+                        $menu_displayed = true;
                     }
-                } else {
-                    // Fallback only if nothing else matched
+                }
+                
+                // Default: Show experiences submenu if no other menu was assigned
+                if ( !$menu_displayed ) {
                     $menu_args = array(
                         'theme_location' => 'experiences',
                         'menu_class' => 'horizontal-menu',

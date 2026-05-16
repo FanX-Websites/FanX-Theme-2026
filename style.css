@@ -15,6 +15,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 /** 
 This Stylesheet is for base frameworks ONLY. For sitewide branding styles, please refer to the FanX branding stylesheet located in the Branding File. 
 
+//FIXME: Cleanup old code - transition to new structure. 
+//TODO: Add default text styles for headings, paragraphs, lists, whitespace, etc
+
+
 Editing this file affects sitewide layout structures and behaviors. Please save a backup copy before making changes.
 
 **/
@@ -82,6 +86,28 @@ body.admin-bar .main-nav {
     text-decoration: none; 
 }
 /*END Horizontal Navigation*/
+
+/* Images */
+.img-container {
+    width: 100%;
+    height: auto;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+}
+figcaption{
+    text-align: center;
+    font-size: 0.9em;
+    padding: 1%;
+}
 
 /* Containers
 For divs that hold template parts*/
@@ -269,7 +295,7 @@ For divs that hold template parts*/
         /* Two columns */
         .content-blocks.layout-two-col {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr; 
             gap: 2rem;
         }
         /* Three columns */
@@ -339,5 +365,127 @@ For divs that hold template parts*/
             }
 
 /* END Template Parts Sections */
-            
+
+
+/* CSS Grid Framework ------------------------------------------------
+//NOTE: View template parts stylesheet for specific page styling of this grid system.
+*/
+/* Central reusable grid system for all sections */
+
+/* Base grid container - auto-fills based on content 
+    - Used by category/tax lists 
+*/
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 0;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 0px;
+        
+    }
+
+/* Grid items - equal height */
+    .grid-container > * {
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+/* Layout Modifiers - Only apply when explicitly added */
+.grid-container.layout-1col {
+    grid-template-columns: 1fr;
+    box-sizing: border-box;
+    gap: 0;
+}
+
+.grid-container.layout-2col {
+    grid-template-columns: 1fr 1fr;
+    box-sizing: border-box;
+    gap: 0;    
+}
+    .grid-container.layout-1-2col{
+        grid-template-columns: 1fr 2fr; 
+        box-sizing: border-box;
+        gap: 0;
+    }
+
+.grid-container.layout-3col {
+    grid-template-columns: repeat(3, 1fr);
+    box-sizing: border-box;
+    gap: 0;
+}
+
+.grid-container.layout-4col {
+    grid-template-columns: repeat(4, 1fr);
+    box-sizing: border-box;
+    gap: 0;
+}
+
+@media (max-width: 1200px) {
+
+    /* Keep existing */
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    /* For columns that need to break more often */
+    .grid-container.layout-1-2col {
+        grid-template-columns: 1fr 1fr; 
+        box-sizing: border-box;
+        gap: 0;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    /* Keep existing */
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+    }
+
+    /*Stack all modifiers to single column on mobile */
+    .grid-container.layout-1col,
+    .grid-container.layout-2col,
+    .grid-container.layout-1-2col,
+    .grid-container.layout-3col,
+    .grid-container.layout-4col {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Keep existing */
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*Grid Container Breakpoints - Nested Grids
+*/
+@media (min-width: 1200px ) { 
+
+    .grid-container.layout-2col.child{
+        grid-template-columns: 1fr 1fr;
+        box-sizing: border-box;
+        gap: 0;
+        display: grid;
+        }
+}
+/* Grid Blocks */
+    .grid-block {
+        width: 100%;
+        height: auto;
+        padding: 3%;
+        margin: 0 auto;
+        border-radius: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        box-sizing: border-box; 
+    }
+
+/* END CSS Grid Framework */
 

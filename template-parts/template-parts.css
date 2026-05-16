@@ -277,12 +277,12 @@ h3.content-block-subtext {
 /* CB - Event Hour Content ----------------------------------------- */
 
 /** Event Info - Calendar Events List  */
-.event-info-blocks ul {
+ .event-info ul {
   padding: 0;
   margin: 0;
   width: 90%
 }
-.event-info-blocks ul li {
+ .event-info ul li {
   list-style-type: none;
   padding-left: 15px;
   position: relative;
@@ -293,7 +293,7 @@ h3.content-block-subtext {
   border-bottom: .1px solid var(--color_acc_lght);
   padding: 20px
 }
-.event-info-blocks ul li::before {
+ .event-info ul li::before {
   content: "";
   position: absolute;
   left: 0;
@@ -318,16 +318,16 @@ h3.content-block-subtext {
 /** END Event Info - Calendar Events List - */
 
 /* Event Info - Text Styling ---------------*/
-.event-info-blocks .small-print p em{
+ .small-print p em{
   color: var(--color_drk);
 }
-.event-info-blocks .small-print p strong{
+ .small-print p strong{
   color: var(--color_drk);
   font-weight: 600;
   font-size: 1.1em;
 }
 
-.event-info-blocks .small-print h5{
+ .small-print h5{
   color: var(--color_base);
   font-size: 1.15em;
   line-height: 1.25em;
@@ -596,8 +596,19 @@ h3.updates-entry-title a{
   margin: 0;
   padding: 1% 6%
 }
+
+.updates-no-posts-message{
+padding: 3%;
+margin: 0 auto;
+text-align: center;
+color: var(--color_fnt_blk);
+font-size: 2em;
+font-weight: 100;
+line-height: 1.5em;
+}
 /* Updates Section END */
 
+/** MAPS */
 /* Template Part: Address & Maps Section */
 .map-block {
   width: 100%;
@@ -610,15 +621,100 @@ h3.updates-entry-title a{
 }
 /* END Address & Maps Section */
 
+/* List & Maps Sections
+ - Used on Events Info Page - Floor Maps Template Part
+*/ 
+
+ .room-list{
+  padding: 3%; 
+  margin: 0; 
+  background-color: var(--color_acc_lght);
+  min-height: 300px;
+}
+ .list-container{
+  padding: 3%;
+  margin: 0;
+  background-color: var(--color_lght);
+  width: 90%;
+  height: auto; 
+  min-height: 300px;
+  border: solid 8px var(--color_prim);
+  border-top: none;
+  border-left: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ .list-container *{
+  color: var(--color_fnt_blk);
+}
+
+ .floor-maps{
+  padding: 3%;
+  margin: 0;
+  background-color: var(--color_acc);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  }
+
+ .floor-maps .img-container {
+  padding: 2%;
+  margin: 0;
+  border-radius: 0px;
+}
+
+
+@media (max-width: 768px) {
+   .floor-maps .img-container {
+    width: 100%;
+  }
+}
+
+
+
+
+
 /* PROFILE PAGE TEMPLATE PARTS --------------------------------------- */
 
 /* Profile/Blog Headers */
 
-.profile h2{
+/* Post Top Main Headers */
+.profile-header{
+  padding: 2% 0 1%;
+  margin: 0;
+  width: 100%;
+  height: auto;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.profile-header h1{
+  padding: 1% 0 0; 
+}
+.profile-header h1 a{
+  text-decoration: none; 
+  color: var(--color_base_brht);
+}
+
+.profile-header h2 a{
+  text-decoration: none;
+  color: var(--color_base_lght);
+  margin: 0; 
+  padding: 0; 
+  line-height: 1em;
+  font-size: .75em;
+}
+
+/* Post Content Headers */
+.profile-name h2, .blog-post-header h2{
   font-size: 1.5em;
   line-height: 1.75em; 
 }
-.profile h3{
+.profile-content h3{
   font-size: 1em;
   font-style: italic;
   line-height: 1.75em;
@@ -626,17 +722,30 @@ h3.updates-entry-title a{
   margin: 0; 
 }
 
-/* Guest Appearance Days */
+/* Guest Appearance Info */
+
+.appearance-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  padding: 1%;
+  margin: 0 auto;
+}
+.appear-block{
+  width: 100%;
+  padding: 1%;
+  margin: 0;
+}
 
 .days.guest-xp .small-print p{
   margin: 0; 
   padding: 0;
+  text-align: center;
 }
-
-/* .appearance-days{
-  padding: 2% 0 0; 
-  margin: 0; 
-} */
 
 .days.guest-xp .small-print{
   padding: 0;
@@ -647,31 +756,71 @@ h3.updates-entry-title a{
 
 
 /* Guest Experiences ---- GUEST-XP */
-.guest-xp h3{
-  width: 100%; 
+/* .guest-xp-block{ 
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color_lght);
+  border-top: none;
+  border-bottom-left-radius: 45px;
 }
-.guest-xp-block{ 
-  padding: 3%;
-  /* border: 1px solid var(--color_base_lght);
-  border-radius: 0; */
-  max-width: 400px;
-  width: 90%;
+.guest-xp-block h3 {
+  font-size: 1.2em;
+  font-weight: 300;
+  color: var(--color_prim_lght);
+  text-align: center;
+} */
+
+
+.guest-xp-card {
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  border-radius: 0;
+  display: grid;
+  width: 100%;
+}
+
+.grid-block.xp-block{
+  border: 1px solid var(--color_acc_lght);
+  background-color: var(--color_acc);
+  border-radius: 0;
+  font-size: 1em;
+  font-weight: 100;
+  line-height: 1em;
+  text-align: center;
+  color: var(--color_fnt_wht);
+  margin: 0 auto;
+}
+
+.celeb-extras-content{
+  font-size: .9em;
 }
 .guest-xp li{
   margin: 0; 
   padding: 0 0;
-  line-height: 1.5em;
+  line-height: 1.25em;
 }
- .guest-xp-block h3{
-    font-size: 1em;
-    font-weight: 300;
- }
 
  .xp-soon, .xp-now{
   font-size: .9em; 
   font-style: italic; 
   
  }
+ .xp-title{
+  font-size: 1.2em;
+  font-weight: 300;
+  color: var(--color_fnt_wht);
+  text-align: center;
+  padding: 0; 
+  margin: 0;
+ }
+
 
  /* XP Buttons - Profiles ---- */
  button.xp {
@@ -692,6 +841,15 @@ h3.updates-entry-title a{
    padding: 2%;
    margin: 0;
    color: var(--color_fnt_wht);
+ }
+
+ .vend-booth, .vend-booth h3 a{
+  text-decoration: none;
+  font-size: 1em;
+  line-height: 1.25em;
+  margin:0 auto;
+  padding: 0;
+
  }
 
  /* END Buttons ------------------------------ */
@@ -749,7 +907,8 @@ h3.updates-entry-title a{
    }
  }
 
-/* Multi-Post Gallery ---- Profile Pages & Posts */
+/* Multi-Post Gallery ---- Profile Pages & Posts //TODO: Clean up code - CSS GRID BLOCK REPLACEMENT
+*/
 .featured-content{
   display: flex;
   align-items: center;
@@ -760,6 +919,7 @@ h3.updates-entry-title a{
 }
 .multi-post-gallery.title {
   font-size: 2em;
+  line-height: 2em;
   font-weight: 500;
   color: var(--color_fnt_wht);
   text-align: center;
@@ -780,62 +940,93 @@ h3.updates-entry-title a{
 .multi-post-gallery-wrapper {
   width: 100%;
   display: block;
+  padding: 3%; 
 }
 
-.multi-post-gallery.posts {
-  padding: 3% 0;
-}
+/* Gallery Post Grid Container & Block */
 
-/* Gallery Post Content */
-.gallery-post {
-  padding: 0; 
-  margin: 0;
+.multi-post-gallery-section{
+  width: 100%;
+  padding: 3%;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
-  border-radius: 0;
+  max-width: 1200px;
 }
-.gallery-post img {
-  max-height: 250px;
-  max-width: 100%;
+.grid-container.multi-post-gallery{
+  gap: 3%;
+}
+.grid-block.gallery-post {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 200px;
+  max-width: 300px;
+
+}
+
+.gallery-post-img {
+  width: 100%;
+  height: auto;
+  /* Flex centering no longer needed with responsive images and object-fit */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.gallery-post-img img {
   width: 100%;
   height: auto;
   object-fit: contain;
 }
-.gallery-post a{
+
+.gallery-post a {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.gallery-post-title {
   font-size: 1.5em;
   font-weight: 500;
   color: var(--color_fnt_wht);
   text-align: center;
   padding: 2%;
   margin: 0;
-  text-decoration: none;
 }
 
-/** Multi-Post Gallery - Hotels & Travel Pages */
-
-.multi-post-gallery-wrapper.hotels-post .gallery-post.feat-img {
-  height: 200px;
+/* Multi-Post Gallery - Hotels & Travel Pages */
+.multi-post-gallery-wrapper.hotels-post .gallery-post-img {
   width: 100%;
-  max-width: 300px;
+  height: 250px;
   margin: 3% 0;
-  padding: 0;
   overflow: hidden;
   border-radius: 25px;
   background-color: white;
 }
 
-.multi-post-gallery-wrapper.hotels-post .gallery-post.feat-img img {
-  height: 100%;
+.multi-post-gallery-wrapper.hotels-post .gallery-post-img img {
   width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   display: block;
   object-fit: cover;
 }
 
-
-
 /* END Profile Page Template Parts --------------------------------------- */
+
+/*Submenus - Used on Profile Pages & Blog Pages */
+
+/* Page Content Sections ----- */ 
+
+
+
+/* Floor Maps - 2 column List & map */ 

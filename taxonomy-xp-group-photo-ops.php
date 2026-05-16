@@ -19,7 +19,7 @@ get_header(); /** body- main-site */
 
     <!-------------------------- Main Content Area --------------------->
     
-    <div class="post-grid-container"> 
+    <div class="cat-tax grid-container"> 
         <?php
         // Query Products CPT for the current taxonomy term
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
@@ -121,6 +121,17 @@ get_header(); /** body- main-site */
         <?php
             endwhile;
             wp_reset_postdata();
+            
+            // Add filler blocks to complete the last row dynamically
+            $posts_per_row = 4; // Typical desktop column count
+            $total_posts = $query->found_posts;
+            $remainder = $total_posts % $posts_per_row;
+            if ( $remainder > 0 ) :
+                $filler_count = $posts_per_row - $remainder;
+                for ( $i = 0; $i < $filler_count; $i++ ) {
+                    echo '<div class="post-block block"></div>';
+                }
+            endif;
         else :
             ?>
             <div class="no-posts-container">
@@ -144,7 +155,7 @@ get_header(); /** body- main-site */
 
     </div><!-- END Profile Main Div --------------------->
     <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
-    </div><!-- END post-grid-container -->
+    </div><!-- END cat-tax grid-container -->
 
 <!------------------- Latest News Post Block --------------------->
     <div class="container full">

@@ -32,7 +32,10 @@ get_header(); /** body- main-site */
     <-------------------------------------------------- */ 
     ?>
 
-              
+    <!-- Floor Maps & Room List Section --->
+     <?php get_template_part('template-parts/sections/floor-maps'); ?>
+    <!-- END Floor Maps & Room List Section -->  
+    
         <!-- Section 3 - Website Accessibility Statement --> 
         <div id="web-accessibility" class="container">        
             <?php get_template_part('template-parts/sections/content-blocks'); ?>

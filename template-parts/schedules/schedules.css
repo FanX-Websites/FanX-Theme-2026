@@ -1,0 +1,296 @@
+/** FanX Theme Schedules Stylesheet - 2026
+Theme Name: FanX Theme 2026
+Text Domain: fanxtheme2026
+Theme URI: https://dev.DancingFraxinus.com/fanx26
+Author: Elizabeth Moore
+Author URI: https://DancingFraxinus.com/ */
+
+.schedule-wrapper {
+    margin: 0 auto;
+    max-width: 1500px;
+    width: 90%;
+    padding: 3%;
+}
+
+
+/* .schedule-wrapper h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    color: var(--color_fnt_blk);
+} */
+
+/* ====== SCHEDULE DAY TITLE ====== */
+#schedule-day-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    color: var(--color_prim_brht);
+}
+
+#schedule-tag-filter-display {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    line-height: 1.2;
+    font-weight: 400;
+    color: var(--color_prim_brht);
+}
+
+/* ====== DAY FILTER TABS ====== */
+.schedule-day-filters {
+    margin-bottom: 2rem;
+}
+
+/* Day tabs use .button-group and .button classes from fanx.css */
+
+/* ====== EVENTS LIST ====== */
+/* All events now flow in grid-containers within each time-slot */
+
+/* ====== DAY CONTAINER ====== */
+.schedule-day{
+    margin: 0 auto; 
+    padding: 0;
+
+}
+
+.day-header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color_fnt_blk);
+    margin: 1.5rem 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--color_acc);
+}
+
+/* ====== TIME SLOTS ====== */
+.time-slot {
+    margin-bottom: 2rem;
+    
+}
+
+.time-header {
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    font-weight: 600;
+    color: var(--color_base_lght);
+    margin: 1rem 0 0.75rem 0;
+    padding: 0;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s ease;
+    border-bottom: 1px solid var(--color_base_lght);
+}
+
+.time-header:hover {
+    opacity: 0.8;
+}
+
+.time-header::before {
+    content: '▼ ';
+    display: inline-block;
+    margin-right: 0.5rem;
+    transition: transform 0.2s ease;
+   
+}
+
+.time-slot.collapsed .time-header::before {
+    transform: rotate(-90deg);
+}
+
+.time-slot.collapsed .grid-container {
+    display: none;
+}
+
+.time-slot .grid-container {
+    margin: 0;
+    padding: 0 0 2.5rem 0;
+    justify-items: center;
+    gap: 1%;
+}
+
+/* ====== EVENT CARDS ====== */
+.event-card.grid-block{
+    display: block;
+    background-color: var(--color_lght);
+    /* border: 1px solid var(--color_lght); */
+    border-radius: 42px;
+    border-bottom-right-radius: 0;
+    padding: 5%;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    /* transition: box-shadow 0.3s ease; */
+    margin: 0;
+    height: 100%;
+    text-align: center;
+    place-content: center; 
+
+}
+
+.event-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Event content area */
+.event-header {
+    margin: 0; 
+    padding: 3% 3% 0;
+    text-align: center;
+}
+.event-datetime {
+    margin: 0;
+    font-size: clamp(0.85rem, 1vw, 1rem);
+    color: var(--color_acc );
+    font-weight: 500;
+    text-align: center;
+}
+.event-title {
+    margin: 0;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    color: var(--color_base);
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.15;
+    padding: 0;
+}
+
+.event-category-subtitle {
+    margin: 0 0 0.25rem 0;
+    font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+    color: var(--color_prim);
+    font-weight: 500;
+    font-style: italic;
+    text-align: center;
+}
+
+.event-people {
+    margin: 0.25rem 0;
+    font-size: clamp(0.8rem, 0.95vw, 0.9rem);
+    color: var(--color_prim);
+    font-weight: 500;
+    text-align: center;
+    font-style: italic;
+}
+
+.event-room {
+    margin: 0;
+    font-size: clamp(0.85rem, 1vw, 1rem);
+    color: var(--color_fnt_blk);
+    font-weight: 700;
+    text-align: center;
+}
+
+.event-description {
+    margin: 0 auto;
+    padding: 1% 3%; 
+    font-size: clamp(0.85rem, 0.95vw, 0.95rem);
+    color: var(--color_fnt_blk);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.event-description.expanded {
+    -webkit-line-clamp: unset;
+}
+
+.read-more-btn {
+    background: none;
+    border: none;
+    color: var(--color_acc);
+    font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 0.25rem;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+.read-more-btn:hover {
+    opacity: 0.8;
+}
+
+/* ====== TAGS ====== */
+.event-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-tag {
+    display: inline-block;
+    background-color: var(--color_acc_lght);
+    color: var(--color_drk);
+    padding: 0.25rem 0.75rem;
+    border-radius: 3px;
+    font-size: clamp(0.7rem, 0.85vw, 0.8rem);
+    font-weight: 500;
+    border: 1px solid var(--color_acc);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.event-tag:hover {
+    background-color: var(--color_acc);
+    color: var(--color_lght);
+    border-color: var(--color_acc);
+}
+
+.event-tag.active {
+    background-color: var(--color_acc);
+    color: var(--color_lght);
+    border-color: var(--color_acc);
+}
+
+.tag-overflow {
+    font-size: clamp(0.7rem, 0.85vw, 0.8rem);
+    font-weight: 500;
+    color: var(--color_drk);
+}
+
+/* ====== CLEAR FILTER BUTTON ====== */
+.clear-filter-container {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.clear-filter-btn {
+    background: none;
+    border: none;
+    color: var(--color_acc_lght);
+    font-size: clamp(0.8rem, 0.95vw, 0.9rem);
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+.clear-filter-btn:hover {
+    opacity: 0.8;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+    .day-tabs {
+        gap: 0.25rem;
+    }
+    
+    .day-tab {
+        padding: 0.5rem 1rem;
+    }
+    
+    .events-under-time {
+        padding-left: 0.75rem;
+    }
+}
+
+/* ====== UTILITY: HIDDEN STATE ====== */
+.hidden {
+    display: none !important;
+}

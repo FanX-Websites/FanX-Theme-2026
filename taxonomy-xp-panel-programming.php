@@ -117,8 +117,11 @@ get_header(); /** body- main-site */
 
     </div><!-- END cat-tax grid-container -->
     <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
-
     <!----- END Guest List ----------------->
+
+    <!-- Floor Maps & Room List Section --->
+     <?php get_template_part('template-parts/sections/floor-maps'); ?>
+    <!-- END Floor Maps & Room List Section -->  
 
    <!------------------- Latest News Post Block --------------------->
     <div class="container full">

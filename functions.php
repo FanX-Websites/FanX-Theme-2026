@@ -47,6 +47,8 @@
 
 			wp_enqueue_style('template-parts', get_template_directory_uri() . '/template-parts/template-parts.css', array(), wp_get_theme()->get('Version')); //Template Parts CSS - 2026
 
+			wp_enqueue_style('schedules', get_template_directory_uri() . '/template-parts/schedules/schedules.css', array(), wp_get_theme()->get('Version')); //Schedules CSS
+
 			wp_enqueue_style('icons-styles', get_template_directory_uri() . '/branding/fonts/icons.css', array(), wp_get_theme()->get('Version')); //Icons CSS		
 
 		//External Stylesheets

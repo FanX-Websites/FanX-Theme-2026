@@ -5,6 +5,7 @@
  */
 ?> 
 
+<div class="multi-post-gallery-section">
 <?php
 $post_ids = get_field('gal_multi_post_ids');
 
@@ -32,16 +33,21 @@ if( $post_ids ) :  //IF Gallery links to any Posts - THEN display gallery - ELSE
     }
     ?>
     <div class="multi-post-gallery-wrapper <?php echo $block_class; ?>">
-    <!-- Multi-Post Gallery Content -->
+        <!-- Multi-Post Gallery Content -->
         <?php
+        // Determine layout based on number of posts
         $post_count = count( (array)$post_ids );
-        $layout_class = 'layout-two-col'; // default for 2+ posts
+        $layout_class = 'layout-4col'; // Default to 4 columns
         
         if ( $post_count === 1 ) {
-            $layout_class = 'layout-single';
+            $layout_class = 'layout-1col';
+        } elseif ( $post_count === 2 ) {
+            $layout_class = 'layout-2col';
+        } elseif ( $post_count === 3 ) {
+            $layout_class = 'layout-3col';
         }
         ?>
-        <div class= "multi-post-gallery posts gallery-grid <?php echo $layout_class; ?>">
+        <div class="grid-container multi-post-gallery <?php echo $layout_class; ?>">
             <?php 
             foreach( (array)$post_ids as $post_id ) {
                 // Determine the link URL based on post type
@@ -62,14 +68,14 @@ if( $post_ids ) :  //IF Gallery links to any Posts - THEN display gallery - ELSE
                     }
                 }
             ?>
-            <div class="gallery-post"><!-- Featured Posts -->
+            <div class="grid-block gallery-post">
                 <a href="<?php echo esc_url( $link_url ); ?>">
                     <?php if( has_post_thumbnail( $post_id ) ) : ?>
-                        <div class="gallery-post feat-img"><!-- Featured Image -->
+                        <div class="gallery-post-img">
                             <?php echo get_the_post_thumbnail( $post_id, 'medium' ); ?>
                         </div>
                     <?php endif; ?>
-                    <div><!-- Featured Post Title -->
+                    <div class="gallery-post-title">
                         <?php echo esc_html( get_the_title( $post_id ) ); ?>
                     </div>
                 </a>
@@ -77,7 +83,8 @@ if( $post_ids ) :  //IF Gallery links to any Posts - THEN display gallery - ELSE
             <?php
         }
         ?>
-    </div><!-- END Multi-Post Gallery Content -->
+        </div><!-- END Multi-Post Gallery Content -->
     </div><!-- END Multi-Post Gallery Wrapper -->
+</div><!-- END Multi-Post Gallery Section -->
 <?php 
 endif;

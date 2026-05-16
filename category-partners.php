@@ -2,5 +2,5 @@
 /**
  * Taxonomy Template - Forwards to category.php
  */
-get_template_part( 'category' );
+get_template_part( 'category ' );
 ?>

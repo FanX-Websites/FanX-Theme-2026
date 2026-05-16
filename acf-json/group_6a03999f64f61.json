@@ -1,9 +1,9 @@
 {
-    "key": "group_69fa746487ed1",
-    "title": "Blog Posts",
+    "key": "group_6a03999f64f61",
+    "title": "Features\/Activities Profile Pages",
     "fields": [
         {
-            "key": "field_69fa74648f975",
+            "key": "field_6a03999f6c326",
             "label": "Basic Info",
             "name": "",
             "aria-label": "",
@@ -28,7 +28,7 @@
             "selected": 0
         },
         {
-            "key": "field_69fa74648f9ae",
+            "key": "field_6a03999f6c360",
             "label": "Basics\/Categories",
             "name": "info",
             "aria-label": "",
@@ -56,7 +56,7 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_69fa74649d40e",
+                    "key": "field_6a03999f792bb",
                     "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
@@ -75,7 +75,7 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_69fa74649d44b",
+                    "key": "field_6a03999f792f5",
                     "label": "Featured Image",
                     "name": "feat_img",
                     "aria-label": "",
@@ -110,7 +110,7 @@
                     "preview_size": "medium"
                 },
                 {
-                    "key": "field_69fa74649d484",
+                    "key": "field_6a03999f7932d",
                     "label": "Featured Info",
                     "name": "feat",
                     "aria-label": "",
@@ -139,7 +139,7 @@
                     "new_lines": ""
                 },
                 {
-                    "key": "field_69fa74649d4bc",
+                    "key": "field_6a03999f79365",
                     "label": "(Column 6\/12)",
                     "name": "",
                     "aria-label": "",
@@ -158,7 +158,40 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_69fa74649d52e",
+                    "key": "field_6a03999f7939d",
+                    "label": "Post Display Order",
+                    "name": "display_order",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "<b>Celebrities:<\/b>Top 100 - Mid 150 | <b>Voice:<\/b> Mid 150 - 200 | <b>Comics:<\/b> 200 | <b>Authors:<\/b> 300 | <b>Artists:<\/b> 400 | <b>Panelists\/Vendors:<\/b> 500",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 1,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": 1,
+                    "default_value": "",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "min": "",
+                    "max": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_6a03999f793d6",
                     "label": "Main Cat",
                     "name": "main_cat",
                     "aria-label": "",
@@ -194,12 +227,12 @@
                     "bidirectional_target": []
                 },
                 {
-                    "key": "field_69fa74649d5d7",
-                    "label": "Post Categories",
-                    "name": "post_cat",
+                    "key": "field_6a03999f7940e",
+                    "label": "Guest List",
+                    "name": "guest_list",
                     "aria-label": "",
                     "type": "taxonomy",
-                    "instructions": "[info_post_cat]",
+                    "instructions": "info_guest_list",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -207,7 +240,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "taxonomy": "blog",
+                    "taxonomy": "guest-list",
                     "add_term": 1,
                     "save_terms": 1,
                     "load_terms": 1,
@@ -226,7 +259,50 @@
                     "bidirectional_target": []
                 },
                 {
-                    "key": "field_69fa74649d610",
+                    "key": "field_6a03999f79446",
+                    "label": "Announcements & Updates Included in:",
+                    "name": "feat_updates",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "[info_feat_updates] <\/br>\r\nAutomatically populates when a Blog Post Features this Profile in an Announcement or Update.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "post"
+                    ],
+                    "post_status": "",
+                    "taxonomy": [
+                        "blog:event-updates-announcements"
+                    ],
+                    "return_format": "id",
+                    "multiple": 1,
+                    "save_custom": 0,
+                    "save_post_status": "publish",
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": true,
+                        "acfe_bidirectional_related": [
+                            "field_69fa7465a763d",
+                            "field_69fa774448d6d",
+                            "field_6a039ab5557f3"
+                        ]
+                    },
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "allow_null": 0,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "save_post_type": ""
+                },
+                {
+                    "key": "field_6a03999f7947e",
                     "label": "(Column Endpoint)",
                     "name": "",
                     "aria-label": "",
@@ -253,7 +329,7 @@
             ]
         },
         {
-            "key": "field_69fa74648f9e7",
+            "key": "field_6a03999f6c399",
             "label": "Guest eXperiences",
             "name": "",
             "aria-label": "",
@@ -279,8 +355,8 @@
             "selected": 0
         },
         {
-            "key": "field_69fa74648fa1f",
-            "label": "Guest Xperiences\/Statuses (Update for EVENTS)",
+            "key": "field_6a03999f6c3d1",
+            "label": "Guest Xperiences\/Statuses",
             "name": "xp",
             "aria-label": "",
             "type": "group",
@@ -292,15 +368,25 @@
                 "class": "",
                 "id": ""
             },
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
             "acfe_settings": "",
             "acfe_permissions": "",
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_69fa746512c4c",
-                    "label": "(Column 3\/12)",
+                    "key": "field_6a03999fdf809",
+                    "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
                     "type": "acfe_column",
@@ -312,19 +398,13 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "columns": "3\/12",
+                    "columns": "4\/12",
                     "endpoint": 0,
+                    "acfe_permissions": "",
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_69fa746512c86",
+                    "key": "field_6a03999fdf842",
                     "label": "Days Appearing",
                     "name": "days",
                     "aria-label": "",
@@ -363,7 +443,7 @@
                     "bidirectional_target": []
                 },
                 {
-                    "key": "field_69fa746512cbf",
+                    "key": "field_6a03999fdf87b",
                     "label": "Fandoms",
                     "name": "fandom",
                     "aria-label": "",
@@ -399,7 +479,7 @@
                     "bidirectional_target": []
                 },
                 {
-                    "key": "field_69fa746512cf8",
+                    "key": "field_6a03999fdf8b4",
                     "label": "eXperiences",
                     "name": "xp",
                     "aria-label": "",
@@ -436,7 +516,7 @@
                     "bidirectional_target": []
                 },
                 {
-                    "key": "field_69fa746512d30",
+                    "key": "field_6a03999fdf8ec",
                     "label": "eXperience Status",
                     "name": "xp_stat",
                     "aria-label": "",
@@ -475,8 +555,8 @@
                     "bidirectional_target": []
                 },
                 {
-                    "key": "field_69fa746512d69",
-                    "label": "(Column 3\/12)",
+                    "key": "field_6a03999fdf924",
+                    "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
                     "type": "acfe_column",
@@ -488,19 +568,13 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "columns": "3\/12",
+                    "columns": "4\/12",
                     "endpoint": 0,
+                    "acfe_permissions": "",
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_69fa746512da1",
+                    "key": "field_6a03999fdf95d",
                     "label": "Autograph Price",
                     "name": "auto_price",
                     "aria-label": "",
@@ -531,7 +605,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_69fa746512dd9",
+                    "key": "field_6a03999fdf995",
                     "label": "Photo Op Price",
                     "name": "op_price",
                     "aria-label": "",
@@ -562,7 +636,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_69fa746512e12",
+                    "key": "field_6a03999fdf9ce",
                     "label": "Photo Ops Link",
                     "name": "",
                     "aria-label": "",
@@ -582,8 +656,28 @@
                     "acfe_permissions": ""
                 },
                 {
-                    "key": "field_69fa746512e4b",
-                    "label": "(Column 3\/12)",
+                    "key": "field_6a03999fdfa05",
+                    "label": "Dedicated Product Category Link",
+                    "name": "ded_prod_cat",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "<p>[xp_ded_prod_cat] Use when a guest has their own product category in the shop<\/p>\r\n<i>*Currently replaces the Photo Op, Autograph links on their profile, and adds a link to the Celebrity Row eXtras status, when said products are on sale<\/i>",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1
+                },
+                {
+                    "key": "field_6a03999fdfa3d",
+                    "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
                     "type": "acfe_column",
@@ -595,19 +689,13 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "columns": "3\/12",
+                    "columns": "4\/12",
                     "endpoint": 0,
+                    "acfe_permissions": "",
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_69fa746512e83",
+                    "key": "field_6a03999fdfa76",
                     "label": "Group Photo Ops Involved in:",
                     "name": "group_op",
                     "aria-label": "",
@@ -617,7 +705,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_69fa746512cbf",
+                                "field": "field_6a03999fdf87b",
                                 "operator": "!=empty"
                             }
                         ]
@@ -636,14 +724,12 @@
                     ],
                     "return_format": "id",
                     "multiple": 1,
-                    "save_custom": 1,
-                    "save_post_type": "products",
-                    "save_post_status": "draft",
+                    "save_custom": 0,
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": true,
-                        "acfe_bidirectional_related": {
-                            "1": "field_69fa7465a763d"
-                        }
+                        "acfe_bidirectional_related": [
+                            "field_69fa774569713"
+                        ]
                     },
                     "acfe_settings": "",
                     "acfe_validate": "",
@@ -652,10 +738,12 @@
                     "allow_in_bindings": 1,
                     "bidirectional": 0,
                     "ui": 1,
-                    "bidirectional_target": []
+                    "bidirectional_target": [],
+                    "save_post_type": "",
+                    "save_post_status": ""
                 },
                 {
-                    "key": "field_69fa746512ebc",
+                    "key": "field_6a03999fdfaae",
                     "label": "Celebrity Row Extras",
                     "name": "celeb_extras",
                     "aria-label": "",
@@ -680,32 +768,7 @@
                     "new_lines": ""
                 },
                 {
-                    "key": "field_69fa746512ef4",
-                    "label": "(Column 3\/12)",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "acfe_column",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "columns": "3\/12",
-                    "endpoint": 0,
-                    "allow_in_bindings": 0
-                },
-                {
-                    "key": "field_69fa746512f2d",
+                    "key": "field_6a03999fdfae6",
                     "label": "(Column Endpoint)",
                     "name": "",
                     "aria-label": "",
@@ -729,13 +792,10 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
-            "key": "field_69fa74648fa58",
+            "key": "field_6a03999f6c40a",
             "label": "Header\/Footer",
             "name": "",
             "aria-label": "",
@@ -760,7 +820,7 @@
             "selected": 0
         },
         {
-            "key": "field_69fa74648fa91",
+            "key": "field_6a03999f6c442",
             "label": "Header\/ Footer Info",
             "name": "heafoo",
             "aria-label": "",
@@ -783,7 +843,7 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_69fa7465845cb",
+                    "key": "field_6a0399a05f616",
                     "label": "Subtitle",
                     "name": "subtitle",
                     "aria-label": "",
@@ -811,7 +871,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_69fa746584607",
+                    "key": "field_6a0399a05f650",
                     "label": "Subtext",
                     "name": "subtext",
                     "aria-label": "",
@@ -840,7 +900,7 @@
                     "new_lines": ""
                 },
                 {
-                    "key": "field_69fa74658463f",
+                    "key": "field_6a0399a05f688",
                     "label": "Footer Smallprint Update",
                     "name": "",
                     "aria-label": "",
@@ -862,8 +922,8 @@
             ]
         },
         {
-            "key": "field_69fa74648fac9",
-            "label": "Featured Posts\/Galleries",
+            "key": "field_6a039c8179dfa",
+            "label": "Galleries & Featured Posts",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -881,7 +941,7 @@
             "selected": 0
         },
         {
-            "key": "field_6a039ab5557e3",
+            "key": "field_69fa74648fb02",
             "label": "Featured Posts\/ Image Galleries",
             "name": "gal",
             "aria-label": "",
@@ -899,9 +959,12 @@
             "acfe_group_modal": 0,
             "acfe_settings": "",
             "acfe_permissions": "",
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_6a039ab5557ee",
+                    "key": "field_69fa7465a7522",
                     "label": "Featured Profiles  - Multi-Post Gallery",
                     "name": "",
                     "aria-label": "",
@@ -920,7 +983,7 @@
                     "acfe_permissions": ""
                 },
                 {
-                    "key": "field_6a039ab5557ef",
+                    "key": "field_69fa7465a755c",
                     "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
@@ -933,13 +996,19 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "columns": "4\/12",
                     "endpoint": 0,
-                    "acfe_permissions": "",
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_6a039ab5557f0",
+                    "key": "field_69fa7465a7594",
                     "label": "Featured Profiles Multi-Post Gallery - Title",
                     "name": "multi_post_title",
                     "aria-label": "",
@@ -963,7 +1032,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_6a039ab5557f1",
+                    "key": "field_69fa7465a75cd",
                     "label": "Featured Profiles - Multi-Post Gallery - Subtitle",
                     "name": "multi_post_sub",
                     "aria-label": "",
@@ -988,7 +1057,7 @@
                     "new_lines": ""
                 },
                 {
-                    "key": "field_6a039ab5557f2",
+                    "key": "field_69fa7465a7605",
                     "label": "(Column 8\/12)",
                     "name": "",
                     "aria-label": "",
@@ -1007,7 +1076,7 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_6a039ab5557f3",
+                    "key": "field_69fa7465a763d",
                     "label": "Featured Profiles - Mutli-Post Gallery - Post IDs",
                     "name": "multi_post_ids",
                     "aria-label": "",
@@ -1021,10 +1090,7 @@
                         "id": ""
                     },
                     "post_type": [
-                        "guests",
-                        "features",
-                        "partner",
-                        "products"
+                        "guests"
                     ],
                     "post_status": "",
                     "taxonomy": "",
@@ -1033,11 +1099,9 @@
                     "save_custom": 0,
                     "save_post_status": "publish",
                     "acfe_bidirectional": {
-                        "acfe_bidirectional_enabled": "1",
+                        "acfe_bidirectional_enabled": true,
                         "acfe_bidirectional_related": [
-                            "field_69fa774448d6d",
-                            "field_69fa640081616",
-                            "field_6a03999f79446"
+                            "field_6a039d348ee12"
                         ]
                     },
                     "acfe_settings": "",
@@ -1051,7 +1115,7 @@
                     "save_post_type": ""
                 },
                 {
-                    "key": "field_6a039ab5557f4",
+                    "key": "field_69fa7465a77b2",
                     "label": "(Column Endpoint)",
                     "name": "",
                     "aria-label": "",
@@ -1064,13 +1128,19 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "endpoint": 1,
-                    "acfe_permissions": "",
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 },
                 {
-                    "key": "field_6a039ab5557f5",
+                    "key": "field_69fa7465a77ea",
                     "label": "Featured Post Gallery",
                     "name": "",
                     "aria-label": "",
@@ -1089,7 +1159,7 @@
                     "acfe_permissions": ""
                 },
                 {
-                    "key": "field_6a039ab5557f6",
+                    "key": "field_69fa7465a7823",
                     "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
@@ -1108,7 +1178,7 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_6a039ab5557f7",
+                    "key": "field_69fa7465a785b",
                     "label": "Featured Post - Title",
                     "name": "feat_title",
                     "aria-label": "",
@@ -1121,18 +1191,22 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "",
-                    "acfe_settings": "",
-                    "acfe_validate": "",
                     "maxlength": "",
-                    "acfe_permissions": "",
                     "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": ""
                 },
                 {
-                    "key": "field_6a039ab5557f8",
+                    "key": "field_69fa7465a7893",
                     "label": "Featured Post - Subtitle",
                     "name": "feat_sub",
                     "aria-label": "",
@@ -1145,19 +1219,23 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "",
                     "acfe_textarea_code": 0,
-                    "acfe_settings": "",
-                    "acfe_validate": "",
                     "maxlength": "",
-                    "acfe_permissions": "",
                     "allow_in_bindings": 1,
                     "rows": 2,
                     "placeholder": "",
                     "new_lines": ""
                 },
                 {
-                    "key": "field_6a039ab5557f9",
+                    "key": "field_69fa7465a78cb",
                     "label": "(Column 8\/12)",
                     "name": "",
                     "aria-label": "",
@@ -1176,7 +1254,7 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_6a039ab5557fa",
+                    "key": "field_69fa7465a7904",
                     "label": "Featured Post- Post ID",
                     "name": "feat_post_id",
                     "aria-label": "",
@@ -1201,7 +1279,7 @@
                     "save_custom": 0,
                     "save_post_status": "publish",
                     "acfe_bidirectional": {
-                        "acfe_bidirectional_enabled": "1",
+                        "acfe_bidirectional_enabled": true,
                         "acfe_bidirectional_related": [
                             "field_69fa640081616"
                         ]
@@ -1217,7 +1295,7 @@
                     "save_post_type": ""
                 },
                 {
-                    "key": "field_6a039ab5557fb",
+                    "key": "field_69fa7465a793d",
                     "label": "(Column Endpoint)",
                     "name": "",
                     "aria-label": "",
@@ -1236,7 +1314,7 @@
                     "columns": "6\/12"
                 },
                 {
-                    "key": "field_6a039ab5557fc",
+                    "key": "field_69fa7465a7975",
                     "label": "Dynamic Gallery (Images)",
                     "name": "",
                     "aria-label": "",
@@ -1255,7 +1333,7 @@
                     "acfe_permissions": ""
                 },
                 {
-                    "key": "field_6a039ab5557fd",
+                    "key": "field_69fa7465a79ad",
                     "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
@@ -1274,7 +1352,7 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_6a039ab5557fe",
+                    "key": "field_69fa7465a79e6",
                     "label": "Dynamic Gallery Title",
                     "name": "dyn_title",
                     "aria-label": "",
@@ -1287,18 +1365,22 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "",
-                    "acfe_settings": "",
-                    "acfe_validate": "",
                     "maxlength": "",
-                    "acfe_permissions": "",
                     "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": ""
                 },
                 {
-                    "key": "field_6a039ab5557ff",
+                    "key": "field_69fa7465a7a1e",
                     "label": "Dynamic Gallery Subtitle",
                     "name": "dyn_sub",
                     "aria-label": "",
@@ -1311,19 +1393,23 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "default_value": "",
                     "acfe_textarea_code": 0,
-                    "acfe_settings": "",
-                    "acfe_validate": "",
                     "maxlength": "",
-                    "acfe_permissions": "",
                     "allow_in_bindings": 1,
                     "rows": 2,
                     "placeholder": "",
                     "new_lines": ""
                 },
                 {
-                    "key": "field_6a039ab555800",
+                    "key": "field_69fa7465a7a57",
                     "label": "(Column 8\/12)",
                     "name": "",
                     "aria-label": "",
@@ -1336,13 +1422,19 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "columns": "8\/12",
                     "endpoint": 0,
-                    "acfe_permissions": "",
                     "allow_in_bindings": 0
                 },
                 {
-                    "key": "field_6a039ab555801",
+                    "key": "field_69fa7465a7a7d",
                     "label": "Dynamic Gallery Images",
                     "name": "dyn_img",
                     "aria-label": "",
@@ -1355,10 +1447,15 @@
                         "class": "",
                         "id": ""
                     },
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "return_format": "array",
                     "library": "all",
-                    "acfe_settings": "",
-                    "acfe_validate": "",
                     "min": "",
                     "max": "",
                     "min_width": "",
@@ -1368,12 +1465,11 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
-                    "acfe_permissions": "",
                     "insert": "append",
                     "preview_size": "thumbnail"
                 },
                 {
-                    "key": "field_6a039ab555802",
+                    "key": "field_69fa7465a7ab5",
                     "label": "(Column Endpoint)",
                     "name": "",
                     "aria-label": "",
@@ -1391,13 +1487,10 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
-            "key": "field_69fa74648fb3a",
+            "key": "field_6a03999f6c47b",
             "label": "Schedule\/ Location",
             "name": "",
             "aria-label": "",
@@ -1422,8 +1515,8 @@
             "selected": 0
         },
         {
-            "key": "field_69fa74648fb73",
-            "label": "Schedule",
+            "key": "field_6a03999f6c4b3",
+            "label": "Schedule & Room\/Booth",
             "name": "sched",
             "aria-label": "",
             "type": "group",
@@ -1435,24 +1528,63 @@
                 "class": "",
                 "id": ""
             },
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_settings": "",
+            "acfe_permissions": "",
+            "sub_fields": [
+                {
+                    "key": "field_6a03a4069c109",
+                    "label": "Room\/Booth Number",
+                    "name": "room_booth",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "[sched_room_booth]",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "maxlength": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ],
             "acfe_group_modal_close": 0,
             "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large",
-            "sub_fields": []
+            "acfe_group_modal_size": "large"
         },
         {
-            "key": "field_69fa74648fbb0",
-            "label": "Location",
+            "key": "field_6a03a4ef416cc",
+            "label": "Remote Location",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": "",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_6a03999f6c4eb",
+            "label": "Remote Location (Address\/Map)",
             "name": "loca",
             "aria-label": "",
             "type": "group",
@@ -1464,24 +1596,14 @@
                 "class": "",
                 "id": ""
             },
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
             "acfe_settings": "",
             "acfe_permissions": "",
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_69fa7466a3867",
+                    "key": "field_6a0399a08f52e",
                     "label": "Address",
                     "name": "address",
                     "aria-label": "",
@@ -1511,7 +1633,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_69fa7466a38a3",
+                    "key": "field_6a0399a08f569",
                     "label": "Map",
                     "name": "map",
                     "aria-label": "",
@@ -1539,10 +1661,32 @@
                     "acfe_validate": "",
                     "allow_in_bindings": 0
                 }
-            ]
+            ],
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
         },
         {
-            "key": "field_69fa74648fbe8",
+            "key": "field_6a03bd711b00b",
+            "label": "Remote Location (copy)",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 1,
+            "acfe_permissions": ""
+        },
+        {
+            "key": "field_6a03999f6c523",
             "label": "Buttons \/ Links",
             "name": "",
             "aria-label": "",
@@ -1567,7 +1711,7 @@
             "selected": 0
         },
         {
-            "key": "field_69fa74648fc21",
+            "key": "field_6a03999f6c55c",
             "label": "Buttons",
             "name": "button",
             "aria-label": "",
@@ -1597,7 +1741,7 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_69fa7466c1413",
+                    "key": "field_6a0399a0ad721",
                     "label": "Button Title",
                     "name": "title",
                     "aria-label": "",
@@ -1623,10 +1767,10 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_69fa74648fc21"
+                    "parent_repeater": "field_6a03999f6c55c"
                 },
                 {
-                    "key": "field_69fa7466c144e",
+                    "key": "field_6a0399a0ad75b",
                     "label": "Button Subtext",
                     "name": "subtext",
                     "aria-label": "",
@@ -1652,10 +1796,10 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_69fa74648fc21"
+                    "parent_repeater": "field_6a03999f6c55c"
                 },
                 {
-                    "key": "field_69fa7466c1487",
+                    "key": "field_6a0399a0ad794",
                     "label": "Button Link",
                     "name": "url",
                     "aria-label": "",
@@ -1681,7 +1825,7 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_69fa74648fc21"
+                    "parent_repeater": "field_6a03999f6c55c"
                 }
             ]
         }
@@ -1691,7 +1835,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "post"
+                "value": "features"
             }
         ]
     ],
@@ -1699,12 +1843,12 @@
     "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
-    "instruction_placement": "tooltip",
+    "instruction_placement": "field",
     "hide_on_screen": "",
     "active": true,
-    "description": "Announcements & Updates",
+    "description": "",
     "show_in_rest": 0,
-    "display_title": "Blog Posts",
+    "display_title": "Feature & Activity Profiles",
     "allow_ai_access": false,
     "ai_description": "",
     "acfe_autosync": [
@@ -1715,8 +1859,8 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1778621158,
+    "modified": 1778630012,
     "acfe_categories": {
-        "blog-posts": "Blog Posts"
+        "profile-pages": "Profile Pages"
     }
 }

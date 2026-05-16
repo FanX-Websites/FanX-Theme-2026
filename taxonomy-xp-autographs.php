@@ -18,7 +18,7 @@ get_header(); /** body- main-site */
     <!------------ END Page Header Container -------------------->
 
     <!-------------------------- Main Content Area --------------------->
-    <div class="post-grid-container"> 
+    <div class="cat-tax grid-container"> 
         <?php
         // Query guests CPT for the current taxonomy term, excluding postponed xp-status
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
@@ -127,10 +127,15 @@ get_header(); /** body- main-site */
         ?>
         <!-- END No Posts Message -->
 
-    </div><!-- END post-grid-container -->
-
-        <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
+    </div><!-- END grid-container -->
     <!----- END Main Content Area----------------->
+
+    <!-- Small Print Section -->
+    <div class="container">
+        <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
+    </div>
+    <!--- END Small Print Section -->
+
 <!------------------- Latest News Post Block --------------------->
     <div class="container full">
         <?php get_template_part('template-parts/sections/updates-section'); ?>

@@ -8,7 +8,7 @@
 /**
  * Add an ACF field to the admin columns for a specific post type
  *
- * @param string $post_type    The post type to add the column to (e.g., 'post', 'page', 'guest')
+ * @param string $post_type    The post type to add the column to (e.g., 'post', 'page', 'guest', 'partner')
  * @param string $acf_field    The ACF field key or name to display
  * @param string $column_label The label to display in the column header
  * @param int    $position     Optional. Position to insert column (0 = first, null = last)
@@ -254,11 +254,19 @@ function acf_render_color_column( $value ) {
  *   - position: null or omit = last (default)
  */
 add_action( 'init', function() {
-	$acf_columns = array(
-		'guests' => array(
-			array ( 'field'=> 'info_display_order', 'label' => 'Post Order', 'position' => 2),
-		)
+	// Common configuration for CPTs with display order
+	$common_config = array(
+		array ( 'field'=> 'info_display_order', 'label' => 'Post Order', 'position' => 2),
 	);
+
+	// CPTs that use the common configuration
+	$cpts_with_common_config = array( 'guests', 'partner' );
+
+	// Build $acf_columns array
+	$acf_columns = array();
+	foreach ( $cpts_with_common_config as $cpt ) {
+		$acf_columns[ $cpt ] = $common_config;
+	}
 
 	// Register all configured columns
 	foreach ( $acf_columns as $post_type => $fields ) {

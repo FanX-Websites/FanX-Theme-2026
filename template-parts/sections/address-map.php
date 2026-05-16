@@ -2,7 +2,8 @@
 /** Template part: Address Map 
  * 
  * Contains Google Map & Address pulled from ACF fields
- * Same Styling as event-address-map template part 
+ * Same Styling as event-address-map template part
+ * //TODO: Combine this templatepart with event-addres-map w/appropriate conditionals. 
 */
 ?>
 

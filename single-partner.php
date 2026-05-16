@@ -1,6 +1,6 @@
 <?php
 /**
- * Taxonomy Template - Forwards to category.php
+ * Profile Template - Forwards to Guests Template
  */
-get_template_part( 'single' );
+get_template_part( 'single-guests' );
 ?>

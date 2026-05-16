@@ -204,11 +204,19 @@ function acf_render_bulk_edit_input( $field_name, $field_type ) {
  * Define which ACF fields should appear in quick edit and bulk edit.
  */
 add_action( 'init', function() {
-	$acf_quick_edit_fields = array(
-        'guests' => array(
-            array( 'field' => 'info_display_order', 'label' => 'Post Order' ),
-        ),
+	// Common configuration for CPTs with quick edit fields
+	$common_config = array(
+		array( 'field' => 'info_display_order', 'label' => 'Post Order' ),
 	);
+
+	// CPTs that use the common configuration
+	$cpts_with_common_config = array( 'guests', 'partner' );
+
+	// Build $acf_quick_edit_fields array
+	$acf_quick_edit_fields = array();
+	foreach ( $cpts_with_common_config as $cpt ) {
+		$acf_quick_edit_fields[ $cpt ] = $common_config;
+	}
 
 	// Register all configured quick edit fields
 	foreach ( $acf_quick_edit_fields as $post_type => $fields ) {

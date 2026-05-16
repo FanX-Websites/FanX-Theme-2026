@@ -197,7 +197,7 @@ acf_add_local_field_group(array(
 					'name' => 'ada_room_list',
 					'aria-label' => '',
 					'type' => 'wysiwyg',
-					'instructions' => 'ADA Room/Locations List',
+					'instructions' => '[cs_ada_room_list]',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -205,15 +205,8 @@ acf_add_local_field_group(array(
 						'class' => '',
 						'id' => '',
 					),
-					'allow_backendsearch' => 1,
-					'show_column_filter' => false,
-					'allow_bulkedit' => false,
-					'allow_quickedit' => false,
-					'show_column' => false,
-					'show_column_weight' => 1000,
-					'show_column_sortable' => false,
 					'default_value' => '',
-					'allow_in_bindings' => 0,
+					'allow_in_bindings' => 1,
 					'tabs' => 'all',
 					'toolbar' => 'full',
 					'media_upload' => 1,
@@ -363,11 +356,11 @@ acf_add_local_field_group(array(
 	'acfe_form' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
-	'modified' => 1777486547,
 	'acfe_categories' => array(
 		'hospitality' => 'Hospitality',
 		'options-pages' => 'Options Pages',
 	),
+	'modified' => 1778724189,
 ));
 
 endif;
