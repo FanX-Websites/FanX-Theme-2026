@@ -1422,8 +1422,8 @@
             "selected": 0
         },
         {
-            "key": "field_69fa74648fb73",
-            "label": "Schedule",
+            "key": "field_6a0b86a85074b",
+            "label": "Schedule & Room\/Booth",
             "name": "sched",
             "aria-label": "",
             "type": "group",
@@ -1435,20 +1435,59 @@
                 "class": "",
                 "id": ""
             },
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_settings": "",
+            "acfe_permissions": "",
+            "sub_fields": [
+                {
+                    "key": "field_6a0b86a85074c",
+                    "label": "Room\/Booth Number",
+                    "name": "room_booth",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "[sched_room_booth]",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "maxlength": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ],
             "acfe_group_modal_close": 0,
             "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large",
-            "sub_fields": []
+            "acfe_group_modal_size": "large"
+        },
+        {
+            "key": "field_6a0b9403eb014",
+            "label": "Remote Location",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0,
+            "acfe_permissions": ""
         },
         {
             "key": "field_69fa74648fbb0",
@@ -1540,6 +1579,25 @@
                     "allow_in_bindings": 0
                 }
             ]
+        },
+        {
+            "key": "field_6a0b940deb015",
+            "label": "(copy)",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 1,
+            "acfe_permissions": ""
         },
         {
             "key": "field_69fa74648fbe8",
@@ -1715,7 +1773,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1778621158,
+    "modified": 1779144880,
     "acfe_categories": {
         "blog-posts": "Blog Posts"
     }

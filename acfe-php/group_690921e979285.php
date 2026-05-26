@@ -40,6 +40,10 @@ acf_add_local_field_group(array(
 			),
 			'layout' => 'block',
 			'acfe_seamless_style' => 1,
+			'acfe_group_modal' => 0,
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'key' => 'field_690e7cf98de21',
@@ -606,10 +610,6 @@ prepend: color_',
 					'columns' => '6/12',
 				),
 			),
-			'acfe_group_modal' => 0,
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'key' => 'field_690e4303f254c',
@@ -646,6 +646,9 @@ prepend: color_',
 			'layout' => 'block',
 			'acfe_seamless_style' => 0,
 			'acfe_group_modal' => 0,
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'key' => 'field_696ff529595e3',
@@ -746,9 +749,6 @@ For Facebook Tags, Google Analytics, etc',
 					'allow_in_bindings' => 1,
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'key' => 'field_690e435df254e',
@@ -847,6 +847,9 @@ For Facebook Tags, Google Analytics, etc',
 			'layout' => 'block',
 			'acfe_seamless_style' => 0,
 			'acfe_group_modal' => 0,
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'key' => 'field_69a216145482e',
@@ -874,9 +877,6 @@ For Facebook Tags, Google Analytics, etc',
 					'allow_backendsearch' => 0,
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'key' => 'field_69a22239d47a5',
@@ -925,10 +925,10 @@ For Facebook Tags, Google Analytics, etc',
 	'acfe_form' => 0,
 	'acfe_meta' => '',
 	'acfe_note' => '',
+	'modified' => 1779746080,
 	'acfe_categories' => array(
 		'dev' => 'Dev',
 	),
-	'modified' => 1778871687,
 ));
 
 endif;

@@ -2,6 +2,10 @@
 /**
  * Leap Conventions Schedule Template
  * Displays events from the Leap API
+ * 
+ * //TODO: Closeout Events as the time passes. 
+ * //TODO: Add to calendar functionality (ICS file or Google Calendar link)
+ * //FIXME: Replace hardcoded API key with dynamic ACF field value (currently for testing)
  */
 
 get_header(); /** body- main-site */
@@ -78,8 +82,8 @@ echo '<div class="schedule-day-filters"></div>';
 $events_by_day = array();
 foreach ( $schedules as $event ) {
     $event_date = substr( $event['start_time'], 0, 10 );
-    $event_day = date_i18n( 'l', strtotime( $event_date ) );
-    $event_time = date_i18n( 'g:i a', strtotime( $event['start_time'] ) );
+    $event_day = date( 'l', strtotime( $event_date ) ); // No timezone conversion
+    $event_time = date( 'g:i a', strtotime( $event['start_time'] ) ); // No timezone conversion
     
     if ( ! isset( $events_by_day[ $event_day ] ) ) {
         $events_by_day[ $event_day ] = array();
@@ -120,11 +124,23 @@ foreach ( $sorted_days as $day => $time_slots ) {
         
         foreach ( $events as $event ) {
             $event_date = substr( $event['start_time'], 0, 10 );
-            $event_date_short = date_i18n( 'M j', strtotime( $event_date ) );
+            $event_date_short = date( 'M j', strtotime( $event_date ) ); // No timezone conversion
+            
+            // Extract end time
+            $end_time = '';
+            if ( ! empty( $event['end_time'] ) ) {
+                $end_time = date( 'g:i A', strtotime( $event['end_time'] ) ); // No timezone conversion
+            }
             
             echo '<div class="event-card grid-block">';
             echo '<div class="event-header">';
-            echo '<p class="event-datetime">' . esc_html( $day ) . ', ' . esc_html( $event_date_short ) . ' at ' . esc_html( $time ) . '</p>';
+            
+            // Display time range
+            $time_display = esc_html( $time );
+            if ( $end_time ) {
+                $time_display .= ' - ' . esc_html( $end_time );
+            }
+            echo '<p class="event-datetime">' . esc_html( $day ) . ', ' . esc_html( $event_date_short ) . ' at ' . $time_display . '</p>';
             echo '<h4 class="event-title">' . esc_html( $event['title'] ) . '</h4>';
             
             // Show guest/person names if they exist (up to 3)

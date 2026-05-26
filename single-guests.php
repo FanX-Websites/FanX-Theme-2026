@@ -19,16 +19,16 @@ get_header();
 <!-- Profile Main Div --------------------->
 
 <!-- Main Profile Container -->
-<div class="profile"><!-- Profile sizing, padding,  -->
+<div class="profile page"><!-- Profile sizing, padding,  -->
 
     <!-- Main Profile Card/Content - Grid Container --------------------------------------->    
-    <div class="profile-card grid-container layout-2col"> 
+    <div class="profile-card grid-container <?php echo ( has_post_thumbnail() ) ? 'layout-2col' : 'layout-1col'; ?>"> 
         <?php if ( have_posts() ) :
             while ( have_posts() ) : the_post(); ?>
 
         <!-- Profile Details - Grid Block ------------------>
+        <?php if ( has_post_thumbnail() ) : //Conditional - Profile Image or not hides column ?>
         <div class="grid-block profile-details"> 
-            <?php if ( has_post_thumbnail() ) : //Conditional - Profile Image or not hides column ?>
         
                 <!-- Profile Image - DIV ------------->
                 <div class="profile-img">
@@ -51,10 +51,11 @@ get_header();
                 </div><!-- END Appearance Days ---> 
 
         </div><!--END Grid Block Profile Details -->
+        <?php endif; ?>
         
         <!-- Profile Content - Grid Block ------------------>
         <div class="grid-block profile-content"><!-- Post Main Content -->
-            <div><!--- Profile content header --->
+            <div class="profile-content-header"><!--- Profile content header --->
 
                 <!-- Postponed Notice -->
                     <?php if ( has_term( 'postponed', 'xp-status' ) ) : ?>
@@ -90,9 +91,12 @@ get_header();
             </div><!-- END Profile content header --->    
                 
             <!--- Profile Content - DIV -->
-            <div class="the-content">
-                <?php the_content(); //Content ?> 
-            </div><!-- END Profile Content-->
+            <div class="profile the-content-block">
+                <div class="profile the-content">
+                    <?php the_content(); //Content ?> 
+                </div><!-- END Profile Content-->
+            </div><!-- END Profile Content BLOCK -->
+            <!-- END Profile Content - DIV -->
 
             <!-- Buttons - Featured Links - DIV --> 
             <div class="featured-links"> 
@@ -132,7 +136,6 @@ get_header();
                 get_template_part( 'template-parts/profiles/experiences' );
             }
         ?>
-        <?php endif; ?>
     </div><!-- END - Guest Experiences -->  
 
 

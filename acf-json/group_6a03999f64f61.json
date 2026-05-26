@@ -1515,7 +1515,7 @@
             "selected": 0
         },
         {
-            "key": "field_6a03999f6c4b3",
+            "key": "field_6a0b86e389584",
             "label": "Schedule & Room\/Booth",
             "name": "sched",
             "aria-label": "",
@@ -1535,7 +1535,7 @@
             "acfe_permissions": "",
             "sub_fields": [
                 {
-                    "key": "field_6a03a4069c109",
+                    "key": "field_6a0b86e389585",
                     "label": "Room\/Booth Number",
                     "name": "room_booth",
                     "aria-label": "",
@@ -1665,25 +1665,6 @@
             "acfe_group_modal_close": 0,
             "acfe_group_modal_button": "",
             "acfe_group_modal_size": "large"
-        },
-        {
-            "key": "field_6a03bd711b00b",
-            "label": "Remote Location (copy)",
-            "name": "",
-            "aria-label": "",
-            "type": "accordion",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "open": 0,
-            "multi_expand": 0,
-            "endpoint": 1,
-            "acfe_permissions": ""
         },
         {
             "key": "field_6a03999f6c523",
@@ -1859,7 +1840,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1778630012,
+    "modified": 1779141644,
     "acfe_categories": {
         "profile-pages": "Profile Pages"
     }

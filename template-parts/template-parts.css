@@ -141,6 +141,54 @@ Author URI: https://DancingFraxinus.com/
 
 /* ------------------------------ END - Front Page Grid Blocks ---------------------------------- */
 
+/** ---------------------- Page Sections -------------------> 
+
+/* Featured Image - Description Section */
+
+.feat-desc-layout-section {
+  padding: 1% 3%;
+  margin: 0 auto;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.feat-desc.grid-container.layout-1-2col {
+  margin: 0 auto;
+  padding: 0;
+  gap: 1em;
+}
+
+.feat-desc.term-description h3 {
+  text-align: center;
+}
+
+.feat-desc .term-description a {
+  color: var(--color_lght);
+  text-decoration: underline;
+}
+
+.feat-img.grid-block {
+  max-width: 450px;
+  border-radius: 45px;
+}
+
+.desc.grid-block {
+  border-radius: 45px;
+}
+
+.feat-desc .img-container img {
+  border-radius: 45px;
+  max-width: 400px;
+}
+
+.feat-desc .term-description {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1%;
+}
+
+/* END Featured Image/Description Section */ 
+
 
 /* ------------- Content Blocks Section ------------> 
 - Refer to Wireframes in Style.css for layouts, breakpoints - */
@@ -176,7 +224,7 @@ Author URI: https://DancingFraxinus.com/
 .content-block {
   padding: 30px;
   margin: 0;
-  background-color: var(--color_lght);
+  background-color: var(--color_brht);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,13 +251,13 @@ h3.content-block-subtext {
   font-size: 1.2em;
   font-weight: 100;
   text-align: center;
-  color: var(--color_prim);
+  color: var(--color_prim_brht);
   width: 100%;
   padding: 0 0 15px;
   margin: 0
 }
 
-.content-block-small-print p{
+.content-block-small-print p, .content-block-small-print.small-print .span{
   font-size: .9em;
   line-height: 1.25em;
   color: var(--color_fnt_blk);
@@ -243,7 +291,7 @@ h3.content-block-subtext {
   font-weight: 800;
   font-size: 2.75em;
   line-height: 1.35em;
-  color: var(--color_acc_brht); 
+  color: var(--color_base_brht); 
 }
 
 .ticket-info-blocks em{ 
@@ -540,12 +588,12 @@ h3.table-chart-subtext {
  /** Posts Container Styling */
 
  .updates-post.self-centered{
-   width: 80%;
-   max-width: 1000px;
-   padding: 2%;
-   background-color: var(--color_lght);
-   border: 6px solid var(--color_drk);
-   margin: 0;
+  width: 80%;
+  max-width: 1000px;
+  padding: 2%;
+  background-color: var(--color_brht);
+  border: 6px solid var(--color_drk);
+  margin: 0;
 
  }
 
@@ -632,9 +680,9 @@ line-height: 1.5em;
   min-height: 300px;
 }
  .list-container{
-  padding: 3%;
-  margin: 0;
-  background-color: var(--color_lght);
+  padding: 6%;
+  margin: 0 auto;  
+  background-color: var(--color_brht);
   width: 90%;
   height: auto; 
   min-height: 300px;
@@ -673,6 +721,75 @@ line-height: 1.5em;
 }
 
 
+/** List Container Template Styling */ 
+  /* Vendor Floor List */
+  .sched .list-content{
+      border-left: 1px solid var(--color_acc_lght);
+      padding-left: 3%;
+      border-radius: 0;
+  }
+
+  .list-title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 6%;
+  }
+
+  .list-title-bar h4 {
+    margin: 0;
+    flex: 1;
+  }
+
+  .list-title-bar .scroll-indicator {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    width: auto;
+    padding: 0;
+    margin: 0;
+  }
+
+  .vendor-list-wrapper{
+    max-height: 500px; 
+    overflow-y: auto;
+    border-top: 1px solid var(--color_acc_lght);
+    border-bottom: 1px solid var(--color_acc_lght);
+    padding: 3%; 
+    border-radius: 0;
+  }
+  table.vendor-list{
+    padding: 1%;
+    margin: 0 auto;
+    width: 100%;
+  }
+  table.vendor-list td{
+    list-style-type: none;
+    padding: 1% 2%;
+    border-bottom: .1px solid var(--color_acc_lght);
+    font-size: 1em;
+  }
+  table.vendor-list th{
+    text-align: left; 
+  }
+  .scroll-indicator {
+    width: 100%;
+    padding: 3%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 0;
+  }
+
+  .scroll-indicator span {
+    color: var(--color_fnt_blk);
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 1.25em;
+    display: inline-block;
+  }
+
+/** END List & Maps Sections */
 
 
 
@@ -1009,7 +1126,7 @@ line-height: 1.5em;
   margin: 3% 0;
   overflow: hidden;
   border-radius: 25px;
-  background-color: white;
+  background-color: var(--color_brht);
 }
 
 .multi-post-gallery-wrapper.hotels-post .gallery-post-img img {
@@ -1027,6 +1144,11 @@ line-height: 1.5em;
 
 /* Page Content Sections ----- */ 
 
+/** Coming Soon Template Part ------ **/
+.no-posts-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
-
-/* Floor Maps - 2 column List & map */ 

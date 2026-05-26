@@ -14,20 +14,29 @@
 	
 	//--- Menu Registration -->
 		register_nav_menus(array( 
+		//Main Menu & Main Cat/TaX Pages:: 
+			'products' => __('Purchase Menu', 'fanx-theme'), //Purchase - Main Menu
+			'event-info' => __('Event Info Menu', 'fanx-theme'), //Event Info - Main Menu
+			'guests' => __('Guests Menu', 'fanx-theme'), //Guests Lists - Main Menu
+			'experiences' => __('eXperiences Menu', 'fanx-theme'), //eXperiences - Main Menu
+			'hoteltravel' => __('Hotel/Travel Menu', 'fanx-theme'), //Hotels & Travel - Main Menu
+			'participate' => __('Participate Menu', 'fanx-theme'), //Industry/Participate - Main Menu
+			'updates' => __('Blog/Updates Menu', 'fanx-theme'), // News/Updates - Main Menu
+			'about' => __('About Menu', 'fanx-theme'), //About Us/Info - Main Menu
+
+		//eXperience Submenus for subcategories::
+			'fandoms' => __('Fandoms Menu', 'fanx-theme'), //Fandoms Pages Sub-Menu
+			'features' => __('Features/Activities Menu', 'fanx-theme'), //Features & Activities Pages Sub-Menu
+			'cosplay' => __('Cosplay Menu', 'fanx-theme'), //Cosplay Pages Sub-Menu
+
+		//Participate Submenus:: 
+			'exhibitor-info' => __('Exhibitor Info Menu', 'fanx-theme'), //Exhibitor Info Pages Sub-Menu
+			'panel-info' => __('Programming Info Menu', 'fanx-theme'), //Programming Info Pages Sub-Menu
+
+		//Footer Menus:: 
 			'footer' => __('Footer Menu', 'fanx-theme'), //Footer Menu
-			'about' => __('About Menu', 'fanx-theme'), //About Menu
-			'guests' => __('Guests Menu', 'fanx-theme'), //Guests Menu
-			'features' => __('Features/Activities Menu', 'fanx-theme'), //Features Menu
-			'products' => __('Purchase Menu', 'fanx-theme'), //Products Menu
-			'experiences' => __('eXperiences Menu', 'fanx-theme'), //Experiences Menu
-			'participate' => __('Participate Menu', 'fanx-theme'), //Participate Menu
-			'updates' => __('Blog/Updates Menu', 'fanx-theme'), //Updates Menu
-			'hoteltravel' => __('Hotel/Travel Menu', 'fanx-theme'), //Hotel/Travel Menu
 			'socket' => __('Socket Menu', 'fanx-theme'), //Socket Menu
-			'event-info' => __('Event Info Menu', 'fanx-theme'), //Event Info Menu
-			'exhibitor-info' => __('Exhibitor Info Menu', 'fanx-theme'), //Exhibitor Info Menu
-			'panel-info' => __('Programming Info Menu', 'fanx-theme'), //Programming Info Menu
-			'fandoms' => __('Fandoms Menu', 'fanx-theme'), //Fandoms Menu
+
 		)); //Menu Registration End <---
 	}//Add Support End <---
 

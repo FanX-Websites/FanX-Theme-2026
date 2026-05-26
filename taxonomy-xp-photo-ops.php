@@ -212,11 +212,7 @@ get_header(); /** body- main-site */
                 }
             endif;
         else :
-            ?>
-            <div class="no-posts-container">
-                <h3>COMING SOON</h3>
-            </div>
-            <?php
+            get_template_part( 'template-parts/coming-soon' );
         endif;
         ?>
         <!-- END No Posts Message -->

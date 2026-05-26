@@ -25,7 +25,7 @@ get_header(); /** body- main-site */
     <div class="content-blocks container">
         <?php get_template_part('template-parts/sections/content-blocks'); ?>
     </div>
-    <!---------------------------END Content BLOCK Template Part --------------------->
+    <!---------------------------END Content Blocks Template Part --------------------->
 
     <!-------------------------- Table Charts Template Part --------------------->
     <div class="table-charts container">

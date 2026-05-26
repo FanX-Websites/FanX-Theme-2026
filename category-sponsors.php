@@ -70,28 +70,17 @@ get_header(); /** body- main-site */
                     echo '<div class="post-block block"></div>';
                 }
             endif;
-        else :
-            ?>
-            <div class="no-posts-container">
-                <h3>Coming Soon</h3>
-                <p>
-                    <?php 
-                        $news_link = get_field('news_url', 'option');
-                        $news_message = get_field('news_message', 'option') ?? '';
-                        if ($news_link && isset($news_link['url'])) {
-                            echo '<a href="' . esc_url($news_link['url']) . '">' . wp_kses_post($news_message) . '</a>';
-                        } else {
-                            echo wp_kses_post($news_message);
-                        }
-                    ?>
-                </p>
-            </div>
-            <?php
         endif;
         ?><!-- END No Posts Message -->
 
     <!----- END Main Content Area ----------------->
     </div><!-- END cat-tax grid-container -->
+
+    <?php
+    if ( ! $query->have_posts() ) :
+        get_template_part( 'template-parts/coming-soon' );
+    endif;
+    ?>
 
     <!------------------- Latest News Post Block --------------------->
     <div class="container full">

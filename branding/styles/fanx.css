@@ -13,14 +13,18 @@ Author URI: https://DancingFraxinus.com/
 
 /*** Sitewide Branding **/
 /* Universal Font Family - Applied to all elements */
-* {
+
+/* * {
   font-family: Arial,Helvetica,sans-serif;
   color: var(--color_fnt_wht);
-}
+} */
+
 /* Body  & Basic Content */
 
 body{
-  background-color: var(--color_drk)
+  background-color: var(--color_drk);
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color_fnt_wht);
 }
 
 /* The Div ----------------------- */
@@ -35,6 +39,13 @@ div{
   background-color: inherit;
   box-shadow: -5px -5px 8px var(--color_prim),5px 5px 8px var(--color_prim)
 }
+
+.outlined {
+  border: 2px solid var(--color_lght);
+  padding: 3%;
+  height: 100%;
+}
+
 /* Text -------------------------------------------  */
 p{
   font-size: 1em;
@@ -262,12 +273,13 @@ a.button {
 }
 
 
-/* Backgrounds  -------------------- */
+/*  Branded Backgrounds  -------------------- */
 
     /* Basic Gradient Background */
 .gradi {
   background: linear-gradient(140deg,var(--color_prim_brht) 10%,var(--color_acc_brht) 60%,var(--color_acc_brht) 100%)
 }
+
 /* Patterns ------------------------ */
     /* The Grid Background */
 .grid-bkgrnd {
@@ -281,6 +293,18 @@ a.button {
   background-image: linear-gradient(var(--color_acc_lght) 2px,transparent 1px);
   background-size: 100% 40px
 }
+/* Checkered Background */
+.checkered {
+  background-color: var(--color_lght);
+  background-image:
+    linear-gradient(45deg, var(--color_prim_brht) 25%, transparent 25%, transparent 75%, var(--color_prim_brht) 75%, var(--color_prim_brht)),
+    linear-gradient(45deg, var(--color_prim_brht) 25%, transparent 25%, transparent 75%, var(--color_prim_brht) 75%, var(--color_prim_brht));
+  background-size: 75px 75px;
+  background-position: 0 0, 37.5px 37.5px;
+  border: 3px solid var(--color_lght);
+}
+
+
 /* Overlays ------------------------ */
     /* Static Overlay - Animated - Sitewide */
     /* CONVERTED TO HTML DIV - See header.php for .noise-overlay element */
@@ -688,7 +712,7 @@ body::after {
     gap: 0;
   }
   .page-header > .page-title.block {
-    padding: 0; 
+    padding: 0 0 3%; 
     margin: 0; 
   }
   /*- Page Header Text */
@@ -752,6 +776,45 @@ body::after {
     }
 /*END Page Headers ----------------------------------*/
 
+/* The Content */
+
+.the-content img{
+  max-width: 90%; 
+  height: auto;
+} 
+
+.the-content-block{
+  padding: 5% 0 ;
+  margin: 0 auto;
+  border-top: 1px solid var(--color_base_lght);
+  border-bottom: 1px solid var(--color_base_lght);
+  border-radius: 0;
+}
+.the-content{
+  border-radius: 0;
+  padding: 0 3%;
+  border: 0;
+  max-height: 60vh;
+  min-height: 300px;
+  overflow-y: scroll;
+}
+
+.the-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.the-content::-webkit-scrollbar-track {
+  background: var(--color_acc);
+}
+
+.the-content::-webkit-scrollbar-thumb {
+  background: var(--color_prim_brht);
+  border-radius: 5px;
+}
+
+.the-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color_acc);
+}
 
 
 
@@ -914,16 +977,13 @@ body::after {
     
     /* .post-block .placeholder .block{} */
 
-    .no-posts-container,.no-posts-container p {
-      text-align: center
-    }
-
     .fandom-tags, .fandom-tags a {
       text-decoration: none;
       color: var(--color_acc_lght);
       font-size: 1em;
       line-height: 1.25em;
       text-align: center;
+  
     }
 
 
@@ -1009,7 +1069,7 @@ h2.entry-title a{
 /*Post Styles */ 
 /*** Profile - Desktop */
 
-.profile {
+.profile .page{
   width: 90%;
   /* max-width: 1100px; */
   padding: 0;
@@ -1044,6 +1104,9 @@ h2.entry-title a{
 }
 .profile-content{
   flex-flow: column; 
+}
+.profile-content-header{
+  padding-bottom: 3%;
 }
 .profile-details{
  flex-flow: column;

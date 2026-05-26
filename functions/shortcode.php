@@ -36,6 +36,8 @@ add_filter( 'walker_nav_menu_start_el', function( $item_output, $item, $depth, $
     return $item_output;
 }, 10, 4 );    
 
+// Term/Taxonomy Description - Enable Shortcodes
+add_filter( 'term_description', 'do_shortcode' );
        
 
 //---CREATE SHORTCODES ---->       

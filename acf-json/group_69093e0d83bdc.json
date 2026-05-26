@@ -163,7 +163,7 @@
                     "name": "display_order",
                     "aria-label": "",
                     "type": "number",
-                    "instructions": "<b>Celebrities:<\/b>Top 100 - Mid 150 | <b>Voice:<\/b> Mid 150 - 200 | <b>Comics:<\/b> 200 | <b>Authors:<\/b> 300 | <b>Artists:<\/b> 400 | <b>Panelists\/Vendors:<\/b> 500",
+                    "instructions": "<b>Celebrities:<\/b>Top 100 | <b>Voice:<\/b> 200 | Vend Celebs: 290 <b>Comics:<\/b> 300 | <b>Authors:<\/b> 400 | <b>Artists:<\/b> 500 | <b>Panelists\/Vendors:<\/b> 600",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -171,13 +171,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": 1,
                     "default_value": "",
                     "acfe_settings": "",
                     "acfe_validate": "",
@@ -989,8 +982,8 @@
             "selected": 0
         },
         {
-            "key": "field_6942422f63f79",
-            "label": "Schedule",
+            "key": "field_6a03999f6c4b3",
+            "label": "Schedule & Room\/Booth",
             "name": "sched",
             "aria-label": "",
             "type": "group",
@@ -1002,17 +995,37 @@
                 "class": "",
                 "id": ""
             },
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
-            "sub_fields": [],
+            "acfe_settings": "",
+            "acfe_permissions": "",
+            "sub_fields": [
+                {
+                    "key": "field_6a03a4069c109",
+                    "label": "Room\/Booth Number",
+                    "name": "room_booth",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "[sched_room_booth]",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "maxlength": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ],
             "acfe_group_modal_close": 0,
             "acfe_group_modal_button": "",
             "acfe_group_modal_size": "large"
@@ -1289,7 +1302,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1778623906,
+    "modified": 1779830104,
     "acfe_categories": {
         "people": "People",
         "profile-pages": "Profile Pages"

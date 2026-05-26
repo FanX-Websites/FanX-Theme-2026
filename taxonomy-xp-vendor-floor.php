@@ -16,23 +16,16 @@ get_header(); /** body- main-site */
     <!------------ END Page Header Container -------------------->
 
 
- <!---- Programming Tabs Section ------------------------->
-    <!--- Tab 1: Guest List --->
+
+
         <!--------------- #Guest List Section [Template Part] ----------------------->
         <div class="container full">
             <?php get_template_part('template-parts/list/basic-guest-list'); ?>
         </div><!-- END #Guest List Section ----------------------------------------->
-    <!--- END Tab 1: Guest List --->
-    
-    <!--- Tab 2: Schedule ---->
-        <!----Panel Programming Schedule Section -------------->
 
-        <!----- END Panel Programming Schedule Section ----------->
-    <!--- END Tab 2: Schedule ---->
-<!---END Programming Tabs Section ------------------------->
 
     <!-- Floor #Maps & Room List Section --->
-     <?php get_template_part('template-parts/sections/floor-maps'); ?>
+        <?php get_template_part('template-parts/sections/sched-maps'); ?>
     <!-- END Floor #Maps & Room List Section -->  
 
    <!------------------- Latest #News Post Block --------------------->

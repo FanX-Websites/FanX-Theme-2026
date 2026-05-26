@@ -3,6 +3,8 @@
  * Template Part Name: Page Header 
  * @author FanXTheme2026
  * 
+ * //NOTE: Tax/Cat description appears via the Basic-Layout template part when a the description feild is used. 
+ * 
  */
 ?>
 <!--------- Page Header ----------------------->
@@ -14,7 +16,7 @@
         <!--------- END Submenu -------->
         
         <!---------------------- Page Title Block ----------------------->
-        <div class="page-title block self-centered-column">    <!-- Page Title Block -->
+        <div class="page-title block self-centered-column">
                 <h1> 
                     <?php 
                         if ( is_tax() || is_category() || is_tag() ) { //Category as Page Title 
@@ -59,19 +61,6 @@
                     </p><!-- END Subtext -->
                         <?php } ?>
                 
-                <!--Taxonomy Description -->
-                        <?php 
-                            $archive_description = get_the_archive_description();
-                            if ( $archive_description ) {
-                        ?>
-                    <div class="description block"> <!--- Taxonomy Description -->
-                        <p class="description">
-                            <?php echo $archive_description; ?>
-                        </p><!-- END Taxonomy Description Text -->
-                    </div><!-- END description block -->
-                        <?php } ?>
-
-                    <!-- END Taxonomy Description -->
         </div><!-- END Page Title Block -->
     </div><!-- END Page Header Block -->
 </div><!-- END Page Header Section -->

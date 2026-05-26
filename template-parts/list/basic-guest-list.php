@@ -1,27 +1,24 @@
-<?php
-/**
- * Taxonomy Template: eXperiences (XP) Category/Archive Pages
- * @author FanXTheme2026
- * Default template for XP categories. 
- * //TODO: Create Sections (template-parts) w/Headers for guests, latest updates, features, events, etc. (as needed)
+<?php 
+/** Template Part: Basic Guest List - eXperiences
+ * 
+ * Guest Posts with Featured Guests Header 
+ * 
  */
-get_header(); /** body- main-site */
 ?>
-<!-- Category Page Body -->
+<div class="featured-guest-list-section self-centered-column">
+<!----- Featured Guest List Header ---------->
+    <div class="feat-guest-header">
+        <h2> Featured Guests</h2>
+    </div><!---- END Featured Guest List Header ---------->
+<!---- END Featured Guest List Header ---------->
 
-    <!--------------- Page Header Container [Template Part] ----------------------->
-    <div class="page-header container">
-        <?php get_template_part('template-parts/page-header'); ?>
-    </div><!-- END page-header Container -->
-    <!------------ END Page Header Container -------------------->
-
-    <!-------------------------- Basic Guest list --------------------->
-    <div class="cat-tax grid-container"> 
+<!-------------------------- Basic Guest list --------------------->
+    <div class="cat-tax grid-container" id="guests"> 
         <?php 
         // Query guests CPT for the current xp taxonomy, excluding postponed xp-status
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
         $args = array(
-            'post_type' => array('guests', 'features'),
+            'post_type' => 'guests',
             'tax_query' => array(
                 array(
                     'taxonomy' => 'xp', //Filter by current XP taxonomy term
@@ -110,23 +107,12 @@ get_header(); /** body- main-site */
 
 
     </div><!-- END cat-tax grid-container -->
+    
     <?php
     if ( ! $query->have_posts() ) :
-        get_template_part( 'template-parts/coming-soon' ); 
+        get_template_part( 'template-parts/coming-soon' );
     endif;
     ?>
-
-    <!----- Guest List Small Print [Template Part] ----------------->
     <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
-
     <!----- END Guest List ----------------->
-
-   <!------------------- Latest News Post Block --------------------->
-    <div class="container full">
-        <?php get_template_part('template-parts/sections/updates-section'); ?>
-    </div>
-<!----------- END Latest News Post Block -->
-
-<?php
-get_footer();
-?>
+</div><!----- END Featured Guest List Section ---------->

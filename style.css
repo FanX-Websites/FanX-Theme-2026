@@ -24,7 +24,7 @@ Editing this file affects sitewide layout structures and behaviors. Please save 
 **/
 
 /*Global*/
-body,html{ /*Header, Body, Footer*/ 
+body, html{ /*Header, Body, Footer*/ 
     margin: 0;
     padding: 0;
     width: 100%;
@@ -238,6 +238,13 @@ For divs that hold template parts*/
         margin: 0 auto; 
         box-sizing: border-box;
     }
+    .framed-1100{
+        width: 90%;
+        max-width: 1100px; 
+        padding: 1% 0 6%; 
+        margin: 0 auto; 
+        box-sizing: border-box;
+    }
     .framed-1300{
         width: 90%;
         max-width: 1300px; 
@@ -374,6 +381,7 @@ For divs that hold template parts*/
 
 /* Base grid container - auto-fills based on content 
     - Used by category/tax lists 
+    //TODO: Add default styles & adjust templates using grid as needed. 
 */
     .grid-container {
         display: grid;

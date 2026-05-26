@@ -511,6 +511,27 @@
                     "name": "app_stat",
                     "aria-label": "",
                     "type": "text",
+                    "instructions": "[app_app_stat]",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_6a0cbddcfcb53",
+                    "label": "Apple Store Icon",
+                    "name": "store_ico",
+                    "aria-label": "",
+                    "type": "icon_picker",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -519,16 +540,20 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "maxlength": "",
+                    "tabs": [
+                        "dashicons",
+                        "media_library",
+                        "url",
+                        "google",
+                        "social"
+                    ],
+                    "return_format": "string",
                     "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "show_column": 0,
-                    "allow_quickedit": 0,
-                    "allow_bulkedit": 0,
-                    "allow_backendsearch": 0
+                    "library": "all",
+                    "default_value": {
+                        "type": null,
+                        "value": null
+                    }
                 },
                 {
                     "key": "field_6917d746d48fe",
@@ -536,7 +561,7 @@
                     "name": "stat",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "app_stat",
+                    "instructions": "[app_stat]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -549,11 +574,7 @@
                     "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
-                    "append": "",
-                    "show_column": 0,
-                    "allow_quickedit": 0,
-                    "allow_bulkedit": 0,
-                    "allow_backendsearch": 0
+                    "append": ""
                 },
                 {
                     "key": "field_6917d781d4900",
@@ -561,7 +582,7 @@
                     "name": "url",
                     "aria-label": "",
                     "type": "url",
-                    "instructions": "app_url",
+                    "instructions": "[app_url]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -571,11 +592,36 @@
                     },
                     "default_value": "",
                     "allow_in_bindings": 1,
-                    "placeholder": "",
-                    "show_column": 0,
-                    "allow_quickedit": 0,
-                    "allow_bulkedit": 0,
-                    "allow_backendsearch": 0
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_6a0cbe07fcb54",
+                    "label": "Google Play Icon",
+                    "name": "play_ico",
+                    "aria-label": "",
+                    "type": "icon_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "tabs": [
+                        "dashicons",
+                        "media_library",
+                        "url",
+                        "google",
+                        "social"
+                    ],
+                    "return_format": "string",
+                    "allow_in_bindings": 0,
+                    "library": "all",
+                    "default_value": {
+                        "type": null,
+                        "value": null
+                    }
                 },
                 {
                     "key": "field_6917d76ad48ff",
@@ -583,7 +629,7 @@
                     "name": "goog_stat",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "goog_stat",
+                    "instructions": "[app_goog_stat]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -596,11 +642,7 @@
                     "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
-                    "append": "",
-                    "show_column": 0,
-                    "allow_quickedit": 0,
-                    "allow_bulkedit": 0,
-                    "allow_backendsearch": 0
+                    "append": ""
                 },
                 {
                     "key": "field_6917d7aed4901",
@@ -608,7 +650,7 @@
                     "name": "goog_url",
                     "aria-label": "",
                     "type": "url",
-                    "instructions": "goog_url",
+                    "instructions": "[app_goog_url]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -618,11 +660,7 @@
                     },
                     "default_value": "",
                     "allow_in_bindings": 1,
-                    "placeholder": "",
-                    "show_column": 0,
-                    "allow_quickedit": 0,
-                    "allow_bulkedit": 0,
-                    "allow_backendsearch": 0
+                    "placeholder": ""
                 }
             ]
         },
@@ -734,7 +772,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1777944141,
+    "modified": 1779220033,
     "acfe_categories": {
         "event-info": "Event Info",
         "options-pages": "Options Pages"

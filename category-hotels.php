@@ -128,18 +128,18 @@ get_header(); /** body- main-site */
                     echo '<div class="post-block block"></div>';
                 }
             endif;
-        else :
-            ?>
-            <div class="no-posts-container">
-                <h3>COMING SOON</h3>
-            </div>
-            <?php
         endif;
         ?>
         <!-- END No Posts Message -->
 
     <!----- END Main Content Area ----------------->
     </div><!-- END cat-tax grid-container -->
+    
+    <?php
+    if ( ! $query->have_posts() ) :
+        get_template_part( 'template-parts/coming-soon' );
+    endif;
+    ?>
      <!--- Latest Updates ----> 
     
      <div class="container full">
