@@ -1,21 +1,12 @@
 <?php
 /**
- * Export Scheduler - One-Time Export Scheduling via System Cron
+ * Export Scheduler - One-Time Export Scheduling via wp-cron
  * 
  * Handles scheduling and execution of one-time full site exports
- * Uses system cron (10-minute cycle) instead of WordPress cron
+ * Uses wp-cron to schedule exports at a specified time
  * 
- * QUEUE STORAGE:
- * - wp_option 'fanx_scheduled_user_export': timestamp of when to execute
- * - wp_option 'fanx_last_user_export': tracks execution status (pending/success/failed)
- * 
- * EXECUTION:
- * - Called by run-wp-cron-events.php via fanx_execute_due_user_exports()
- * - Runs on 10-minute cycle, same as post exports
- * 
- * AJAX ENDPOINTS:
- * - fanx_ajax_schedule_export: Schedule a new export
- * - fanx_ajax_clear_export: Clear a scheduled export
+ * HOOKS:
+ * - fanx_one_time_export_cron: The actual export hook triggered by wp-cron
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -88,11 +79,7 @@ function fanx_ajax_schedule_export() {
 }
 
 /**
- * Schedule a one-time full site export via system cron
- * 
- * Stores the scheduled timestamp in wp_options for system cron to pick up
- * on the 10-minute cycle. The actual execution happens in run-wp-cron-events.php
- * which calls fanx_execute_due_user_exports().
+ * Schedule a one-time full site export via wp-cron
  * 
  * @param int $scheduled_timestamp Unix timestamp for when to run the export
  * @return array Result array with 'success' bool and 'message' string
@@ -104,17 +91,24 @@ function fanx_schedule_one_time_export( $scheduled_timestamp = null ) {
     }
     
     // Check if an export is already scheduled
-    $existing_scheduled = get_option( 'fanx_scheduled_user_export' );
+    $existing_scheduled = wp_next_scheduled( 'fanx_one_time_export_cron' );
     
     if ( $existing_scheduled ) {
-        // Log that we're replacing existing schedule
-        error_log( '[EXPORT SCHEDULER] Replacing existing export scheduled for ' . wp_date( 'Y-m-d H:i:s', $existing_scheduled ) );
+        // Clear existing scheduled export
+        wp_unschedule_event( $existing_scheduled, 'fanx_one_time_export_cron' );
     }
     
-    // Queue the export for system cron to execute (store timestamp in wp_options)
-    update_option( 'fanx_scheduled_user_export', $scheduled_timestamp );
+    // Schedule the export for the specified time
+    $scheduled = wp_schedule_single_event( $scheduled_timestamp, 'fanx_one_time_export_cron' );
     
-    // Save export state to wp_options for widget tracking
+    if ( false === $scheduled ) {
+        return array(
+            'success' => false,
+            'message' => __( 'Failed to schedule export. Please try again.', 'fanx-theme' ),
+        );
+    }
+    
+    // Save export state to wp_options for tracking
     $export_state = array(
         'scheduled_time' => wp_date( 'Y-m-d H:i:s', $scheduled_timestamp ),
         'scheduled_timestamp' => $scheduled_timestamp,
@@ -159,11 +153,11 @@ function fanx_ajax_clear_export() {
     }
     
     // Clear any scheduled exports
-    $scheduled_timestamp = get_option( 'fanx_scheduled_user_export' );
+    $scheduled_time = wp_next_scheduled( 'fanx_one_time_export_cron' );
     
-    if ( $scheduled_timestamp ) {
-        delete_option( 'fanx_scheduled_user_export' );
-        error_log( '[EXPORT SCHEDULER] Cleared scheduled export that was set for ' . wp_date( 'Y-m-d H:i:s', $scheduled_timestamp ) );
+    if ( $scheduled_time ) {
+        wp_unschedule_event( $scheduled_time, 'fanx_one_time_export_cron' );
+        error_log( '[EXPORT SCHEDULER] Cleared scheduled export that was set for ' . wp_date( 'Y-m-d H:i:s', $scheduled_time ) );
         
         wp_send_json_success( array(
             'message' => __( 'Scheduled export cleared successfully.', 'fanx-theme' ),
@@ -176,102 +170,67 @@ function fanx_ajax_clear_export() {
 }
 
 /**
- * Execute a one-time full site export (Simply Static only, no backup)
- * 
- * NOTE: This function is no longer called by WordPress cron.
- * Execution is now handled by system cron via /bin/run-wp-cron-events.php
- * calling fanx_execute_due_user_exports() every 10 minutes.
- * 
- * This function is kept for backward compatibility but should not be used.
- * 
- * @deprecated Use fanx_execute_due_user_exports() instead
+ * Register the wp-cron hook for one-time exports
+ * This fires when wp-cron detects a scheduled 'fanx_one_time_export_cron' event
  */
-function fanx_execute_one_time_export() {
-    error_log( '[EXPORT CRON] WARNING: fanx_execute_one_time_export() called directly but should use system cron instead' );
-    return;
+function fanx_register_export_cron_hook() {
+    add_action( 'fanx_one_time_export_cron', 'fanx_execute_one_time_export' );
 }
+add_action( 'init', 'fanx_register_export_cron_hook' );
 
 /**
- * Check for and execute due user-scheduled exports (System Cron)
- * 
- * Called by /bin/run-wp-cron-events.php on 10-minute cycle.
+ * Execute a one-time full site export (Simply Static only, no backup)
  * 
  * PROCESS:
- * 1. Checks wp_option 'fanx_scheduled_user_export' for scheduled timestamp
- * 2. If current time >= scheduled time, executes the export
- * 3. Runs pre-export health checks before executing
- * 4. Updates status in 'fanx_last_user_export' wp_option (pending/success/failed)
- * 5. Logs all actions to WordPress debug log
+ * 1. Runs pre-export health checks
+ * 2. If checks pass, runs the full static export via Simply Static
+ * 3. Tracks the result in wp_options
  * 
- * @return void
+ * All steps are logged to WordPress error log
  */
-function fanx_execute_due_user_exports() {
-	// Get scheduled export timestamp
-	$scheduled_timestamp = get_option( 'fanx_scheduled_user_export' );
-	
-	// No export scheduled, nothing to do
-	if ( ! $scheduled_timestamp ) {
-		return;
-	}
-	
-	// Export not due yet
-	$current_time = current_time( 'timestamp' );
-	if ( $current_time < $scheduled_timestamp ) {
-		return;
-	}
-	
-	// Time has arrived, execute the export
-	error_log( '[USER EXPORT] Executing scheduled user export' );
-	
-	// Log pre-export check results
-	if ( function_exists( 'fanx_log_pre_export_check' ) ) {
-		fanx_log_pre_export_check();
-	}
-	
-	// Check if critical issues exist
-	if ( function_exists( 'fanx_pre_export_health_check' ) ) {
-		$results = fanx_pre_export_health_check();
-		if ( ! $results['passed'] ) {
-			error_log( '[USER EXPORT] EXPORT ABORTED: Critical issues found during health check.' );
-			error_log( '[USER EXPORT] Issues: ' . implode( ' | ', $results['errors'] ) );
-			
-			// Update export state to failed
-			$export_state = get_option( 'fanx_last_user_export', array() );
-			$export_state['status'] = 'failed';
-			$export_state['executed_at'] = wp_date( 'Y-m-d H:i:s', current_time( 'timestamp' ) );
-			$export_state['reason'] = 'Health check failed: ' . implode( ' | ', $results['errors'] );
-			update_option( 'fanx_last_user_export', $export_state );
-			
-			// Clear the scheduled timestamp
-			delete_option( 'fanx_scheduled_user_export' );
-			
-			return;
-		}
-	}
-	
-	// Execute the export
-	try {
-		$simply_static = \Simply_Static\Plugin::instance();
-		$simply_static->run_static_export();
-		
-		error_log( '[USER EXPORT] User-scheduled export completed successfully' );
-		
-		// Update export state to success
-		$export_state = get_option( 'fanx_last_user_export', array() );
-		$export_state['status'] = 'success';
-		$export_state['executed_at'] = wp_date( 'Y-m-d H:i:s', current_time( 'timestamp' ) );
-		update_option( 'fanx_last_user_export', $export_state );
-	} catch ( Exception $e ) {
-		error_log( '[USER EXPORT] User-scheduled export failed with exception: ' . $e->getMessage() );
-		
-		// Update export state to failed
-		$export_state = get_option( 'fanx_last_user_export', array() );
-		$export_state['status'] = 'failed';
-		$export_state['executed_at'] = wp_date( 'Y-m-d H:i:s', current_time( 'timestamp' ) );
-		$export_state['reason'] = 'Export failed: ' . $e->getMessage();
-		update_option( 'fanx_last_user_export', $export_state );
-	}
-	
-	// Clear the scheduled timestamp (export is done, whether success or failed)
-	delete_option( 'fanx_scheduled_user_export' );
+function fanx_execute_one_time_export() {
+    error_log( '[EXPORT CRON] Starting one-time full site export...' );
+    
+    // Run pre-export health checks
+    if ( function_exists( 'fanx_log_pre_export_check' ) ) {
+        fanx_log_pre_export_check();
+    }
+    
+    // Check if critical issues exist
+    if ( function_exists( 'fanx_pre_export_health_check' ) ) {
+        $results = fanx_pre_export_health_check();
+        if ( ! $results['passed'] ) {
+            error_log( '[EXPORT CRON] EXPORT ABORTED: Critical issues found' );
+            error_log( '[EXPORT CRON] Issues: ' . implode( ' | ', $results['errors'] ) );
+            
+            // Update export state to failed
+            $export_state = get_option( 'fanx_last_user_export', array() );
+            $export_state['status'] = 'failed';
+            $export_state['executed_at'] = wp_date( 'Y-m-d H:i:s', current_time( 'timestamp' ) );
+            update_option( 'fanx_last_user_export', $export_state );
+            
+            return;
+        }
+    }
+    
+    // Execute the export via Simply Static only (no backup)
+    try {
+        $simply_static = \Simply_Static\Plugin::instance();
+        $simply_static->run_static_export();
+        error_log( '[EXPORT CRON] One-time export completed successfully' );
+        
+        // Update export state to success
+        $export_state = get_option( 'fanx_last_user_export', array() );
+        $export_state['status'] = 'success';
+        $export_state['executed_at'] = wp_date( 'Y-m-d H:i:s', current_time( 'timestamp' ) );
+        update_option( 'fanx_last_user_export', $export_state );
+    } catch ( Exception $e ) {
+        error_log( '[EXPORT CRON] One-time export failed with exception: ' . $e->getMessage() );
+        
+        // Update export state to failed
+        $export_state = get_option( 'fanx_last_user_export', array() );
+        $export_state['status'] = 'failed';
+        $export_state['executed_at'] = wp_date( 'Y-m-d H:i:s', current_time( 'timestamp' ) );
+        update_option( 'fanx_last_user_export', $export_state );
+    }
 }
