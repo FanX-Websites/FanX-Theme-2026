@@ -25,8 +25,11 @@
                     // Content Output
                     $image = get_the_post_thumbnail_url();
                         if( $image ) {
+                        $button_url = get_field('button')[0]['url'];
+                        echo '<a href="' . esc_url($button_url) . '" target="_blank">';
                         echo '<img src="' . esc_url($image) 
-                        . '" alt="'. get_the_title() .'">'; //Image
+                        . '" alt="'. get_the_title() .'">';
+                        echo '</a>';
                     } //END $image                       
                 }//END Posts 
 

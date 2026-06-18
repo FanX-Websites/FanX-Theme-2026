@@ -74,15 +74,15 @@
             $xp_block_count++;
         }
         
-        // Determine layout class based on block count
-        $xp_layout_class = 'layout-4col'; // Default to 4 columns
-        if ( $xp_block_count === 1 ) {
-            $xp_layout_class = 'layout-1col';
-        } elseif ( $xp_block_count === 2 ) {
-            $xp_layout_class = 'layout-2col';
-        } elseif ( $xp_block_count === 3 ) {
-            $xp_layout_class = 'layout-3col';
-        }
+        // // Determine layout class based on block count
+        // $xp_layout_class = 'layout-4col'; // Default to 4 columns
+        // if ( $xp_block_count === 1 ) {
+        //     $xp_layout_class = 'layout-1col';
+        // } elseif ( $xp_block_count === 2 ) {
+        //     $xp_layout_class = 'layout-2col';
+        // } elseif ( $xp_block_count === 3 ) {
+        //     $xp_layout_class = 'layout-3col';
+        // }
     ?>
     
     <!-- Guest eXperiences - Grid Container -->
@@ -90,11 +90,9 @@
         
         <?php if ( $xp_block_count === 0 ) : ?>
             <div class="xp-soon">
-            <!-- More Info Coming SOON -->
+                <p>More Info Coming Soon.</p>
             </div>
         <?php endif; ?>
-        
-        <!-- <div class="guest-xp-card grid-container layout-3col">   -->
             
             <?php if ( $has_photo_ops ) : ?>
 
@@ -370,9 +368,7 @@
                                         <?php 
                                             if ( $room_booth ) {
                                                 echo esc_html($room_booth);
-                                            } else {
-                                                echo '<span class="xp-soon">Room/Booth # Coming Soon</span>';
-                                            }
+                                            } 
                                         ?>
                                     </div>
                                     <?php

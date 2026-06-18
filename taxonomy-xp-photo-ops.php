@@ -222,6 +222,11 @@ get_header(); /** body- main-site */
     <!----- END Main Content Area----------------->
     </div><!-- END cat-tax grid-container -->
 
+    <!-- Group Photo Ops List [Template Part] -->
+    <div class="container full">
+        <?php get_template_part( 'template-parts/list/group-photo-ops' ); ?>
+    </div>  <!-- END Group Photo Ops List -->
+
     <!-- Small Print Section -->
     <div class="container">
         <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>

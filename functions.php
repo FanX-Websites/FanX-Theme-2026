@@ -70,6 +70,7 @@
 	//Front end JavaScript
 		function fanx_enqueue_scripts(){
 			wp_enqueue_script('fanx-scripts', get_template_directory_uri() . '/js/scripts.js', array(), '1.0.2', true);
+			wp_enqueue_script('template-parts', get_template_directory_uri() . '/template-parts/template-parts.js', array(), wp_get_theme()->get('Version'), true);
 		}
 		add_action('wp_enqueue_scripts', 'fanx_enqueue_scripts');
 
@@ -152,10 +153,11 @@ add_action('wp_enqueue_scripts', function() {
 			'admin/backup-feed/wordpress-backups.php', //WordPress Backups Feed
 			'admin/backup-feed/github-pushes.php', //GitHub Pushes Feed
 			'admin/backup-feed/backup-widget.php', //Consolidated Backup & Repository Widget with Tabs
+			'admin/event-mode-widget.php', //Event Mode Toggle Widget
 			'admin/debug-feed/site-debug-log.php', //Debug Log Dashboard Widget
 			'admin/exports/pre-export-checker.php', //Pre-Export Health Check
 			'admin/exports/export-health-widget.php', //Export Manager Dashboard Widget
-			'admin/exports/export-scheduler.php', //Export Scheduler - One-Time Exports via wp-cron
+			'admin/exports/user-export-scheduler.php', //Export Scheduler - One-Time Exports via wp-cron
 			'admin/exports/single/post-export-table.php', //Post Export Database Table Manager
 			'admin/exports/single/post-export-metabox.php', //Post Export Metabox
 			'admin/exports/single/post-export-scheduler.php', //Post Export Scheduler - Single Post Exports via Custom Table

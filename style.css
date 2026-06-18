@@ -276,6 +276,10 @@ For divs that hold template parts*/
     width: 100%;
 }
 
+/* ----- White Space ----- */
+.space{
+    padding: 5% 0;
+}
 
 /* ------------ Inner Divs ------------------------>*/
 .block{ /* Div wraps around an inner-Div 

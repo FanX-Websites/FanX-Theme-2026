@@ -3,8 +3,8 @@
  * Template Name: Default Profile Pages - Guests, Features, Partners & Products. 
  * @fanxtheme2026
  * 
- * //NOTE: Blog is now its own template. Make needed changes across both templates accordingly. 
  * //TODO: Replace current layout with CSS Grid Blocks 
+ * //TODO: Create seperate templates for every CPT
  */
 
 get_header();
@@ -25,6 +25,13 @@ get_header();
     <div class="profile-card grid-container <?php echo ( has_post_thumbnail() ) ? 'layout-2col' : 'layout-1col'; ?>"> 
         <?php if ( have_posts() ) :
             while ( have_posts() ) : the_post(); ?>
+        
+            <?php 
+                if ( has_term( 'postponed', 'xp-status' ) ) : //Postponed Overlay ?>
+                <div class="profile-card postponed-overlay">
+                    <span class="postponed-text">Postponed</span>
+                </div>
+            <?php endif;?>
 
         <!-- Profile Details - Grid Block ------------------>
         <?php if ( has_post_thumbnail() ) : //Conditional - Profile Image or not hides column ?>
@@ -33,12 +40,7 @@ get_header();
                 <!-- Profile Image - DIV ------------->
                 <div class="profile-img">
                     <?php the_post_thumbnail(); //Thumbnail ?> 
-                    <?php 
-                     if ( has_term( 'postponed', 'xp-status' ) ) : //Postponed Overlay ?>
-                        <div class="postponed-overlay">
-                            <span class="postponed-text">Postponed</span>
-                        </div>
-                    <?php endif;?>
+                    
                 </div><!-- END profile-img ------------>
 
                 <!-- Appearance Info [Template Part] -->
@@ -57,13 +59,6 @@ get_header();
         <div class="grid-block profile-content"><!-- Post Main Content -->
             <div class="profile-content-header"><!--- Profile content header --->
 
-                <!-- Postponed Notice -->
-                    <?php if ( has_term( 'postponed', 'xp-status' ) ) : ?>
-                        <div class="postponed-notice"> 
-                            <?php the_field('stat_postponed', 'option'); //Postponed Message ?>
-                        </div>
-                    <?php endif; ?> 
-                <!-- END Postponed Notice -->
 
                 <!-- Profile Name, Subtitle, Subtext -->
                 <div class="profile-name">
@@ -90,15 +85,56 @@ get_header();
 
             </div><!-- END Profile content header --->    
                 
-            <!--- Profile Content - DIV -->
-            <div class="profile the-content-block">
-                <div class="profile the-content">
-                    <?php the_content(); //Content ?> 
-                </div><!-- END Profile Content-->
-            </div><!-- END Profile Content BLOCK -->
-            <!-- END Profile Content - DIV -->
+            <!-- Guest Profile Info -->
+            <div class="guest tab-section block"><!-- Guest Tabs --------------->
 
-            <!-- Buttons - Featured Links - DIV --> 
+                <?php if ( get_post_type() === 'guests' || get_post_type() === 'features' ) : ?>
+                <div class="guest tab-top-bar block"><!-- Tab Top Bar -->
+                    <button class="guest-tab-button" onclick="openTab('guest-bio')">Guest Bio</button>
+                    <button class="guest-tab-button" onclick="openTab('guest-schedule')">Guest Schedule</button>
+                    <button class="guest-tab-button" onclick="openTab('guest-xp')">Guest eXperiences</button>
+                </div><!-- END Tab Top Bar -->
+                <?php endif; ?>
+
+                <div class="profile the-content-block">
+
+                    <!--- Guest Bio Tab - Tab 1 ---------------------->
+                    <div class="guest-bio tab" id="guest-bio">
+                        <!--- Profile Content - DIV -->
+                            <div class="profile the-content">
+                                <?php the_content(); //Content ?> 
+                            </div><!-- END Profile Content-->   
+                        <!-- END Profile Content - DIV -->
+                    </div><!-- END Guest Bio Tab --------------------->
+
+                    <!-- Guest Schedule Tab - Tab 2 -----------------------------> 
+                        <?php if ( get_post_type() === 'guests' || get_post_type() === 'features' ) : ?>
+                    <div class="guest-schedule tab" id="guest-schedule" style="display:none">                  
+                        <div class="profile the-content">
+                            <!-- Guest Schedule [Template Part] -->
+                            <div class="container full"> 
+                                <?php get_template_part( 'template-parts/profiles/schedule' ); ?>
+                            </div><!--- END Guest Schedule Template Part -->
+                        </div><!-- END Guest Schedule Template Part -->
+                    </div>
+                        <?php endif; ?>
+                    <!-- END Guest Schedule Tab -->
+                    
+                    <!--- Guest eXperiences Tab - Tab 3 ------------------------>
+                    <div class="guest-xp tab" id= "guest-xp" style="display:none">
+                       <div class="profile the-content">
+                            <!-- Guest eXperiences [Template Part]-->
+                            <div class="container full"> 
+                                <?php 
+                                    if ( ( get_post_type() === 'guests' || get_post_type() === 'features' ) && ! has_term( 'postponed', 'xp-status' ) ) {
+                                        get_template_part( 'template-parts/profiles/experiences' );
+                                    }
+                                ?>
+                            </div><!-- END - Guest Experiences -->  
+                       </div> 
+                    </div>
+                    <!---- END Gues eXperiences Tab ---------------------->
+<!-- Buttons - Featured Links - DIV --> 
             <div class="featured-links"> 
                 <?php
                 // Check if the repeater field has rows of data
@@ -125,21 +161,17 @@ get_header();
                 endif;
                 ?>
             </div><!-- END Buttons - Featured Links--> 
+            
+                </div><!-- END Profile Content BLOCK -->
+            </div><!-- END Guest Tab-Section Block -->
+            <!-- END Guest Profile Info -->
         
         </div><!-- Profile Content - Grid Block -->  
     </div><!--- Main Profile Card/Content - Grid Container -->    
     
-    <!-- Guest eXperiences [Template Part]-->
-    <div class="container full"> 
-        <?php 
-            if ( ( get_post_type() === 'guests' || get_post_type() === 'features' ) && ! has_term( 'postponed', 'xp-status' ) ) {
-                get_template_part( 'template-parts/profiles/experiences' );
-            }
-        ?>
-    </div><!-- END - Guest Experiences -->  
-
 
     <!-- Featured Content/Links - Galleries, etc. //TODO: All Gallery Types -->
+
 
         <!-- Multi-Post Gallery [Template Part] -->
         <div class="container full">                
@@ -168,5 +200,3 @@ get_header();
 
 
 <?php get_footer(); //Footer ?>
-
-

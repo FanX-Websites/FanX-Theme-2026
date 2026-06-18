@@ -247,6 +247,7 @@ a.button {
   width: 100%;
   gap: 6px; 
 }
+
 .button-group .button{
   border-radius: 0;
   width: 48%;
@@ -717,7 +718,7 @@ body::after {
   }
   /*- Page Header Text */
   .page-title h1{
-    width: 100%;
+    width: 90%;
     margin: 0;
     padding: 0;
     font-size: clamp(2.5rem,8vw,4rem);
@@ -726,10 +727,15 @@ body::after {
     text-align: center; 
     color: var(--color_acc_brht);
   }
-  .page-subtitle, .page-subtitle a{ 
-    max-width: 1000px;
-    width: 90%;
-    margin: 0;
+  .page-subtitle{
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .page-subtitle h2, .page-subtitle a{ 
+    max-width: 1200px;
+    width: 80%;
+    margin: 0 auto;
     padding: 0;
     font-size: clamp(1.5rem,2vw,2rem);
     line-height: 1.75em;
@@ -738,10 +744,18 @@ body::after {
     color: var(--color_acc_lght);
     text-decoration: none; 
   }
+  .page-subtext h4 a{
+    text-decoration: none; 
+  }
   .page-subtext{
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .page-subtext p{
     max-width: 900px;
-    width: 90%;
-    margin: 0;
+    width: 80%;
+    margin: 0 auto;
     padding: 0;
     font-size: clamp(.8rem, 1vw, 1rem);
     line-height: 1.5em;
@@ -785,18 +799,19 @@ body::after {
 
 .the-content-block{
   padding: 5% 0 ;
-  margin: 0 auto;
-  border-top: 1px solid var(--color_base_lght);
-  border-bottom: 1px solid var(--color_base_lght);
+  margin: 0 0 3%;
+  border-top: 1px solid var(--color_base);
+  border-bottom: 1px solid var(--color_base);
   border-radius: 0;
+  width: 100%; 
 }
 .the-content{
   border-radius: 0;
   padding: 0 3%;
   border: 0;
   max-height: 60vh;
-  min-height: 300px;
-  overflow-y: scroll;
+  /* min-height: 150px; */
+  overflow-y: auto;
 }
 
 .the-content::-webkit-scrollbar {
@@ -815,7 +830,6 @@ body::after {
 .the-content::-webkit-scrollbar-thumb:hover {
   background: var(--color_acc);
 }
-
 
 
     /* ORGANIZE BELOW */ 
@@ -1083,12 +1097,15 @@ h2.entry-title a{
 }
 
 .profile-card{
+  position: relative;
   border: 1px solid var(--color_lght);
   padding: 2%;
   margin: 0 auto;
+  width: 90%; 
+  height: auto;
   max-width: 1200px; 
   border-top-left-radius: 45px;
-  border-bottom-left-radius: 45px;
+
 
 }
 
@@ -1107,13 +1124,16 @@ h2.entry-title a{
 }
 .profile-content-header{
   padding-bottom: 3%;
+  width: 100%;
+  height: auto;
+  margin: 0 auto; 
+
 }
 .profile-details{
  flex-flow: column;
 }
 .profile-img {
-  /* position: relative;
-  display: inline-block; */
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1130,10 +1150,7 @@ h2.entry-title a{
   /* Postponed Image Overlay - Applies to both Posts & Cateogires */
   .postponed-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-color: var(--color_drk);
     opacity: 0.45;
     z-index: 10;
@@ -1155,6 +1172,16 @@ h2.entry-title a{
 
   span.postponed-text.cat { 
     font-size: 3em;
+  }
+
+  /* Profile card postponed overlay - fills entire card */
+  .profile-card .postponed-overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-top-left-radius: 45px;
+    border-bottom-left-radius: 45px;
   }
 
 .profile-img img {
@@ -1212,4 +1239,33 @@ h2.entry-title a{
     max-width: 400px;
     height: auto
   }
+}
+
+/* Profile Page Guest Info Tab Section */
+
+.tab-top-bar {
+  padding: 5% 1% 1%;
+  margin: 0 auto;
+  flex-direction: row; 
+  align-items: flex-end; 
+  gap: 2%; 
+
+}
+.guest-tab-button {
+  padding: 2% 5%;
+  background-color: transparent;
+  color: var(--color_lght);
+  border: none;
+  background-color: var(--color_acc);
+  border-radius: 10px 10px 0 0;
+  font-size: 1em;
+  width: 30%; 
+}
+.guest-tab-button.active{
+  background-color: var(--color_acc_brht);
+  color: var(--color_fnt_wht);
+}
+.guest-tab-button:hover {
+  background-color: var(--color_prim);
+  cursor: pointer;
 }

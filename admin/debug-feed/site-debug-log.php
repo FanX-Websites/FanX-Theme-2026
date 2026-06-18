@@ -32,6 +32,32 @@ function df_convert_log_timestamp_to_local( $entry ) {
     return $entry;
 }
 
+// Check if a log entry is within the last 14 days
+function df_is_entry_within_expiration( $entry, $days = 14 ) {
+    // Match pattern like [17-Jun-2026 21:50:02 America/Denver]
+    if ( preg_match( '/\[(\d{2})-([A-Za-z]{3})-(\d{4})\s+(\d{2}):(\d{2}):(\d{2})/', $entry, $matches ) ) {
+        $day = $matches[1];
+        $month = $matches[2];
+        $year = $matches[3];
+        $hour = $matches[4];
+        $minute = $matches[5];
+        $second = $matches[6];
+        
+        // Create timestamp from log entry
+        $entry_time = strtotime( "$year-$month-$day $hour:$minute:$second" );
+        
+        // Get current time
+        $current_time = current_time( 'timestamp' );
+        
+        // Calculate cutoff time (14 days ago)
+        $cutoff_time = $current_time - ( $days * 86400 );
+        
+        return $entry_time >= $cutoff_time;
+    }
+    
+    return false; // If we can't parse the timestamp, exclude it
+}
+
 function df_reg_debug_widget() {
 	global $wp_meta_boxes;
 
@@ -76,8 +102,14 @@ function df_create_debug_log_box() {
         $file_size = filesize( $log_file );
         $log_contents = file_get_contents( $log_file );
         $log_entries = array_filter( explode( "\n", trim( $log_contents ) ) );
+        
+        // Filter entries to only show last 14 days
+        $log_entries = array_filter( $log_entries, function( $entry ) {
+            return df_is_entry_within_expiration( $entry, 14 );
+        } );
+        
         $total_entries = count( $log_entries );
-        $recent_entries = array_slice( $log_entries, -20 ); // Show last 20 entries
+        $recent_entries = array_reverse( array_slice( $log_entries, -20 ) ); // Show last 20 entries, newest first
 
         echo '<div style="margin-bottom: 10px; font-size: 12px; color: #999;">';
         echo 'Total entries: <strong>' . intval( $total_entries ) . '</strong> | Log size: <strong>' . size_format( $file_size ) . '</strong>';
@@ -100,23 +132,15 @@ function df_create_debug_log_box() {
                         white-space: pre-wrap;">';
 
         foreach ( $recent_entries as $entry ) {
-            // Skip cron event logs to keep feed clean
-            if ( stripos( $entry, '[WP_CRON]' ) !== false ) {
-                continue;
-            }
-            
-            // Skip frequent POST EXPORT CRON status updates
-            if ( stripos( $entry, '[POST EXPORT CRON]' ) !== false ) {
+            // Only show error entries
+            if ( stripos( $entry, '[error]' ) === false ) {
                 continue;
             }
             
             // Convert UTC timestamp to site's local timezone
             $entry = df_convert_log_timestamp_to_local( $entry );
             
-            // Highlight only lines with [error] tag in ORANGE
-            $is_error = ( stripos( $entry, '[error]' ) !== false );
-            $highlight_style = $is_error ? 'color: #ff6b00; font-weight: bold;' : '';
-            echo '<li style="' . esc_attr( $highlight_style ) . ' margin-bottom: 15px;">' . wp_kses_post( $entry ) . '</li>';
+            echo '<li style="color: #ff6b00; font-weight: bold; margin-bottom: 15px;">' . wp_kses_post( $entry ) . '</li>';
         }
         echo '</ul>';
         
@@ -224,13 +248,17 @@ function df_display_full_log_page() {
                         max-height: 600px;">
                 <?php
                 $lines = explode( "\n", trim( $log_contents ) );
+                
+                // Filter to only show last 14 days
+                $lines = array_filter( $lines, function( $line ) {
+                    return df_is_entry_within_expiration( $line, 14 );
+                } );
+                
+                // Reverse to show newest first
+                $lines = array_reverse( $lines );
+                
                 foreach ( $lines as $line ) {
                     if ( ! empty( $line ) ) {
-                        // Skip cron event logs to keep log cleaner
-                        if ( stripos( $line, '[WP_CRON]' ) !== false ) {
-                            continue;
-                        }
-                        
                         // Convert UTC timestamp to site's local timezone
                         $line = df_convert_log_timestamp_to_local( $line );
                         

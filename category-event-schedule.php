@@ -2,9 +2,9 @@
 /**
  * Leap Conventions Schedule Template
  * Displays events from the Leap API
- * 
  * //TODO: Closeout Events as the time passes. 
  * //TODO: Add to calendar functionality (ICS file or Google Calendar link)
+ * //TODO: Move Schedule to a template part in the schedules folder
  * //FIXME: Replace hardcoded API key with dynamic ACF field value (currently for testing)
  */
 
@@ -38,8 +38,8 @@ if ( empty( $leap_api_key ) ) {
  * This section: Fetches the schedule data from Leap API and parses the response
  * ======================================================================== */
 
-// API URL - replace with actual values as needed
-$api_url = 'https://conventions.leapevent.tech/api/schedules?key=3fafe43a-11c0-4c3b-8694-3b7792a80c3d';
+// API URL - uses ACF field for security
+$api_url = 'https://conventions.leapevent.tech/api/schedules?key=' . urlencode( $leap_api_key );
 
 // Fetch data from API
 $response = wp_remote_get( $api_url, array(

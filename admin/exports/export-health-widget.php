@@ -88,31 +88,18 @@ function fanx_render_export_health_widget() {
  * Render the scheduler tab for one-time exports
  */
 function fanx_render_export_scheduler_tab() {
-    // Auto-clear any stuck/past exports on every page load
-    $scheduled_time = wp_next_scheduled( 'fanx_one_time_export_cron' );
-    if ( $scheduled_time && $scheduled_time < time() ) {
-        wp_unschedule_event( $scheduled_time, 'fanx_one_time_export_cron' );
-        error_log( '[EXPORT SCHEDULER] Auto-cleared past export that was scheduled for ' . wp_date( 'Y-m-d H:i:s', $scheduled_time ) );
-        $scheduled_time = false; // Refresh for display
-    }
+    $scheduled_timestamp = get_option( 'fanx_scheduled_user_export' );
     
     echo '<div style="padding: 10px;">';
     
     // Check if an export is currently scheduled
-    $scheduled_time = wp_next_scheduled( 'fanx_one_time_export_cron' );
+    $scheduled_timestamp = get_option( 'fanx_scheduled_user_export' );
     
-    if ( $scheduled_time ) {
+    if ( $scheduled_timestamp ) {
         echo '<div style="background: #e3f2fd; border: 1px solid #2196f3; padding: 10px; margin: 10px 0; border-radius: 3px;">';
         echo '<strong style="color: #1976d2;">📅 Full Site Export Scheduled</strong><br>';
-        echo 'Next export: ' . esc_html( wp_date( 'Y-m-d H:i:s', $scheduled_time ) ) . '<br>';
+        echo 'Next export: ' . esc_html( wp_date( 'Y-m-d H:i:s', $scheduled_timestamp ) ) . '<br>';
         echo '</div>';
-        
-        // Clear button for stuck exports
-        echo '<p style="margin: 15px 0;">';
-        echo '<button class="button button-secondary" id="fanx-clear-export-btn" data-nonce="' . esc_attr( wp_create_nonce( 'fanx_schedule_export' ) ) . '">';
-        echo '✕ Clear Scheduled Export';
-        echo '</button>';
-        echo '</p>';
     } else {
         echo '<div style="background: #f5f5f5; border: 1px solid #ddd; padding: 10px; margin: 10px 0; border-radius: 3px;">';
         echo '<strong>No exports scheduled</strong>';
@@ -126,11 +113,18 @@ function fanx_render_export_scheduler_tab() {
     echo '<small style="display: block; color: #666; margin-top: 4px;">Defaults to 1 hour from now</small>';
     echo '</div>';
     
-    // Schedule Button
+    // Schedule Button & Clear Button (side by side)
     echo '<p style="margin: 15px 0;">';
     echo '<button class="button button-primary" id="fanx-schedule-export-btn" data-nonce="' . esc_attr( wp_create_nonce( 'fanx_schedule_export' ) ) . '">';
     echo '⏱️ Schedule Export';
     echo '</button>';
+    
+    if ( $scheduled_timestamp ) {
+        echo '&nbsp;';
+        echo '<button class="button button-secondary" id="fanx-clear-export-btn" data-nonce="' . esc_attr( wp_create_nonce( 'fanx_schedule_export' ) ) . '">';
+        echo '✕ Clear Scheduled Export';
+        echo '</button>';
+    }
     echo '</p>';
     
     // Loading indicator

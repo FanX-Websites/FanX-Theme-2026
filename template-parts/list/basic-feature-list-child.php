@@ -1,38 +1,73 @@
-<?php
-/**
- * Template Name: XP Status Category/Archive Pages 
- * @author FanXTheme2026
+<?php 
+/** Template Part: Basic Features/Activities List - eXperiences
  * 
- * Notes: 
- * //TODO: 
+ * Feature Category Page Template Part - Child Categories ONLY
+ * 
+ * //NOTE: Headers are not included in this template part - Add header to template part parent div. 
+ * Header Div Class: 
+ * 
  */
-
-get_header(); /** body- main-site */
 ?>
-<!-- Category Page Body -->
+<div class="featured-guest-list-section self-centered-column">
 
-    <!--------------- Page Header Container [Template Part] ----------------------->
-    <div class="container">
-        <?php get_template_part('template-parts/page-header'); ?>
-    </div><!-- END page-header Container -->
-    <!------------ END Page Header Container -------------------->
-
-    <!-------------------------- Main Content Area --------------------->
-    <div class="cat-tax grid-container">
-        <?php
-        // Query guests CPT for the current xp-status taxonomy
+<!-------------------------- Basic Features/Activities List --------------------->
+    <div class="cat-tax grid-container" id="features"> 
+        <?php 
+        // Query features CPT for the current xp taxonomy or category, excluding postponed xp-status
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-        $args = array(
-            'post_type' => 'guests',
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'xp-status',
+        
+        // Build tax_query based on whether we're on a category page
+        $tax_query = array();
+        
+        if ( is_category() ) {
+            // On a category page: get parent if this is a child category
+            $current_term = get_queried_object();
+            $category_id = $current_term->term_id;
+            
+            // If this is a child category, use the parent ID
+            if ( $current_term->parent !== 0 ) {
+                $category_id = $current_term->parent;
+            }
+            
+            $tax_query[] = array(
+                'taxonomy' => 'category',
+                'field' => 'term_id',
+                'terms' => $category_id,
+            );
+        } else {
+            // Not on a category page: filter by xp taxonomy (child terms only)
+            $xp_term_id = get_queried_object_id();
+            
+            // Get child xp terms
+            $child_terms = get_terms( array(
+                'taxonomy' => 'xp',
+                'parent' => $xp_term_id,
+                'fields' => 'ids',
+            ) );
+            
+            // Include only child terms
+            if ( ! empty( $child_terms ) && ! is_wp_error( $child_terms ) ) {
+                $tax_query[] = array(
+                    'taxonomy' => 'xp',
                     'field' => 'term_id',
-                    'terms' => get_queried_object_id(),
-                ),
-            ),
+                    'terms' => $child_terms,
+                );
+            }
+        }
+        
+        // Always exclude postponed items
+        $tax_query[] = array(
+            'taxonomy' => 'xp-status',
+            'field' => 'slug',
+            'terms' => 'postponed',
+            'operator' => 'NOT IN',
+        );
+        
+        $args = array(
+            'post_type' => 'features',
+            'tax_query' => $tax_query,
             'nopaging' => true,
-            'meta_key' => 'info_display_order',
+            'meta_key' => 'info_display_order', 
             'orderby' => 'meta_value_num',
             'order' => 'ASC',
         );
@@ -40,10 +75,8 @@ get_header(); /** body- main-site */
         if ( $query->have_posts() ) : ?>
         <?php
         while ( $query->have_posts() ) : $query->the_post();
-            // Determine postponed status once per loop iteration
-            $is_postponed = has_term( 'postponed', 'xp-status', get_the_ID() );
             ?>
-        <!------------------- Post (Guest) Block --------------------->
+        <!------------------- Post (Feature/Activity) Block --------------------->
         <div class="post-block block">
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -54,11 +87,6 @@ get_header(); /** body- main-site */
                         <a href="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail( 'medium' ); ?>
                         </a>
-                        <?php if ( $is_postponed ) : ?>
-                            <div class="postponed-overlay">
-                                <span class="postponed-text cat">Postponed</span>
-                            </div>
-                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
                 <!-- END Post Thumbnail -->
@@ -92,7 +120,7 @@ get_header(); /** body- main-site */
         </div>
         <!-- END Post Block -------------------->
 
-        <!-- No Posts Message -->
+          <!-- No Posts Message  & filler posts -->
         <?php
             endwhile;
             wp_reset_postdata();
@@ -108,23 +136,17 @@ get_header(); /** body- main-site */
                 }
             endif;
         endif;
-        wp_reset_postdata();
-        ?><!-- END No Posts Message -->
-    </div><!-- END cat-tax grid-container -->
-    <!----- END Main Content Area----------------->
+        ?>
+        <!-- END No Posts Message -->
 
+
+    </div><!-- END cat-tax grid-container -->
+    
     <?php
     if ( ! $query->have_posts() ) :
         get_template_part( 'template-parts/coming-soon' );
     endif;
     ?>
-
-        <!-- Small Print Section -->
-    <div class="container">
-        <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
-    </div>
-    <!--- END Small Print Section -->
-
-<?php
-get_footer();
-?>
+    <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
+    <!----- END Guest List ----------------->
+</div><!----- END Featured Guest List Section ---------->

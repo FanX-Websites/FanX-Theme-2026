@@ -1027,7 +1027,8 @@ Automatically populates when Group Photo Op Product is pushed live.',
 					'name' => 'multi_post_ids',
 					'aria-label' => '',
 					'type' => 'post_object',
-					'instructions' => '[gal_multi_post_ids]',
+					'instructions' => '[gal_multi_post_ids]
+Will ALSO add this post to the announcement section of all profiles selected.',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -1048,7 +1049,7 @@ Automatically populates when Group Photo Op Product is pushed live.',
 					'save_custom' => 0,
 					'save_post_status' => 'publish',
 					'acfe_bidirectional' => array(
-						'acfe_bidirectional_enabled' => '1',
+						'acfe_bidirectional_enabled' => true,
 						'acfe_bidirectional_related' => array(
 							0 => 'field_69fa774448d6d',
 							1 => 'field_69fa640081616',
@@ -1217,7 +1218,7 @@ Automatically populates when Group Photo Op Product is pushed live.',
 					'save_custom' => 0,
 					'save_post_status' => 'publish',
 					'acfe_bidirectional' => array(
-						'acfe_bidirectional_enabled' => '1',
+						'acfe_bidirectional_enabled' => true,
 						'acfe_bidirectional_related' => array(
 							0 => 'field_69fa640081616',
 						),
@@ -1779,17 +1780,16 @@ Automatically populates when Group Photo Op Product is pushed live.',
 	'display_title' => 'Blog Posts',
 	'allow_ai_access' => false,
 	'ai_description' => '',
-	'acfe_autosync' => array(
-		0 => 'php',
-		1 => 'json',
-	),
-	'acfe_permissions' => '',
-	'acfe_form' => 1,
-	'acfe_meta' => '',
-	'acfe_note' => '',
-	'modified' => 1779746079,
+	'modified' => 1781628589,
 	'acfe_categories' => array(
 		'blog-posts' => 'Blog Posts',
+	),
+	'acfe' => array(
+		'advanced' => 1,
+		'autosync' => array(
+			0 => 'php',
+			1 => 'json',
+		),
 	),
 ));
 

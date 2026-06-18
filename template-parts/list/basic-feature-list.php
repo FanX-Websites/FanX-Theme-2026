@@ -1,33 +1,77 @@
 <?php 
-/** Template Part: Basic Guest List - eXperiences
+/** Template Part: Basic Features/Activities List - eXperiences
  * 
- * Guest List for Current Category
- *
+ * Feature Category Page Template Part - Current Category ONLY
+ * 
+ * //NOTE: Headers are not included in this template part - Add header to template part parent div. 
+ * Header Div Class: 
  * 
  */
 ?>
 <div class="featured-guest-list-section self-centered-column">
 
-<!-------------------------- Basic Guest list --------------------->
-    <div class="cat-tax grid-container" id="guests"> 
+<!-------------------------- Basic Features/Activities List --------------------->
+    <div class="cat-tax grid-container" id="features"> 
         <?php 
-        // Query guests CPT for the current xp taxonomy, excluding postponed xp-status
+        // Query features CPT for the current xp taxonomy or category, excluding postponed xp-status
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-        $args = array(
-            'post_type' => 'guests',
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'xp', //Filter by current XP taxonomy term
+        
+        // Build tax_query based on whether we're on a category page
+        $tax_query = array();
+        
+        if ( is_category() ) {
+            // On a category page: get parent if this is a child category
+            $current_term = get_queried_object();
+            $category_id = $current_term->term_id;
+            
+            // If this is a child category, use the parent ID
+            if ( $current_term->parent !== 0 ) {
+                $category_id = $current_term->parent;
+            }
+            
+            $tax_query[] = array(
+                'taxonomy' => 'category',
+                'field' => 'term_id',
+                'terms' => $category_id,
+            );
+        } else {
+            // Not on a category page: filter by xp taxonomy (parent term only)
+            $xp_term_id = get_queried_object_id();
+            
+            $tax_query[] = array(
+                'taxonomy' => 'xp',
+                'field' => 'term_id',
+                'terms' => $xp_term_id,
+            );
+            
+            // Exclude child xp terms
+            $child_terms = get_terms( array(
+                'taxonomy' => 'xp',
+                'parent' => $xp_term_id,
+                'fields' => 'ids',
+            ) );
+            
+            if ( ! empty( $child_terms ) && ! is_wp_error( $child_terms ) ) {
+                $tax_query[] = array(
+                    'taxonomy' => 'xp',
                     'field' => 'term_id',
-                    'terms' => get_queried_object_id(),
-                ),
-                array(
-                    'taxonomy' => 'xp-status',
-                    'field' => 'slug',
-                    'terms' => 'postponed', //Excluded Terms 
+                    'terms' => $child_terms,
                     'operator' => 'NOT IN',
-                ),
-            ),
+                );
+            }
+        }
+        
+        // Always exclude postponed items
+        $tax_query[] = array(
+            'taxonomy' => 'xp-status',
+            'field' => 'slug',
+            'terms' => 'postponed',
+            'operator' => 'NOT IN',
+        );
+        
+        $args = array(
+            'post_type' => 'features',
+            'tax_query' => $tax_query,
             'nopaging' => true,
             'meta_key' => 'info_display_order', 
             'orderby' => 'meta_value_num',
@@ -38,7 +82,7 @@
         <?php
         while ( $query->have_posts() ) : $query->the_post();
             ?>
-        <!------------------- Post (Guest) Block --------------------->
+        <!------------------- Post (Feature/Activity) Block --------------------->
         <div class="post-block block">
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

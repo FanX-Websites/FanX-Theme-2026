@@ -29,14 +29,22 @@
         }
     ?> 
     </div><!-- END appear-days -->
+
+    <!--- Appearance Location/Booth Info --->
     <div class="appear-block">
         <?php 
-            $sched = get_field('sched', get_the_ID());
-            $vend_booth = is_array($sched) ? ($sched['room_booth'] ?? '') : '';
-            
-            if ( $vend_booth ) {
-                echo wp_kses_post($vend_booth);
+            // Load booth location function
+            $leap_space_file = get_template_directory() . '/leap/space.php';
+            if ( file_exists( $leap_space_file ) ) {
+                require_once( $leap_space_file );
+                $vend_booth = get_booth_location( get_the_ID() );
+                
+                if ( $vend_booth ) {
+                    echo '<strong>Location:</strong> ';
+                    echo wp_kses_post($vend_booth);
+                }
             }
             ?>
     </div><!-- END appear-loca -->
+
 </div><!-- END Appearance Info Block -->

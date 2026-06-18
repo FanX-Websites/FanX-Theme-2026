@@ -43,6 +43,8 @@ get_header(); /** body- main-site */
         if ( $query->have_posts() ) : ?>
         <?php
         while ( $query->have_posts() ) : $query->the_post();
+            // Determine postponed status once per loop iteration
+            $is_postponed = has_term( 'postponed', 'xp-status', get_the_ID() );
             ?>
         <!------------------- Post (Guest) Block --------------------->
         <div class="post-block block">
@@ -55,7 +57,7 @@ get_header(); /** body- main-site */
                         <a href="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail( 'medium' ); ?>
                         </a>
-                        <?php if ( has_term( 'postponed', 'xp-status', get_the_ID() ) ) : ?>
+                        <?php if ( $is_postponed ) : ?>
                             <div class="postponed-overlay">
                                 <span class="postponed-text cat">Postponed</span>
                             </div>

@@ -2,6 +2,15 @@
 /** Template Part: Multi-post Gallery 
  * 
  * Templates used in: Default Profiles (single.php)
+ * 
+ * Populates using ACF Fields - Multi-Post Gallery 
+ * 
+ * When used with: 
+ * Products CPT (Photo Ops) - Bidirectional w/ "Group Photo ops Featured in" field on Guest Profiles - eXperience Block
+ * Blog CPT - Bidirectional with Guests, Features, and Product Posts - Announcements & Updates Section 
+ * Features CPT - Bidirectional w/ "Featured In (eXperiences)" field on Guest Profiles - eXperience Block
+ * 
+ ** Bidirectionals are managed through ACF Field Groups
  */
 ?> 
 

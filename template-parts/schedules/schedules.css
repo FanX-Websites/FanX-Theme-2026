@@ -9,7 +9,7 @@ Author URI: https://DancingFraxinus.com/ */
     margin: 0 auto;
     max-width: 1500px;
     width: 90%;
-    padding: 3%;
+    padding: 0;
 }
 
 
@@ -20,7 +20,7 @@ Author URI: https://DancingFraxinus.com/ */
 } */
 
 /* ====== SCHEDULE DAY TITLE ====== */
-#schedule-day-title {
+#schedule-day-title{
     text-align: center;
     font-size: clamp(2rem, 5vw, 3.5rem);
     line-height: 1.2;
@@ -37,12 +37,56 @@ Author URI: https://DancingFraxinus.com/ */
     color: var(--color_prim_brht);
 }
 
+.panel.schedule-tag-filter-info{
+    margin: 0 auto; 
+    padding: 0; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex; 
+    color: var(--color_prim_lght);
+}
+
 /* ====== DAY FILTER TABS ====== */
 .schedule-day-filters {
     margin-bottom: 2rem;
 }
 
 /* Day tabs use .button-group and .button classes from fanx.css */
+
+
+/* Venue Tabs */
+.venue-tab{
+    background-color: transparent;
+    color: var(--color_prim_lght);
+    border: none;
+    padding: 0; 
+    margin: 0 auto;
+    font-size: 1em;
+}
+.venue-tab.active{
+    font-size: 1.25em;
+    color: var(--color_base_lght);
+    font-weight: 400;
+}
+.venue-tab:hover {
+    color: var(--color_base_brht);
+    opacity: 0.8;
+}
+
+.venue-tab-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 1px;
+    border-radius: 0;
+    width: 90%;
+    gap: 6px;
+    max-width: 900px;
+}
 
 /* ====== EVENTS LIST ====== */
 /* All events now flow in grid-containers within each time-slot */
@@ -102,10 +146,12 @@ Author URI: https://DancingFraxinus.com/ */
 }
 
 .time-slot .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     margin: 0;
-    padding: 0 0 2.5rem 0;
-    justify-items: center;
-    gap: 1%;
+    padding: 1rem 0 2.5rem 0;
+    justify-items: stretch;
+    gap: 1.5rem;
 }
 
 /* ====== EVENT CARDS ====== */
@@ -115,7 +161,7 @@ Author URI: https://DancingFraxinus.com/ */
     /* border: 1px solid var(--color_lght); */
     border-radius: 42px;
     border-bottom-right-radius: 0;
-    padding: 5%;
+    padding: 15px;
     /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
     /* transition: box-shadow 0.3s ease; */
     margin: 0;
@@ -186,12 +232,14 @@ Author URI: https://DancingFraxinus.com/ */
     line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
 .event-description.expanded {
     -webkit-line-clamp: unset;
+    line-clamp: unset;
 }
 
 .read-more-btn {
@@ -274,6 +322,13 @@ Author URI: https://DancingFraxinus.com/ */
 .clear-filter-btn:hover {
     opacity: 0.8;
 }
+.day-tab{
+    color: var(--color_fnt_wht);
+}
+.day-tab.active {
+    background-color: var(--color_prim);
+    color: var(--color_fnt_wht);
+}
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
@@ -293,4 +348,42 @@ Author URI: https://DancingFraxinus.com/ */
 /* ====== UTILITY: HIDDEN STATE ====== */
 .hidden {
     display: none !important;
+}
+
+
+/* Profile Page Schedules */
+
+.guest-schedule-item {
+    padding: 5%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 1px solid var(--color_base);
+    border-radius: 0;
+}
+
+h4.guest-event-title {
+    color: var(--color_base_brht);
+    font-size: 1em;
+    text-align: left;
+    line-height: 1.25em;
+    margin: 0 auto;
+    padding: 1%;
+}
+
+.guest-schedule-item-details {
+    color: var(--color_lght);
+    font-size: .85em;
+    line-height: 1.25em;
+}
+
+span.day-name {
+    font-weight: bold;
+
+}
+
+.schedule-list{
+    width: 100%; 
 }

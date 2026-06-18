@@ -6,7 +6,7 @@
  * Pulls from ACF Options Page fields: event_name, event_timer
  * 
  * Notes: 
- * Make the Countdown message change from 'is coming in' to 'is happening now' when the date is reached.
+ * //WARNING: Temp Event Specific Messaging - Make Dynamic
 */
 
 ?> 
@@ -14,9 +14,12 @@
 <div class="countdown-fp-block fill"><!-- Countdown Block styling within parent div ---> 
     <div class="countdown-layout"> <!-- Countdown Inner Layout w/Fill-->
         
-        <!-- Countdown Title -->
-            <p>See You in...</p>
-            <!--ADD conditional connected to countdown date field HERE -->
+        <!-- Countdown Title --> 
+            <?php if ( fanx_is_event_mode_enabled() ) : ?> 
+                <p>ICC26 is happening NOW</p>
+            <?php else : ?>
+                <p>See You in...</p>
+            <?php endif; ?>
         <!-- END Countdown Title -->
 
     <!-- Count Down Timer Section -->
@@ -26,27 +29,49 @@
         <?php echo esc_attr( $event_date ); ?>">
 
         <!-- Countdown Timer -->
-        <div class="countdown-timer self-centered-inside">
-            <div class="countdown-item"><!-- DAYS -->
-                <div class="countdown-value" id="days">00</div>
-                <div class="countdown-label">Days</div>
-            </div><!-- END Countdown DAYS-->
-            <div class="countdown-separator">:</div>
-            <div class="countdown-item"><!-- HOURS -->
-                <div class="countdown-value" id="hours">00</div>
-                <div class="countdown-label">Hours</div>
-            </div><!-- END Countdown HOURS-->
-            <div class="countdown-separator">:</div>
-            <div class="countdown-item"><!--MINUTES -->
-                <div class="countdown-value" id="minutes">00</div>
-                <div class="countdown-label">Minutes</div>
-            </div><!-- END Countdown MINUTES-->
-            <div class="countdown-separator">:</div>
-            <div class="countdown-item"><!-- SECONDS -->
-                <div class="countdown-value" id="seconds">00</div>
-                <div class="countdown-label">Seconds</div>
-            </div><!-- END Countdown SECONDS-->
-        </div>
+        <?php if ( fanx_is_event_mode_enabled() ) : ?>
+            <div class="cd-live-event">
+                <p>Come Join Us!</p>
+                <?php
+                    $ticket_url = get_field( 'tkt_url', 'option' );
+                    if ( $ticket_url ) :
+                        // Handle ACF link field (returns array) or string URL
+                        $link_url = is_array( $ticket_url ) ? $ticket_url['url'] : $ticket_url;
+                        $link_target = is_array( $ticket_url ) ? $ticket_url['target'] : '_self';
+                        if ( $link_url ) :
+                            ?>
+                            <div class="button-group">
+                                <a href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>" class="button button-left">Grab Tickets Now</a>
+                                <a href="<?php echo esc_url( home_url( '/app' ) ); ?>" class="button button-right">Download App</a>
+                            </div>
+                            <?php
+                        endif;
+                    endif;
+                ?>
+            </div>
+        <?php else : ?>
+            <div class="countdown-timer self-centered-inside">
+                <div class="countdown-item"><!-- DAYS -->
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div><!-- END Countdown DAYS-->
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item"><!-- HOURS -->
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div><!-- END Countdown HOURS-->
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item"><!--MINUTES -->
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div><!-- END Countdown MINUTES-->
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item"><!-- SECONDS -->
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div><!-- END Countdown SECONDS-->
+            </div>
+        <?php endif; ?>
         <!-- END Countdown Timer -->
     
     </div><!-- END Countdown Container -->

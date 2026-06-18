@@ -54,6 +54,35 @@ Author URI: https://DancingFraxinus.com/
     font-family: inherit;
 }
 
+  .countdown-container>.cd-live-event p{
+    font-size: clamp(3.5rem, 3vw, 3.5em);
+    line-height: 1.25em;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color_fnt_wht);
+}
+.cd-live-event a.button{
+  padding: 0; 
+  margin: 0 auto;
+  font-size: 1.25em;
+  line-height: 1.25em;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: var(--color_acc);
+}
+.cd-live-event a.button:hover{
+  padding: 0;
+  margin: 0 auto;
+  font-size: 1.25em;
+  line-height: 1.25em;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: var(--color_acc);
+  border: solid 8px var(--color_acc);
+}
+
+
 
 /** Grid Column 2 - FP Updates Feed */
 
@@ -189,6 +218,40 @@ Author URI: https://DancingFraxinus.com/
 
 /* END Featured Image/Description Section */ 
 
+/* Featured Posts List Section */
+
+  .section-header{
+    background-color: white;
+    width: 95%;
+    max-width: 1000px;
+    padding: 2%;
+    margin: 0 auto;
+    border-radius: 200px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .section-header h2{
+    font-size: clamp(1.5rem, 3vw, 3em);
+    line-height: 1.25em;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color_fnt_blk);
+    width: 100%;
+    padding: 0;
+    margin: 0
+  }
+  .section-header p{
+    width: 100%;
+    text-align: center;
+    padding: 0%; 
+    margin: 0 auto;
+    font-size: 1.25em; 
+    color: var(--color_fnt_blk);
+  }
 
 /* ------------- Content Blocks Section ------------> 
 - Refer to Wireframes in Style.css for layouts, breakpoints - */
@@ -897,15 +960,13 @@ line-height: 1.5em;
 .guest-xp-card {
   padding: 0;
   margin: 0 auto;
-  max-width: 1200px;
   border-radius: 0;
-  display: grid;
-  width: 100%;
+  height: auto;
+  width: 90%;
 }
 
 .grid-block.xp-block{
-  border: 1px solid var(--color_acc_lght);
-  background-color: var(--color_acc);
+  border-bottom: 1px solid var(--color_base);
   border-radius: 0;
   font-size: 1em;
   font-weight: 100;
@@ -1151,4 +1212,9 @@ line-height: 1.5em;
   justify-content: center;
   flex-direction: column;
 }
+
+/** Guest Schedule Template Part ------ **/
+
+
+/** END Guest Schedule Template Part ------ */
 

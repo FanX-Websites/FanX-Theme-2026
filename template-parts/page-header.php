@@ -30,37 +30,39 @@
                 </h1><!-- END Page Title -->
             
                     
-                <!-- Subtitle -->   
-                        <?php 
-                            $queried_object = get_queried_object();
-                            $field_key = '';
-                            
-                            // Determine correct ACF field key based on object type
-                                if ($queried_object && isset($queried_object->taxonomy)) {
-                                    // For term/taxonomy:
-                                    $field_key = 'term_' . $queried_object->term_id;
-                                } else {
-                                    // For post/page:
-                                    $field_key = get_the_ID();
-                                }
-                            $subtitle = get_field('heafoo_subtitle', $field_key);
-                                if ( $subtitle ) {
-                        ?>
-                    <h2 class="page-subtitle"> <!--- Subtitle -->
+                <!-- Subtitle -->  
+                <div class="page-subtitle">
+                    <?php 
+                        $queried_object = get_queried_object();
+                        $field_key = '';
+                        
+                        // Determine correct ACF field key based on object type
+                            if ($queried_object && isset($queried_object->taxonomy)) {
+                                // For term/taxonomy:
+                                $field_key = 'term_' . $queried_object->term_id;
+                            } else {
+                                // For post/page:
+                                $field_key = get_the_ID();
+                            }
+                        $subtitle = get_field('heafoo_subtitle', $field_key);
+                            if ( $subtitle ) {
+                    ?>
+                    <h2> <!--- Subtitle -->
                         <?php echo $subtitle; ?>
                     </h2><!-- END Subtitle -->
                         <?php } ?>
-                
+                </div><!-- END Subtitle -->
+                <div class="page-subtext">
                 <!-- Subtext -->
-                        <?php 
-                            $subtext = get_field('heafoo_subtext', $field_key);
-                                if ( $subtext ) {
-                        ?>
-                    <p class="page-subtext">  <!--- Subtext -->
+                    <?php 
+                        $subtext = get_field('heafoo_subtext', $field_key);
+                            if ( $subtext ) {
+                    ?>
+                    <p><!--- Subtext -->
                         <?php echo $subtext; ?>
                     </p><!-- END Subtext -->
                         <?php } ?>
-                
+                </div><!-- END Subtext -->
         </div><!-- END Page Title Block -->
     </div><!-- END Page Header Block -->
 </div><!-- END Page Header Section -->

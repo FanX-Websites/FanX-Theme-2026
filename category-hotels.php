@@ -39,8 +39,10 @@ get_header(); /** body- main-site */
         if ( $query->have_posts() ) : ?>
         <?php
         while ( $query->have_posts() ) : $query->the_post();
+            // Determine rooms-booked status once per loop iteration
+            $is_rooms_booked = has_term( 'rooms-booked', 'xp-status', get_the_ID() );
             ?>
-        <!------------------- Post Block --------------------->
+        <!------------------- Post Block ------------------->
         <div class="post-block block">
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -64,7 +66,7 @@ get_header(); /** body- main-site */
                         <a href="<?php echo esc_url( $button_url ); ?>" target="_blank">
                             <?php the_post_thumbnail( 'medium' ); ?>
                         </a>
-                        <?php if ( has_term( 'rooms-booked', 'xp-status', get_the_ID() ) ) : ?>
+                        <?php if ( $is_rooms_booked ) : ?>
                             <div class="postponed-overlay">
                                 <span class="postponed-text cat">ROOMS BOOKED</span>
                             </div>

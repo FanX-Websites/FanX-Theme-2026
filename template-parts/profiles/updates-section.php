@@ -22,7 +22,14 @@
         }
     }
     
-    // Only render if there are posts to display
+    // Filter to only include blog posts, excluding products
+    $posts_to_display = array_filter($posts_to_display, function($post_item) {
+        $post_id = is_object($post_item) ? $post_item->ID : $post_item;
+        $post = get_post($post_id);
+        return $post && $post->post_type === 'post';
+    });
+    
+    // Only render if there are valid posts to display
     if (empty($posts_to_display)) {
         return;
     }

@@ -163,7 +163,7 @@
                     "name": "display_order",
                     "aria-label": "",
                     "type": "number",
-                    "instructions": "<b>Celebrities:<\/b>Top 100 - Mid 150 | <b>Voice:<\/b> Mid 150 - 200 | <b>Comics:<\/b> 200 | <b>Authors:<\/b> 300 | <b>Artists:<\/b> 400 | <b>Panelists\/Vendors:<\/b> 500",
+                    "instructions": "<b>Special Events:<\/b> 900 | <b>Features:<\/b> 1000 | <b>Activities<\/b> 1100 | <b>Celeb Booths:<\/b> 1200 | <b>Food:<\/b> 1300 | <b>Vehicles:<\/b>1400",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -171,13 +171,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": 1,
                     "default_value": "",
                     "acfe_settings": "",
                     "acfe_validate": "",
@@ -277,7 +270,9 @@
                     ],
                     "post_status": "",
                     "taxonomy": [
-                        "blog:event-updates-announcements"
+                        "blog:event-updates-announcements",
+                        "xp:special-events",
+                        "category:nightlife"
                     ],
                     "return_format": "id",
                     "multiple": 1,
@@ -1090,7 +1085,8 @@
                         "id": ""
                     },
                     "post_type": [
-                        "guests"
+                        "guests",
+                        "partner"
                     ],
                     "post_status": "",
                     "taxonomy": "",
@@ -1535,6 +1531,24 @@
             "acfe_permissions": "",
             "sub_fields": [
                 {
+                    "key": "field_6a1a7788b775d",
+                    "label": "(Column 6\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "6\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
                     "key": "field_6a0b86e389585",
                     "label": "Room\/Booth Number",
                     "name": "room_booth",
@@ -1557,6 +1571,72 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": ""
+                },
+                {
+                    "key": "field_6a1a77a1b775f",
+                    "label": "Guest Schedule",
+                    "name": "guest",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "The content here appears in the schedule tab when there is no events in the leap schedule. \r\nIf guest shares a schedule, post it here.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "[page_title] doesn't have a schedule posted here.\r\nStop by [acf field=\"sched_room_booth\"] to see what they're up to!",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 1
+                },
+                {
+                    "key": "field_6a1e7a07adfab",
+                    "label": "Guest eXperiences",
+                    "name": "guest_xp",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "The content here appears in the schedule tab when there is no events in the leap schedule. \r\nIf guest shares a schedule, post it here.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 1
+                },
+                {
+                    "key": "field_6a1a7790b775e",
+                    "label": "(Column 6\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "6\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
                 }
             ],
             "acfe_group_modal_close": 0,
@@ -1665,6 +1745,25 @@
             "acfe_group_modal_close": 0,
             "acfe_group_modal_button": "",
             "acfe_group_modal_size": "large"
+        },
+        {
+            "key": "field_6a1f7ffc07458",
+            "label": "Remote Location (copy)",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 1,
+            "acfe_permissions": ""
         },
         {
             "key": "field_6a03999f6c523",
@@ -1832,15 +1931,14 @@
     "display_title": "Feature & Activity Profiles",
     "allow_ai_access": false,
     "ai_description": "",
-    "acfe_autosync": [
-        "php",
-        "json"
-    ],
-    "acfe_permissions": "",
-    "acfe_form": 1,
-    "acfe_meta": "",
-    "acfe_note": "",
-    "modified": 1779141644,
+    "acfe": {
+        "autosync": [
+            "php",
+            "json"
+        ],
+        "advanced": "1"
+    },
+    "modified": 1780612230,
     "acfe_categories": {
         "profile-pages": "Profile Pages"
     }

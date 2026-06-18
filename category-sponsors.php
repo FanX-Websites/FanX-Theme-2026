@@ -42,7 +42,7 @@ get_header(); /** body- main-site */
                 <!-- -- Post Thumbnail -->
                 <?php if ( has_post_thumbnail() ) : ?>
                     <div class="post-thumbnail">
-                        <a href="<?php echo esc_url( get_field( 'butt_feat_url' ) ); ?>" target="_blank">
+                        <a href="<?php echo esc_url( get_field('button')[0]['url'] ); ?>" target="_blank">
                             <?php the_post_thumbnail( 'medium' ); ?>
                         </a>
                     </div>

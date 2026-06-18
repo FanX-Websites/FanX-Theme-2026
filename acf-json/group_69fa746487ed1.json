@@ -1012,7 +1012,7 @@
                     "name": "multi_post_ids",
                     "aria-label": "",
                     "type": "post_object",
-                    "instructions": "[gal_multi_post_ids]",
+                    "instructions": "[gal_multi_post_ids]\r\nWill ALSO add this post to the announcement section of all profiles selected.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -1773,7 +1773,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1779144880,
+    "modified": 1779947482,
     "acfe_categories": {
         "blog-posts": "Blog Posts"
     }

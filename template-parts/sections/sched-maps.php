@@ -63,16 +63,19 @@ if (empty($map_master_list) && empty($map_vend) && empty($map_misc)) {
                 </div>
                 <?php 
                     // Fetch vendor/booth data from Leap Events API
-                    $api_url = 'https://conventions.leapevent.tech/api/space_orders?key=3fafe43a-11c0-4c3b-8694-3b7792a80c3d';
+                    $leap_api_key = get_field( 'leap_api_key', 'option' );
                     
-                    $response = wp_remote_get( $api_url, array(
-                        'timeout'   => 10,
-                        'headers'   => array( 'accept' => 'application/json' )
-                    ) );
-                    
-                    if ( is_wp_error( $response ) ) {
-                        echo '<p>Error fetching vendor list: ' . esc_html( $response->get_error_message() ) . '</p>';
-                    } else {
+                    if ( ! empty( $leap_api_key ) ) {
+                        $api_url = 'https://conventions.leapevent.tech/api/space_orders?key=' . urlencode( $leap_api_key );
+                        
+                        $response = wp_remote_get( $api_url, array(
+                            'timeout'   => 10,
+                            'headers'   => array( 'accept' => 'application/json' )
+                        ) );
+                        
+                        if ( is_wp_error( $response ) ) {
+                            echo '<p>Error fetching vendor list: ' . esc_html( $response->get_error_message() ) . '</p>';
+                        } else {
                         $body = wp_remote_retrieve_body( $response );
                         $data = json_decode( $body, true );
                         
@@ -110,6 +113,9 @@ if (empty($map_master_list) && empty($map_vend) && empty($map_misc)) {
                                 // scroll-indicator moved above table with title
                             }
                         }
+                        }
+                    } else {
+                        echo '<p>API key not configured.</p>';
                     }
                 ?>
             </div>
