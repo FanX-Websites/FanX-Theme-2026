@@ -37,6 +37,9 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_697d2ee7de12e",
@@ -132,6 +135,27 @@
                         "id": ""
                     },
                     "default_value": "Appy SOON",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "Apply SOON",
+                    "prepend": "Status:",
+                    "append": ""
+                },
+                {
+                    "key": "field_6a3f298161805",
+                    "label": "Exhibitor\/Vendor Subtext",
+                    "name": "ex_sub_txt",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "[app_ex_sub_txt]",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
                     "placeholder": "Apply SOON",
@@ -237,6 +261,27 @@
                         "id": ""
                     },
                     "default_value": "Appy SOON",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "Apply SOON",
+                    "prepend": "Status:",
+                    "append": ""
+                },
+                {
+                    "key": "field_6a3f29c261807",
+                    "label": "Cosplay Alley Subtext",
+                    "name": "cos_sub_txt",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "[app_cos_sub_txt]",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
                     "placeholder": "Apply SOON",
@@ -402,6 +447,27 @@
                     "append": ""
                 },
                 {
+                    "key": "field_6a3f36a961808",
+                    "label": "Artist Alley BOOTH Subtext",
+                    "name": "art_sub_txt",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "[app_art_sub_txt]",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "Apply SOON",
+                    "prepend": "Status:",
+                    "append": ""
+                },
+                {
                     "key": "field_6908f786debbe",
                     "label": "Artist Alley BOOTH Link",
                     "name": "art_url",
@@ -500,6 +566,27 @@
                         "id": ""
                     },
                     "default_value": "Coming SOON",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "Apply SOON",
+                    "prepend": "Status:",
+                    "append": ""
+                },
+                {
+                    "key": "field_6a3f36e661809",
+                    "label": "Artist Alley TABLE Subtext",
+                    "name": "art_tbl_sub_txt",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "[app_art_tbl_sub_txt]",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
                     "placeholder": "Apply SOON",
@@ -632,7 +719,7 @@
                     "name": "ind_stat",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "[app_ind_stat]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -641,6 +728,27 @@
                         "id": ""
                     },
                     "default_value": "Apply SOON",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "Status:",
+                    "append": ""
+                },
+                {
+                    "key": "field_6a3f371c6180a",
+                    "label": "Artisan Crafter Subtext",
+                    "name": "ind_sub_txt",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "[app_ind_sub_txt]",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
                     "placeholder": "Apply SOON",
@@ -653,7 +761,7 @@
                     "name": "ind_url",
                     "aria-label": "",
                     "type": "acfe_advanced_link",
-                    "instructions": "",
+                    "instructions": "[app_ind_url]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -671,7 +779,7 @@
                     "name": "ind_wait",
                     "aria-label": "",
                     "type": "acfe_advanced_link",
-                    "instructions": "",
+                    "instructions": "[app_ind_wait]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -771,6 +879,27 @@
                     "append": ""
                 },
                 {
+                    "key": "field_6a3f374d6180b",
+                    "label": "Author\/Publisher Subtext",
+                    "name": "lit_sub_txt",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "[app_lit_sub_txt]",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "Apply SOON",
+                    "prepend": "Status:",
+                    "append": ""
+                },
+                {
                     "key": "field_69cd893ad9b9a",
                     "label": "Author\/Publisher Link",
                     "name": "lit_url",
@@ -842,10 +971,7 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "key": "field_69f03c62fe1d8",
@@ -1087,17 +1213,10 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "default_value": "Apply SOON",
+                    "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
-                    "placeholder": "Apply SOON",
+                    "placeholder": "",
                     "prepend": "Status:",
                     "append": ""
                 },
@@ -1168,7 +1287,7 @@
                     "name": "cos_judge_stat",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "[app_cos_judge_stat]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -1176,17 +1295,10 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "default_value": "Apply SOON",
+                    "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
-                    "placeholder": "Apply SOON",
+                    "placeholder": "",
                     "prepend": "Status:",
                     "append": ""
                 },
@@ -1196,7 +1308,7 @@
                     "name": "cos_judge_url",
                     "aria-label": "",
                     "type": "acfe_advanced_link",
-                    "instructions": "",
+                    "instructions": "[app_cos_judge_url]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -1204,13 +1316,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "post_type": "",
                     "taxonomy": "",
                     "allow_in_bindings": 1
@@ -1247,11 +1352,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Apply SOON",
+                    "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
-                    "placeholder": "Apply SOON",
-                    "prepend": "Status",
+                    "placeholder": "",
+                    "prepend": "Status:",
                     "append": ""
                 },
                 {
@@ -1714,14 +1819,13 @@
     "display_title": "Participant\/Partner Info - Options Page",
     "allow_ai_access": false,
     "ai_description": "",
-    "acfe_autosync": [
-        "php",
-        "json"
-    ],
-    "acfe_form": 0,
-    "acfe_meta": "",
-    "acfe_note": "",
-    "modified": 1777590967,
+    "acfe": {
+        "autosync": [
+            "php",
+            "json"
+        ]
+    },
+    "modified": 1782543372,
     "acfe_categories": {
         "options-pages": "Options Pages",
         "people": "People"

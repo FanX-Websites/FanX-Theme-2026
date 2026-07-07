@@ -1206,11 +1206,12 @@ line-height: 1.5em;
 /* Page Content Sections ----- */ 
 
 /** Coming Soon Template Part ------ **/
-.no-posts-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.coming-soon {
+  line-height: 1.5em; 
+}
+.coming-soon a{
+  color: white; 
+  text-decoration: none; 
 }
 
 /** Guest Schedule Template Part ------ **/

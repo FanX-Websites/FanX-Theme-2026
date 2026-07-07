@@ -3,6 +3,7 @@
  * ACF Quick Edit & Bulk Edit Support
  * 
  * Provides quick edit and bulk edit functionality for ACF fields in the admin posts list.
+ * //NOTE: refer to acf-quick-edit.js for related javascript
  */
 
 /**
@@ -13,10 +14,16 @@
  * @param string $field_label  The label to display in the edit form
  */
 function add_acf_field_to_quick_edit( $post_type, $acf_field, $field_label ) {
-	
+
+	// Resolve the ACF field once so a field key or name can be passed in.
+	// The list-table column id and the meta key both use the field's NAME,
+	// while get_field_object()/get_field() accept either the key or the name.
+	$field_object = get_field_object( $acf_field );
+	$field_name   = ( $field_object && ! empty( $field_object['name'] ) ) ? $field_object['name'] : $acf_field;
+
 	// Add to Quick Edit form
-	add_action( 'quick_edit_custom_box', function( $column_name, $post_type_name ) use ( $post_type, $acf_field, $field_label ) {
-		if ( $post_type_name !== $post_type || $column_name !== $acf_field ) {
+	add_action( 'quick_edit_custom_box', function( $column_name, $post_type_name ) use ( $post_type, $acf_field, $field_name, $field_label ) {
+		if ( $post_type_name !== $post_type || $column_name !== $field_name ) {
 			return;
 		}
 		
@@ -36,15 +43,15 @@ function add_acf_field_to_quick_edit( $post_type, $acf_field, $field_label ) {
 	}, 10, 2 );
 
 	// Add to Bulk Edit form
-	add_action( 'bulk_edit_custom_box', function( $column_name, $post_type_name ) use ( $post_type, $acf_field, $field_label ) {
-		if ( $post_type_name !== $post_type || $column_name !== $acf_field ) {
+	add_action( 'bulk_edit_custom_box', function( $column_name, $post_type_name ) use ( $post_type, $acf_field, $field_name, $field_label ) {
+		if ( $post_type_name !== $post_type || $column_name !== $field_name ) {
 			return;
 		}
 		acf_render_bulk_edit_field( $post_type, $acf_field, $field_label );
 	}, 10, 2 );
 
 	// Hook into save_post to handle quick-edit/bulk-edit field saves
-	add_action( 'save_post', function( $post_id ) use ( $post_type, $acf_field ) {
+	add_action( 'save_post', function( $post_id ) use ( $post_type, $field_name ) {
 		// Skip during autosave or if not the right post type
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
@@ -55,13 +62,36 @@ function add_acf_field_to_quick_edit( $post_type, $acf_field, $field_label ) {
 			return;
 		}
 
-		// Check if the field value is in POST (quick edit/bulk edit context)
-		if ( isset( $_POST[ $acf_field ] ) && $_POST[ $acf_field ] !== '' ) {
+		// Verify the request came from a legitimate Quick Edit or Bulk Edit form.
+		// Quick Edit saves via an AJAX POST and submits the `inlineeditnonce`
+		// nonce in `_inline_edit`. Bulk Edit submits the `#posts-filter` form
+		// (method="get"), so its values arrive in $_GET with the `bulk-posts`
+		// nonce in `_wpnonce`. Use $_REQUEST so both transports are covered.
+		$is_quick_edit = isset( $_REQUEST['_inline_edit'] )
+			&& wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['_inline_edit'] ) ), 'inlineeditnonce' );
+		$is_bulk_edit  = isset( $_REQUEST['_wpnonce'] )
+			&& wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ), 'bulk-posts' );
+
+		if ( ! $is_quick_edit && ! $is_bulk_edit ) {
+			return;
+		}
+
+		// Check if the field value is present (quick edit/bulk edit context).
+		// Quick Edit (AJAX) sends it in $_POST; Bulk Edit (GET form) sends it
+		// in $_GET, so read from $_REQUEST to handle both.
+		// Bulk Edit uses "-" as a "no change" sentinel, so treat it (and an
+		// empty string) as "skip this field".
+		if ( isset( $_REQUEST[ $field_name ] ) ) {
+			$value = wp_unslash( $_REQUEST[ $field_name ] );
+
+			if ( $value === '' || $value === '-' ) {
+				return;
+			}
+
 			if ( current_user_can( 'edit_post', $post_id ) ) {
-				// Directly update post meta without ACF processing
-				// This bypasses ACF's form validation which isn't present in quick-edit
-				$value = wp_unslash( $_POST[ $acf_field ] );
-				update_post_meta( $post_id, $acf_field, $value );
+				// Directly update post meta without ACF processing.
+				// This bypasses ACF's form validation which isn't present in quick-edit.
+				update_post_meta( $post_id, $field_name, $value );
 			}
 		}
 	}, 20 );
@@ -70,16 +100,18 @@ function add_acf_field_to_quick_edit( $post_type, $acf_field, $field_label ) {
 /**
  * Render an ACF field in the Quick Edit form
  */
-function acf_render_quick_edit_field( $post_type, $acf_field, $field_label, $post_id = 0 ) {
+function acf_render_quick_edit_field( string $post_type, string $acf_field, string $field_label, int $post_id = 0 ) {
 	$field_obj = get_field_object( $acf_field );
 	$field_type = isset( $field_obj['type'] ) ? $field_obj['type'] : 'text';
+	// Use the field NAME for the input so it matches the meta key read on save.
+	$field_name = ( $field_obj && ! empty( $field_obj['name'] ) ) ? $field_obj['name'] : $acf_field;
 	$current_value = $post_id ? get_field( $acf_field, $post_id ) : '';
 	?>
 	<fieldset class="inline-edit-col-left">
 		<div class="inline-edit-group">
 			<label class="inline-edit-label">
 				<span class="title"><?php echo esc_html( $field_label ); ?></span>
-				<?php acf_render_quick_edit_input( $acf_field, $field_type, $current_value ); ?>
+				<?php acf_render_quick_edit_input( $field_name, $field_type, $current_value ); ?>
 			</label>
 		</div>
 	</fieldset>
@@ -87,16 +119,18 @@ function acf_render_quick_edit_field( $post_type, $acf_field, $field_label, $pos
 }
 
 /**
- * Render an ACF field in the Bulk Edit form
+ * Render an ACF field in the Bulk Edit form 
  */
 function acf_render_bulk_edit_field( $post_type, $acf_field, $field_label ) {
 	$field_obj = get_field_object( $acf_field );
 	$field_type = isset( $field_obj['type'] ) ? $field_obj['type'] : 'text';
+	// Use the field NAME for the input so it matches the meta key read on save.
+	$field_name = ( $field_obj && ! empty( $field_obj['name'] ) ) ? $field_obj['name'] : $acf_field;
 	?>
 	<div class="inline-edit-group">
 		<label class="inline-edit-label">
 			<span class="title"><?php echo esc_html( $field_label ); ?></span>
-			<?php acf_render_bulk_edit_input( $acf_field, $field_type ); ?>
+			<?php acf_render_bulk_edit_input( $field_name, $field_type ); ?>
 		</label>
 	</div>
 	<?php

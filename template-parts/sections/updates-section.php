@@ -12,7 +12,7 @@
 
         <!-------------- Single Post Container --------------------->
         <div class="updates-post self-centered">
-            <div class="updates-section-title"><!----------------------------- Updates Section Title -->
+            <div class="updates-section-title"><!---- Updates Section Title -->
                 <h3>Announcements & Updates</h3>
             </div><!-- END Updates Title -->
 

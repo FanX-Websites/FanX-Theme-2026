@@ -15,8 +15,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 /** 
 This Stylesheet is for base frameworks ONLY. For sitewide branding styles, please refer to the FanX branding stylesheet located in the Branding File. 
 
-//FIXME: Cleanup old code - transition to new structure. 
-//TODO: Add default text styles for headings, paragraphs, lists, whitespace, etc
+
+//TODO: Add default/backup text styles for headings, paragraphs, lists, whitespace, etc
 
 
 Editing this file affects sitewide layout structures and behaviors. Please save a backup copy before making changes.
@@ -256,6 +256,15 @@ For divs that hold template parts*/
         width: 90%;
         max-width: 1500px; 
         padding: 1% 0 6%; 
+        margin: 0 auto; 
+        box-sizing: border-box;
+    }
+
+    /* Percentages for Children */
+    .padded-box-900{
+        width: 90%; 
+        padding: 5%; 
+        max-width: 900px;
         margin: 0 auto; 
         box-sizing: border-box;
     }

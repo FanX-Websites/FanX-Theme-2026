@@ -39,6 +39,12 @@ get_header(); /** body- main-site */
                     'terms' => 'postponed',
                     'operator' => 'NOT IN',
                 ),
+                array(                  
+                    'taxonomy' => 'category',
+                    'field' => 'slug',
+                    'terms' => 'alumni',
+                    'operator' => 'NOT IN',
+                ),
             ),
             'nopaging' => true,
         );

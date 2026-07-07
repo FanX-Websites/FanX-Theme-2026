@@ -10,23 +10,25 @@
  * @package FanXTheme2026
  */
 ?>
-<div class="no-posts-container ">
+<div class="no-posts-container self-centered space">
     <!--- Coming Soon Message -->
-    <span>More info about <?php echo single_term_title('', false); ?></span>
-    <h3>COMING SOON</h3>
-    <?php
-        $news_link = get_field('news_url', 'option');
-        $news_message = get_field('news_message', 'option') ?? '';
-        if ($news_message) :
-    ?>
-        <p>
+    <div class= "coming-soon self-centered-column padded-box-900">
+        <span>More info about <?php echo single_term_title('', false); ?></span>
+        <h3>COMING SOON</h3>
             <?php
-                if ($news_link && isset($news_link['url'])) {
-                    echo '<a href="' . esc_url($news_link['url']) . '">' . wp_kses_post($news_message) . '</a>';
-                } else {
-                    echo wp_kses_post($news_message);
-                }
+                $news_link = get_field('news_url', 'option');
+                $news_message = get_field('news_message', 'option') ?? '';
+                if ($news_message) :
             ?>
-        </p>
-    <?php endif; ?>
-</div>
+                <p>
+                    <?php
+                        if ($news_link && isset($news_link['url'])) {
+                            echo '<a href="' . esc_url($news_link['url']) . '">' . wp_kses_post($news_message) . '</a>';
+                        } else {
+                            echo wp_kses_post($news_message);
+                        }
+                    ?>
+                </p>
+            <?php endif; ?>
+    </div><!-- END COMING SOON -->
+</div><!-- END no posts container --->

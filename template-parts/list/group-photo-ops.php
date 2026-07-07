@@ -8,11 +8,7 @@
  */
 ?>
 <div class="group-photo-ops section self-centered" id="group-ops"><!-- Group Photo Ops Section -->
-    <div class="section-header"><!-- Section Header -->
-        <h2>Group Photo Ops</h2>
-    </div> 
-    <div class="cat-tax grid-container"> 
-        <?php
+     <?php
         // Query Products CPT for the current taxonomy term
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
         $term = get_queried_object();
@@ -34,6 +30,11 @@
         while ( $query->have_posts() ) : $query->the_post();
         ?>
 
+    <div class="section-header"><!-- Section Header -->
+        <h2>Group Photo Ops</h2>
+    </div> 
+    <div class="cat-tax grid-container"> 
+       
         <!------------------- Post Block --------------------->
         <div class="post-block block">
 

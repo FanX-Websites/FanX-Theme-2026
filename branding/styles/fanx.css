@@ -6,9 +6,8 @@ Author: Elizabeth Moore
 Author URI: https://DancingFraxinus.com/
 
 //TODO: Light/Dark Mode Versions w/toggle activation
-//INFO: View Style.css for the Wireframes  | template-parts.css for content block styles | fanx.css for Global/Default branding styles
+//INFO: Style.css: Wireframes & Default/Backup  | fanx.css: Current Global branding styles | schedule.css | template-parts.css |
 //FIXME: Clean up unused styles and tighten up redundant code 
-
 **/
 
 /*** Sitewide Branding **/
@@ -229,13 +228,27 @@ a.button {
   font-weight: 100;
   flex-flow: row;
 }
+
+.button-subtext:empty{
+  display: none; 
+}
+
+.button--disabled, .button--disabled:hover{
+  opacity: 0.8;
+  cursor: none; 
+  background-color: var(--color_acc);
+  border: solid 8px var(--color_acc);
+}
+
 .button:disabled {
   opacity: 0.8;
   cursor: none;
   border-radius: 0;
 }
 
-/* Button Groups */
+/* Button Groups-------------- */
+
+/* -- 2 Across -- */
 .button-group{
   display: flex; 
   align-items: center;
@@ -971,7 +984,6 @@ body::after {
         max-width: 1500px;
         gap: 1px;
         width: 90%;
-        margin: 2% 0 8%;
         padding: 0;
         background-color: var(--color_prim);
         /* border: 2px solid var(--color_lght); */
@@ -998,6 +1010,14 @@ body::after {
       line-height: 1.25em;
       text-align: center;
   
+    }
+    .guest-list-tags, .guest-list-tags a{
+      text-decoration: none; 
+      color: var(--color_fnt_wht);
+      font-size: 1.25em; 
+      font-weight: 400px; 
+      line-height: 1.25em; 
+      text-align: center; 
     }
 
 

@@ -11,13 +11,14 @@ get_header(); /** body- main-site */
 ?>
 <!-- Category Page Body -->
 
-    <!--------------- Page Header Container [Template Part] ----------------------->
-    <div class="page-header container">
-        <?php get_template_part('template-parts/page-header'); ?>
-    </div><!-- END page-header Container -->
-    <!------------ END Page Header Container -------------------->
+<!--------------- Page Header Container [Template Part] ----------------------->
+<div class="page-header container">
+    <?php get_template_part('template-parts/page-header'); ?>
+</div><!-- END page-header Container -->
+<!------------ END Page Header Container -------------------->
 
     <!-------------------------- Main Content Area --------------------->
+<div class="row-list self-centered full">
     <div class="cat-tax grid-container"> 
         <?php
         // Query guests CPT for the current taxonomy term, excluding postponed xp-status
@@ -37,6 +38,12 @@ get_header(); /** body- main-site */
                     'terms' => 'postponed',
                     'operator' => 'NOT IN',
                 ),
+                   array(                 
+                    'taxonomy' => 'category',
+                    'field' => 'slug',
+                    'terms' => 'alumni',
+                    'operator' => 'NOT IN',
+                ),
             ),
             'paged' => $paged,
             'posts_per_page' => -1, //UNLIMITED POSTS
@@ -48,7 +55,7 @@ get_header(); /** body- main-site */
             ?>
         <!------------------- Post Block --------------------->
         <div class="post-block block">
-
+            <!--- Post Content --->
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 
             <!-- -- Post Thumbnail -->
@@ -101,8 +108,6 @@ get_header(); /** body- main-site */
 
             </article>
         </div><!-- END Post Block -------------------->
-
-        <!-- No Posts Message -->
         <?php
             endwhile;
             wp_reset_postdata();
@@ -117,14 +122,20 @@ get_header(); /** body- main-site */
                     echo '<div class="post-block block"></div>';
                 }
             endif;
-        else :
+        endif;
+        ?>
+
+</div><!-- END cat-tax Grid Container --------------------->
+    
+    <!--- No Posts/Coming Soon Message --->
+    <div class="container full">
+        <?php
+        if ( ! $query->have_posts() ) :
             get_template_part( 'template-parts/coming-soon' );
         endif;
         ?>
-        <!-- END No Posts Message -->
-
-    </div><!-- END grid-container -->
-    <!----- END Main Content Area----------------->
+    </div><!--- END No Posts/Coming Soon Message-----> 
+</div><!----- END Main Content Area/ Celebrity Row Line-Up --------------->
 
     <!-- Small Print Section -->
     <div class="container">

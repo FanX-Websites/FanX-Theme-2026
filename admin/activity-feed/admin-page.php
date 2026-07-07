@@ -8,8 +8,8 @@
 function fanx_register_activity_log_menu() {
     add_submenu_page(
         'tools.php',
-        'Activity Logs',
-        'Activity Logs',
+        'User Activity Logs',
+        'User Activity Logs',
         'manage_options',
         'fanx-activity-logs',
         'fanx_activity_logs_page'
@@ -19,12 +19,25 @@ function fanx_register_activity_log_menu() {
 add_action('admin_menu', 'fanx_register_activity_log_menu');
 
 function fanx_activity_logs_page() {
+    // Check permissions and determine if user can see all logs or only their own
+    $is_admin = current_user_can('manage_options');
+    $can_view_logs = $is_admin || current_user_can('edit_posts') || current_user_can('seo_manager');
+    
+    if (!$can_view_logs) {
+        wp_die('You do not have permission to access this page.');
+    }
+    
+    // Non-admin users see only their own activity
+    $current_user_id = get_current_user_id();
+    $view_own_only = !$is_admin;
+    
     global $wpdb;
     $table_name = $wpdb->prefix . 'fanx_activity_log';
     
     // Get filter values
     $action_filter = isset($_GET['action_filter']) ? sanitize_text_field($_GET['action_filter']) : '';
-    $user_filter = isset($_GET['user_filter']) ? intval($_GET['user_filter']) : 0;
+    // Non-admin users cannot filter by other users
+    $user_filter = $view_own_only ? $current_user_id : (isset($_GET['user_filter']) ? intval($_GET['user_filter']) : 0);
     $object_type_filter = isset($_GET['object_type_filter']) ? sanitize_text_field($_GET['object_type_filter']) : '';
     $object_search = isset($_GET['object_search']) ? sanitize_text_field($_GET['object_search']) : '';
     $from_date = isset($_GET['from_date']) ? sanitize_text_field($_GET['from_date']) : '';
@@ -33,23 +46,90 @@ function fanx_activity_logs_page() {
     $per_page = 25;
     $offset = ($paged - 1) * $per_page;
     
+    // Define action groups for consolidated filtering
+    // Get all logged actions to populate post types dynamically
+    $all_logged_actions = $wpdb->get_col("SELECT DISTINCT action FROM {$table_name} ORDER BY action");
+    
+    // Collect all actions by type
+    $created_actions = array();
+    $updated_actions = array();
+    $delete_actions = array();
+    $other_actions = array();
+    
+    foreach ($all_logged_actions as $action) {
+        // Collect all created actions
+        if (strpos($action, '_created') !== false || $action === 'user_registered') {
+            $created_actions[] = $action;
+        }
+        // Collect all updated actions (including post sticky status)
+        elseif (strpos($action, '_updated') !== false || $action === 'profile_updated' || $action === 'post_stuck' || $action === 'post_unstuck') {
+            $updated_actions[] = $action;
+        }
+        // Collect all delete actions
+        elseif (strpos($action, '_deleted') !== false) {
+            $delete_actions[] = $action;
+        }
+        // Keep other actions separate (login, logout, etc.)
+        else {
+            $other_actions[] = $action;
+        }
+    }
+    
+    $action_groups = array(
+        'created' => array(
+            'label' => 'Create',
+            'actions' => $created_actions,
+        ),
+        'updated' => array(
+            'label' => 'Update',
+            'actions' => $updated_actions,
+        ),
+        'delete' => array(
+            'label' => 'Delete',
+            'actions' => $delete_actions,
+        ),
+        'user_session' => array(
+            'label' => 'User Login/Out',
+            'actions' => array('user_login', 'user_logout'),
+        ),
+    );
+    
+    // Expand action_filter if it's a group
+    $action_filter_values = array();
+    if ($action_filter && isset($action_groups[$action_filter])) {
+        $action_filter_values = $action_groups[$action_filter]['actions'];
+    }
+    
     // Build WHERE clause
     $where_clauses = array();
     $where_values = array();
     
-    if ($action_filter) {
-        $where_clauses[] = 'action = %s';
-        $where_values[] = $action_filter;
-    }
-    
-    if ($user_filter) {
+    // Non-admin users always see only their own activity
+    if ($view_own_only) {
+        $where_clauses[] = 'user_id = %d';
+        $where_values[] = $current_user_id;
+    } elseif ($user_filter) {
         $where_clauses[] = 'user_id = %d';
         $where_values[] = $user_filter;
     }
     
+    // Handle action filter (expanded if it's a group)
+    if (!empty($action_filter_values)) {
+        $action_placeholders = implode(',', array_fill(0, count($action_filter_values), '%s'));
+        $where_clauses[] = "action IN ($action_placeholders)";
+        $where_values = array_merge($where_values, $action_filter_values);
+    }
+    
     if ($object_type_filter) {
-        $where_clauses[] = 'object_type = %s';
-        $where_values[] = $object_type_filter;
+        if ($object_type_filter === 'acf') {
+            // For ACF, match any object_type containing 'acf'
+            $where_clauses[] = 'object_type LIKE %s';
+            $where_values[] = '%acf%';
+        } else {
+            // For other types, exact match
+            $where_clauses[] = 'object_type = %s';
+            $where_values[] = $object_type_filter;
+        }
     }
     
     if ($object_search) {
@@ -89,27 +169,80 @@ function fanx_activity_logs_page() {
         $logs = $wpdb->get_results($wpdb->prepare($logs_sql, $per_page, $offset));
     }
     
-    // Get unique actions for filter dropdown
-    $actions = $wpdb->get_col($wpdb->prepare(
-        "SELECT DISTINCT action FROM {$table_name} ORDER BY action"
-    ));
-    
     // Get unique object types for filter dropdown
-    $object_types = $wpdb->get_col($wpdb->prepare(
+    $all_object_types = $wpdb->get_col($wpdb->prepare(
         "SELECT DISTINCT object_type FROM {$table_name} WHERE object_type IS NOT NULL ORDER BY object_type"
     ));
     
-    // Get users for filter dropdown
-    $users = get_users(array(
-        'orderby' => 'display_name',
-        'order' => 'ASC',
-        'number' => 100,
-    ));
+    // Consolidate ACF types into a single "acf" entry
+    $object_types = array();
+    $has_acf = false;
+    foreach ($all_object_types as $type) {
+        if (strpos($type, 'acf') !== false) {
+            $has_acf = true;
+        } else {
+            $object_types[] = $type;
+        }
+    }
+    if ($has_acf) {
+        $object_types[] = 'acf';
+    }
+    sort($object_types);
+    
+    // Get users for filter dropdown (only for admins)
+    if ($is_admin) {
+        $users = get_users(array(
+            'orderby' => 'display_name',
+            'order' => 'ASC',
+            'number' => 100,
+        ));
+    } else {
+        $users = array();
+    }
     
     ?>
     <div class="wrap">
-        <h1>Activity Logs</h1>
+        <h1>User Activity Logs</h1>
         <p style="color: #666; margin-bottom: 20px;">View and filter all admin activities on your site. Logs are retained for 30 days.</p>
+        
+        <!-- Cleanup Status (Admin Only) -->
+        <?php if ($is_admin) : ?>
+            <?php 
+            // Get cleanup status
+            $logger = new FanX_Activity_Logger();
+            
+            // Handle manual cleanup trigger
+            if (isset($_POST['fanx_cleanup_now']) && wp_verify_nonce($_POST['fanx_cleanup_nonce'], 'fanx_cleanup_nonce')) {
+                $logger->cleanup_old_logs();
+                echo '<div class="notice notice-success"><p>✓ Cleanup executed successfully!</p></div>';
+            }
+            
+            $cleanup_status = $logger->get_cleanup_status();
+            $last_cleanup_ts = $cleanup_status['last_cleanup'] !== 'Never' ? strtotime($cleanup_status['last_cleanup']) : 0;
+            $overdue = $last_cleanup_ts === 0 || $last_cleanup_ts < strtotime('-30 days');
+            $bg_color = $overdue ? '#fff3cd' : '#e8f5e9';
+            $border_color = $overdue ? '#ffc107' : '#4caf50';
+            $label_color = $overdue ? '#856404' : '#2e7d32';
+            $value_color = $overdue ? '#856404' : '#558b2f';
+            ?>
+            <div style="background: <?php echo $bg_color; ?>; border-left: 4px solid <?php echo $border_color; ?>; padding: 12px; margin-bottom: 20px; border-radius: 4px;">
+                <strong style="color: <?php echo $label_color; ?>;">Cleanup Status:</strong>
+                <span style="color: <?php echo $value_color; ?>; display: block; margin-top: 6px;">
+                    Last cleanup: <strong><?php echo esc_html($cleanup_status['last_cleanup']); ?></strong>
+                </span>
+                <small style="color: #666; display: block; margin-top: 6px;">Total records: <strong><?php echo esc_html($cleanup_status['total_records']); ?></strong> | Records older than 30 days: <strong><?php echo esc_html($cleanup_status['records_older_than_30_days']); ?></strong></small>
+                
+                <div style="margin-top: 10px;">
+                    <form method="post" style="display: inline;">
+                        <?php wp_nonce_field('fanx_cleanup_nonce', 'fanx_cleanup_nonce'); ?>
+                        <button type="submit" name="fanx_cleanup_now" class="button button-small" style="background: #2196F3; color: white; border: none; cursor: pointer;">Run Cleanup Now</button>
+                    </form>
+                    <?php if ($cleanup_status['records_older_than_30_days'] > 0) : ?>
+                        <span style="color: #d32f2f; margin-left: 10px;"><strong>⚠️ <?php echo esc_html($cleanup_status['records_older_than_30_days']); ?> old records to clean up!</strong></span>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endif; ?>
         
         <!-- Filters -->
         <div style="background: #f5f5f5; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
@@ -121,9 +254,9 @@ function fanx_activity_logs_page() {
                         <label for="action_filter" style="display: block; margin-bottom: 5px; font-weight: bold;">Action:</label>
                         <select name="action_filter" id="action_filter" style="padding: 5px;">
                             <option value="">-- All Actions --</option>
-                            <?php foreach ($actions as $action) : ?>
-                                <option value="<?php echo esc_attr($action); ?>" <?php selected($action_filter, $action); ?>>
-                                    <?php echo esc_html(fanx_get_activity_label($action)); ?>
+                            <?php foreach ($action_groups as $group_key => $group_data) : ?>
+                                <option value="<?php echo esc_attr($group_key); ?>" <?php selected($action_filter, $group_key); ?>>
+                                    <?php echo esc_html($group_data['label']); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -131,7 +264,7 @@ function fanx_activity_logs_page() {
                     
                     <div>
                         <label for="user_filter" style="display: block; margin-bottom: 5px; font-weight: bold;">User:</label>
-                        <select name="user_filter" id="user_filter" style="padding: 5px;">
+                        <select name="user_filter" id="user_filter" style="padding: 5px;" <?php echo $view_own_only ? 'disabled' : ''; ?>>
                             <option value="">-- All Users --</option>
                             <?php foreach ($users as $user) : ?>
                                 <option value="<?php echo esc_attr($user->ID); ?>" <?php selected($user_filter, $user->ID); ?>>
@@ -139,6 +272,9 @@ function fanx_activity_logs_page() {
                                 </option>
                             <?php endforeach; ?>
                         </select>
+                        <?php if ($view_own_only) : ?>
+                            <p style="font-size: 12px; color: #666; margin-top: 3px;">Viewing your activity only</p>
+                        <?php endif; ?>
                     </div>
                     
                     <div>
@@ -147,7 +283,13 @@ function fanx_activity_logs_page() {
                             <option value="">-- All Types --</option>
                             <?php foreach ($object_types as $type) : ?>
                                 <option value="<?php echo esc_attr($type); ?>" <?php selected($object_type_filter, $type); ?>>
-                                    <?php echo esc_html(fanx_get_object_type_label($type)); ?>
+                                    <?php 
+                                    if ($type === 'acf') {
+                                        echo 'ACF';
+                                    } else {
+                                        echo esc_html(fanx_get_object_type_label($type));
+                                    }
+                                    ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -194,7 +336,7 @@ function fanx_activity_logs_page() {
                 <?php if (empty($logs)) : ?>
                     <tr>
                         <td colspan="5" style="text-align: center; padding: 20px; color: #999;">
-                            No activity logs found.
+                            No user activity logs found.
                         </td>
                     </tr>
                 <?php else : ?>

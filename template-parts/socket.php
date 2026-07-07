@@ -52,7 +52,7 @@
                 echo '</ul>';
                 }
             ?>
-    </div><!-- END Social Links --> 
+    </div>END Social Links 
 
 </div><!-- END Socket Section -->
 

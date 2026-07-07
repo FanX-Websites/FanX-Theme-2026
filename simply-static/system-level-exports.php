@@ -6,42 +6,55 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * System-Level Scheduled Exports & Backups for Simply Static
- * 
- * Handles automatic, recurring export of the dynamic WordPress site to static HTML,
+ *
+ * Handles automatic nightly export of the dynamic WordPress site to static HTML,
  * CSS, and JavaScript. Each export is immediately backed up for safekeeping.
- * 
+ * Cleanup of old backups is delegated to the system shell script (see below).
+ *
  * SCHEDULE:
- * - FanX:      12:00 AM (midnight)
- * - ICC/TBCC:  12:00 AM (midnight)
- * 
+ * - FanX, ICC, TBCC: 12:00 AM (midnight) — defined in /bin/backup-schedules.php
+ *
  * EXECUTION FLOW:
  * 1. System cron calls /bin/run-scheduled-backups.php at midnight
- * 2. Script loads WordPress and calls ssp_run_static_backup_cron_cli()
- * 3. Simply Static exports the dynamic site to static files (~step 1: EXPORT)
- * 4. Exported files are backed up to wp-content/static-backups/<timestamp>/ (~step 2: BACKUP)
- * 5. Old backup archives are cleaned up automatically (~step 3: CLEANUP)
- * 
+ * 2. That script loads WordPress and calls ssp_run_static_backup_cron_cli()
+ * 3. Simply Static exports the dynamic site to static HTML/CSS/JS  (EXPORT)
+ * 4. df_backup_static_export() copies exported files to wp-content/static-backups/<timestamp>/  (BACKUP)
+ * 5. Old backups are purged nightly at 3 AM by /bin/cleanup-static-backups.sh  (CLEANUP)
+ *
+ * ACTIVE FUNCTIONS IN THIS FILE:
+ * - ssp_run_static_backup_cron_cli()     — full export + backup, called by /bin/run-scheduled-backups.php
+ * - ssp_run_update_export_cron_cli()     — incremental export + backup, called by /bin/run-scheduled-exports.php
+ * - df_backup_static_export()            — copies Simply Static output to static-backups/<timestamp>/
+ *
+ * DISABLED/LEGACY IN THIS FILE:
+ * - ssp_run_update_export_cron()         — old wp-cron handler, not used (DISABLE_WP_CRON = true)
+ * - df_cleanup_old_backups()             — superseded by /bin/cleanup-static-backups.sh
+ *
+ * RELATED FILES:
+ * - /bin/run-scheduled-backups.php       — CLI entry point; calls ssp_run_static_backup_cron_cli()
+ * - /bin/run-scheduled-exports.php       — CLI entry point; calls ssp_run_update_export_cron_cli()
+ * - /bin/backup-schedules.php            — single source of truth for export schedule times
+ * - /bin/cleanup-static-backups.sh       — shell cron job; purges old static-backups/ directories (runs 3 AM)
+ *
  * SETUP:
  * - DISABLE_WP_CRON = true in wp-config.php
- * - System cron configured (see SYSTEM_CRON_SETUP.md)
- * 
+ * - System cron configured per /bin/backup-schedules.php
+ *
  * LOGS:
- * - WordPress: wp-content/debug.log
- * - System cron: /var/log/wp-backups.log
+ * - WordPress debug: wp-content/debug.log
+ * - System cron:     /var/log/wp-backups.log
  */
 
 // Full Static Export & Backup - CLI Callable Version
 /**
- * CLI callable version of full static export & backup for system cron
- * 
+ * Full nightly export + backup, called by /bin/run-scheduled-backups.php
+ *
  * PROCESS:
- * 1. Runs health checks before export (finds critical issues)
- * 2. Exports the WordPress site to static HTML/CSS/JS via Simply Static
- * 3. Backs up the exported files to wp-content/static-backups/<timestamp>/
- * 4. Cleans up old backup archives to save disk space
- * 
- * This function is called by /bin/run-scheduled-backups.php
- * 
+ * 1. Runs pre-export health checks via fanx_pre_export_health_check()
+ * 2. Exports the entire WordPress site to static HTML/CSS/JS via Simply Static
+ * 3. Backs up the exported files to wp-content/static-backups/<timestamp>/ via df_backup_static_export()
+ *    (old backup cleanup is handled separately by /bin/cleanup-static-backups.sh at 3 AM)
+ *
  * @param string $trigger Source of trigger: 'cli' or 'cron'
  * @return bool True if export & backup succeeded, false otherwise
  */
@@ -67,7 +80,7 @@ function ssp_run_static_backup_cron_cli( $trigger = 'cli' ) {
 		
 		// Create backup of the exported files
 		df_backup_static_export();
-		df_cleanup_old_backups();
+		// df_cleanup_old_backups(); // Disabled: cleanup handled by bin/cleanup-static-backups.sh
 		
 		error_log( '[' . strtoupper( $trigger ) . '] Full static export & backup completed' );
 		return true;
@@ -78,10 +91,8 @@ function ssp_run_static_backup_cron_cli( $trigger = 'cli' ) {
 }
 
 // Update Export & Backup
-/**
- * Legacy wp-cron handler for update exports - kept for backward compatibility
- * Not used when DISABLE_WP_CRON is true
- */
+// LEGACY: wp-cron handler - disabled, not used when DISABLE_WP_CRON is true
+/*
 function ssp_run_update_export_cron() {
 	// Log pre-export check results
 	if ( function_exists( 'fanx_log_pre_export_check' ) ) {
@@ -103,15 +114,21 @@ function ssp_run_update_export_cron() {
 	
 	// Create backup of the exported files
 	df_backup_static_export();
-	df_cleanup_old_backups();
+	// df_cleanup_old_backups(); // Disabled: cleanup handled by bin/cleanup-static-backups.sh
 }
 add_action( 'update_export_event', 'ssp_run_update_export_cron' );
+*/
 
 // Update Export & Backup - CLI Callable Version
 /**
- * CLI callable version of update export & backup for system cron
- * This function is called by /bin/run-scheduled-exports.php
- * 
+ * Incremental export + backup, called by /bin/run-scheduled-exports.php
+ *
+ * PROCESS:
+ * 1. Runs pre-export health checks via fanx_pre_export_health_check()
+ * 2. Exports only updated pages to static HTML/CSS/JS via Simply Static (update mode)
+ * 3. Backs up the exported files to wp-content/static-backups/<timestamp>/ via df_backup_static_export()
+ *    (old backup cleanup is handled separately by /bin/cleanup-static-backups.sh at 3 AM)
+ *
  * @param string $trigger Source of trigger: 'cli' or 'cron'
  * @return bool True if export & backup succeeded, false otherwise
  */
@@ -137,7 +154,7 @@ function ssp_run_update_export_cron_cli( $trigger = 'cli' ) {
 		
 		// Create backup of the exported files
 		df_backup_static_export();
-		df_cleanup_old_backups();
+		// df_cleanup_old_backups(); // Disabled: cleanup handled by bin/cleanup-static-backups.sh
 		
 		error_log( '[' . strtoupper( $trigger ) . '] Update export & backup completed' );
 		return true;
@@ -226,10 +243,8 @@ function df_backup_static_export() {
 }
 
 // Backup Cleanup & Retention
-/**
- * Clean up old backup directories, keeping only the 12 most recent
- * Called after each successful system-level export
- */
+// DISABLED: Cleanup is now handled exclusively by bin/cleanup-static-backups.sh (system cron)
+/*
 function df_cleanup_old_backups() {
 	$backup_base = WP_CONTENT_DIR . '/static-backups/';
 	
@@ -267,3 +282,4 @@ function df_cleanup_old_backups() {
 		}
 	}
 }
+*/

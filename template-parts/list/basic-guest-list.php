@@ -6,6 +6,8 @@
  * 
  */
 ?>
+
+<!-- Featured Guest List Section ---->
 <div class="featured-guest-list-section self-centered-column">
 
 <!-------------------------- Basic Guest list --------------------->
@@ -25,6 +27,12 @@
                     'taxonomy' => 'xp-status',
                     'field' => 'slug',
                     'terms' => 'postponed', //Excluded Terms 
+                    'operator' => 'NOT IN',
+                ),
+                    array(                 
+                    'taxonomy' => 'category',
+                    'field' => 'slug',
+                    'terms' => 'alumni',
                     'operator' => 'NOT IN',
                 ),
             ),
@@ -77,7 +85,6 @@
                     ?>
                 </div>
                 <!-- END Fandom Tags -->
-
             </article>
         </div>
         <!-- END Post Block -------------------->
@@ -100,15 +107,17 @@
         endif;
         ?>
         <!-- END No Posts Message -->
-
-
     </div><!-- END cat-tax grid-container -->
     
-    <?php
-    if ( ! $query->have_posts() ) :
-        get_template_part( 'template-parts/coming-soon' );
-    endif;
-    ?>
-    <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
+   <!--- No Posts/Coming Soon Message --->
+    <div class="container full">
+        <?php
+        if ( ! $query->have_posts() ) :
+            get_template_part( 'template-parts/coming-soon' );
+        endif;
+        ?>
+    </div>
+    <!--- END No Posts/Coming Soon Message-----> 
+    
     <!----- END Guest List ----------------->
 </div><!----- END Featured Guest List Section ---------->

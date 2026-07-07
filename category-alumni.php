@@ -1,10 +1,11 @@
 <?php
 /**
- * Template Name: XP Status Category/Archive Pages 
+ * Template Name: Guest Category/Archive Pages 
  * @author FanXTheme2026
  * 
  * Notes: 
- * //TODO: 
+ * Uses classes: self-centered, self-centered-row, post-block, tax-cat,
+ * //TODO: Rankings, Latest News Block, 
  */
 
 get_header(); /** body- main-site */
@@ -19,30 +20,28 @@ get_header(); /** body- main-site */
 
     <!-------------------------- Main Content Area --------------------->
     <div class="cat-tax grid-container">
+    
         <?php
-        // Query guests CPT for the current xp-status taxonomy
+        // Query guests CPT for the current taxonomy term (works for category and guest-list archives)
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+        $term = get_queried_object();
         $args = array(
             'post_type' => 'guests',
             'tax_query' => array(
                 array(
-                    'taxonomy' => 'xp-status',
+                    'taxonomy' => $term->taxonomy,
                     'field' => 'term_id',
-                    'terms' => get_queried_object_id(),
-                ),
-                array(                 
-                    'taxonomy' => 'category',
-                    'field' => 'slug',
-                    'terms' => 'alumni',
-                    'operator' => 'NOT IN',
+                    'terms' => $term->term_id,
                 ),
             ),
             'nopaging' => true,
+            'posts_per_page' => -1,
             'meta_key' => 'info_display_order',
             'orderby' => 'meta_value_num',
             'order' => 'ASC',
         );
         $query = new WP_Query( $args );
+        
         if ( $query->have_posts() ) : ?>
         <?php
         while ( $query->have_posts() ) : $query->the_post();
@@ -54,20 +53,7 @@ get_header(); /** body- main-site */
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 
-            <!-- -- Post Thumbnail -->
-                <?php if ( has_post_thumbnail() ) : ?>
-                    <div class="post-thumbnail">
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_post_thumbnail( 'medium' ); ?>
-                        </a>
-                        <?php if ( $is_postponed ) : ?>
-                            <div class="postponed-overlay">
-                                <span class="postponed-text cat">Postponed</span>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                <?php endif; ?>
-                <!-- END Post Thumbnail -->
+            
                 
                 <!-- Post Header -->
                 <header class="entry-header">
@@ -80,7 +66,7 @@ get_header(); /** body- main-site */
                 <!-- Fandom Tags -->
                 <div class="fandom-tags">
                     <?php
-                    $fandoms = get_the_terms( get_the_ID(), 'fandoms' );
+                    $fandoms = get_the_terms( get_the_ID(), 'guest-list' );
                     if ( $fandoms && ! is_wp_error( $fandoms ) ) {
                         echo '<div class="tags-list">';
                         $tags = array();
@@ -98,7 +84,6 @@ get_header(); /** body- main-site */
         </div>
         <!-- END Post Block -------------------->
 
-        <!-- No Posts Message -->
         <?php
             endwhile;
             wp_reset_postdata();
@@ -114,22 +99,33 @@ get_header(); /** body- main-site */
                 }
             endif;
         endif;
-        wp_reset_postdata();
-        ?><!-- END No Posts Message -->
+        ?>
+
     </div><!-- END cat-tax grid-container -->
+    
+    <!--- No Posts/Coming Soon Message --->
+    <div class="container full">
+        <?php
+        if ( ! $query->have_posts() ) :
+            get_template_part( 'template-parts/coming-soon' );
+        endif;
+        ?>
+    </div>
+    <!--- END No Posts/Coming Soon Message-----> 
+
     <!----- END Main Content Area----------------->
 
-    <?php
-    if ( ! $query->have_posts() ) :
-        get_template_part( 'template-parts/coming-soon' );
-    endif;
-    ?>
-
-        <!-- Small Print Section -->
-    <div class="container">
+    <!-- Small Print Section -->
+    <div class="container full">
         <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
     </div>
     <!--- END Small Print Section -->
+
+<!------------------- Latest News Post Block --------------------->
+    <div class="container full">
+        <?php get_template_part('template-parts/sections/updates-section'); ?>
+    </div>
+<!----------- END Latest News Post Block -->
 
 <?php
 get_footer();

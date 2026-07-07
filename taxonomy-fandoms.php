@@ -33,6 +33,12 @@ get_header(); /** body- main-site */
                     'terms' => 'postponed',
                     'operator' => 'NOT IN',
                 ),
+                array(                  
+                    'taxonomy' => 'category',
+                    'field' => 'slug',
+                    'terms' => 'alumni',
+                    'operator' => 'NOT IN',
+                ),
             ),
             'nopaging' => true,
         );
@@ -113,16 +119,21 @@ get_header(); /** body- main-site */
             endif;
         endif;
         ?><!-- END No Posts Message -->
+    </div><!-- END cat-tax grid-container -->        
+<!--- No Posts/Coming Soon Message --->
+    <div class="container full">
+        <?php
+        if ( ! $query->have_posts() ) :
+            get_template_part( 'template-parts/coming-soon' );
+        endif;
+        ?>
+    </div>
+    <!--- END No Posts/Coming Soon Message-----> 
 
-    <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
-    <!----- END Main Content Area----------------->
-    </div><!-- END cat-tax grid-container -->
+    </div>
+        <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
+        <!----- END Main Content Area----------------->
 
-    <?php
-    if ( ! $query->have_posts() ) :
-        get_template_part( 'template-parts/coming-soon' );
-    endif;
-    ?>
 
 <!------------------- Latest News Post Block --------------------->
     <div class="container full">

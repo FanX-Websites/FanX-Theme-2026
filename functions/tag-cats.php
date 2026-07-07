@@ -84,8 +84,25 @@ What this File Does:
 
 
 
+/** 
+ * Category/Taxonomy Coming Soon Mode 
+ */
 
+add_filter('template_include', function( $template ) {
+    if ( ! is_category() && ! is_tax() ) return $template;
 
+    $term = get_queried_object();
+    if ( ! $term || ! isset( $term->term_id ) ) return $template;
+
+    if ( get_field( 'coming_soon', 'term_' . $term->term_id ) ) {
+        $override = locate_template( 'coming-soon.php' ); //coming-soon.php
+        if ( $override ) return $override;
+    }
+
+    return $template;
+});
+
+/** END */
 
 
 

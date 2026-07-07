@@ -36,6 +36,10 @@
             },
             "layout": "block",
             "acfe_seamless_style": 1,
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_690e7cf98de21",
@@ -495,7 +499,7 @@
                 },
                 {
                     "key": "field_690e8e3136584",
-                    "label": "Font Colors",
+                    "label": "Basic Colors - True",
                     "name": "",
                     "aria-label": "",
                     "type": "message",
@@ -513,7 +517,7 @@
                 },
                 {
                     "key": "field_690e8e2b36583",
-                    "label": "Basic White",
+                    "label": "Tru White",
                     "name": "fnt_wht",
                     "aria-label": "",
                     "type": "color_picker",
@@ -532,9 +536,6 @@
                     "show_custom_palette": 1,
                     "palette_colors": "",
                     "show_color_wheel": 1,
-                    "show_column": 0,
-                    "allow_quickedit": 0,
-                    "allow_bulkedit": 0,
                     "custom_palette_source": ""
                 },
                 {
@@ -561,6 +562,70 @@
                     "show_column": 0,
                     "allow_quickedit": 0,
                     "allow_bulkedit": 0,
+                    "custom_palette_source": ""
+                },
+                {
+                    "key": "field_6a4c08538d5f9",
+                    "label": "Headers\/Footers",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "Directly taken from the Dark Color Swatch palette - Updated as needed",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                },
+                {
+                    "key": "field_6a4c08fa8d5fa",
+                    "label": "Main Header\/Footer Body",
+                    "name": "head_foot",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "fnt_blk",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 1,
+                    "return_format": "string",
+                    "allow_in_bindings": 1,
+                    "show_custom_palette": 1,
+                    "palette_colors": "",
+                    "show_color_wheel": 1,
+                    "custom_palette_source": ""
+                },
+                {
+                    "key": "field_6a4c091a8d5fb",
+                    "label": "Bottom Bar (Sticky)",
+                    "name": "bottom_bar",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "fnt_blk",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 1,
+                    "return_format": "string",
+                    "allow_in_bindings": 1,
+                    "show_custom_palette": 1,
+                    "palette_colors": "",
+                    "show_color_wheel": 1,
                     "custom_palette_source": ""
                 },
                 {
@@ -599,11 +664,7 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal": 0,
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "key": "field_690e4303f254c",
@@ -640,6 +701,9 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_696ff529595e3",
@@ -734,10 +798,7 @@
                     "return_format": [],
                     "allow_in_bindings": 1
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "key": "field_690e435df254e",
@@ -758,11 +819,11 @@
             "selected": 0
         },
         {
-            "key": "field_6909248081a24",
+            "key": "field_6a46eb3022ad4",
             "label": "Web Accessibility",
-            "name": "wa",
+            "name": "",
             "aria-label": "",
-            "type": "group",
+            "type": "message",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -771,13 +832,9 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
-            "acfe_seamless_style": 0,
-            "acfe_group_modal": 0,
-            "sub_fields": [],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            "message": "Custom fields\/ info needed for web accessibility will be added here when needed.",
+            "new_lines": "wpautop",
+            "esc_html": 0
         },
         {
             "key": "field_69a214f05482c",
@@ -798,11 +855,11 @@
             "selected": 0
         },
         {
-            "key": "field_6a076d4235999",
-            "label": "Leap API Key",
-            "name": "leap_api_key",
+            "key": "field_69a22239d47a5",
+            "label": "Directions:",
+            "name": "",
             "aria-label": "",
-            "type": "text",
+            "type": "message",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -811,12 +868,27 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 1,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "message": "For security purposes, use this form for all API Keys and other sensitive information in place of inserting them directly into the theme. <br\/>\r\nContact Dev for additional form fields.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_6a44ab9b974a1",
+            "label": "(Column 6\/12)",
+            "name": "",
+            "aria-label": "",
+            "type": "acfe_column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "columns": "6\/12",
+            "endpoint": 0,
+            "allow_in_bindings": 0
         },
         {
             "key": "field_69a2150d5482d",
@@ -835,6 +907,9 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_69a216145482e",
@@ -861,17 +936,14 @@
                     "allow_bulkedit": 0,
                     "allow_backendsearch": 0
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
-            "key": "field_69a22239d47a5",
-            "label": "Directions:",
+            "key": "field_6a44aba3974a2",
+            "label": "(Column 6\/12)",
             "name": "",
             "aria-label": "",
-            "type": "message",
+            "type": "acfe_column",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -880,9 +952,48 @@
                 "class": "",
                 "id": ""
             },
-            "message": "For security purposes, use this form for all API Keys and other sensitive information in place of inserting them directly into the theme.",
-            "new_lines": "wpautop",
-            "esc_html": 0
+            "columns": "6\/12",
+            "endpoint": 0,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6a076d4235999",
+            "label": "Leap API Key",
+            "name": "leap_api_key",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Each new yearly LEAP event has its own unique key. Remove old key at the end of an event and replace with new key with access to new event. (manager access in LEAP required to access API info)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "Key:",
+            "append": ""
+        },
+        {
+            "key": "field_6a44abaa974a3",
+            "label": "(Column Endpoint)",
+            "name": "",
+            "aria-label": "",
+            "type": "acfe_column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "endpoint": 1,
+            "allow_in_bindings": 0,
+            "columns": "6\/12"
         }
     ],
     "location": [
@@ -906,14 +1017,13 @@
     "display_title": "Website Development",
     "allow_ai_access": false,
     "ai_description": "",
-    "acfe_autosync": [
-        "php",
-        "json"
-    ],
-    "acfe_form": 0,
-    "acfe_meta": "",
-    "acfe_note": "",
-    "modified": 1778871687,
+    "acfe": {
+        "autosync": [
+            "php",
+            "json"
+        ]
+    },
+    "modified": 1783368054,
     "acfe_categories": {
         "dev": "Dev"
     }

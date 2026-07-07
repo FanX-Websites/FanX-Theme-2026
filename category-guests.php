@@ -3,10 +3,8 @@
  * Template Name: Guest Category/Archive Pages 
  * @author FanXTheme2026
  * 
- * Notes: 
- * Uses classes: self-centered, self-centered-row, post-block, tax-cat,
- * //TODO: Rankings, Latest News Block, 
- */
+ * 
+ **/
 
 get_header(); /** body- main-site */
 ?>
@@ -20,6 +18,7 @@ get_header(); /** body- main-site */
 
     <!-------------------------- Main Content Area --------------------->
     <div class="cat-tax grid-container">
+    
         <?php
         // Query guests CPT for the current category, including postponed
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
@@ -31,6 +30,12 @@ get_header(); /** body- main-site */
                     'field' => 'term_id',
                     'terms' => get_queried_object_id(),
                 ),
+                array(                  // ← new
+        'taxonomy' => 'category',
+        'field' => 'slug',
+        'terms' => 'alumni',
+        'operator' => 'NOT IN',
+    ),
             ),
             'nopaging' => true,
             'posts_per_page' => -1,
@@ -48,10 +53,10 @@ get_header(); /** body- main-site */
             ?>
         <!------------------- Post (Guest) Block --------------------->
         <div class="post-block block">
-
+            <!--- Post Content --------->
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 
-            <!-- -- Post Thumbnail -->
+                <!---- Post Thumbnail -->
                 <?php if ( has_post_thumbnail() ) : ?>
                     <div class="post-thumbnail">
                         <a href="<?php the_permalink(); ?>">
@@ -95,7 +100,6 @@ get_header(); /** body- main-site */
         </div>
         <!-- END Post Block -------------------->
 
-        <!-- No Posts Message -->
         <?php
             endwhile;
             wp_reset_postdata();
@@ -112,19 +116,22 @@ get_header(); /** body- main-site */
             endif;
         endif;
         ?>
-        <!-- END No Posts Message -->
-
     </div><!-- END cat-tax grid-container -->
     
-    <?php
-    if ( ! $query->have_posts() ) :
-        get_template_part( 'template-parts/coming-soon' );
-    endif;
-    ?>
+    <!--- No Posts/Coming Soon Message --->
+    <div class="container full">
+        <?php
+        if ( ! $query->have_posts() ) :
+            get_template_part( 'template-parts/coming-soon' );
+        endif;
+        ?>
+    </div>
+    <!--- END No Posts/Coming Soon Message-----> 
+
     <!----- END Main Content Area----------------->
 
     <!-- Small Print Section -->
-    <div class="container">
+    <div class="container full">
         <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
     </div>
     <!--- END Small Print Section -->

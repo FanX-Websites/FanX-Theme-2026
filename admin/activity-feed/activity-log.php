@@ -8,14 +8,15 @@
 
 class FanX_Activity_Logger {
     private $table_name;
-    private $retention_days = 30;
+    private $retention_days = 30; //30 days max
+    private $max_records = 1000; //1k entries max 
 
     public function __construct() {
         global $wpdb;
         $this->table_name = $wpdb->prefix . 'fanx_activity_log';
         
-        // Initialize on theme activation
-        add_action('wp_loaded', array($this, 'init'));
+        // Initialize on init hook (earlier than wp_loaded for login hook)
+        add_action('init', array($this, 'init'));
     }
 
     /**
@@ -208,7 +209,8 @@ class FanX_Activity_Logger {
             'user',
             $user->ID,
             $user_login,
-            json_encode(['email' => $user->user_email])
+            json_encode(['email' => $user->user_email]),
+            $user->ID  // Pass user ID directly during login
         );
     }
 
@@ -244,10 +246,14 @@ class FanX_Activity_Logger {
     /**
      * Core logging function
      */
-    private function log_activity($action, $object_type = null, $object_id = null, $object_title = null, $details = null) {
+    private function log_activity($action, $object_type = null, $object_id = null, $object_title = null, $details = null, $user_id = null) {
         global $wpdb;
         
-        $user_id = apply_filters('fanx_activity_logger_user_id', get_current_user_id());
+        // Use provided user_id or get current user ID, with filter support
+        if (!$user_id) {
+            $user_id = get_current_user_id();
+        }
+        $user_id = apply_filters('fanx_activity_logger_user_id', $user_id);
         if (!$user_id) return;
 
         $user = get_userdata($user_id);
@@ -297,17 +303,67 @@ class FanX_Activity_Logger {
         return sanitize_text_field($ip);
     }
 
-    /**
-     * Clean up logs older than 30 days
-     */
-    public function cleanup_old_logs() {
-        global $wpdb;
-        
-        $cutoff_date = date('Y-m-d H:i:s', strtotime("-{$this->retention_days} days"));
+
+/**
+ * Clean up logs older than 30 days and enforce record limit
+ */
+public function cleanup_old_logs() {
+    global $wpdb;
+    
+    $cutoff_date = date('Y-m-d H:i:s', strtotime("-{$this->retention_days} days"));
+    $cleanup_time = current_time('Y-m-d H:i:s');
+    
+    // Step 1: Delete records older than retention days
+    $old_count = $wpdb->get_var($wpdb->prepare(
+        "SELECT COUNT(*) FROM {$this->table_name} WHERE created_at < %s",
+        $cutoff_date
+    ));
+    
+    if ($old_count > 0) {
         $wpdb->query($wpdb->prepare(
             "DELETE FROM {$this->table_name} WHERE created_at < %s",
             $cutoff_date
         ));
+    }
+    
+    // Step 2: If still over record limit, delete oldest
+    $current_count = $wpdb->get_var("SELECT COUNT(*) FROM {$this->table_name}");
+    $excess_count = 0;
+    
+    if ($current_count > $this->max_records) {
+        $excess_count = $current_count - $this->max_records;
+        $wpdb->query($wpdb->prepare(
+            "DELETE FROM {$this->table_name} ORDER BY created_at ASC LIMIT %d",
+            $excess_count
+        ));
+    }
+    
+    // Log results
+    update_option('fanx_activity_log_last_cleanup', $cleanup_time);
+    if ($old_count > 0 || $excess_count > 0) {
+        error_log("FanX Activity Log Cleanup ({$cleanup_time}): Deleted {$old_count} old + {$excess_count} excess = " . ($old_count + $excess_count) . " total");
+    }
+}
+
+    /**
+     * Get cleanup status for debugging
+     */
+    public function get_cleanup_status() {
+        $last_cleanup = get_option('fanx_activity_log_last_cleanup', 'Never');
+        $cutoff_date = date('Y-m-d H:i:s', strtotime("-{$this->retention_days} days"));
+        
+        global $wpdb;
+        $old_count = $wpdb->get_var($wpdb->prepare(
+            "SELECT COUNT(*) FROM {$this->table_name} WHERE created_at < %s",
+            $cutoff_date
+        ));
+        
+        return array(
+            'last_cleanup' => $last_cleanup,
+            'cutoff_date' => $cutoff_date,
+            'records_older_than_' . $this->retention_days . '_days' => $old_count,
+            'total_records' => $wpdb->get_var("SELECT COUNT(*) FROM {$this->table_name}"),
+        );
     }
 
     /**

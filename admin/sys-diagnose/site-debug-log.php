@@ -1,6 +1,7 @@
 <?php 
-/*  Admin Dashboard Widget: Debug Feed
-*  Description: A simple widget to display the latest posts from the site's RSS feed for debugging
+/**  Admin Dashboard Widget: Debug Feed
+ * Description: A simple widget to display the latest posts from the site's RSS feed for debugging 
+ * Dash Board Widget: Lists Errors - PHP 
 */
 
 
@@ -32,8 +33,8 @@ function df_convert_log_timestamp_to_local( $entry ) {
     return $entry;
 }
 
-// Check if a log entry is within the last 14 days
-function df_is_entry_within_expiration( $entry, $days = 14 ) {
+// Check if a log entry is within the last week.
+function df_is_entry_within_expiration( $entry, $days = 7 ) {
     // Match pattern like [17-Jun-2026 21:50:02 America/Denver]
     if ( preg_match( '/\[(\d{2})-([A-Za-z]{3})-(\d{4})\s+(\d{2}):(\d{2}):(\d{2})/', $entry, $matches ) ) {
         $day = $matches[1];
@@ -59,27 +60,96 @@ function df_is_entry_within_expiration( $entry, $days = 14 ) {
 }
 
 function df_reg_debug_widget() {
-	global $wp_meta_boxes;
-
-	wp_add_dashboard_widget('widget_debug_feed', __('Debug Log & Activity Feed', 'df'), 'df_create_debug_log_box');
+	wp_add_dashboard_widget( 'widget_sys_diagnose', __( 'System Diagnostics', 'df' ), 'df_create_sys_diagnose_widget' );
 }
-add_action('wp_dashboard_setup', 'df_reg_debug_widget');
+add_action( 'wp_dashboard_setup', 'df_reg_debug_widget' );
 
-function df_create_debug_log_box() {
-    echo '<p><i>A list of recent debug log entries from the site.</i></p>';
-    
-    // Timestamp at top
-    echo '<div style="margin-bottom: 15px;">';
-    echo '<span style="color: #20848f; font-size: 12px;"><strong>Last loaded:</strong> '; //Load Timestamp
+// Main tabbed widget
+function df_create_sys_diagnose_widget() {
+	echo '<div class="df-sysdiag-widget-container">';
+
+	// Tab Navigation
+	echo '<div class="df-sysdiag-tabs" style="border-bottom: 2px solid #e5e5e5; margin-bottom: 16px; display: flex; gap: 0;">';
+
+	$tabs = array(
+		'debuglog' => 'Debug Log',
+		'wpcron'   => 'WP Cron',
+	);
+
+	foreach ( $tabs as $tab_id => $tab_label ) {
+		$active = ( $tab_id === 'debuglog' ) ? 'active' : '';
+		echo '<button class="df-sysdiag-tab-btn df-tab-' . esc_attr( $tab_id ) . ' ' . esc_attr( $active ) . '"
+			style="padding: 10px 16px; border: none; background: none; cursor: pointer; font-weight: 500;
+			border-bottom: 3px solid transparent; transition: all 0.2s;" data-tab="' . esc_attr( $tab_id ) . '">';
+		echo esc_html( $tab_label );
+		echo '</button>';
+	}
+
+	echo '</div>';
+
+	// Tab Content
+	echo '<div class="df-sysdiag-content">';
+
+	echo '<div id="df-sysdiag-tab-debuglog" class="df-sysdiag-tab-content active">';
+	df_display_debug_log_tab();
+	echo '</div>';
+
+	echo '<div id="df-sysdiag-tab-wpcron" class="df-sysdiag-tab-content" style="display: none;">';
+	if ( function_exists( 'df_display_wp_cron_tab' ) ) {
+		df_display_wp_cron_tab();
+	}
+	echo '</div>';
+
+	echo '</div>'; // End tab content
+	echo '</div>'; // End container
+
+	?>
+	<script>
+	(function() {
+		const buttons = document.querySelectorAll('.df-sysdiag-tab-btn');
+		buttons.forEach(btn => {
+			btn.addEventListener('click', function() {
+				const tabId = this.getAttribute('data-tab');
+
+				document.querySelectorAll('.df-sysdiag-tab-content').forEach(content => {
+					content.style.display = 'none';
+				});
+
+				buttons.forEach(b => b.classList.remove('active'));
+
+				document.getElementById('df-sysdiag-tab-' + tabId).style.display = 'block';
+				this.classList.add('active');
+
+				buttons.forEach(b => {
+					if (b === this) {
+						b.style.borderBottomColor = '#2271b1';
+						b.style.color = '#2271b1';
+					} else {
+						b.style.borderBottomColor = 'transparent';
+						b.style.color = 'inherit';
+					}
+				});
+			});
+		});
+
+		document.querySelector('.df-sysdiag-tab-btn.active').style.borderBottomColor = '#2271b1';
+		document.querySelector('.df-sysdiag-tab-btn.active').style.color = '#2271b1';
+	})();
+	</script>
+	<?php
+}
+
+// Debug Log tab content
+function df_display_debug_log_tab() {
+    echo '<span style="color: #20848f; font-size: 12px;"><strong>Last loaded:</strong> ';
     echo wp_kses_post( wp_date( 'F j, Y g:i a' ) );
     echo '</span>';
-    echo '</div>';
-    
+
     // Inline JavaScript for clearing log with confirmation
     echo '<script>';
     echo 'function df_clear_log_confirm() {';
     echo '  if ( confirm("Are you sure you want to clear the debug log? This action cannot be undone.") ) {';
-    echo '    var nonce = "' . wp_create_nonce('df_clear_log_nonce') . '";';
+    echo '    var nonce = "' . wp_create_nonce( 'df_clear_log_nonce' ) . '";';
     echo '    fetch(ajaxurl, {';
     echo '      method: "POST",';
     echo '      headers: { "Content-Type": "application/x-www-form-urlencoded" },';
@@ -89,71 +159,55 @@ function df_create_debug_log_box() {
     echo '        alert("Debug log cleared successfully!");';
     echo '        location.reload();';
     echo '      } else {';
-    echo '        alert("Failed to clear log: " + data.message);';
+    echo '        alert("Failed to clear log: " + data.data.message);';
     echo '      }';
     echo '    }).catch(error => alert("Error: " + error));';
     echo '  }';
     echo '}';
     echo '</script>';
-    
-    // Display the latest debug log entries
+
     $log_file = WP_CONTENT_DIR . '/debug.log';
     if ( file_exists( $log_file ) ) {
-        $file_size = filesize( $log_file );
+        $file_size    = filesize( $log_file );
         $log_contents = file_get_contents( $log_file );
-        $log_entries = array_filter( explode( "\n", trim( $log_contents ) ) );
-        
-        // Filter entries to only show last 14 days
+        $log_entries  = array_filter( explode( "\n", trim( $log_contents ) ) );
+
         $log_entries = array_filter( $log_entries, function( $entry ) {
             return df_is_entry_within_expiration( $entry, 14 );
         } );
-        
-        $total_entries = count( $log_entries );
-        $recent_entries = array_reverse( array_slice( $log_entries, -20 ) ); // Show last 20 entries, newest first
 
-        echo '<div style="margin-bottom: 10px; font-size: 12px; color: #999;">';
+        $total_entries  = count( $log_entries );
+        $recent_entries = array_reverse( array_slice( $log_entries, -5 ) );
+
+        echo '<div style="margin: 8px 0 10px; font-size: 12px; color: #999;">';
         echo 'Total entries: <strong>' . intval( $total_entries ) . '</strong> | Log size: <strong>' . size_format( $file_size ) . '</strong>';
         echo '</div>';
 
-        echo '<ul style="max-height: 500px; 
-                        overflow-y: auto; 
-                        overflow-x: auto; 
-                        color: #5bc851; 
-                        background: #000000; 
-                        padding: 5%;
-                        border-bottom: solid 15px #5bc851; 
-                        border-radius: 3; 
-                        list-style: none;
-                        margin: 0; 
-                        font-family: monospace; 
-                        font-size: 12px; 
-                        line-height: 1.6; 
-                        word-wrap: break-word; 
-                        white-space: pre-wrap;">';
+        echo '<ul style="max-height: 500px; overflow-y: auto; overflow-x: auto; color: #5bc851; background: #000000;
+                        padding: 5%; border-bottom: solid 15px #5bc851; border-radius: 3; list-style: none; margin: 0;
+                        font-family: monospace; font-size: 12px; line-height: 1.6; word-wrap: break-word; white-space: pre-wrap;">';
 
         foreach ( $recent_entries as $entry ) {
-            // Only show error entries
-            if ( stripos( $entry, '[error]' ) === false ) {
-                continue;
-            }
-            
-            // Convert UTC timestamp to site's local timezone
-            $entry = df_convert_log_timestamp_to_local( $entry );
-            
-            echo '<li style="color: #ff6b00; font-weight: bold; margin-bottom: 15px;">' . wp_kses_post( $entry ) . '</li>';
+            $entry    = df_convert_log_timestamp_to_local( $entry );
+            $is_error = ( stripos( $entry, '[error]' ) !== false );
+            $style    = $is_error ? 'color: #ff6b00; font-weight: bold;' : '';
+            echo '<li style="' . esc_attr( $style ) . ' margin-bottom: 15px;">' . esc_html( $entry ) . '</li>';
         }
         echo '</ul>';
-        
-        // Buttons at bottom
+
         echo '<div style="margin-top: 15px;">';
         echo '<button class="button button-secondary" onclick="location.reload();">↻ Refresh Log</button>';
         echo '<button class="button button-secondary" style="margin-left: 5px;" onclick="df_clear_log_confirm();">🗑️ Clear Log</button>';
         echo '<a href="' . esc_url( admin_url( 'tools.php?page=df_full_log' ) ) . '" class="button button-secondary" style="margin-left: 5px;">📄 View Full Log</a>';
         echo '</div>';
-       
     } else {
         echo '<p style="color: #999;"><em>No debug log found.</em></p>';
     }
+}
+
+// Legacy alias so the old widget ID still resolves if cached
+function df_create_debug_log_box() {
+    df_display_debug_log_tab();
 }
 
 // AJAX handler to clear the debug log
@@ -231,8 +285,27 @@ function df_display_full_log_page() {
 
         <div style="margin-bottom: 15px;">
             <button class="button button-secondary" onclick="location.reload();">↻ Refresh</button>
-            <a href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-ajax.php?action=df_clear_debug_log' ), 'df_clear_log_nonce' ) ); ?>" class="button button-secondary" onclick="return confirm('Are you sure you want to clear the entire debug log? This cannot be undone.');">🗑️ Clear Log</a>
+            <button class="button button-secondary" style="margin-left: 5px;" onclick="df_full_clear_log_confirm();">🗑️ Clear Log</button>
         </div>
+        <script>
+        function df_full_clear_log_confirm() {
+            if ( confirm('Are you sure you want to clear the entire debug log? This cannot be undone.') ) {
+                var nonce = '<?php echo wp_create_nonce( 'df_clear_log_nonce' ); ?>';
+                fetch(ajaxurl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: 'action=df_clear_debug_log&nonce=' + encodeURIComponent(nonce)
+                }).then(response => response.json()).then(data => {
+                    if (data.success) {
+                        alert('Debug log cleared successfully!');
+                        location.reload();
+                    } else {
+                        alert('Failed to clear log: ' + data.data.message);
+                    }
+                }).catch(error => alert('Error: ' + error));
+            }
+        }
+        </script>
 
         <?php if ( ! empty( $log_contents ) ) : ?>
             <div style="background: #000000; 
@@ -266,9 +339,9 @@ function df_display_full_log_page() {
                         if ( $is_error ) {
                             echo '<div style="color: #ff6b00; 
                             font-weight: bold; 
-                            margin-bottom: 3px;">' . wp_kses_post( $line ) . '</div>';
+                            margin-bottom: 3px;">' . esc_html( $line ) . '</div>';
                         } else {
-                            echo '<div style="margin-bottom: 3px;">' . wp_kses_post( $line ) . '</div>';
+                            echo '<div style="margin-bottom: 3px;">' . esc_html( $line ) . '</div>';
                         }
                     }
                 }

@@ -29,11 +29,17 @@ get_header(); /** body- main-site */
                     'terms' => get_queried_object_id(),
                 ),
                 array(
-                    'taxonomy' => 'xp-status',
-                    'field' => 'slug',
-                    'terms' => 'postponed', //Excluded Terms 
-                    'operator' => 'NOT IN',
-                ),
+                'taxonomy' => 'xp-status',
+            'field' => 'slug',
+            'terms' => 'postponed',
+            'operator' => 'NOT IN',
+        ),
+         array(                 
+            'taxonomy' => 'category',
+            'field' => 'slug',
+            'terms' => 'alumni',
+            'operator' => 'NOT IN',
+             ),
             ),
             'nopaging' => true,
             'meta_key' => 'info_display_order', 
@@ -110,11 +116,17 @@ get_header(); /** body- main-site */
 
 
     </div><!-- END cat-tax grid-container -->
-    <?php
-    if ( ! $query->have_posts() ) :
-        get_template_part( 'template-parts/coming-soon' ); 
-    endif;
-    ?>
+    
+    <!--- No Posts/Coming Soon Message --->
+    <div class="container full">
+        <?php
+        if ( ! $query->have_posts() ) :
+            get_template_part( 'template-parts/coming-soon' );
+        endif;
+        ?>
+    </div>
+    <!--- END No Posts/Coming Soon Message-----> 
+    
 
     <!----- Guest List Small Print [Template Part] ----------------->
     <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>

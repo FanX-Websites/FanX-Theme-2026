@@ -22,7 +22,7 @@ get_header();
 <div class="profile page"><!-- Profile sizing, padding,  -->
 
     <!-- Main Profile Card/Content - Grid Container --------------------------------------->    
-    <div class="profile-card grid-container <?php echo ( has_post_thumbnail() ) ? 'layout-2col' : 'layout-1col'; ?>"> 
+    <div class="profile-card grid-container <?php echo ( has_post_thumbnail() && ! has_term( 'alumni', 'category' ) ) ? 'layout-2col' : 'layout-1col'; ?>"> 
         <?php if ( have_posts() ) :
             while ( have_posts() ) : the_post(); ?>
         
@@ -34,7 +34,7 @@ get_header();
             <?php endif;?>
 
         <!-- Profile Details - Grid Block ------------------>
-        <?php if ( has_post_thumbnail() ) : //Conditional - Profile Image or not hides column ?>
+        <?php if ( has_post_thumbnail() && ! has_term( 'alumni', 'category' ) ) : //Conditional - Profile Image or not hides column (also hidden for alumni) ?>
         <div class="grid-block profile-details"> 
         
                 <!-- Profile Image - DIV ------------->
@@ -67,6 +67,26 @@ get_header();
                     <h3><?php the_field('heafoo_subtext'); ?></h3> <!--  Subtext -->  
                 </div><!-- END Profile Name & Cats --> 
 
+                <!-- Guest List Tags (Alumni only) -->
+                <?php if ( has_term( 'alumni', 'category' ) ) : ?>
+                <div class="guest-list-tags">
+                    <?php
+                    $guest_list_terms = get_the_terms( get_the_ID(), 'guest-list' );
+                    if ( $guest_list_terms && ! is_wp_error( $guest_list_terms ) ) {
+                        echo '<div class="tags-list"><strong>Past Events:</strong> ';
+                        $tags = array();
+                        foreach ( $guest_list_terms as $gl_term ) {
+                            $term_url = get_term_link( $gl_term );
+                            $tags[] = '<a href="' . esc_url( $term_url ) . '" class="fandom-tag">' . esc_html( $gl_term->name ) . '</a>';
+                        }
+                        echo implode( ' | ', $tags );
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
+                <?php endif; ?>
+                <!-- END Guest List Tags -->
+
                 <!-- Fandom Tags -->
                 <div class="fandom-tags">
                     <?php
@@ -88,7 +108,7 @@ get_header();
             <!-- Guest Profile Info -->
             <div class="guest tab-section block"><!-- Guest Tabs --------------->
 
-                <?php if ( get_post_type() === 'guests' || get_post_type() === 'features' ) : ?>
+                <?php if ( ( get_post_type() === 'guests' || get_post_type() === 'features' ) && ! has_term( 'alumni', 'category' ) ) : ?>
                 <div class="guest tab-top-bar block"><!-- Tab Top Bar -->
                     <button class="guest-tab-button" onclick="openTab('guest-bio')">Guest Bio</button>
                     <button class="guest-tab-button" onclick="openTab('guest-schedule')">Guest Schedule</button>

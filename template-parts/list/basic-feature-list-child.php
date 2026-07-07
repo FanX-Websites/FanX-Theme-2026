@@ -57,10 +57,18 @@
         
         // Always exclude postponed items
         $tax_query[] = array(
-            'taxonomy' => 'xp-status',
+            array(
+                'taxonomy' => 'xp-status',
             'field' => 'slug',
             'terms' => 'postponed',
             'operator' => 'NOT IN',
+        ),
+         array(                 
+            'taxonomy' => 'category',
+            'field' => 'slug',
+            'terms' => 'alumni',
+            'operator' => 'NOT IN',
+             ),
         );
         
         $args = array(

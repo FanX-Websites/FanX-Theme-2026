@@ -12,6 +12,12 @@
 <!-- Content Blocks Section ------------------------->
 <div class="cb-section">
     <div class="cb-section-inner">  
+        
+    <!---- Content Block Section Header --->
+        <!-- <div class="cb section-header full self-centered">
+    
+        </div> -->
+        <!--- END Section Header ----->
 
     <!-- Content BLOCK ---------------------->
     <?php //Content Block - Repeater
@@ -107,26 +113,24 @@
                             echo wp_kses_post($content); 
                             ?>
                         </p>
-                        <?php
-                        // Content Block - Button
-                        $button_text    = $block['butt_txt'] ?? '';    // Button Text > .butt_txt
-                        $button_subtext = $block['butt_subtxt'] ?? ''; // Button Subtext > .butt_subtxt
-                        $button_link    = $block['butt_url'] ?? '';    // Button Link > .butt_url
+                    <?php
+                    // Button --------------------------------------------------------- <<
+                        $button_text    = $block['butt_txt'] ?? '';    // Button Text 
+                        $button_subtext = $block['butt_subtxt'] ?? ''; // Button Subtext 
+                        $button_link    = $block['butt_url'] ?? '';    // Button Link 
                         
-                        if ($button_text && $button_link) {
-                            $button_class = 'button';
-                            
-                            if ($button_subtext) {
-                                $button_class .= ' button--has-subtext';
-                            }
+                        //Button Conditionals 
+                        if ($button_text) {
+                            $disabled = !$button_link;
+                            $class = $disabled ? 'button button--disabled' : 'button';
                             ?>
-                            <a href="<?php echo esc_url($button_link); ?>" class="<?php echo esc_attr($button_class); ?>">
+                            <a <?php if ($button_link) : ?>href="<?php echo esc_url($button_link); ?>"<?php endif; ?> class="<?php echo esc_attr($class); ?>">
                                 <span class="button-text"><?php echo esc_html($button_text); ?></span>
                                 <span class="button-subtext"><?php echo esc_html($button_subtext); ?></span>
                             </a>
                             <?php
-                        }
-                        ?>
+                        } //End Button conditionals 
+                    ?>
                         <!-- Small Print / Disclaimer ---------------------->
                         <div class="content-block-small-print small-print">
                             <p>

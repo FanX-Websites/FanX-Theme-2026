@@ -11,49 +11,55 @@ get_header(); /** body- main-site */
 ?>
 <!-- Category Page Body -->
 
-    <!--------------- Page Header Container [Template Part] ----------------------->
-    <div class="page-header container">
-        <?php get_template_part('template-parts/page-header'); ?>
-    </div><!-- END page-header Container -->
-    <!------------ END Page Header Container -------------------->
+<!--------------- Page Header Container [Template Part] ----------------------->
+<div class="page-header container">
+    <?php get_template_part('template-parts/page-header'); ?>
+</div><!-- END page-header Container -->
+<!------------ END Page Header Container -------------------->
 
-    <!-------------------------- Main Content Area --------------------->
-    
+<!-------------------------- Main Content Area --------------------->
+<div class="ops-list full self-centered">
     <div class="cat-tax grid-container"> 
         <?php
-        // Query guests CPT for the current taxonomy term, excluding postponed xp-status
-        $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-        $term = get_queried_object();
-        $args = array(
-            'post_type' => 'guests',
-            'tax_query' => array(
-                array(
-                    'taxonomy' => $term->taxonomy,
-                    'field' => 'term_id',
-                    'terms' => $term->term_id,
+            // Query guests CPT for the current taxonomy term, excluding postponed xp-status
+            $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+            $term = get_queried_object();
+            $args = array(
+                'post_type' => 'guests',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => $term->taxonomy,
+                        'field' => 'term_id',
+                        'terms' => $term->term_id,
+                    ),
+                    array(
+                        'taxonomy' => 'xp-status',
+                        'field' => 'slug',
+                        'terms' => 'postponed',
+                        'operator' => 'NOT IN',
+                    ),
+                    array(
+                        'taxonomy' => 'category',
+                        'field' => 'slug',
+                        'terms' => 'alumni',
+                        'operator' => 'NOT IN',
+                    ),
                 ),
-                array(
-                    'taxonomy' => 'xp-status',
-                    'field' => 'slug',
-                    'terms' => 'postponed',
-                    'operator' => 'NOT IN',
-                ),
-            ),
-            'paged' => $paged,
-            'posts_per_page' => -1, //UNLIMITED POSTS 
-        );
-        $query = new WP_Query( $args );
-        if ( $query->have_posts() ) : ?>
+                'paged' => $paged,
+                'posts_per_page' => -1, //UNLIMITED POSTS 
+            );
+            $query = new WP_Query( $args );
+            if ( $query->have_posts() ) : ?>
         <?php
-        while ( $query->have_posts() ) : $query->the_post();
+            while ( $query->have_posts() ) : $query->the_post();
         ?>
 
         <!------------------- Post Block --------------------->
         <div class="post-block block">
-
+            <!--- Post Content ------------>
             <article id="post-<?php the_ID(); ?>" class="fill">
                 
-            <!-- -- Post Thumbnail -->
+                <!-- -- Post Thumbnail -->
                 <?php if ( has_post_thumbnail() ) : ?>
                     <div class="post-thumbnail">
                         <a href="<?php the_permalink(); ?>">
@@ -192,12 +198,10 @@ get_header(); /** body- main-site */
                 </footer>
                 <!-- END Footer Buttons -->
 
-            </article>
+            </article><!--- END Post Content ------->
         </div>
         <!-- END Post Block -------------------->
-
-        <!-- No Posts Message -->
-        <?php
+         <?php
             endwhile;
             wp_reset_postdata();
             
@@ -211,16 +215,21 @@ get_header(); /** body- main-site */
                     echo '<div class="post-block block"></div>';
                 }
             endif;
-        else :
+        endif;
+        ?>
+
+    </div><!-- END cat-tax grid-container -->
+    
+    <!--- No Posts/Coming Soon Message --->
+
+    <div class="container full">
+        <?php
+        if ( ! $query->have_posts() ) :
             get_template_part( 'template-parts/coming-soon' );
         endif;
         ?>
-        <!-- END No Posts Message -->
-
-    </div><!-- END Profile Main Div --------------------->
-
-    <!----- END Main Content Area----------------->
-    </div><!-- END cat-tax grid-container -->
+    </div><!--- END No Posts/Coming Soon Message-----> 
+</div><!----- END Main Content Area / Photo Ops List ----------------->
 
     <!-- Group Photo Ops List [Template Part] -->
     <div class="container full">

@@ -86,7 +86,7 @@
                     "name": "ico",
                     "aria-label": "",
                     "type": "font-awesome",
-                    "instructions": "",
+                    "instructions": "[tkt_ico]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -94,13 +94,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "icon_sets": [
                         "solid",
                         "regular",
@@ -123,7 +116,7 @@
                     "name": "stat",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "tkt_stat",
+                    "instructions": "[tkt_stat]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -131,13 +124,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "Tickets Available SOON",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -151,7 +137,7 @@
                     "name": "act",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "tkt_act",
+                    "instructions": "[tkt_act]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -159,13 +145,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -179,7 +158,7 @@
                     "name": "dis",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "tkt_dis",
+                    "instructions": "[tkt_dis]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -187,13 +166,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -405,7 +377,7 @@
                     "name": "ops_ico",
                     "aria-label": "",
                     "type": "font-awesome",
-                    "instructions": "ops_ico",
+                    "instructions": "[celeb_ops_ico]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -413,13 +385,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "icon_sets": [
                         "solid",
                         "regular",
@@ -442,7 +407,7 @@
                     "name": "ops_stat",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "[celeb_ops_stat]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -450,13 +415,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "Coming SOON",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -470,7 +428,7 @@
                     "name": "ops_act",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "[celeb_ops_act]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -478,18 +436,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
                     "placeholder": "Buy NOW",
-                    "prepend": "Status:",
+                    "prepend": "Action:",
                     "append": ""
                 },
                 {
@@ -887,14 +838,13 @@
     "display_title": "Products Options Page",
     "allow_ai_access": false,
     "ai_description": "",
-    "acfe_autosync": [
-        "php",
-        "json"
-    ],
-    "acfe_form": 0,
-    "acfe_meta": "",
-    "acfe_note": "",
-    "modified": 1777333232,
+    "acfe": {
+        "autosync": [
+            "php",
+            "json"
+        ]
+    },
+    "modified": 1783410688,
     "acfe_categories": {
         "options-pages": "Options Pages",
         "products": "Products"

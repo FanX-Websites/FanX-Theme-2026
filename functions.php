@@ -1,4 +1,6 @@
 <?php
+//INFO: For feature specific functions, refer to induvidual function files. 
+
 // Exit if accessed directly
 	if (!defined('ABSPATH')) {
 		exit;
@@ -94,29 +96,27 @@ add_action('wp_enqueue_scripts', function() {
     ?>
     <style>
     :root {
-	/** Dark Mode */
+	/** Dark Colors */
         --color_drk: <?php echo esc_attr( get_field( 'color_drk', 'option' ) ); ?>;
         --color_base: <?php echo esc_attr( get_field( 'color_base', 'option' ) ); ?>;
         --color_prim: <?php echo esc_attr( get_field( 'color_prim', 'option' ) ); ?>;
         --color_acc: <?php echo esc_attr( get_field( 'color_acc', 'option' ) ); ?>;
 
-	/** Light Mode */
+	/** Light Colors */
         --color_lght: <?php echo esc_attr( get_field( 'color_lght', 'option' ) ); ?>;
         --color_base_lght: <?php echo esc_attr( get_field( 'color_base_lght', 'option' ) ); ?>;
         --color_prim_lght: <?php echo esc_attr( get_field( 'color_prim_lght', 'option' ) ); ?>;
         --color_acc_lght: <?php echo esc_attr( get_field( 'color_acc_lght', 'option' ) ); ?>;
 	
-	/** Light Mode /Contrast */
+	/** Bright Colors */
         --color_brht: <?php echo esc_attr( get_field( 'color_brht', 'option' ) ); ?>;
         --color_base_brht: <?php echo esc_attr( get_field( 'color_base_brht', 'option' ) ); ?>;
         --color_prim_brht: <?php echo esc_attr( get_field( 'color_prim_brht', 'option' ) ); ?>;
         --color_acc_brht: <?php echo esc_attr( get_field( 'color_acc_brht', 'option' ) ); ?>;
     
-	/**Text */
+	/** True Colors */
 		--color_fnt_wht: <?php echo esc_attr( get_field( 'color_fnt_wht', 'option' ) ); ?>;
         --color_fnt_blk: <?php echo esc_attr( get_field( 'color_fnt_blk', 'option' ) ); ?>;
-	
-	
 	}
     </style>
 
@@ -154,7 +154,8 @@ add_action('wp_enqueue_scripts', function() {
 			'admin/backup-feed/github-pushes.php', //GitHub Pushes Feed
 			'admin/backup-feed/backup-widget.php', //Consolidated Backup & Repository Widget with Tabs
 			'admin/event-mode-widget.php', //Event Mode Toggle Widget
-			'admin/debug-feed/site-debug-log.php', //Debug Log Dashboard Widget
+			'admin/sys-diagnose/site-debug-log.php', //Debug Log Dashboard Widget
+			'admin/sys-diagnose/wp-cron-log.php', //WP_CRON Log
 			'admin/exports/pre-export-checker.php', //Pre-Export Health Check
 			'admin/exports/export-health-widget.php', //Export Manager Dashboard Widget
 			'admin/exports/user-export-scheduler.php', //Export Scheduler - One-Time Exports via wp-cron

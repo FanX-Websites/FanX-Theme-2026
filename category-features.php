@@ -25,7 +25,20 @@ get_header(); /** body- main-site */
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
         $args = array(
             'post_type' => 'features',
-            'cat' => get_queried_object_id(), // Current category ID
+            'tax_query' => array(
+                'relation' => 'AND',
+                array(
+                    'taxonomy' => 'category',
+                    'field' => 'term_id',
+                    'terms' => get_queried_object_id(),
+                ),
+                array(
+                    'taxonomy' => 'category',
+                    'field' => 'slug',
+                    'terms' => 'alumni',
+                    'operator' => 'NOT IN',
+                ),
+            ),
             'nopaging' => true,
             'meta_key' => 'info_display_order',
             'orderby' => 'meta_value_num',

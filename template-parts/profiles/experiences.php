@@ -52,7 +52,7 @@
         $has_celeb_xtras = false;
         if ( $xp_status_terms && ! is_wp_error( $xp_status_terms ) ) {
             foreach ( $xp_status_terms as $term ) {
-                if ( $term->slug === 'celeb-extras-purchase-now' || $term->slug === 'celeb-extras-onsite' ) {
+                if ( $term->slug === 'celeb-extras-purchase-now' || $term->slug === 'celeb-extras-onsite' | $term->slug === 'celeb-extras-soon' ) {
                     $has_celeb_xtras = true;
                     break;
                 }
@@ -235,13 +235,15 @@
                         
                         <div class="auto-status guest-xp">
                             <?php 
-                                    if ( $is_autographs_coming_soon ) {
-                                        echo '<span class="xp-soon">Available for Pre-Purchase Soon</span>'; //COMING SOON
+                                    if ( $is_autographs_coming_soon ) { //Autographs Coming Soon ------------------>
+                                        echo '<span class="xp-soon">Available for Pre-Purchase SOON</span>'; //COMING SOON
                                     } elseif ( $has_pre_purchase_autographs ) {
                                         // Use shared product link if available, otherwise use individual autograph link
-                                        if ( $shared_link_url ) {
-                                            echo '<span class="xp-now"><a href="' . esc_url($shared_link_url) . '">Pre-Purchase NOW***</a></span>'; //Pre-Purchase Link (shared)
-                                        } else {
+
+                                        if ( $shared_link_url ) { //Pre-Purchase NOW ------------------------->
+                                            echo '<span class="xp-now"><a href="' . esc_url($shared_link_url) . '">Pre-Purchase NOW***</a></span>'; 
+                                        }
+                                        else { // Pre-Purchase NOW ---------------------------------------->
                                             $celeb_auto_link = get_field('celeb_auto_url', 'option'); 
                                             $link_url = is_array($celeb_auto_link) ? ($celeb_auto_link['url'] ?? '') : $celeb_auto_link;
                                             echo '<span class="xp-now"><a href="' . esc_url($link_url) . '">Pre-Purchase NOW***</a></span>'; //Pre-Purchase Link
@@ -260,6 +262,7 @@
             // Calculate celeb extras conditions
             $has_celeb_xtras_purchase_now = false;
             $has_celeb_xtras_onsite = false;
+            $has_celeb_xtras_soon = false; 
             
             if ( $xp_status_terms && ! is_wp_error( $xp_status_terms ) ) {
                 foreach ( $xp_status_terms as $term ) {
@@ -269,15 +272,18 @@
                     } elseif ( $term->slug === 'celeb-extras-onsite' ) {
                         $has_celeb_xtras_onsite = true;
                         break;
+                     } elseif ( $term->slug === 'celeb-extras-soon' ) {
+                        $has_celeb_xtras_soon = true;
+                        break;
                     }
                 }
             }
             ?>
             
-            <?php if ( $has_celeb_xtras_purchase_now || $has_celeb_xtras_onsite ) : ?>
-
+            <?php if ( $has_celeb_xtras_purchase_now || $has_celeb_xtras_onsite || $has_celeb_xtras_soon ) : ?>
+    
             <div class="grid-block xp-block">
-            <!-- Celebrity Row eXtras --->
+            <!-- Celebrity Row eXtras ------------------------------------->
                 <div class="celeb-xtra-info">
                         <h4 class="xp-title">Celebrity Row Extras</h4>
                         
@@ -286,10 +292,12 @@
                                 <?php if ( $shared_link_url ) : ?>
                                     <span class="xp-now"><a href="<?php echo esc_url($shared_link_url); ?>">Available NOW</a></span>
                                 <?php else : ?>
-                                    <span class="xp-now">Available NOW</span>
+                                    <span class="xp-now">Available for Pre-purchase NOW</span>
                                 <?php endif; ?>
                             <?php elseif ( $has_celeb_xtras_onsite ) : ?>
                                 <span class="xp-now">Available onsite</span>
+                             <?php elseif ( $has_celeb_xtras_soon ) : ?>
+                                <span class="xp-now">Pre-Purchase SOON</span>
                             <?php endif; ?>
                         </div>
                         

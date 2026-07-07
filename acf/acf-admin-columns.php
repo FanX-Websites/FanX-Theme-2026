@@ -17,20 +17,26 @@
 // Adds an ACF field to the admin columns for a specified post type
 function add_acf_field_to_admin_columns( $post_type, $acf_field, $column_label, $position = null ) {
 
+	// Resolve the ACF field once so a field key or name can be passed in.
+	// Column ids, meta keys, and orderby values all use the field's NAME;
+	// get_field_object()/get_field() accept either key or name.
+	$field_object = get_field_object( $acf_field );
+	$field_name   = ( $field_object && ! empty( $field_object['name'] ) ) ? $field_object['name'] : $acf_field;
+	$field_type   = isset( $field_object['type'] ) ? $field_object['type'] : 'text';
+
 	// Register the column header
-	add_filter( "manage_{$post_type}_posts_columns", function( $columns ) use ( $acf_field, $column_label, $position ) {
+	add_filter( "manage_{$post_type}_posts_columns", function( $columns ) use ( $field_name, $column_label, $position ) {
 		if ( $position === null ) {
 			// Add at the end (default)
-			$columns[ $acf_field ] = $column_label;
+			$columns[ $field_name ] = $column_label;
 		} else {
 			// Insert at specific position
-			$column_array = array_values( $columns );
 			$column_keys = array_keys( $columns );
-			array_splice( $column_keys, $position, 0, $acf_field );
+			array_splice( $column_keys, $position, 0, $field_name );
 			$new_columns = [];
 			foreach ( $column_keys as $key ) {
-				if ( $key === $acf_field ) {
-					$new_columns[ $acf_field ] = $column_label;
+				if ( $key === $field_name ) {
+					$new_columns[ $field_name ] = $column_label;
 				} else {
 					$new_columns[ $key ] = $columns[ $key ];
 				}
@@ -41,20 +47,20 @@ function add_acf_field_to_admin_columns( $post_type, $acf_field, $column_label, 
 	});
 
 	// Populate the column with ACF field values
-	add_action( "manage_{$post_type}_posts_custom_column", function( $column, $post_id ) use ( $acf_field ) {
-		if ( $column === $acf_field ) {
+	add_action( "manage_{$post_type}_posts_custom_column", function( $column, $post_id ) use ( $acf_field, $field_name ) {
+		if ( $column === $field_name ) {
 			echo wp_kses_post( acf_render_admin_column_value( $post_id, $acf_field ) );
 		}
 	}, 10, 2 );
 
 	// Make the column sortable
-	add_filter( "manage_edit-{$post_type}_sortable_columns", function( $columns ) use ( $acf_field ) {
-		$columns[ $acf_field ] = $acf_field;
+	add_filter( "manage_edit-{$post_type}_sortable_columns", function( $columns ) use ( $field_name ) {
+		$columns[ $field_name ] = $field_name;
 		return $columns;
 	});
 
 	// Handle sorting by ACF field value
-	add_filter( 'pre_get_posts', function( $query ) use ( $post_type, $acf_field ) {
+	add_filter( 'pre_get_posts', function( $query ) use ( $post_type, $field_name, $field_type ) {
 		if ( ! is_admin() || ! $query->is_main_query() ) {
 			return;
 		}
@@ -64,17 +70,13 @@ function add_acf_field_to_admin_columns( $post_type, $acf_field, $column_label, 
 		}
 
 		$orderby = $query->get( 'orderby' );
-		if ( $orderby !== $acf_field ) {
+		if ( $orderby !== $field_name ) {
 			return;
 		}
 
-		// Get field type to determine sort behavior
-		$field_obj = get_field_object( $acf_field );
-		$field_type = isset( $field_obj['type'] ) ? $field_obj['type'] : 'text';
+		// Set up meta query for sorting; use the field name as the meta key.
+		$query->set( 'meta_key', $field_name );
 
-		// Set up meta query for sorting
-		$query->set( 'meta_key', $acf_field );
-		
 		// Force numeric sorting for number fields
 		if ( $field_type === 'number' ) {
 			$query->set( 'orderby', 'meta_value_num' );
@@ -88,12 +90,6 @@ function add_acf_field_to_admin_columns( $post_type, $acf_field, $column_label, 
 			$query->set( 'order', strtoupper( $order ) );
 		}
 	});
-
-	// Add to Screen Options (make it hideable/showable)
-	add_filter( "default_hidden_columns", function( $hidden ) use ( $acf_field ) {
-		// Column is shown by default (not hidden). Change to array_push to hide by default.
-		return $hidden;
-	}, 10, 2 );
 }
 
 /**
@@ -112,7 +108,7 @@ function acf_render_admin_column_value( $post_id, $acf_field ) {
 	}
 
 	// Get field object to determine type
-	$field_obj = get_field_object( $acf_field, $post_id );
+	$field_obj = get_field_object( $acf_field );
 	$field_type = isset( $field_obj['type'] ) ? $field_obj['type'] : 'text';
 
 	// Handle different field types
@@ -181,6 +177,7 @@ function acf_render_relationship_column( $value ) {
 		if ( is_object( $post_id ) ) {
 			$post_id = $post_id->ID;
 		}
+
 		$title = get_the_title( $post_id );
 		$edit_url = get_edit_post_link( $post_id );
 		$links[] = '<a href="' . esc_url( $edit_url ) . '">' . esc_html( $title ) . '</a>';

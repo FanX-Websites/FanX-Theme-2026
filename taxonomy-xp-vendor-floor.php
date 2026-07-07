@@ -16,8 +16,6 @@ get_header(); /** body- main-site */
     <!------------ END Page Header Container -------------------->
 
 
-
-
     <!--------------- #Feature/Activity List Section [Template Part] ----------------------->
     <div class="featured-section container full">
         <!----- Features/Activities List Header ---------->
@@ -26,7 +24,7 @@ get_header(); /** body- main-site */
                 <p>on the Vendor Floor</p>
             </div><!---- END Features/Activities List Header ---------->
         <!---- END Features/Activities List Header ---------->
-        <?php get_template_part('template-parts/list/basic-feature-list'); ?>
+        <?php get_template_part('template-parts/list/basic-feature-list'); //Basic Feature List ?>
     </div><!-- END #Feature/Activity List Section ----------------------------------------->
 
     <!--------------- #Feature/Activity List Section [Template Part] ----------------------->

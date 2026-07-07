@@ -41,7 +41,6 @@ $map_misc = get_field('map_misc', 'option');
 if (empty($map_master_list) && empty($map_vend) && empty($map_misc)) {
     return;
 }
-
 ?>
 
 

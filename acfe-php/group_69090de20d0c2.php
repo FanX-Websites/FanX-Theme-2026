@@ -1311,11 +1311,11 @@ List of all Panel Programming Rooms (Accommodation list under Customer Service)'
 		),
 		'advanced' => '1',
 	),
+	'modified' => 1783029269,
 	'acfe_categories' => array(
 		'event-info' => 'Event Info',
 		'options-pages' => 'Options Pages',
 	),
-	'modified' => 1781716764,
 ));
 
 endif;
