@@ -65,12 +65,16 @@ function add_social_icons( array $icons ): array {
     return array_merge(
         $icons,
         array(
-        
-            array(
-                'url'   => $base_url . 'icon_one.svg',
-                'key'   => 'icon-one', 
-                'label' => 'Icon One', 
+            array( //Apple App Store 
+                'url'   => $base_url . 'apple.svg',
+                'key'   => 'apple', 
+                'label' => 'App Store', 
             ),
+        array( //Google Play 
+            'url' => $base_url . 'googleplay.svg',
+            'key' => 'googleplay',
+            'label' => 'Google Play',
+        ),
         )
     );
 }

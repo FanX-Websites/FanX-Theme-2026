@@ -14,7 +14,7 @@
  */
 ?>
 
-<div class="alert-bar gradi">
+<div class="alert-bar">
     <div class="alert-slide">
         <div class="alert-slide-content">
 

@@ -11,7 +11,7 @@
 
 ?> 
 <!-- Countdown-block -->
-<div class="countdown-fp-block fill"><!-- Countdown Block styling within parent div ---> 
+<div class="countdown-fp-block fill self-centered"><!-- Countdown Block styling within parent div ---> 
     <div class="countdown-layout"> <!-- Countdown Inner Layout w/Fill-->
         
         <!-- Countdown Title --> 
@@ -78,66 +78,3 @@
 
     </div><!-- END Countdown Inner Layout w/Fill-->
 </div><!-- END Countdown-block -->
-
-
-
-<style>
-/** The Block size & positioning in Partent Div*/
-.countdown-fp-block{ 
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-} 
-/** Inner Div - builds on .fill */
-.countdown-layout p{
-    color: var(--color_fnt_wht);
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-size: 1.75rem; 
-    font-weight: 600;
-    line-height: 2.75rem;
-    text-transform: uppercase;
-    text-align: center; 
-    width: 100%;
-    padding: 0;
-    margin: 0;
-}
-/** Countdown Timer */
-.countdown-container{
-    text-align: center; 
-    margin: 0; 
-    padding: 10px; 
- 
-}
- .countdown-timer{
-    gap: 10px;
-    align-items: flex-start;
-}
-.countdown-item{
-    transition: transform 0.3s ease;
-}
- .countdown-value { /** The Numberes */
-    color: var(--color_fnt_wht);
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    font-weight: 100;
-    line-height: 3rem;
-}
-.countdown-separator { 
-    color: var(--color_fnt_wht);
-    font-size: 2.5rem;
-    font-weight: 100;
-    line-height: 2.5rem;
-    margin: 0; 
-    padding: 0;
-}
-.countdown-label { /** The Days & Minutes */
-    font-size: 1em;
-    line-height: 2rem;
-    color: var(--color_fnt_wht);
-    text-transform: lowercase;
-    letter-spacing: 1px;
-}
-
-</style>

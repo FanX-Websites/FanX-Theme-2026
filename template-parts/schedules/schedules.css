@@ -16,7 +16,7 @@ Author URI: https://DancingFraxinus.com/ */
 /* .schedule-wrapper h2 {
     margin-bottom: 1.5rem;
     font-size: 1.75rem;
-    color: var(--color_fnt_blk);
+    color: var(--color_tru_blk);
 } */
 
 /* ====== SCHEDULE DAY TITLE ====== */
@@ -27,14 +27,14 @@ Author URI: https://DancingFraxinus.com/ */
     font-weight: 700;
     margin: 0;
     padding: 0;
-    color: var(--color_prim_brht);
+    color: var(--color_acc_brht);
 }
 
 #schedule-tag-filter-display {
     font-size: clamp(1.2rem, 3vw, 2rem);
     line-height: 1.2;
     font-weight: 400;
-    color: var(--color_prim_brht);
+    color: var(--color_acc_brht);
 }
 
 .panel.schedule-tag-filter-info{
@@ -44,7 +44,7 @@ Author URI: https://DancingFraxinus.com/ */
     justify-content: center;
     flex-direction: column;
     display: flex; 
-    color: var(--color_prim_lght);
+    color: var(--color_acc_lght);
 }
 
 /* ====== DAY FILTER TABS ====== */
@@ -58,7 +58,7 @@ Author URI: https://DancingFraxinus.com/ */
 /* Venue Tabs */
 .venue-tab{
     background-color: transparent;
-    color: var(--color_prim_lght);
+    color: var(--color_acc_lght);
     border: none;
     padding: 0; 
     margin: 0 auto;
@@ -66,11 +66,11 @@ Author URI: https://DancingFraxinus.com/ */
 }
 .venue-tab.active{
     font-size: 1.25em;
-    color: var(--color_base_lght);
+    color: var(--color_prim_lght);
     font-weight: 400;
 }
 .venue-tab:hover {
-    color: var(--color_base_brht);
+    color: var(--color_prim_brht);
     opacity: 0.8;
 }
 
@@ -101,10 +101,10 @@ Author URI: https://DancingFraxinus.com/ */
 .day-header {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--color_fnt_blk);
+    color: var(--color_tru_blk);
     margin: 1.5rem 0 1rem 0;
     padding-bottom: 0.5rem;
-    border-bottom: 3px solid var(--color_acc);
+    border-bottom: 3px solid var(--color_base);
 }
 
 /* ====== TIME SLOTS ====== */
@@ -116,13 +116,13 @@ Author URI: https://DancingFraxinus.com/ */
 .time-header {
     font-size: clamp(0.95rem, 1.2vw, 1.1rem);
     font-weight: 600;
-    color: var(--color_base_lght);
+    color: var(--color_prim_lght);
     margin: 1rem 0 0.75rem 0;
     padding: 0;
     cursor: pointer;
     user-select: none;
     transition: color 0.2s ease;
-    border-bottom: 1px solid var(--color_base_lght);
+    border-bottom: 1px solid var(--color_prim_lght);
 }
 
 .time-header:hover {
@@ -184,14 +184,14 @@ Author URI: https://DancingFraxinus.com/ */
 .event-datetime {
     margin: 0;
     font-size: clamp(0.85rem, 1vw, 1rem);
-    color: var(--color_acc );
+    color: var(--color_base );
     font-weight: 500;
     text-align: center;
 }
 .event-title {
     margin: 0;
     font-size: clamp(1.2rem, 2vw, 1.5rem);
-    color: var(--color_base);
+    color: var(--color_prim);
     font-weight: 600;
     text-align: center;
     line-height: 1.15;
@@ -201,7 +201,7 @@ Author URI: https://DancingFraxinus.com/ */
 .event-category-subtitle {
     margin: 0 0 0.25rem 0;
     font-size: clamp(0.75rem, 0.9vw, 0.85rem);
-    color: var(--color_prim);
+    color: var(--color_acc);
     font-weight: 500;
     font-style: italic;
     text-align: center;
@@ -210,7 +210,7 @@ Author URI: https://DancingFraxinus.com/ */
 .event-people {
     margin: 0.25rem 0;
     font-size: clamp(0.8rem, 0.95vw, 0.9rem);
-    color: var(--color_prim);
+    color: var(--color_acc);
     font-weight: 500;
     text-align: center;
     font-style: italic;
@@ -219,7 +219,7 @@ Author URI: https://DancingFraxinus.com/ */
 .event-room {
     margin: 0;
     font-size: clamp(0.85rem, 1vw, 1rem);
-    color: var(--color_fnt_blk);
+    color: var(--color_tru_blk);
     font-weight: 700;
     text-align: center;
 }
@@ -228,7 +228,7 @@ Author URI: https://DancingFraxinus.com/ */
     margin: 0 auto;
     padding: 1% 3%; 
     font-size: clamp(0.85rem, 0.95vw, 0.95rem);
-    color: var(--color_fnt_blk);
+    color: var(--color_tru_blk);
     line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -245,7 +245,7 @@ Author URI: https://DancingFraxinus.com/ */
 .read-more-btn {
     background: none;
     border: none;
-    color: var(--color_acc);
+    color: var(--color_base);
     font-size: clamp(0.75rem, 0.9vw, 0.85rem);
     font-weight: 600;
     cursor: pointer;
@@ -271,27 +271,27 @@ Author URI: https://DancingFraxinus.com/ */
 
 .event-tag {
     display: inline-block;
-    background-color: var(--color_acc_lght);
+    background-color: var(--color_base_lght);
     color: var(--color_drk);
     padding: 0.25rem 0.75rem;
     border-radius: 3px;
     font-size: clamp(0.7rem, 0.85vw, 0.8rem);
     font-weight: 500;
-    border: 1px solid var(--color_acc);
+    border: 1px solid var(--color_base);
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .event-tag:hover {
-    background-color: var(--color_acc);
+    background-color: var(--color_base);
     color: var(--color_lght);
-    border-color: var(--color_acc);
+    border-color: var(--color_base);
 }
 
 .event-tag.active {
-    background-color: var(--color_acc);
+    background-color: var(--color_base);
     color: var(--color_lght);
-    border-color: var(--color_acc);
+    border-color: var(--color_base);
 }
 
 .tag-overflow {
@@ -310,7 +310,7 @@ Author URI: https://DancingFraxinus.com/ */
 .clear-filter-btn {
     background: none;
     border: none;
-    color: var(--color_acc_lght);
+    color: var(--color_base_lght);
     font-size: clamp(0.8rem, 0.95vw, 0.9rem);
     font-weight: 500;
     cursor: pointer;
@@ -323,11 +323,11 @@ Author URI: https://DancingFraxinus.com/ */
     opacity: 0.8;
 }
 .day-tab{
-    color: var(--color_fnt_wht);
+    color: var(--color_tru_wht);
 }
 .day-tab.active {
-    background-color: var(--color_prim);
-    color: var(--color_fnt_wht);
+    background-color: var(--color_acc);
+    color: var(--color_tru_wht);
 }
 
 /* ====== RESPONSIVE ====== */
@@ -360,12 +360,12 @@ Author URI: https://DancingFraxinus.com/ */
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-bottom: 1px solid var(--color_base);
+    border-bottom: 1px solid var(--color_prim);
     border-radius: 0;
 }
 
 h4.guest-event-title {
-    color: var(--color_base_brht);
+    color: var(--color_prim_brht);
     font-size: 1em;
     text-align: left;
     line-height: 1.25em;

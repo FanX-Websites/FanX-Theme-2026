@@ -4,7 +4,7 @@
  * Displays a guest's schedule from the LEAP Conventions API in list format
  * Automatically matches guest by post title against LEAP schedule data
  * 
- * //FIXME: Replace hardcoded API key with dynamic ACF field value (currently for testing)
+ *
  */
 
 // ============================================================================
@@ -20,10 +20,8 @@ if ( empty( $leap_api_key ) ) {
     <div class="guest-schedule block"> 
         <div class="guest-no-events block">
             <?php 
-                $content = get_field( 'sched_guest' ) ?? ''; // Guest Schedule Content
-                // Remove wrapping <p> tags from ACF field
-                $content = preg_replace('/<\/?p[^>]*>/', '', $content);
-                echo wp_kses_post($content); 
+                $guest_name = get_the_title();
+                echo esc_html( $guest_name ) . ' doesn\'t have a schedule posted here.<br>Check out their eXperience Tab to see what they\'re up to!';
             ?>
         </div>
     </div><!-- END NO EVENTS -->
@@ -97,8 +95,8 @@ foreach ( $schedules as $event ) {
 // SORT: Order events by start_time (chronologically)
 // ============================================================================
 usort( $guest_events, function( $a, $b ) {
-    $time_a = strtotime( $a['start_time'] ?? 0 );
-    $time_b = strtotime( $b['start_time'] ?? 0 );
+    $time_a = strtotime( $a['start_time'] ?? '' );
+    $time_b = strtotime( $b['start_time'] ?? '' );
     return $time_a - $time_b;
 });
 
@@ -139,10 +137,8 @@ usort( $guest_events, function( $a, $b ) {
 <?php else : ?>
     <div class="guest-no-events block">
         <?php 
-            $content = get_field( 'sched_guest' ) ?? ''; // Guest Schedule Content
-            // Remove wrapping <p> tags from ACF field
-            $content = preg_replace('/<\/?p[^>]*>/', '', $content);
-            echo wp_kses_post($content); 
+            $guest_name = get_the_title();
+            echo esc_html( $guest_name ) . ' doesn\'t have a schedule posted here.<br>Check out their eXperience Tab to see what they\'re up to!';
         ?>
     </div>
     <?php endif; ?>

@@ -9,6 +9,9 @@
 // Load timezone fixes (handles multiple plugins/widgets not showing correct time)
 	require_once( get_template_directory() . '/functions/timezone.php' );
 
+// Load compatibility checker (runs on WP updates, detects conflicts)
+	require_once( get_template_directory() . '/functions/compatibility-check.php' );
+
 //--- Theme Support -->
 	function fanx_theme_setup() {	
 		add_theme_support('post-thumbnails'); //Thumbnails	
@@ -115,8 +118,8 @@ add_action('wp_enqueue_scripts', function() {
         --color_acc_brht: <?php echo esc_attr( get_field( 'color_acc_brht', 'option' ) ); ?>;
     
 	/** True Colors */
-		--color_fnt_wht: <?php echo esc_attr( get_field( 'color_fnt_wht', 'option' ) ); ?>;
-        --color_fnt_blk: <?php echo esc_attr( get_field( 'color_fnt_blk', 'option' ) ); ?>;
+		--color_tru_wht: <?php echo esc_attr( get_field( 'color_fnt_wht', 'option' ) ); ?>;
+        --color_tru_blk: <?php echo esc_attr( get_field( 'color_fnt_blk', 'option' ) ); ?>;
 	}
     </style>
 
@@ -134,17 +137,15 @@ add_action('wp_enqueue_scripts', function() {
 		//Plugins - Third Party	
 			//ACF
 			'acf/tweaks.php', //ACF Tweaks & Shortcode Support
-			'acf/acf-admin-columns.php', //ACF Admin Columns Manager
-			'acf/acf-admin-quick-edits.php', //ACF Admin Quick Edits
 			'acf/fields/icon_picker/tabs.php', //ACF Icon Picker Tabs
 			//Yoast SEO
 			'seo/yoast-tweaks.php', //Yoast SEO Tweaks
 			//Simply Static
 			'simply-static/system-level-exports.php', //System-level scheduled exports & backups
-			'simply-static/schedule.php', //Simply Static Schedule Management
-			'simply-static/enqueue.php', //Simply Static Enqueue Tweaks
+				// 'simply-static/schedule.php', //Simply Static Schedule Management - Missing File 
+				// 'simply-static/enqueue.php', //Simply Static Enqueue Tweaks - Missig File 
 			'simply-static/sitemap-integration.php',
-		//Admin Area 	
+		//Admin Tools 	
 			'admin/white-label.php', //Admin White Labeling
 			'admin/customadmin.php', //Custom Admin Features	
 			'admin/custommenu.php', //Menu Customizations & Support
@@ -156,8 +157,9 @@ add_action('wp_enqueue_scripts', function() {
 			'admin/event-mode-widget.php', //Event Mode Toggle Widget
 			'admin/sys-diagnose/site-debug-log.php', //Debug Log Dashboard Widget
 			'admin/sys-diagnose/wp-cron-log.php', //WP_CRON Log
+			'admin/sys-diagnose/widget.php', //Widget Main Tab Structure
 			'admin/exports/pre-export-checker.php', //Pre-Export Health Check
-			'admin/exports/export-health-widget.php', //Export Manager Dashboard Widget
+			'admin/sys-diagnose/export-health-widget.php', //Export Manager Dashboard Widget
 			'admin/exports/user-export-scheduler.php', //Export Scheduler - One-Time Exports via wp-cron
 			'admin/exports/single/post-export-table.php', //Post Export Database Table Manager
 			'admin/exports/single/post-export-metabox.php', //Post Export Metabox

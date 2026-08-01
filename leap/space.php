@@ -62,7 +62,7 @@ function get_booth_location( $post_id = null ) {
 								$clean_term = $sanitize_for_match( $term );
 								if ( strpos( $clean_term, $clean_company ) !== false ) {
 									// Match found - get booth number
-									$vend_booth = isset( $vendor['booth'] ) ? 'Booth ' . esc_html( $vendor['booth'] ) : '';
+								$vend_booth = ! empty( $vendor['booth'] ) ? 'Booth ' . esc_html( $vendor['booth'] ) : '';
 									break 2; // Break out of both loops
 								}
 							}

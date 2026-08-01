@@ -27,6 +27,8 @@
         // Check for Xperience Categories 
         $has_photo_ops = false;
         $has_autographs = false;
+        $has_panel_programming = false;
+        $has_author_signings = false;
         
         if ( $xp_terms && ! is_wp_error( $xp_terms ) ) {
             foreach ( $xp_terms as $term ) {
@@ -34,18 +36,12 @@
                     $has_photo_ops = true;
                 } elseif ( $term->slug === 'autographs' ) {
                     $has_autographs = true;
+                } elseif ( $term->slug === 'panel-programming' ) {
+                    $has_panel_programming = true;
+                } elseif ( $term->slug === 'author-signings' ) {
+                    $has_author_signings = true;
                 }
             }
-        }
-        
-        // Count experience blocks to determine layout
-        $xp_block_count = 0;
-        
-        if ( $has_photo_ops ) {
-            $xp_block_count++;
-        }
-        if ( $has_autographs ) {
-            $xp_block_count++;
         }
         
         // Check for celeb extras
@@ -58,41 +54,16 @@
                 }
             }
         }
-        if ( $has_celeb_xtras ) {
-            $xp_block_count++;
-        }
         
         // Check for group photo ops
         $group_op_posts = $xp['group_op'] ?? array();
-        if ( $group_op_posts ) {
-            $xp_block_count++;
-        }
         
         // Check for vendor booths
         $vend_booth_posts = $xp['vend_booth'] ?? array();
-        if ( $vend_booth_posts ) {
-            $xp_block_count++;
-        }
-        
-        // // Determine layout class based on block count
-        // $xp_layout_class = 'layout-4col'; // Default to 4 columns
-        // if ( $xp_block_count === 1 ) {
-        //     $xp_layout_class = 'layout-1col';
-        // } elseif ( $xp_block_count === 2 ) {
-        //     $xp_layout_class = 'layout-2col';
-        // } elseif ( $xp_block_count === 3 ) {
-        //     $xp_layout_class = 'layout-3col';
-        // }
     ?>
     
     <!-- Guest eXperiences - Grid Container -->
-    <div class="guest-xp-card grid-container <?php echo $xp_layout_class; ?>">
-        
-        <?php if ( $xp_block_count === 0 ) : ?>
-            <div class="xp-soon">
-                <p>More Info Coming Soon.</p>
-            </div>
-        <?php endif; ?>
+    <div class="guest-xp-card grid-container">
             
             <?php if ( $has_photo_ops ) : ?>
 
@@ -220,7 +191,7 @@
                             if ( $term->slug === 'pre-purchase-autographs' ) {
                                 $has_pre_purchase_autographs = true;
                                 break;
-                            } elseif ( $term->slug === 'pre-purchase-autographs-soon' ) { //Autographs Coming Soon Trigger
+                            } elseif ( $term->slug === 'autographs-soon' ) { //Autographs Coming Soon Trigger
                                 $is_autographs_coming_soon = true;
                                 break;
                             }
@@ -297,7 +268,7 @@
                             <?php elseif ( $has_celeb_xtras_onsite ) : ?>
                                 <span class="xp-now">Available onsite</span>
                              <?php elseif ( $has_celeb_xtras_soon ) : ?>
-                                <span class="xp-now">Pre-Purchase SOON</span>
+                                <span class="xp-now">Available for Pre-Purchase SOON</span>
                             <?php endif; ?>
                         </div>
                         
@@ -355,8 +326,81 @@
             <!-- END Group Photo Ops --->
             </div><!-- END Grid Block 4 -->
             <?php endif; ?>
+
+
+            <!-- Panel Programming --->
+            <?php if ( $has_panel_programming ) : ?>
+
+            <div class="grid-block xp-block">
+            <!-- Panel Programming -->
+                <div class="programming-info">
+                    <h4 class="xp-title">Panel Programming</h4>
+                    
+                    <div class="panel-status guest-xp">
+                        <?php 
+                            $is_panels_announced_soon = false;
+                            
+                            // Check for panels announced soon status
+                            if ( $xp_status_terms && ! is_wp_error( $xp_status_terms ) ) {
+                                foreach ( $xp_status_terms as $term ) {
+                                    if ( $term->slug === 'panels-announced-soon' ) {
+                                        $is_panels_announced_soon = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            
+                            if ( $is_panels_announced_soon ) {
+                                echo '<span class="xp-soon">More Info Coming Soon</span>';
+                            } else {
+                                echo '<span class="xp-now">View Schedule tab for more information</span>';
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div><!-- END Grid Block - Panel Programming -->
+
+            <?php endif; ?>
+            <!--- END Panel Programming -->
             
-            <!-- Vendor Booths --->
+            <!-- Author Signings -->
+            <?php if ( $has_author_signings ) : ?>
+            
+            <div class="grid-block xp-block">
+            <!-- Author Signings -->
+                <div class="author-signings-info">
+                    <h4 class="xp-title">Author Signings</h4>
+                    
+                    <div class="author-signings-status guest-xp">
+                        <?php 
+                            $is_author_signings_soon = false;
+                            $has_pre_purchase_author_signings = false;
+                            
+                            // Check for author signings coming soon status and pre-purchase status
+                            if ( $xp_status_terms && ! is_wp_error( $xp_status_terms ) ) {
+                                foreach ( $xp_status_terms as $term ) {
+                                    if ( $term->slug === 'author-signings-soon' ) {
+                                        $is_author_signings_soon = true;
+                                    } elseif ( $term->slug === 'pre-purchase-autographs' ) {
+                                        $has_pre_purchase_author_signings = true;
+                                    }
+                                }
+                            }
+                            
+                            if ( $is_author_signings_soon ) {
+                                echo '<span class="xp-soon">More Info Coming Soon</span>';
+                            } elseif ( $shared_link_url && $has_pre_purchase_author_signings ) {
+                                echo '<span class="xp-now"><a href="' . esc_url($shared_link_url) . '">Reserve Your Signing Now</a></span>';
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div><!-- END Grid Block - Author Signings -->
+            
+            <?php endif; ?>
+            <!--- END Author Signings -->
+            
+        <!-- Vendor Booths --->
             <?php if ( $vend_booth_posts ) : ?>
 
             <div class="grid-block xp-block">  
@@ -384,20 +428,9 @@
                                 ?>
                             </div>
                 </div>
-            <!-- END Vendor Booths --->
-            </div><!-- END Grid Block 5 -->
-            <?php endif; ?>
-                        
-            <!-- Panel Programming(Panels)--->
-                <!-- <h4 class="xp-title">Panels</h4>
-                <div class="panels guest-xp">
-                </div> -->
-            <!--- END Panel Programming -->
-
-            <!-- Vendor Floor/Programming Location -->
-                <!-- <h4 class="xp-title">Floor Location</h4>
-                <div class="floor-loca guest-xp"></div> -->
-            <!-- END Vendor Floor/Programming Location -->            
+            </div>
+            <?php endif; ?>     
+        <!-- END Vendor Booths ---> 
 
         </div><!-- END Grid Container -->
 </div><!-- END Guest eXperiences Block -->

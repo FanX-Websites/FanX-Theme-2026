@@ -122,7 +122,13 @@ get_header();
                     <div class="guest-bio tab" id="guest-bio">
                         <!--- Profile Content - DIV -->
                             <div class="profile the-content">
-                                <?php the_content(); //Content ?> 
+                               <?php 
+                                    if ( ! empty( trim( get_the_content() ) ) ) {
+                                        the_content(); // Display content if it exists
+                                    } else {
+                                        echo 'More info about ' . esc_html( get_the_title() ) . ' coming soon'; //More Info Message when Empty
+                                    }
+                                ?>
                             </div><!-- END Profile Content-->   
                         <!-- END Profile Content - DIV -->
                     </div><!-- END Guest Bio Tab --------------------->
@@ -156,6 +162,27 @@ get_header();
                     <!---- END Gues eXperiences Tab ---------------------->
 <!-- Buttons - Featured Links - DIV --> 
             <div class="featured-links"> 
+                <?php
+                // Auto-button: Photo Ops (products CPT + 'photo-ops' xp term)
+                if ( get_post_type() === 'products' && has_term( 'photo-ops', 'xp' ) ) :
+                    if ( has_term( 'photo-ops-coming-soon', 'xp-status' ) ) :
+                        // Coming Soon state — non-clickable
+                        ?>
+                        <span class="button button-coming-soon">Photo Ops Coming Soon</span>
+                        <?php
+                    else :
+                        $ded_link     = get_field( 'ded_prod_cat' ); // Post-level link field (overrides options)
+                        $auto_btn_url = ! empty( $ded_link['url'] )
+                            ? $ded_link['url']
+                            : get_field( 'celeb_grp_ops_url', 'option' );
+                        if ( $auto_btn_url ) :
+                            ?>
+                            <a href="<?php echo esc_url( $auto_btn_url ); ?>" class="button">Buy Photo Ops NOW</a>
+                            <?php
+                        endif;
+                    endif;
+                endif;
+                ?>
                 <?php
                 // Check if the repeater field has rows of data
                 if( have_rows('button') ):

@@ -37,7 +37,13 @@
                 ),
             ),
             'nopaging' => true,
-            'meta_key' => 'info_display_order', 
+            'meta_query' => array(
+                array(
+                    'key' => 'info_display_order',
+                    'compare' => 'EXISTS',
+                    'type' => 'NUMERIC',
+                ),
+            ),
             'orderby' => 'meta_value_num',
             'order' => 'ASC',
         );

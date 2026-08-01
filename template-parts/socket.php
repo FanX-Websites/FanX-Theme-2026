@@ -32,27 +32,27 @@
     
     <!-- Social Links ----------------------------------->
     <div class="socket-socials hor-nav block">
-        <?php
-            $socials = get_query_var('socials');
-            if (!empty($socials)) {
-                echo '<ul class="social-links">';
-                foreach ($socials as $social) {
-                    $link = esc_url($social['url']);
-                    $title = esc_attr($social['name'] ?? '');
-                    echo '<li class="social-link">';
-                    if ($link) {
-                        echo '<a href="' . $link . '" target="_blank" rel="noopener"' . ($title ? ' alt="' . $title . '"' : '') . '>';
-                    }
-                echo $social['logo'];
-                    if ($link) {
-                        echo '</a>';
-                    }
-                    echo '</li>';
-                    }   
-                echo '</ul>';
-                }
+        <?php //TODO: Update Social Icons for new system
+            // $socials = get_query_var('socials');
+            // if (!empty($socials)) {
+            //     echo '<ul class="social-links">';
+            //     foreach ($socials as $social) {
+            //         $link = esc_url($social['url']);
+            //         $title = esc_attr($social['name'] ?? '');
+            //         echo '<li class="social-link">';
+            //         if ($link) {
+            //             echo '<a href="' . $link . '" target="_blank" rel="noopener"' . ($title ? ' alt="' . $title . '"' : '') . '>';
+            //         }
+            //     echo $social['logo'];
+            //         if ($link) {
+            //             echo '</a>';
+            //         }
+            //         echo '</li>';
+            //         }   
+            //     echo '</ul>';
+            //     }
             ?>
-    </div>END Social Links 
+    </div><!--END Social Links -->
 
 </div><!-- END Socket Section -->
 

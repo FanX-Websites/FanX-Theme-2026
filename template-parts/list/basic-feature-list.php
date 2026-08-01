@@ -1,11 +1,11 @@
 <?php 
 /** Template Part: Basic Features/Activities List - eXperiences
  * 
- * Feature Category Page Template Part - Current Category ONLY
+ * Displays the Feature CPT for the Current Category ONLY (No child categories or xp-status: Postponed)
  * 
  * //NOTE: Headers are not included in this template part - Add header to template part parent div. 
  * Header Div Class: 
- * 
+ *  
  */
 ?>
 <div class="featured-guest-list-section self-centered-column">
@@ -17,7 +17,7 @@
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
         
         // Build tax_query based on whether we're on a category page
-        $tax_query = array();
+        $tax_query = array( 'relation' => 'AND' );
         
         if ( is_category() ) {
             // On a category page: get parent if this is a child category
@@ -30,58 +30,50 @@
             }
             
             $tax_query[] = array(
-                'taxonomy' => 'category',
-                'field' => 'term_id',
-                'terms' => $category_id,
+                'taxonomy'         => 'category',
+                'field'            => 'term_id',
+                'terms'            => $category_id,
+                'include_children' => false, // Parent term only
             );
         } else {
-            // Not on a category page: filter by xp taxonomy (parent term only)
+            // Not on a category page: filter by xp parent term only (no child terms)
             $xp_term_id = get_queried_object_id();
             
             $tax_query[] = array(
-                'taxonomy' => 'xp',
-                'field' => 'term_id',
-                'terms' => $xp_term_id,
+                'taxonomy'         => 'xp',
+                'field'            => 'term_id',
+                'terms'            => $xp_term_id,
+                'include_children' => false, // Parent term only
             );
-            
-            // Exclude child xp terms
-            $child_terms = get_terms( array(
-                'taxonomy' => 'xp',
-                'parent' => $xp_term_id,
-                'fields' => 'ids',
-            ) );
-            
-            if ( ! empty( $child_terms ) && ! is_wp_error( $child_terms ) ) {
-                $tax_query[] = array(
-                    'taxonomy' => 'xp',
-                    'field' => 'term_id',
-                    'terms' => $child_terms,
-                    'operator' => 'NOT IN',
-                );
-            }
         }
         
-        // Always exclude postponed items
+        // Exclude postponed
         $tax_query[] = array(
-            array(
-                'taxonomy' => 'xp-status',
-            'field' => 'slug',
-            'terms' => 'postponed',
+            'taxonomy' => 'xp-status',
+            'field'    => 'slug',
+            'terms'    => 'postponed',
             'operator' => 'NOT IN',
-        ),
-         array(                 
+        );
+        
+        // Exclude alumni
+        $tax_query[] = array(
             'taxonomy' => 'category',
-            'field' => 'slug',
-            'terms' => 'alumni',
+            'field'    => 'slug',
+            'terms'    => 'alumni',
             'operator' => 'NOT IN',
-             ),
         );
         
         $args = array(
             'post_type' => 'features',
             'tax_query' => $tax_query,
             'nopaging' => true,
-            'meta_key' => 'info_display_order', 
+            'meta_query' => array(
+                array(
+                    'key' => 'info_display_order',
+                    'compare' => 'EXISTS',
+                    'type' => 'NUMERIC',
+                ),
+            ),
             'orderby' => 'meta_value_num',
             'order' => 'ASC',
         );

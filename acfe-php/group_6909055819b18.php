@@ -852,11 +852,11 @@ acf_add_local_field_group(array(
 			1 => 'json',
 		),
 	),
+	'modified' => 1783648935,
 	'acfe_categories' => array(
 		'options-pages' => 'Options Pages',
 		'products' => 'Products',
 	),
-	'modified' => 1783410688,
 ));
 
 endif;

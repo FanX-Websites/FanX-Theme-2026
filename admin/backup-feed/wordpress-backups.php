@@ -95,22 +95,24 @@ function df_display_next_wordpress_backup_info() {
 	echo '</div>';
 }
 
-// Calculate next WordPress backup time (2:00 AM daily)
+// Calculate next WordPress backup time (2:00 AM weekdays only)
 function df_calculate_next_backup_time() {
-	$backup_hour = 2; // 2:00 AM
+	$backup_hour   = 2; // 2:00 AM
 	$backup_minute = 0;
-	
-	// Get current time
+
 	$current_time = current_time( 'timestamp' );
 	$today_backup = mktime( $backup_hour, $backup_minute, 0, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );
-	
-	// If backup time has already passed today, schedule for tomorrow
-	if ( $current_time >= $today_backup ) {
-		$next_backup = $today_backup + ( 24 * 60 * 60 );
-	} else {
-		$next_backup = $today_backup;
+
+	// If today's backup time has already passed, start looking from tomorrow
+	$next_backup = ( $current_time >= $today_backup )
+		? $today_backup + DAY_IN_SECONDS
+		: $today_backup;
+
+	// Advance past weekends — 0 = Sunday, 6 = Saturday
+	while ( in_array( (int) date( 'w', $next_backup ), array( 0, 6 ), true ) ) {
+		$next_backup += DAY_IN_SECONDS;
 	}
-	
+
 	return $next_backup;
 }
 
@@ -143,10 +145,9 @@ function df_check_backup_status( $site_name ) {
 	$modified = filemtime( $latest );
 	$size = filesize( $latest );
 	
-	// Check if backup is from today and has reasonable size
-	$today_start = mktime( 0, 0, 0, date( 'm' ), date( 'd' ), date( 'Y' ) );
-	$is_recent = $modified >= $today_start;
-	$has_size = $size > 1000; // At least 1KB
+	// Check if backup is within last 3 days (covers Sat/Sun gap) and has reasonable size
+	$is_recent = $modified >= ( time() - ( 3 * DAY_IN_SECONDS ) );
+	$has_size  = $size > 1000; // At least 1KB
 	
 	$success = $is_recent && $has_size;
 	$last_backup_date = wp_date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $modified );
@@ -162,7 +163,7 @@ function df_get_current_site_name() {
 	// Extract site folder from ABSPATH (dynamic, no hardcoding needed)
 	// e.g., /home/ashelizmoore/fillory/fanx/ → 'fanx'
 	if ( preg_match( '#/fillory/([^/]+)/?$#', $wp_path, $matches ) ) {
-		return strtolower( $matches[1] );
+		return $matches[1];
 	}
 	
 	return null;

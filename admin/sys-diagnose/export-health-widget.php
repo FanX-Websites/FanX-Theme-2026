@@ -59,28 +59,7 @@ add_action( 'wp_dashboard_setup', 'fanx_register_export_check_widget' );
 
 function fanx_render_export_health_widget() {
     echo '<div class="fanx-export-widget">';
-    
-    // Tab Navigation
-    echo '<div class="fanx-export-tabs-nav">';
-    echo '<button class="fanx-export-tab-button active" data-tab="scheduler">' . esc_html__( 'Scheduler', 'fanx-theme' ) . '</button>';
-    echo '<button class="fanx-export-tab-button" data-tab="health-check">' . esc_html__( 'Health Check', 'fanx-theme' ) . '</button>';
-    echo '</div>';
-    
-    // Tab Content
-    echo '<div class="fanx-export-tabs-content">';
-    
-    // Scheduler Tab
-    echo '<div class="fanx-export-tab-pane active" id="scheduler-tab" data-tab="scheduler">';
     fanx_render_export_scheduler_tab();
-    echo '</div>';
-    
-    // Health Check Tab
-    echo '<div class="fanx-export-tab-pane" id="health-check-tab" data-tab="health-check">';
-    fanx_render_export_health_check_tab();
-    echo '</div>';
-    
-    echo '</div>';
-    
     echo '</div>';
 }
 

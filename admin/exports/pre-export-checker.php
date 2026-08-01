@@ -309,7 +309,7 @@ function fanx_pre_export_health_check() {
     if ( $timeout > 0 && $timeout < 300 ) { // > 0 means limited, < 300 is low, 0 means unlimited
         $warnings[] = 'PHP timeout is low: ' . $timeout . 's. Increase to at least 300s or set to unlimited.';
     }
-    
+
     return array(
         'errors'   => $issues,
         'warnings' => $warnings,
@@ -324,7 +324,34 @@ function fanx_pre_export_health_check() {
 function fanx_get_export_check_html() {
     $results = fanx_pre_export_health_check();
     $html = '';
-    
+
+    // === PHP VERSION BANNER ===
+    $php_version = phpversion();
+    if ( version_compare( $php_version, '8.2', '>=' ) ) {
+        $php_bg     = '#e8f5e9';
+        $php_border = '#27ae60';
+        $php_color  = '#27ae60';
+        $php_icon   = '&#10003;';
+        $php_note   = 'Current';
+    } elseif ( version_compare( $php_version, '8.1', '>=' ) ) {
+        $php_bg     = '#fff8e1';
+        $php_border = '#f39c12';
+        $php_color  = '#e67e22';
+        $php_icon   = '&#9888;';
+        $php_note   = 'EOL since December 2025 &mdash; upgrade recommended';
+    } else {
+        $php_bg     = '#fee';
+        $php_border = '#d32f2f';
+        $php_color  = '#d32f2f';
+        $php_icon   = '&#10007;';
+        $php_note   = 'End of life &mdash; no security patches, upgrade required';
+    }
+
+    $html .= '<div style="background: ' . $php_bg . '; border: 1px solid ' . $php_border . '; padding: 10px 12px; margin: 10px 0 6px; border-radius: 3px; display: flex; align-items: center; justify-content: space-between;">';
+    $html .= '<strong style="color: ' . $php_color . '; font-size: 13px;">' . $php_icon . ' PHP ' . esc_html( $php_version ) . '</strong>';
+    $html .= '<span style="color: ' . $php_color . '; font-size: 11px;">' . $php_note . '</span>';
+    $html .= '</div>';
+
     if ( ! $results['passed'] ) {
         $html .= '<div style="background: #fee; border: 1px solid #f00; padding: 10px; margin: 10px 0; border-radius: 3px;">';
         $html .= '<strong style="color: #d32f2f;">⚠️ Critical Issues Found:</strong><ul style="margin: 5px 0;">';

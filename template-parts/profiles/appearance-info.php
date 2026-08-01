@@ -36,10 +36,10 @@
             // Load booth location function
             $leap_space_file = get_template_directory() . '/leap/space.php';
             if ( file_exists( $leap_space_file ) ) {
-                require_once( $leap_space_file );
+                require_once( $leap_space_file );  //Hide if no Booth Info in LEAP
                 $vend_booth = get_booth_location( get_the_ID() );
                 
-                if ( $vend_booth ) {
+                if ( trim( $vend_booth ) ) { //ACF Field Override
                     echo '<strong>Location:</strong> ';
                     echo wp_kses_post($vend_booth);
                 }

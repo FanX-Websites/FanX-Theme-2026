@@ -1,5 +1,20 @@
 <?php
 /**
+ * AJAX handler: trigger due WP cron events via spawn_cron()
+ */
+function df_ajax_run_cron_events() {
+    check_ajax_referer( 'df_run_cron', 'nonce' );
+
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_send_json_error( 'Insufficient permissions.' );
+    }
+
+    spawn_cron( time() );
+    wp_send_json_success( 'Cron triggered — page will refresh.' );
+}
+add_action( 'wp_ajax_df_run_cron_events', 'df_ajax_run_cron_events' );
+
+/**
  * System Diagnostics Widget: WP Cron Tab
  *
  * Displays scheduled WordPress cron events and their next run times.
@@ -9,7 +24,7 @@ function df_display_wp_cron_tab() {
     $cron_array = _get_cron_array();
 
     echo '<div style="padding: 10px 12px; margin-bottom: 14px; font-size: 12px; font-weight: 300; color: #333;">';
-    echo '<strong>WP Cron is managed by the system cron.</strong> <code>DISABLE_WP_CRON</code> is enabled on this server — WordPress does not trigger cron automatically on page load. Instead, a system cron job runs <code>run-wp-cron-events.php</code> every 10 minutes to execute any due events.';
+    echo '<strong>WP Cron is managed by the system cron.</strong> System runs cron every 10 minutes. Push jobs manually if overdue.'; 
     echo '</div>';
 
     if ( empty( $cron_array ) ) {
@@ -39,7 +54,7 @@ function df_display_wp_cron_tab() {
 
     $now = time();
 
-    echo '<div style="margin-top: 12px; max-height: 500px; overflow-y: auto;">';
+    echo '<div style="margin-top: 12px; max-height: 400px; overflow-y: auto;">';
     echo '<table style="width: 100%; border-collapse: collapse; font-size: 12px;">';
     echo '<thead><tr style="border-bottom: 2px solid #e5e5e5;">';
     echo '<th style="text-align: left; padding: 6px 8px; color: #555;">Hook</th>';
@@ -70,4 +85,55 @@ function df_display_wp_cron_tab() {
     echo '<div style="margin-top: 12px; font-size: 12px; color: #999;">';
     echo intval( count( $events ) ) . ' scheduled event(s) total';
     echo '</div>';
+
+    // Run overdue events button
+    $overdue_count = count( array_filter( $events, function( $e ) use ( $now ) {
+        return $e['timestamp'] < $now;
+    } ) );
+
+    echo '<div style="margin-top: 14px;">';
+    echo '<button class="button button-primary" id="df-run-cron-btn" data-nonce="' . esc_attr( wp_create_nonce( 'df_run_cron' ) ) . '">';
+    echo '&#9654; Run Overdue Events';
+    if ( $overdue_count > 0 ) {
+        echo ' <span style="background: #d32f2f; color: white; border-radius: 10px; padding: 1px 7px; font-size: 11px; margin-left: 4px;">' . intval( $overdue_count ) . '</span>';
+    }
+    echo '</button>';
+    echo '&nbsp;<button class="button button-secondary" onclick="location.reload();">&#8635; Refresh</button>';
+    echo '<span id="df-run-cron-msg" style="margin-left: 10px; font-size: 12px;"></span>';
+    echo '</div>';
+    ?>
+    <script>
+    (function() {
+        var btn = document.getElementById('df-run-cron-btn');
+        if ( ! btn ) return;
+        btn.addEventListener('click', function() {
+            var msg = document.getElementById('df-run-cron-msg');
+            btn.disabled = true;
+            msg.style.color = '#999';
+            msg.textContent = 'Running...';
+            var data = new FormData();
+            data.append('action', 'df_run_cron_events');
+            data.append('nonce', btn.getAttribute('data-nonce'));
+            fetch(ajaxurl, { method: 'POST', body: data })
+                .then(function(r) { return r.json(); })
+                .then(function(res) {
+                    if ( res.success ) {
+                        msg.style.color = '#27ae60';
+                        msg.textContent = res.data;
+                        setTimeout(function() { location.reload(); }, 1500);
+                    } else {
+                        msg.style.color = '#d32f2f';
+                        msg.textContent = res.data || 'Error running cron.';
+                        btn.disabled = false;
+                    }
+                })
+                .catch(function() {
+                    msg.style.color = '#d32f2f';
+                    msg.textContent = 'Request failed.';
+                    btn.disabled = false;
+                });
+        });
+    })();
+    </script>
+    <?php
 }

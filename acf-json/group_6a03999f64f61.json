@@ -1,8 +1,16 @@
 {
+    "qef_simple_location_rules": false,
     "key": "group_6a03999f64f61",
     "title": "Features\/Activities Profile Pages",
     "fields": [
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_6a03999f6c326",
             "label": "Basic Info",
             "name": "",
@@ -16,6 +24,11 @@
                 "class": "",
                 "id": ""
             },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "allow_backendsearch": false,
             "show_column_filter": false,
             "allow_bulkedit": false,
@@ -23,11 +36,6 @@
             "show_column": false,
             "show_column_weight": 1000,
             "show_column_sortable": false,
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
             "key": "field_6a03999f6c360",
             "label": "Basics\/Categories",
             "name": "info",
@@ -41,13 +49,6 @@
                 "class": "",
                 "id": ""
             },
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
@@ -56,6 +57,13 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999f792bb",
                     "label": "(Column 4\/12)",
                     "name": "",
@@ -75,6 +83,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 1,
+                    "show_column_weight": 1,
+                    "show_column_sortable": false,
                     "key": "field_6a03999f792f5",
                     "label": "Featured Image",
                     "name": "feat_img",
@@ -88,13 +103,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1,
-                    "show_column_sortable": false,
                     "uploader": "",
                     "return_format": "array",
                     "library": "all",
@@ -110,6 +118,13 @@
                     "preview_size": "medium"
                 },
                 {
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999f7932d",
                     "label": "Featured Info",
                     "name": "feat",
@@ -123,13 +138,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "acfe_textarea_code": 0,
                     "maxlength": "",
@@ -139,6 +147,13 @@
                     "new_lines": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999f79365",
                     "label": "(Column 6\/12)",
                     "name": "",
@@ -158,6 +173,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999f7939d",
                     "label": "Post Display Order",
                     "name": "display_order",
@@ -184,6 +206,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": 0,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999f793d6",
                     "label": "Main Cat",
                     "name": "main_cat",
@@ -197,13 +226,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": 0,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "taxonomy": "category",
                     "add_term": 1,
                     "save_terms": 1,
@@ -220,6 +242,13 @@
                     "bidirectional_target": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999f7940e",
                     "label": "Guest List",
                     "name": "guest_list",
@@ -252,6 +281,13 @@
                     "bidirectional_target": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999f79446",
                     "label": "Announcements & Updates Included in:",
                     "name": "feat_updates",
@@ -297,6 +333,13 @@
                     "save_post_type": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999f7947e",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -310,13 +353,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "endpoint": 1,
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
@@ -324,6 +360,13 @@
             ]
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_6a03999f6c399",
             "label": "Guest eXperiences",
             "name": "",
@@ -337,6 +380,12 @@
                 "class": "",
                 "id": ""
             },
+            "placement": "top",
+            "endpoint": 0,
+            "acfe_permissions": "",
+            "selected": 0
+        },
+        {
             "allow_backendsearch": false,
             "show_column_filter": false,
             "allow_bulkedit": false,
@@ -344,12 +393,6 @@
             "show_column": false,
             "show_column_weight": 1000,
             "show_column_sortable": false,
-            "placement": "top",
-            "endpoint": 0,
-            "acfe_permissions": "",
-            "selected": 0
-        },
-        {
             "key": "field_6a03999f6c3d1",
             "label": "Guest Xperiences\/Statuses",
             "name": "xp",
@@ -363,13 +406,6 @@
                 "class": "",
                 "id": ""
             },
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
@@ -380,6 +416,13 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999fdf809",
                     "label": "(Column 4\/12)",
                     "name": "",
@@ -399,6 +442,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": 1,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 1,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999fdf842",
                     "label": "Days Appearing",
                     "name": "days",
@@ -412,13 +462,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": 1,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "taxonomy": "days",
                     "add_term": 1,
                     "save_terms": 1,
@@ -438,6 +481,13 @@
                     "bidirectional_target": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": 0,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999fdf87b",
                     "label": "Fandoms",
                     "name": "fandom",
@@ -451,13 +501,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": 0,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "taxonomy": "fandoms",
                     "add_term": 1,
                     "save_terms": 1,
@@ -474,6 +517,13 @@
                     "bidirectional_target": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": 1,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 1,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999fdf8b4",
                     "label": "eXperiences",
                     "name": "xp",
@@ -501,16 +551,18 @@
                     "acfe_validate": "",
                     "acfe_permissions": "",
                     "allow_in_bindings": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1000,
-                    "allow_quickedit": 1,
-                    "allow_bulkedit": 1,
-                    "show_column_filter": 1,
                     "bidirectional": 0,
                     "multiple": 0,
                     "bidirectional_target": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": 1,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999fdf8ec",
                     "label": "eXperience Status",
                     "name": "xp_stat",
@@ -524,13 +576,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": 1,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "taxonomy": "xp-status",
                     "add_term": 1,
                     "save_terms": 1,
@@ -550,6 +595,13 @@
                     "bidirectional_target": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999fdf924",
                     "label": "(Column 4\/12)",
                     "name": "",
@@ -569,6 +621,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 1,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": 1,
                     "key": "field_6a03999fdf95d",
                     "label": "Autograph Price",
                     "name": "auto_price",
@@ -582,13 +641,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": 1,
                     "default_value": "",
                     "acfe_settings": "",
                     "acfe_validate": "",
@@ -600,6 +652,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 1,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": 1,
                     "key": "field_6a03999fdf995",
                     "label": "Photo Op Price",
                     "name": "op_price",
@@ -613,13 +672,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": 1,
                     "default_value": "",
                     "acfe_settings": "",
                     "acfe_validate": "",
@@ -631,6 +683,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999fdf9ce",
                     "label": "Photo Ops Link",
                     "name": "",
@@ -651,6 +710,13 @@
                     "acfe_permissions": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999fdfa05",
                     "label": "Dedicated Product Category Link",
                     "name": "ded_prod_cat",
@@ -671,6 +737,13 @@
                     "allow_in_bindings": 1
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999fdfa3d",
                     "label": "(Column 4\/12)",
                     "name": "",
@@ -690,6 +763,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999fdfa76",
                     "label": "Group Photo Ops Involved in:",
                     "name": "group_op",
@@ -738,6 +818,13 @@
                     "save_post_status": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999fdfaae",
                     "label": "Celebrity Row Extras",
                     "name": "celeb_extras",
@@ -763,6 +850,13 @@
                     "new_lines": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a03999fdfae6",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -776,13 +870,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "endpoint": 1,
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
@@ -790,6 +877,13 @@
             ]
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_6a03999f6c40a",
             "label": "Header\/Footer",
             "name": "",
@@ -803,6 +897,11 @@
                 "class": "",
                 "id": ""
             },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "allow_backendsearch": false,
             "show_column_filter": false,
             "allow_bulkedit": false,
@@ -810,11 +909,6 @@
             "show_column": false,
             "show_column_weight": 1000,
             "show_column_sortable": false,
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
             "key": "field_6a03999f6c442",
             "label": "Header\/ Footer Info",
             "name": "heafoo",
@@ -838,6 +932,13 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a0399a05f616",
                     "label": "Subtitle",
                     "name": "subtitle",
@@ -851,13 +952,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -866,6 +960,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a0399a05f650",
                     "label": "Subtext",
                     "name": "subtext",
@@ -879,13 +980,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "acfe_textarea_code": 0,
                     "maxlength": "",
@@ -895,6 +989,13 @@
                     "new_lines": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a0399a05f688",
                     "label": "Footer Smallprint Update",
                     "name": "",
@@ -917,6 +1018,13 @@
             ]
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_6a039c8179dfa",
             "label": "Galleries & Featured Posts",
             "name": "",
@@ -936,6 +1044,13 @@
             "selected": 0
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_69fa74648fb02",
             "label": "Featured Posts\/ Image Galleries",
             "name": "gal",
@@ -959,6 +1074,13 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a7522",
                     "label": "Featured Profiles  - Multi-Post Gallery",
                     "name": "",
@@ -978,6 +1100,13 @@
                     "acfe_permissions": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a755c",
                     "label": "(Column 4\/12)",
                     "name": "",
@@ -991,6 +1120,11 @@
                         "class": "",
                         "id": ""
                     },
+                    "columns": "4\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -998,11 +1132,6 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "columns": "4\/12",
-                    "endpoint": 0,
-                    "allow_in_bindings": 0
-                },
-                {
                     "key": "field_69fa7465a7594",
                     "label": "Featured Profiles Multi-Post Gallery - Title",
                     "name": "multi_post_title",
@@ -1027,6 +1156,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a75cd",
                     "label": "Featured Profiles - Multi-Post Gallery - Subtitle",
                     "name": "multi_post_sub",
@@ -1052,6 +1188,13 @@
                     "new_lines": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a7605",
                     "label": "(Column 8\/12)",
                     "name": "",
@@ -1071,6 +1214,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a763d",
                     "label": "Featured Profiles - Mutli-Post Gallery - Post IDs",
                     "name": "multi_post_ids",
@@ -1097,7 +1247,8 @@
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": true,
                         "acfe_bidirectional_related": [
-                            "field_6a039d348ee12"
+                            "field_6a039d348ee12",
+                            "field_69fa640081616"
                         ]
                     },
                     "acfe_settings": "",
@@ -1111,6 +1262,13 @@
                     "save_post_type": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a77b2",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -1124,6 +1282,11 @@
                         "class": "",
                         "id": ""
                     },
+                    "endpoint": 1,
+                    "allow_in_bindings": 0,
+                    "columns": "6\/12"
+                },
+                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -1131,11 +1294,6 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "endpoint": 1,
-                    "allow_in_bindings": 0,
-                    "columns": "6\/12"
-                },
-                {
                     "key": "field_69fa7465a77ea",
                     "label": "Featured Post Gallery",
                     "name": "",
@@ -1155,6 +1313,13 @@
                     "acfe_permissions": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a7823",
                     "label": "(Column 4\/12)",
                     "name": "",
@@ -1174,6 +1339,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a785b",
                     "label": "Featured Post - Title",
                     "name": "feat_title",
@@ -1187,13 +1359,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -1202,6 +1367,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a7893",
                     "label": "Featured Post - Subtitle",
                     "name": "feat_sub",
@@ -1215,13 +1387,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "acfe_textarea_code": 0,
                     "maxlength": "",
@@ -1231,6 +1396,13 @@
                     "new_lines": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a78cb",
                     "label": "(Column 8\/12)",
                     "name": "",
@@ -1250,6 +1422,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a7904",
                     "label": "Featured Post- Post ID",
                     "name": "feat_post_id",
@@ -1291,6 +1470,13 @@
                     "save_post_type": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a793d",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -1310,6 +1496,13 @@
                     "columns": "6\/12"
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a7975",
                     "label": "Dynamic Gallery (Images)",
                     "name": "",
@@ -1329,6 +1522,13 @@
                     "acfe_permissions": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a79ad",
                     "label": "(Column 4\/12)",
                     "name": "",
@@ -1348,6 +1548,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a79e6",
                     "label": "Dynamic Gallery Title",
                     "name": "dyn_title",
@@ -1361,13 +1568,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -1376,6 +1576,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a7a1e",
                     "label": "Dynamic Gallery Subtitle",
                     "name": "dyn_sub",
@@ -1389,13 +1596,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "acfe_textarea_code": 0,
                     "maxlength": "",
@@ -1405,6 +1605,13 @@
                     "new_lines": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a7a57",
                     "label": "(Column 8\/12)",
                     "name": "",
@@ -1418,18 +1625,18 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "columns": "8\/12",
                     "endpoint": 0,
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a7a7d",
                     "label": "Dynamic Gallery Images",
                     "name": "dyn_img",
@@ -1443,13 +1650,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "return_format": "array",
                     "library": "all",
                     "min": "",
@@ -1465,6 +1665,13 @@
                     "preview_size": "thumbnail"
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7465a7ab5",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -1486,6 +1693,13 @@
             ]
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_6a03999f6c47b",
             "label": "Schedule\/ Location",
             "name": "",
@@ -1499,6 +1713,11 @@
                 "class": "",
                 "id": ""
             },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "allow_backendsearch": false,
             "show_column_filter": false,
             "allow_bulkedit": false,
@@ -1506,11 +1725,6 @@
             "show_column": false,
             "show_column_weight": 1000,
             "show_column_sortable": false,
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
             "key": "field_6a0b86e389584",
             "label": "Schedule & Room\/Booth",
             "name": "sched",
@@ -1529,8 +1743,18 @@
             "acfe_group_modal": 0,
             "acfe_settings": "",
             "acfe_permissions": "",
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a1a7788b775d",
                     "label": "(Column 6\/12)",
                     "name": "",
@@ -1549,6 +1773,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a0b86e389585",
                     "label": "Room\/Booth Number",
                     "name": "room_booth",
@@ -1573,6 +1804,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a1a77a1b775f",
                     "label": "Guest Schedule",
                     "name": "guest",
@@ -1597,6 +1835,13 @@
                     "delay": 1
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a1e7a07adfab",
                     "label": "Guest eXperiences",
                     "name": "guest_xp",
@@ -1621,6 +1866,13 @@
                     "delay": 1
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a1a7790b775e",
                     "label": "(Column 6\/12)",
                     "name": "",
@@ -1638,12 +1890,16 @@
                     "endpoint": 0,
                     "allow_in_bindings": 0
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_6a03a4ef416cc",
             "label": "Remote Location",
             "name": "",
@@ -1663,6 +1919,13 @@
             "endpoint": 0
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_6a03999f6c4eb",
             "label": "Remote Location (Address\/Map)",
             "name": "loca",
@@ -1681,8 +1944,18 @@
             "acfe_group_modal": 0,
             "acfe_settings": "",
             "acfe_permissions": "",
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a0399a08f52e",
                     "label": "Address",
                     "name": "address",
@@ -1696,13 +1969,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "acfe_settings": "",
                     "acfe_validate": "",
@@ -1713,6 +1979,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a0399a08f569",
                     "label": "Map",
                     "name": "map",
@@ -1726,13 +1999,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "center_lat": "",
                     "center_lng": "",
                     "zoom": "",
@@ -1741,12 +2007,16 @@
                     "acfe_validate": "",
                     "allow_in_bindings": 0
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_6a1f7ffc07458",
             "label": "Remote Location (copy)",
             "name": "",
@@ -1766,6 +2036,13 @@
             "acfe_permissions": ""
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_6a03999f6c523",
             "label": "Buttons \/ Links",
             "name": "",
@@ -1779,6 +2056,11 @@
                 "class": "",
                 "id": ""
             },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "allow_backendsearch": false,
             "show_column_filter": false,
             "allow_bulkedit": false,
@@ -1786,11 +2068,6 @@
             "show_column": false,
             "show_column_weight": 1000,
             "show_column_sortable": false,
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
             "key": "field_6a03999f6c55c",
             "label": "Buttons",
             "name": "button",
@@ -1804,13 +2081,6 @@
                 "class": "",
                 "id": ""
             },
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "acfe_repeater_stylised_button": 0,
             "layout": "table",
             "pagination": 0,
@@ -1821,6 +2091,13 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a0399a0ad721",
                     "label": "Button Title",
                     "name": "title",
@@ -1834,13 +2111,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 0,
@@ -1850,6 +2120,13 @@
                     "parent_repeater": "field_6a03999f6c55c"
                 },
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a0399a0ad75b",
                     "label": "Button Subtext",
                     "name": "subtext",
@@ -1863,13 +2140,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 0,
@@ -1879,6 +2149,13 @@
                     "parent_repeater": "field_6a03999f6c55c"
                 },
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a0399a0ad794",
                     "label": "Button Link",
                     "name": "url",
@@ -1892,13 +2169,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 0,
@@ -1938,7 +2208,7 @@
         ],
         "advanced": "1"
     },
-    "modified": 1780612230,
+    "modified": 1784576417,
     "acfe_categories": {
         "profile-pages": "Profile Pages"
     }

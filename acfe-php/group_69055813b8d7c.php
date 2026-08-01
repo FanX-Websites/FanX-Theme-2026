@@ -537,7 +537,7 @@ acf_add_local_field_group(array(
 					'name' => 'store_ico',
 					'aria-label' => '',
 					'type' => 'icon_picker',
-					'instructions' => '',
+					'instructions' => '[app_store_ico]',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -563,10 +563,10 @@ acf_add_local_field_group(array(
 				array(
 					'key' => 'field_6917d746d48fe',
 					'label' => 'Apple Store Status',
-					'name' => 'stat',
+					'name' => 'store_stat',
 					'aria-label' => '',
 					'type' => 'text',
-					'instructions' => '[app_stat]',
+					'instructions' => '[app_store_stat]',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -584,10 +584,10 @@ acf_add_local_field_group(array(
 				array(
 					'key' => 'field_6917d781d4900',
 					'label' => 'Apple Store Link',
-					'name' => 'url',
+					'name' => 'store_url',
 					'aria-label' => '',
 					'type' => 'url',
-					'instructions' => '[app_url]',
+					'instructions' => '[app_store_url]',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -602,10 +602,10 @@ acf_add_local_field_group(array(
 				array(
 					'key' => 'field_6a0cbe07fcb54',
 					'label' => 'Google Play Icon',
-					'name' => 'play_ico',
+					'name' => 'goog_ico',
 					'aria-label' => '',
 					'type' => 'icon_picker',
-					'instructions' => '',
+					'instructions' => '[app_goog_ico]',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -770,14 +770,13 @@ acf_add_local_field_group(array(
 	'display_title' => 'Event Info Options Page',
 	'allow_ai_access' => false,
 	'ai_description' => '',
-	'acfe_autosync' => array(
-		0 => 'php',
-		1 => 'json',
+	'acfe' => array(
+		'autosync' => array(
+			0 => 'php',
+			1 => 'json',
+		),
 	),
-	'acfe_form' => 0,
-	'acfe_meta' => '',
-	'acfe_note' => '',
-	'modified' => 1779955421,
+	'modified' => 1783648934,
 	'acfe_categories' => array(
 		'event-info' => 'Event Info',
 		'options-pages' => 'Options Pages',

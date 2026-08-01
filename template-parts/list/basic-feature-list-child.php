@@ -1,7 +1,7 @@
 <?php 
-/** Template Part: Basic Features/Activities List - eXperiences
+/** Template Part: Basic Features/Activities List - child categories
  * 
- * Feature Category Page Template Part - Child Categories ONLY
+ * 
  * 
  * //NOTE: Headers are not included in this template part - Add header to template part parent div. 
  * Header Div Class: 
@@ -75,7 +75,13 @@
             'post_type' => 'features',
             'tax_query' => $tax_query,
             'nopaging' => true,
-            'meta_key' => 'info_display_order', 
+            'meta_query' => array(
+                array(
+                    'key' => 'info_display_order',
+                    'compare' => 'EXISTS',
+                    'type' => 'NUMERIC',
+                ),
+            ),
             'orderby' => 'meta_value_num',
             'order' => 'ASC',
         );

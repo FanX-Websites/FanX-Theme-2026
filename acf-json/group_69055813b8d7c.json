@@ -532,7 +532,7 @@
                     "name": "store_ico",
                     "aria-label": "",
                     "type": "icon_picker",
-                    "instructions": "",
+                    "instructions": "[app_store_ico]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -558,10 +558,10 @@
                 {
                     "key": "field_6917d746d48fe",
                     "label": "Apple Store Status",
-                    "name": "stat",
+                    "name": "store_stat",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "[app_stat]",
+                    "instructions": "[app_store_stat]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -579,10 +579,10 @@
                 {
                     "key": "field_6917d781d4900",
                     "label": "Apple Store Link",
-                    "name": "url",
+                    "name": "store_url",
                     "aria-label": "",
                     "type": "url",
-                    "instructions": "[app_url]",
+                    "instructions": "[app_store_url]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -597,10 +597,10 @@
                 {
                     "key": "field_6a0cbe07fcb54",
                     "label": "Google Play Icon",
-                    "name": "play_ico",
+                    "name": "goog_ico",
                     "aria-label": "",
                     "type": "icon_picker",
-                    "instructions": "",
+                    "instructions": "[app_goog_ico]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -765,14 +765,13 @@
     "display_title": "Event Info Options Page",
     "allow_ai_access": false,
     "ai_description": "",
-    "acfe_autosync": [
-        "php",
-        "json"
-    ],
-    "acfe_form": 0,
-    "acfe_meta": "",
-    "acfe_note": "",
-    "modified": 1779220033,
+    "acfe": {
+        "autosync": [
+            "php",
+            "json"
+        ]
+    },
+    "modified": 1783488520,
     "acfe_categories": {
         "event-info": "Event Info",
         "options-pages": "Options Pages"

@@ -46,8 +46,31 @@ function fanx_simply_static_init() {
     
     // Initialize Yoast sitemap backup system
     fanx_yoast_sitemap_backup_init();
+    
+    // Exclude .git folder from Simply Static crawling
+    add_filter('simply_static_get_urls_to_crawl', 'fanx_exclude_git_from_crawl', 10, 1);
 }
 add_action('plugins_loaded', 'fanx_simply_static_init', 20);
+
+/**
+ * Exclude .git folder from Simply Static crawling
+ * 
+ * Prevents Simply Static from attempting to crawl or export the git repository folder.
+ * This filter removes any URLs that contain /.git/ from the crawl queue.
+ * 
+ * @param array $urls Array of URLs to be crawled
+ * @return array Filtered array with .git URLs removed
+ */
+function fanx_exclude_git_from_crawl($urls) {
+    if (!is_array($urls)) {
+        return $urls;
+    }
+    
+    return array_filter($urls, function($url) {
+        // Remove any URLs containing /.git/ or ending with .git
+        return strpos($url, '/.git') === false && strpos($url, '.git/') === false;
+    });
+}
 
 /**
  * Generate sitemaps on save, ensuring they're always up to date

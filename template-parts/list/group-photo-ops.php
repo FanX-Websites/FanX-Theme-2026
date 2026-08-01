@@ -32,7 +32,9 @@
 
     <div class="section-header"><!-- Section Header -->
         <h2>Group Photo Ops</h2>
+        <p>More info coming soon</p>
     </div> 
+    <!----------- Five across Div container ------------->
     <div class="cat-tax grid-container"> 
        
         <!------------------- Post Block --------------------->
@@ -61,6 +63,23 @@
                     </h2>
                 </header>
                 <!-- END Post Header -->
+
+                <!-- Multi-Post IDs List -->
+                <?php
+                $linked_posts = get_field( 'gal_multi_post_ids' );
+                if ( $linked_posts ) :
+                    $links = array();
+                    foreach ( $linked_posts as $linked_post ) {
+                        // Handle both Post Object and Post ID return formats
+                        $linked_id = is_object( $linked_post ) ? $linked_post->ID : (int) $linked_post;
+                        if ( ! $linked_id ) continue;
+                        $links[] = '<a href="' . esc_url( get_permalink( $linked_id ) ) . '">' . esc_html( get_the_title( $linked_id ) ) . '</a>';
+                    }
+                    if ( $links ) :
+                ?>
+                <div class="multi-post-list"><?php echo implode( ' | ', $links ); ?></div>
+                <?php endif; endif; ?>
+                <!-- END Multi-Post IDs List -->
 
                 <!-- Photo Op Price -->
                 <div class="guest-op-info guest-xp">
@@ -107,7 +126,7 @@
             endwhile;
             wp_reset_postdata();
             
-            // Add filler blocks to complete the last row dynamically
+            // Add filler blocks to complete the last row dynamically //FIXME: -EVER INSTANCE Filler Blocks leaving empty space (see lists)
             $posts_per_row = 4; // Typical desktop column count
             $total_posts = $query->found_posts;
             $remainder = $total_posts % $posts_per_row;

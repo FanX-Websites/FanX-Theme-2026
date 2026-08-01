@@ -72,8 +72,10 @@ function df_create_sys_diagnose_widget() {
 	echo '<div class="df-sysdiag-tabs" style="border-bottom: 2px solid #e5e5e5; margin-bottom: 16px; display: flex; gap: 0;">';
 
 	$tabs = array(
-		'debuglog' => 'Debug Log',
-		'wpcron'   => 'WP Cron',
+		'debuglog'    => 'Debug Log',
+		'sysinfo'     => 'System Info',
+		'wpcron'      => 'WP Cron',
+		'exporthealth' => 'Export Health',
 	);
 
 	foreach ( $tabs as $tab_id => $tab_label ) {
@@ -94,9 +96,19 @@ function df_create_sys_diagnose_widget() {
 	df_display_debug_log_tab();
 	echo '</div>';
 
+	echo '<div id="df-sysdiag-tab-sysinfo" class="df-sysdiag-tab-content" style="display: none;">';
+	df_display_system_info_tab();
+	echo '</div>';
+
 	echo '<div id="df-sysdiag-tab-wpcron" class="df-sysdiag-tab-content" style="display: none;">';
 	if ( function_exists( 'df_display_wp_cron_tab' ) ) {
 		df_display_wp_cron_tab();
+	}
+	echo '</div>';
+
+	echo '<div id="df-sysdiag-tab-exporthealth" class="df-sysdiag-tab-content" style="display: none;">';
+	if ( function_exists( 'fanx_render_export_health_check_tab' ) ) {
+		fanx_render_export_health_check_tab();
 	}
 	echo '</div>';
 
@@ -352,6 +364,75 @@ function df_display_full_log_page() {
         <?php endif; ?>
     </div>
     <?php
+}
+
+/**
+ * Display System Information Tab
+ * Shows PHP version, WordPress version, Theme, and Theme Compatibility status
+ */
+function df_display_system_info_tab() {
+    echo '<div style="padding: 15px;">';
+    
+    $php_version = phpversion();
+    $wp_version = get_bloginfo( 'version' );
+    $theme = wp_get_theme();
+    $theme_version = $theme->get( 'Version' );
+    
+    // Get compatibility check results
+    $compat_issues = get_option( 'fanx_compatibility_issues', array() );
+    $compat_status = empty( $compat_issues ) ? 'passing' : 'warning';
+    $compat_count = count( $compat_issues );
+    
+    // System Info Box
+    echo '<div style="background: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; border-radius: 4px; margin-bottom: 20px;">';
+    
+    // PHP Version
+    echo '<div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">';
+    echo '<strong style="min-width: 200px;">PHP Version:</strong> ';
+    echo '<code style="background: #e7e7e7; padding: 4px 8px; border-radius: 3px; font-size: 13px;">' . esc_html( $php_version ) . '</code>';
+    echo '</div>';
+    
+    // WordPress Version
+    echo '<div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">';
+    echo '<strong style="min-width: 200px;">WordPress Version:</strong> ';
+    echo '<code style="background: #e7e7e7; padding: 4px 8px; border-radius: 3px; font-size: 13px;">' . esc_html( $wp_version ) . '</code>';
+    echo '</div>';
+    
+    // Theme & Version
+    echo '<div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">';
+    echo '<strong style="min-width: 200px;">Active Theme:</strong> ';
+    echo '<code style="background: #e7e7e7; padding: 4px 8px; border-radius: 3px; font-size: 13px;">' . esc_html( $theme->get( 'Name' ) ) . ' v' . esc_html( $theme_version ) . '</code>';
+    echo '</div>';
+    
+    // Theme Compatibility
+    echo '<div style="margin-bottom: 0; display: flex; justify-content: space-between; align-items: center;">';
+    echo '<strong style="min-width: 200px;">Theme Compatibility:</strong> ';
+    
+    if ( $compat_status === 'passing' ) {
+        echo '<span style="background: #d4edda; color: #155724; padding: 4px 8px; border-radius: 3px; font-size: 12px; font-weight: bold;">✓ PASSING</span>';
+    } else {
+        echo '<span style="background: #fff3cd; color: #856404; padding: 4px 8px; border-radius: 3px; font-size: 12px; font-weight: bold;">⚠ ' . intval( $compat_count ) . ' ISSUE(S)</span>';
+    }
+    
+    echo '</div>';
+    echo '</div>';
+    
+    // Compatibility Details
+    if ( ! empty( $compat_issues ) ) {
+        echo '<div style="background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 4px; margin-bottom: 20px;">';
+        echo '<h4 style="margin-top: 0; color: #856404;">Compatibility Issues Found (' . intval( $compat_count ) . ')</h4>';
+        echo '<ul style="margin: 10px 0; padding-left: 20px;">';
+        foreach ( $compat_issues as $issue ) {
+            echo '<li style="margin-bottom: 8px;">' . esc_html( $issue ) . '</li>';
+        }
+        echo '</ul>';
+        echo '<div style="margin-top: 12px;">';
+        echo '<a href="' . esc_url( admin_url( 'tools.php?page=fanx-compatibility-check' ) ) . '" class="button button-secondary">View Full Report</a>';
+        echo '</div>';
+        echo '</div>';
+    }
+    
+    echo '</div>';
 }
 
 ?>
