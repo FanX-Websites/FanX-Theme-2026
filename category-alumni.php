@@ -34,8 +34,8 @@ get_header(); /** body- main-site */
                     'terms' => $term->term_id,
                 ),
             ),
-            'nopaging' => true,
-            'posts_per_page' => -1,
+            'posts_per_page' => 50,
+            'paged' => $paged,
             'meta_query' => array(
                 array(
                     'key' => 'info_display_order',
@@ -51,45 +51,9 @@ get_header(); /** body- main-site */
         if ( $query->have_posts() ) : ?>
         <?php
         while ( $query->have_posts() ) : $query->the_post();
-            // Determine postponed status once per loop iteration
-            $is_postponed = has_term( 'postponed', 'xp-status', get_the_ID() );
+            // Render post block using shared function (also used by AJAX handler)
+            fanx_render_alumni_post_block();
             ?>
-        <!------------------- Post (Guest) Block --------------------->
-        <div class="post-block block">
-
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                
-            
-                
-                <!-- Post Header -->
-                <header class="entry-header">
-                    <h2 class="entry-title">
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                    </h2>
-                </header>
-                <!-- END Post Header -->
-
-                <!-- Fandom Tags -->
-                <div class="fandom-tags">
-                    <?php
-                    $fandoms = get_the_terms( get_the_ID(), 'guest-list' );
-                    if ( $fandoms && ! is_wp_error( $fandoms ) ) {
-                        echo '<div class="tags-list">';
-                        $tags = array();
-                        foreach ( $fandoms as $fandom ) {
-                            $tags[] = '<span class="fandom-tag">' . esc_html( $fandom->name ) . '</span>';
-                        }
-                        echo implode( ' | ', $tags );
-                        echo '</div>';
-                    }
-                    ?>
-                </div>
-                <!-- END Fandom Tags -->
-
-            </article>
-        </div>
-        <!-- END Post Block -------------------->
-
         <?php
             endwhile;
             wp_reset_postdata();
@@ -109,6 +73,36 @@ get_header(); /** body- main-site */
 
     </div><!-- END cat-tax grid-container -->
     
+    <?php
+    // Load More Button (if there are more posts) - MOVED OUTSIDE GRID
+    if ( $query->have_posts() ) {
+        $current_posts_shown = $paged * 50;
+        if ( $current_posts_shown < $query->found_posts ) : ?>
+            <div class="load-more-container" style="text-align: center; padding: 40px 0; width: 100%;">
+                <button 
+                    id="fanx-load-more-alumni" 
+                    class="load-more-btn"
+                    data-paged="<?php echo esc_attr( $paged ); ?>"
+                    data-term-id="<?php echo esc_attr( $term->term_id ); ?>"
+                    data-taxonomy="<?php echo esc_attr( $term->taxonomy ); ?>"
+                    data-posts-per-page="50"
+                    style="padding: 12px 30px; font-size: 16px; background: #333; color: #fff; border: none; cursor: pointer; border-radius: 4px;">
+                    Load More
+                </button>
+                <div id="fanx-loading-alumni" class="loading-spinner" style="display: none; margin-top: 10px;">
+                    <span style="display: inline-block; width: 20px; height: 20px; border: 3px solid #f3f3f3; border-top: 3px solid #333; border-radius: 50%; animation: spin 1s linear infinite;"></span>
+                </div>
+            </div>
+            <style>
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            </style>
+        <?php endif;
+    }
+    ?>
+    
     <!--- No Posts/Coming Soon Message --->
     <div class="container full">
         <?php
@@ -120,6 +114,75 @@ get_header(); /** body- main-site */
     <!--- END No Posts/Coming Soon Message-----> 
 
     <!----- END Main Content Area----------------->
+
+    <!-- Load More AJAX Handler -->
+    <script>
+    (function() {
+        const loadMoreBtn = document.getElementById('fanx-load-more-alumni');
+        const loadingSpinner = document.getElementById('fanx-loading-alumni');
+        const gridContainer = document.querySelector('.cat-tax.grid-container');
+        
+        if (!loadMoreBtn) return; // Exit if button doesn't exist
+        
+        loadMoreBtn.addEventListener('click', function() {
+            // Get button data
+            const currentPage = parseInt(loadMoreBtn.getAttribute('data-paged')) || 1;
+            const nextPage = currentPage + 1;
+            const termId = loadMoreBtn.getAttribute('data-term-id');
+            const taxonomy = loadMoreBtn.getAttribute('data-taxonomy');
+            const postsPerPage = 50;
+            
+            // Show loading spinner, hide button
+            loadingSpinner.style.display = 'block';
+            loadMoreBtn.disabled = true;
+            
+            // Make AJAX request
+            fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    action: 'fanx_load_more_alumni',
+                    paged: nextPage,
+                    term_id: termId,
+                    taxonomy: taxonomy,
+                    posts_per_page: postsPerPage
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Append new posts to grid
+                    gridContainer.insertAdjacentHTML('beforeend', data.data.posts_html);
+                    
+                    // Update button page number
+                    loadMoreBtn.setAttribute('data-paged', nextPage);
+                    
+                    // Check if there are more posts
+                    if (data.data.has_more) {
+                        loadingSpinner.style.display = 'none';
+                        loadMoreBtn.disabled = false;
+                    } else {
+                        // Hide button if no more posts
+                        loadMoreBtn.style.display = 'none';
+                        loadingSpinner.style.display = 'none';
+                    }
+                } else {
+                    console.error('Load More failed:', data.data.message);
+                    loadMoreBtn.disabled = false;
+                    loadingSpinner.style.display = 'none';
+                }
+            })
+            .catch(error => {
+                console.error('AJAX error:', error);
+                loadMoreBtn.disabled = false;
+                loadingSpinner.style.display = 'none';
+            });
+        });
+    })();
+    </script>
+    <!-- END Load More AJAX Handler -->
 
     <!-- Small Print Section -->
     <div class="container full">

@@ -2,5 +2,5 @@
 /**
  * Taxonomy Template - Forwards to category.php
  */
-get_template_part( 'page-i-am-error' );
+get_template_part( 'archive' );
 ?>

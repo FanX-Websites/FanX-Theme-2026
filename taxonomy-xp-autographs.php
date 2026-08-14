@@ -46,7 +46,7 @@ get_header(); /** body- main-site */
                 ),
             ),
             'paged' => $paged,
-            'posts_per_page' => -1, //UNLIMITED POSTS
+            'posts_per_page' => 150, //100 posts per page to prevent memory leaks
         );
         $query = new WP_Query( $args );
         if ( $query->have_posts() ) : ?>

@@ -37,8 +37,8 @@ get_header(); /** body- main-site */
         'operator' => 'NOT IN',
     ),
             ),
-            'nopaging' => true,
-            'posts_per_page' => -1,
+            'posts_per_page' => 200,
+            'paged' => $paged,
             'meta_query' => array(
                 array(
                     'key' => 'info_display_order',

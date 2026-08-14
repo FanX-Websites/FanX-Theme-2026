@@ -7,7 +7,17 @@
 </main><!-- END Site Main from Header-->  
 
 <!-- Footer Injection Code -->
-<?php echo get_field('theme_footer', 'option') ?>            
+<?php echo get_field('theme_footer', 'option') ?> 
+
+<!-- Remove search strings from url -->
+<script>
+if (window.history.replaceState) {
+    const cleanUrl = window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
+}
+</script> 
+
+<!-- END Footer Injection Code --->
 
 <!--- FOOTER --->
 <div class="footer">
@@ -52,7 +62,7 @@
 
 <?php wp_footer(); ?>
 
-<!-- Website CLosing Tags -->
+<!-- Website Closing Tags -->
     </body>
 </html>
 <!-- END Body and HTML --->

@@ -2,6 +2,7 @@
 /**
  * Static Site Export & Backup Feed Widget - Server Cron Edition
  * 
+ * //NOTE: Works with /simply-static/system-level-exports
  * Displays:
  * - Next scheduled export & backup time (calculated from server cron schedule)
  * - Last export & backup status for today

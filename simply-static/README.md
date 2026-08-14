@@ -1,26 +1,16 @@
-# FanX Theme Sitemap Integration & Yoast Backup System
+# FanX Theme Yoast Sitemap Backup & Simply Static Integration
 
-Complete sitemap management system for FanXTheme2026 with automatic Yoast backup and recovery capabilities.
+Yoast sitemap backup system for FanXTheme2026 with automatic daily backups and seamless Simply Static integration.
 
 ## Overview
 
 This module provides:
-- **Static XML Sitemap Generation** - Creates server-friendly XML sitemaps for all post types and taxonomies
-- **Simply Static Integration** - Seamless integration with Simply Static (both free and Pro versions)
-- **Yoast Sitemap Backup** - Automatic backup of Yoast-generated sitemaps with restore capability
-- **Site Recovery** - Fallback sitemaps available if WordPress site goes down
+- **Yoast Sitemap Backup** - Automatic daily backup of Yoast-generated sitemaps with restore capability
+- **Simply Static Integration** - Hooks into Simply Static (both free and Pro versions) to ensure all URLs are crawlable
+- **Versioned Backups** - Maintains current backup + 30-day archive for recovery
+- **Admin Interface** - Quick actions available on Simply Static plugin settings page
 
 ## Features
-
-### Automatic Sitemap Generation
-- Generates static XML sitemaps for all public, queryable post types
-- Includes all public taxonomies
-- Created in `/wp-content/uploads/sitemaps/` directory
-- Regenerated on:
-  - Post/page saves
-  - Term/taxonomy updates
-  - Permalink flush
-  - Simply Static exports
 
 ### Yoast Sitemap Backup System
 - **Automatic Daily Backups** - Runs at scheduled time via WordPress cron
@@ -39,93 +29,61 @@ This module provides:
 
 ```
 /wp-content/
-├── uploads/
-│   ├── sitemaps/                    # Generated static sitemaps
-│   │   ├── sitemap-index.xml
-│   │   ├── sitemap-post.xml
-│   │   ├── sitemap-page.xml
-│   │   ├── sitemap-tax-category.xml
-│   │   └── [other post types and taxonomies]
-│   │
-│   └── yoast-sitemap-backups/       # Yoast backup directory
-│       ├── current/                 # Latest backups
-│       │   ├── sitemap.xml
-│       │   ├── sitemap_index.xml
-│       │   └── metadata.json
-│       │
-│       └── archive/                 # Older backups (30-day retention)
-│
-└── shared-themes/FanXTheme2026/
-    └── simply-static/
-        ├── sitemap-integration.php  # Main integration file
-        ├── README.md                # This file
-        └── [other files]
+└── uploads/
+    └── yoast-sitemap-backups/       # Yoast backup directory
+        ├── current/                 # Latest backups
+        │   ├── sitemap.xml
+        │   ├── sitemap_index.xml
+        │   └── metadata.json
+        │
+        └── archive/                 # Older backups (30-day retention)
+
+/shared-themes/FanXTheme2026/
+└── simply-static/
+    ├── sitemap-integration.php      # Main integration file
+    ├── system-level-exports.php     # System cron export & backup
+    └── README.md                    # This file
 ```
 
 ## Admin Interface
 
-### Dashboard Notifications
+### Admin Notice on Simply Static Settings
 
-When viewing Simply Static settings, you'll see a blue information notice with:
-- Current sitemap generation status
-- Latest Yoast backup timestamp
-- Quick action buttons
+When viewing Simply Static plugin settings (admin-only), you'll see a blue information notice showing:
+- Current Yoast backup status
+- Latest backup timestamp
+- Quick action buttons (Backup Now, Restore from Backup)
 
-### Available Buttons
-
-**Regenerate Sitemaps**
-- Immediately regenerates all static XML sitemaps
-- Useful for manual updates between scheduled runs
-
-**Backup Yoast Sitemaps Now**
-- Creates an immediate backup of Yoast-generated sitemaps
-- Useful before major content changes
-
-**Restore from Backup**
-- Restores the latest backup to live sitemaps
-- Use if live sitemaps become corrupted
+The notice appears only on the Simply Static settings page and provides:
+- Real-time backup status updates
+- One-click manual backup trigger
+- One-click restore from latest backup
 
 ## WP-CLI Commands
 
-### Sitemap Generation
+All commands are under the `wp fanx simply-static-urls` namespace:
 
 ```bash
-# Regenerate all static sitemaps
-wp fanx regenerate-sitemaps
-
-# Regenerate and list files
-wp fanx regenerate-sitemaps --list
-
-# List all generated sitemap files
-wp fanx list-sitemaps
-
 # Get Simply Static URL list (multiple formats)
 wp fanx simply-static-urls
 wp fanx simply-static-urls --format=csv
 wp fanx simply-static-urls --format=list
-```
 
-### Yoast Sitemap Backup Management
+# Regenerate static sitemaps
+wp fanx simply-static-urls regenerate-sitemaps
+wp fanx simply-static-urls regenerate-sitemaps --list
 
-```bash
-# Create immediate backup of Yoast sitemaps
-wp fanx backup-yoast-sitemaps
+# List generated sitemap files
+wp fanx simply-static-urls list-sitemaps
 
-# Backup and list files
-wp fanx backup-yoast-sitemaps --list
+# Yoast Sitemap Backup Management
+wp fanx simply-static-urls backup-yoast-sitemaps
+wp fanx simply-static-urls backup-yoast-sitemaps --list
+wp fanx simply-static-urls backup-status
+wp fanx simply-static-urls restore-yoast-sitemaps
 
-# Check backup status
-wp fanx backup-status
-
-# Restore from latest backup
-wp fanx restore-yoast-sitemaps
-```
-
-### Simply Static Pro Integration
-
-```bash
-# Add all URLs directly to Simply Static Pro database
-wp fanx add-urls-to-ssp
+# Simply Static Pro Integration
+wp fanx simply-static-urls add-urls-to-ssp
 ```
 
 ## REST API Endpoints
@@ -352,11 +310,11 @@ cat wp-content/uploads/yoast-sitemap-backups/current/metadata.json
 
 | Purpose | Location |
 |---------|----------|
-| Static Sitemaps | `/wp-content/uploads/sitemaps/` |
 | Yoast Backups (Current) | `/wp-content/uploads/yoast-sitemap-backups/current/` |
 | Yoast Backups (Archive) | `/wp-content/uploads/yoast-sitemap-backups/archive/` |
-| Integration Code | `/shared-themes/FanXTheme2026/simply-static/` |
 | Backup Metadata | `/wp-content/uploads/yoast-sitemap-backups/current/metadata.json` |
+| Integration Code | `/shared-themes/FanXTheme2026/simply-static/sitemap-integration.php` |
+| System Export Code | `/shared-themes/FanXTheme2026/simply-static/system-level-exports.php` |
 
 ## Security Notes
 
@@ -380,5 +338,6 @@ For integration issues or feature requests, refer to:
 
 ---
 
-**Last Updated**: February 24, 2026
-**Status**: Production Ready
+**Last Updated**: August 14, 2026
+**Status**: Production Ready - Yoast Backup & Simply Static Integration
+**Note**: Static XML sitemap generation feature not currently implemented (uses Yoast sitemaps instead)

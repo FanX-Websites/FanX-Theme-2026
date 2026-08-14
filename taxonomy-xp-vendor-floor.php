@@ -17,36 +17,42 @@ get_header(); /** body- main-site */
 
 
     <!--------------- #Feature/Activity List Section [Template Part] ----------------------->
-    <div class="featured-section container full">
+    <div class="section">
         <!----- Features/Activities List Header ---------->
             <div class="section-header">
                 <h2>Features & Activities</h2>
                 <p>on the Vendor Floor</p>
             </div><!---- END Features/Activities List Header ---------->
         <!---- END Features/Activities List Header ---------->
-        <?php get_template_part('template-parts/list/basic-feature-list'); //Basic Feature List ?>
+        <div class="container full">
+            <?php get_template_part('template-parts/list/basic-feature-list'); //Basic Feature List ?>
+        </div>
     </div><!-- END #Feature/Activity List Section ----------------------------------------->
 
     <!--------------- #Feature/Activity List Section [Template Part] ----------------------->
-    <div class="featured-section container full">
+    <div class="section">
         <!----- Features/Activities List Header ---------->
             <div class="section-header">
                 <h2>Vendor Spotlight</h2>
                 <p>on the Vendor Floor</p>
             </div><!---- END Features/Activities List Header ---------->
         <!---- END Features/Activities List Header ---------->
-        <?php get_template_part('template-parts/list/basic-feature-list-child'); ?>
+        <div class="container full">
+            <?php get_template_part('template-parts/list/basic-feature-list-child'); //Basic Feature List -  ?>
+        </div>
     </div><!-- END #Feature/Activity List Section ----------------------------------------->
 
     <!--------------- #Feature/Activity List Section [Template Part] ----------------------->
-    <div class="featured-section container full">
+    <div class="section">
         <!----- Guest List Header ---------->
             <div class="section-header">
                 <h2>Featured Guests</h2>
                 <p>on the Vendor Floor</p>
             </div><!---- END Guest List Header ---------->
         <!---- END Guest List Header ---------->
-        <?php get_template_part('template-parts/list/basic-guest-list'); ?>
+        <div class="container full">
+            <?php get_template_part('template-parts/list/basic-guest-list'); ?>
+        </div>
     </div><!-- END #Feature/Activity List Section ----------------------------------------->
 
 

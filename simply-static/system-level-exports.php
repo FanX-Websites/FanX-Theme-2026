@@ -6,8 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * System-Level Scheduled Exports & Backups for Simply Static
- *
- * Handles automatic nightly export of the dynamic WordPress site to static HTML,
+ * //NOTE: Works with admin/backup-feeds/static-backups
+ * //INFO: This files Handles automatic nightly export of the dynamic WordPress site to static HTML,
  * CSS, and JavaScript. Each export is immediately backed up for safekeeping.
  * Cleanup of old backups is delegated to the system shell script (see below).
  *

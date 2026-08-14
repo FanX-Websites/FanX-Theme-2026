@@ -1,32 +1,4 @@
-# Block direct access to .git directory and sensitive git files
-<FilesMatch "^\.git">
-    <IfModule mod_authz_core.c>
-        Require all denied
-    </IfModule>
-    <IfModule !mod_authz_core.c>
-        Order allow,deny
-        Deny from all
-    </IfModule>
+# Block direct access to Hidden Files (ie: .git) in the current theme
+<FilesMatch "^\.">
+    Require all denied
 </FilesMatch>
-
-# Block git-related files
-<FilesMatch "\.(git|gitignore|gitkeep|gitattributes)$">
-    <IfModule mod_authz_core.c>
-        Require all denied
-    </IfModule>
-    <IfModule !mod_authz_core.c>
-        Order allow,deny
-        Deny from all
-    </IfModule>
-</FilesMatch>
-
-# Block directory listing of sensitive directories
-<Directory ~ "\.git">
-    <IfModule mod_authz_core.c>
-        Require all denied
-    </IfModule>
-    <IfModule !mod_authz_core.c>
-        Order allow,deny
-        Deny from all
-    </IfModule>
-</Directory>

@@ -131,7 +131,6 @@ add_action('wp_enqueue_scripts', function() {
 		//Functions - Front End
 			'functions/shortcode.php',
 			'functions/tag-cats.php',
-			'functions/sitemap.php',
 		//Branding
 			
 		//Plugins - Third Party	
@@ -197,6 +196,21 @@ add_action('wp_enqueue_scripts', function() {
 		}
 	}
 	add_action( 'template_redirect', 'df_block_user_enum_attempt' );
+
+	/*** Disable Date Archives */
+	function df_disable_date_archives() {
+		// Only run on frontend
+		if ( is_admin() ) {
+			return;
+		}
+		
+		// Block all date-based archives (year, month, day)
+		if ( is_date() ) {
+			wp_safe_redirect( home_url(), 301 );
+			exit;
+		}
+	}
+	add_action( 'template_redirect', 'df_disable_date_archives' );
 
 //End protect the things <---
 

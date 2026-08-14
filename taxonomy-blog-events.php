@@ -20,10 +20,10 @@ get_header(); /** body- main-site */
     <!-------------------------- Main Content Area --------------------->
     <div class="cat-tax grid-container"> 
         <?php
-        // Unlimited posts for category/taxonomy pages
+        // Limit posts to 100 per page to prevent memory leaks
         if ( is_category() || is_tax() ) {
             global $wp_query;
-            $wp_query->set( 'nopaging', true ); 
+            $wp_query->set( 'posts_per_page', 100 );
             $wp_query->query( $wp_query->query_vars );
         }
         if ( have_posts() ) : ?>

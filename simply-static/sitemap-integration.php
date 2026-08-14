@@ -304,20 +304,26 @@ function fanx_generate_static_sitemap_files() {
 
 /**
  * Initialize Yoast sitemap backup system
+ * 
+ * NOTE: Automatic backups are now handled by system cron at 23:45 via /bin/run-scheduled-yoast-backup.php
+ * WordPress cron scheduling has been disabled (DISABLE_WP_CRON = true)
  */
 function fanx_yoast_sitemap_backup_init() {
-    // Schedule automatic backups if not already scheduled
-    if (!wp_next_scheduled('fanx_backup_yoast_sitemaps')) {
-        wp_schedule_event(time(), 'daily', 'fanx_backup_yoast_sitemaps');
-    }
+    // System Cron Edition: Automatic backups run via /bin/run-scheduled-yoast-backup.php at 23:45
+    // WordPress cron has been disabled - all backup timing is managed by system cron
     
-    // Hook for manual/automated backup
-    add_action('fanx_backup_yoast_sitemaps', 'fanx_backup_yoast_sitemaps');
+    // DISABLED: WordPress cron scheduling (not used when DISABLE_WP_CRON = true)
+    // if (!wp_next_scheduled('fanx_backup_yoast_sitemaps')) {
+    //     wp_schedule_event(time(), 'daily', 'fanx_backup_yoast_sitemaps');
+    // }
     
-    // Also backup when Yoast generates new sitemaps
-    add_action('wpseo_sitemaps_cache_clear', 'fanx_backup_yoast_sitemaps');
-    add_action('save_post', 'fanx_backup_yoast_sitemaps_on_post_update', 999);
-    add_action('edit_term', 'fanx_backup_yoast_sitemaps_on_term_update', 999);
+    // DISABLED: WordPress cron action hook
+    // add_action('fanx_backup_yoast_sitemaps', 'fanx_backup_yoast_sitemaps');
+    
+    // DISABLED: Real-time backups on post/term updates (now handled by scheduled system cron)
+    // add_action('wpseo_sitemaps_cache_clear', 'fanx_backup_yoast_sitemaps');
+    // add_action('save_post', 'fanx_backup_yoast_sitemaps_on_post_update', 999);
+    // add_action('edit_term', 'fanx_backup_yoast_sitemaps_on_term_update', 999);
 }
 
 /**
@@ -368,32 +374,92 @@ function fanx_get_yoast_sitemap_dir() {
 }
 
 /**
- * Find all Yoast sitemap files
+ * Find all Yoast sitemap files by downloading from the live site
  *
- * @return array Array of sitemap file paths found
+ * Yoast generates sitemaps dynamically (not stored as physical files).
+ * This function downloads the sitemap index, parses it, and downloads all listed sitemaps.
+ *
+ * @return array Array of sitemap file paths (or URLs if already cached)
  */
 function fanx_find_yoast_sitemap_files() {
     $files = [];
-    $search_dir = get_home_path();
+    $temp_dir = sys_get_temp_dir() . '/yoast-sitemap-download-' . time();
     
-    // Look for Yoast sitemap files in root and uploads
-    $patterns = [
-        'sitemap*.xml',
-        'sitemap*.xml.gz',
-    ];
-    
-    foreach ($patterns as $pattern) {
-        $found = glob($search_dir . $pattern);
-        if (!empty($found)) {
-            $files = array_merge($files, $found);
-        }
+    // Create temp directory for downloads
+    if (!is_dir($temp_dir)) {
+        wp_mkdir_p($temp_dir);
     }
     
-    // Remove duplicates and filter
-    $files = array_unique($files);
-    $files = array_filter($files, function($file) {
-        return is_readable($file) && is_file($file);
-    });
+    // Download the sitemap index
+    $sitemap_index_url = home_url('/sitemap.xml');
+    $index_response = wp_remote_get($sitemap_index_url, [
+        'timeout' => 30,
+        'sslverify' => apply_filters('https_local_ssl_verify', false),
+    ]);
+    
+    if (is_wp_error($index_response)) {
+        // Sitemap index couldn't be downloaded
+        return [];
+    }
+    
+    $index_body = wp_remote_retrieve_body($index_response);
+    $response_code = wp_remote_retrieve_response_code($index_response);
+    
+    if ($response_code !== 200 || empty($index_body)) {
+        return [];
+    }
+    
+    // Parse the sitemap index to find all sitemaps
+    try {
+        $xml = new SimpleXMLElement($index_body);
+        $sitemaps = [];
+        
+        // Handle sitemap index format (contains <sitemap> elements)
+        if ($xml->getName() === 'sitemapindex') {
+            foreach ($xml->sitemap as $sitemap) {
+                $loc = (string) $sitemap->loc;
+                if (!empty($loc)) {
+                    $sitemaps[] = $loc;
+                }
+            }
+        } else {
+            // Single sitemap (not an index) - use it directly
+            $sitemaps[] = $sitemap_index_url;
+        }
+        
+        // Download each sitemap
+        foreach ($sitemaps as $sitemap_url) {
+            $response = wp_remote_get($sitemap_url, [
+                'timeout' => 30,
+                'sslverify' => apply_filters('https_local_ssl_verify', false),
+            ]);
+            
+            if (is_wp_error($response)) {
+                continue;
+            }
+            
+            $body = wp_remote_retrieve_body($response);
+            $code = wp_remote_retrieve_response_code($response);
+            
+            if ($code === 200 && !empty($body)) {
+                // Extract filename from URL (e.g., https://example.com/sitemap-posts.xml → sitemap-posts.xml)
+                $filename = basename(parse_url($sitemap_url, PHP_URL_PATH));
+                if (empty($filename)) {
+                    $filename = 'sitemap.xml';
+                }
+                
+                $file_path = $temp_dir . '/' . $filename;
+                file_put_contents($file_path, $body);
+                
+                if (file_exists($file_path)) {
+                    $files[] = $file_path;
+                }
+            }
+        }
+    } catch (Exception $e) {
+        // XML parsing failed - return empty
+        return [];
+    }
     
     return $files;
 }

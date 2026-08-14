@@ -3,7 +3,7 @@
  * 
  * 
  * 
- * //NOTE: Headers are not included in this template part - Add header to template part parent div. 
+ * //NOTE: Headers are not included in this template part - Add header to template parts parent div.
  * Header Div Class: 
  * 
  */

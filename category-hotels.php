@@ -20,10 +20,12 @@ get_header(); /** body- main-site */
     <div class="cat-tax grid-container">
         <?php
         // Query partners CPT filtered by current category
+        $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
         $term = get_queried_object();
         $args = array(
             'post_type' => 'partner',
-            'nopaging' => true,
+            'posts_per_page' => 100,
+            'paged' => $paged,
             'tax_query' => array(
                 array(
                     'taxonomy' => $term->taxonomy,

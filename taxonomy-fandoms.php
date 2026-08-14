@@ -40,7 +40,7 @@ get_header(); /** body- main-site */
                     'operator' => 'NOT IN',
                 ),
             ),
-            'nopaging' => true,
+            'posts_per_page' => 100,
         );
         $query = new WP_Query( $args );
         if ( $query->have_posts() ) : ?>
