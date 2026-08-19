@@ -1,9 +1,7 @@
 <?php
 /**
- * Taxonomy Template: eXperiences (XP) Category/Archive Pages
+ * Taxonomy Template: Vendor Floor eXperience (XP) Category/Archive Page
  * @author FanXTheme2026
- * Default template for XP categories. 
- * //TODO: Create Sections (template-parts) w/Headers for guests, latest updates, features, events, etc. (as needed)
  */
 get_header(); /** body- main-site */
 ?>
@@ -58,8 +56,18 @@ get_header(); /** body- main-site */
 
 
     <!-- Floor #Maps & Room List Section --->
-        <?php get_template_part('template-parts/sections/sched-maps'); ?>
+    <div class="vend-map full-framed section">
+        <div class="section-header">
+                <h2>Vendor List & Floor Maps</h2>
+                <p>for <?php echo get_field('event_hashtag', 'options')  ?></p>
+            </div><!---- END Guest List Header ---------->
+        <div class="container full">
+            <?php get_template_part('template-parts/xps/vend-maps'); ?>
+        </div>
+    </div><!--- END Floor Maps & Room List Section ---> 
+
     <!-- END Floor #Maps & Room List Section -->  
+
 
    <!------------------- Latest #News Post Block --------------------->
     <div class="container full">

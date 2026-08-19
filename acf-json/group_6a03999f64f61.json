@@ -1,5 +1,4 @@
 {
-    "qef_simple_location_rules": false,
     "key": "group_6a03999f64f61",
     "title": "Features\/Activities Profile Pages",
     "fields": [
@@ -173,11 +172,11 @@
                     "allow_in_bindings": 0
                 },
                 {
-                    "allow_backendsearch": false,
+                    "allow_backendsearch": 0,
                     "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
                     "key": "field_6a03999f7939d",
@@ -185,7 +184,7 @@
                     "name": "display_order",
                     "aria-label": "",
                     "type": "number",
-                    "instructions": "<b>Special Events:<\/b> 900 | <b>Features:<\/b> 1000 | <b>Activities<\/b> 1100 | <b>Celeb Booths:<\/b> 1200 | <b>Food:<\/b> 1300 | <b>Vehicles:<\/b>1400",
+                    "instructions": "<b>Special Events:<\/b> 900 | <b>Features:<\/b> 1000 | <b>Activities<\/b> 1100 | <b>Celeb Booths:<\/b> 1200 | <b>Food:<\/b> 1300 | <b>Vehicles:<\/b>1400 | <b>Vendors:<\/b> 1500",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -1248,7 +1247,9 @@
                         "acfe_bidirectional_enabled": true,
                         "acfe_bidirectional_related": [
                             "field_6a039d348ee12",
-                            "field_69fa640081616"
+                            "field_69fa640081616",
+                            "field_69fa774448d6d",
+                            "field_69fa746512e83"
                         ]
                     },
                     "acfe_settings": "",
@@ -2208,7 +2209,8 @@
         ],
         "advanced": "1"
     },
-    "modified": 1784576417,
+    "qef_simple_location_rules": 0,
+    "modified": 1787105047,
     "acfe_categories": {
         "profile-pages": "Profile Pages"
     }

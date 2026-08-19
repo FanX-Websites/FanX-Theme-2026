@@ -46,7 +46,7 @@ What this File Does:
             $cat = get_queried_object();
             
             // Only apply to specific parent categories
-            $allowed_parents = array( 'guests' ); //Specify which parents
+            $allowed_parents = array( 'guests','vendors' ); //Specify which parents
             
             if ( $cat->parent !== 0 ) {
                 $parent = get_term( $cat->parent, 'category' );

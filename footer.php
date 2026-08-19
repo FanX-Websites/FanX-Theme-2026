@@ -6,7 +6,7 @@
   
 </main><!-- END Site Main from Header-->  
 
-<!-- Footer Injection Code -->
+<!-- Footer Injection Code ---------------------------------------->
 <?php echo get_field('theme_footer', 'option') ?> 
 
 <!-- Remove search strings from url -->

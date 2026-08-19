@@ -2,6 +2,8 @@
 /**
  * Template Part: News & Updates Section
  * @package FanxTheme2026
+ * //NOTE: This is a duplicate of News & Updates Section
+ * //TODO: Update for Exclusies & Perks Section (ONLY) Add to all cat/tags pages related to guests/features/experiences. 
 */
 ?>
 <!-- News & Updates Post Layout (Post)  -->
@@ -14,7 +16,6 @@
         <div class="updates-post self-centered">
             <div class="updates-section-title"><!---- Updates Section Title -->
                 <h3>Announcements & Updates</h3>
-                <p>The latest details about <?php echo single_term_title(); ?> including Perks, exclsuives, featured services, and more.<p>
             </div><!-- END Updates Title -->
 
             <!-------------- Posts Begin --------------------->

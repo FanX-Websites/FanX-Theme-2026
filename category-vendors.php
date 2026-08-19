@@ -1,9 +1,8 @@
 <?php
 /**
- * Template Name: Guest Category/Archive Pages 
+ * Template Name: Guest Vendor Category/Archive Pages 
  * @author FanXTheme2026
  * 
- * Child Categories are included in this theme via /functions/tag-cats
  * 
  **/
 
@@ -32,11 +31,11 @@ get_header(); /** body- main-site */
                     'terms' => get_queried_object_id(),
                 ),
                 array(                  // ← new
-        'taxonomy' => 'category',
-        'field' => 'slug',
-        'terms' => 'alumni',
-        'operator' => 'NOT IN',
-    ),
+                    'taxonomy' => 'category',
+                    'field' => 'slug',
+                    'terms' => 'alumni',
+                    'operator' => 'NOT IN',
+                    ),
             ),
             'posts_per_page' => 200,
             'paged' => $paged,
@@ -124,7 +123,7 @@ get_header(); /** body- main-site */
         endif;
         ?>
     </div><!-- END cat-tax grid-container -->
-    
+
     <!--- No Posts/Coming Soon Message --->
     <div class="container full">
         <?php

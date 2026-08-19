@@ -241,6 +241,9 @@ get_header(); /** body- main-site */
         <?php get_template_part( 'template-parts/profiles/smallprint' ); ?>
     </div>
     <!--- END Small Print Section -->
+
+<!-- Photo Op Schedule --> 
+
     
 <!------------------- Latest News Post Block --------------------->
     <div class="container full">

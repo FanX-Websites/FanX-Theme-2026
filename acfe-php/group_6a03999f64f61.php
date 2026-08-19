@@ -3,7 +3,6 @@
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
-	'qef_simple_location_rules' => false,
 	'key' => 'group_6a03999f64f61',
 	'title' => 'Features/Activities Profile Pages',
 	'fields' => array(
@@ -177,11 +176,11 @@ acf_add_local_field_group(array(
 					'allow_in_bindings' => 0,
 				),
 				array(
-					'allow_backendsearch' => false,
+					'allow_backendsearch' => 0,
 					'show_column_filter' => false,
-					'allow_bulkedit' => false,
-					'allow_quickedit' => false,
-					'show_column' => false,
+					'allow_bulkedit' => 0,
+					'allow_quickedit' => 0,
+					'show_column' => 0,
 					'show_column_weight' => 1000,
 					'show_column_sortable' => false,
 					'key' => 'field_6a03999f7939d',
@@ -189,7 +188,7 @@ acf_add_local_field_group(array(
 					'name' => 'display_order',
 					'aria-label' => '',
 					'type' => 'number',
-					'instructions' => '<b>Special Events:</b> 900 | <b>Features:</b> 1000 | <b>Activities</b> 1100 | <b>Celeb Booths:</b> 1200 | <b>Food:</b> 1300 | <b>Vehicles:</b>1400',
+					'instructions' => '<b>Special Events:</b> 900 | <b>Features:</b> 1000 | <b>Activities</b> 1100 | <b>Celeb Booths:</b> 1200 | <b>Food:</b> 1300 | <b>Vehicles:</b>1400 | <b>Vendors:</b> 1500',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -1264,6 +1263,8 @@ Automatically populates when Group Photo Op Product is pushed live.',
 						'acfe_bidirectional_related' => array(
 							0 => 'field_6a039d348ee12',
 							1 => 'field_69fa640081616',
+							2 => 'field_69fa774448d6d',
+							3 => 'field_69fa746512e83',
 						),
 					),
 					'acfe_settings' => '',
@@ -1760,6 +1761,9 @@ Automatically populates when Group Photo Op Product is pushed live.',
 			'acfe_group_modal' => 0,
 			'acfe_settings' => '',
 			'acfe_permissions' => '',
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'allow_backendsearch' => false,
@@ -1908,9 +1912,6 @@ If guest shares a schedule, post it here.',
 					'allow_in_bindings' => 0,
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'allow_backendsearch' => false,
@@ -1964,6 +1965,9 @@ If guest shares a schedule, post it here.',
 			'acfe_group_modal' => 0,
 			'acfe_settings' => '',
 			'acfe_permissions' => '',
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'allow_backendsearch' => 0,
@@ -2025,9 +2029,6 @@ If guest shares a schedule, post it here.',
 					'allow_in_bindings' => 0,
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'allow_backendsearch' => false,
@@ -2228,10 +2229,11 @@ If guest shares a schedule, post it here.',
 		),
 		'advanced' => '1',
 	),
+	'qef_simple_location_rules' => 0,
 	'acfe_categories' => array(
 		'profile-pages' => 'Profile Pages',
 	),
-	'modified' => 1785531010,
+	'modified' => 1787105047,
 ));
 
 endif;

@@ -6,6 +6,20 @@
 		exit;
 	}
 
+// Custom error handler to suppress deprecation notices from third-party plugins
+// while keeping them visible for /shared-themes files
+	set_error_handler( function( $errno, $errstr, $errfile, $errline ) {
+		// Only handle deprecation notices
+		if ( $errno === E_DEPRECATED || $errno === E_USER_DEPRECATED ) {
+			// Suppress if the error comes from a plugin
+			if ( strpos( $errfile, '/wp-content/plugins/' ) !== false ) {
+				return true; // Suppress this error
+			}
+		}
+		// For all other errors or errors from /shared-themes, use default handler
+		return false;
+	}, E_DEPRECATED | E_USER_DEPRECATED );
+
 // Load timezone fixes (handles multiple plugins/widgets not showing correct time)
 	require_once( get_template_directory() . '/functions/timezone.php' );
 
@@ -47,7 +61,7 @@
 
 	add_action('after_setup_theme', 'fanx_theme_setup'); //FanX Theme Setup
 
-//--- END Theme Support Setup <--
+//--- END Theme Support Setup <--s
 
 //Theme Styles Support 
 	//Enqueue Styles and Scripts --->
@@ -57,18 +71,17 @@
 			wp_enqueue_style('fanx-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get('Version')); //Stylesheet 
 
 		//Branding Stylesheets 
-			wp_enqueue_style('fanx-branding', get_template_directory_uri() . '/branding/styles/fanx.css', array(), wp_get_theme()->get('Version')); //Branding CSS - 2026
-
-			wp_enqueue_style('template-parts', get_template_directory_uri() . '/template-parts/template-parts.css', array(), wp_get_theme()->get('Version')); //Template Parts CSS - 2026
-
-			wp_enqueue_style('schedules', get_template_directory_uri() . '/template-parts/schedules/schedules.css', array(), wp_get_theme()->get('Version')); //Schedules CSS
-
-			wp_enqueue_style('icons-styles', get_template_directory_uri() . '/branding/fonts/icons.css', array(), wp_get_theme()->get('Version')); //Icons CSS		
+			//FANX
+				wp_enqueue_style('fanx-branding', get_template_directory_uri() . '/branding/styles/fanx.css', array(), wp_get_theme()->get('Version')); //Branding CSS - 2026
+			//Template Parts
+				wp_enqueue_style('template-parts', get_template_directory_uri() . '/template-parts/template-parts.css', array(), wp_get_theme()->get('Version')); //Template Parts CSS - 2026
+			//Schedules
+				wp_enqueue_style('schedules', get_template_directory_uri() . '/template-parts/schedules/schedules.css', array(), wp_get_theme()->get('Version')); //Schedules CSS -- 2026
+			//Icons 
+				wp_enqueue_style('icons-styles', get_template_directory_uri() . '/branding/fonts/icons.css', array(), wp_get_theme()->get('Version')); //Icons CSS
 
 		//External Stylesheets
 			wp_enqueue_style('google-material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), wp_get_theme()->get('Version')); //Google Material Icons
-
-		
 		}
 		add_action('wp_enqueue_scripts', 'fanx_enqueue_assets');
 
@@ -173,6 +186,9 @@ add_action('wp_enqueue_scripts', function() {
 			include $filepath;
 		}
 	}
+
+//Filters
+	add_filter('simply_static_use_cache', '__return_false'); 
 
 //PROTECT THE THINGS --->
 	

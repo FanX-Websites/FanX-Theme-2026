@@ -4,10 +4,9 @@ Text Domain: fanxtheme2026
 Theme URI: https://dev.DancingFraxinus.com/fanx26
 Author: Elizabeth Moore
 Author URI: https://DancingFraxinus.com/
+Version: 1.8.16
 
-//TODO: Light/Dark Mode Versions w/toggle activation
 //INFO: View Style.css for the Wireframes  | template-parts.css for content block styles | fanx.css for branding styles
-//FIXME: Clean up unused styles and tighten up redundant code 
 
 **/
 
@@ -152,7 +151,7 @@ Author URI: https://DancingFraxinus.com/
 
 /** Grid Column 2 - FP Updates Feed */
 
-  /* Updates Feed Block -- DESKTOP --- */
+  /* FRONT PAGE - Updates Feed BLOCK-- DESKTOP --- */
 
     .updates-feed.container {
       grid-column: 2;
@@ -183,6 +182,7 @@ Author URI: https://DancingFraxinus.com/
     border-radius: 0px; 
     padding: 20px;
 }
+
 article.updates-feed{
     margin-bottom: 1%; 
 }
@@ -764,17 +764,28 @@ h3.table-chart-subtext {
   display: flex;
   align-items: center;
   justify-self: center;
+  flex-flow: column; 
+  width: 100%; 
   margin: 0;
-  padding: 0;
+  padding: 3% 6%;
+  border: 1px solid white; 
 }
+
 .updates-section-title h3{ /* Updates Section Title */
-  color: var(--color_prim);
+  color: var(--color_tru_wht);
   font-weight: 600;
-  line-height: 2.5em;
+  line-height: 1.25em;
+  padding: 0; 
+  margin: 0;
   text-transform: uppercase;
   font-size: clamp(1.5rem,2.5vw,3rem);
   text-align: center;
   width: 100%;
+}
+.updates-section-title p{
+  color: var(--color_lght);
+  padding: 0;
+  margin: 0;
 }
 
 .updates-posts-loop { /* Updates Section - Posts Loop Container */
@@ -803,6 +814,15 @@ h3.table-chart-subtext {
   margin: 0;
   padding: 1% 6%
 }
+article.updates, .updates-no-posts-message{
+  padding: 3%; 
+  margin: 0; 
+  background-color: var(--color_tru_wht);
+  border-radius: 45px; 
+  width: 100%; 
+
+}
+
    
 
 /** Posts Loop */
@@ -820,11 +840,10 @@ h3.table-chart-subtext {
  .updates-post.self-centered{
   width: 80%;
   max-width: 1000px;
-  padding: 2%;
-  background-color: var(--color_brht);
+  gap: 10px;
+  padding: 0;
   border: 6px solid var(--color_drk);
   margin: 0;
-
  }
 
  /* .updates-post-container { Replace with post container above ^
@@ -931,10 +950,10 @@ line-height: 1.5em;
  .floor-maps{
   padding: 3%;
   margin: 0;
-  background-color: var(--color_base);
   display: flex;
   flex-wrap: wrap;
   gap: 0;
+  background-color: var(--color_prim);
   }
 
  .floor-maps .img-container {
@@ -953,10 +972,12 @@ line-height: 1.5em;
 
 /** List Container Template Styling */ 
   /* Vendor Floor List */
-  .sched .list-content{
-      border-left: 1px solid var(--color_base_lght);
+  .list-content{
+      border-left: 1px solid var(--color_prim_lght);
       padding-left: 3%;
       border-radius: 0;
+      width: 100%; 
+      height: auto; 
   }
 
   .list-title-bar {
@@ -981,11 +1002,18 @@ line-height: 1.5em;
     margin: 0;
   }
 
+  .vendor-list{
+    padding: 3%;
+    margin: 0;
+    background-color: var(--color_prim_lght);
+    min-height: 300px;
+  }
+
   .vendor-list-wrapper{
     max-height: 500px; 
     overflow-y: auto;
-    border-top: 1px solid var(--color_base_lght);
-    border-bottom: 1px solid var(--color_base_lght);
+    border-top: 1px solid var(--color_prim_lght);
+    border-bottom: 1px solid var(--color_prim_lght);
     padding: 3%; 
     border-radius: 0;
   }
@@ -993,11 +1021,12 @@ line-height: 1.5em;
     padding: 1%;
     margin: 0 auto;
     width: 100%;
+    background-color: var(--color_brht);
   }
   table.vendor-list td{
     list-style-type: none;
     padding: 1% 2%;
-    border-bottom: .1px solid var(--color_base_lght);
+    border-bottom: .1px solid var(--color_prim_lght);
     font-size: 1em;
   }
   table.vendor-list th{
@@ -1017,6 +1046,9 @@ line-height: 1.5em;
     font-size: 1em;
     line-height: 1.25em;
     display: inline-block;
+  }
+  .maps-list-section.grid-container{
+    gap: 20px; 
   }
 
 /** END List & Maps Sections */

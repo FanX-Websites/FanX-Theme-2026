@@ -17,4 +17,12 @@
     add_filter('Yoast\WP\SEO\enable_notification_term_delete', '__return_false' );
     add_filter('Yoast\WP\SEO\enable_notification_term_slug_change', '__return_false' );
 
-?>
+//Disable Pagination
+
+add_filter('wpseo_robots', function($robots) {
+    if (is_paged()) {
+        return 'noindex,follow';
+    }
+    return $robots;
+});
+

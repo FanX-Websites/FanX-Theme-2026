@@ -7,7 +7,7 @@ Author URI: https://DancingFraxinus.com/
 Domain Path: /assets/languages
 Description: A theme created for FanX Comic & Pop Culture Contventions 2026 Calendar Year. 
 Tags: FanX, ACF Pro, Accessible, Responsive, inlusive, Customized Category & Tag Functions, Customized Admin
-Version: 1.8.13
+Version: 1.8.16
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 **/
@@ -133,8 +133,8 @@ For divs that hold template parts*/
 .section { /*The Default - combine with behaviors for specifications*/
     width: 100%; 
     margin: 0 auto; 
-    padding: 0;
-    gap: 30px 0; 
+    padding: 0 0 5% 0;
+    gap: 30px; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
@@ -241,6 +241,12 @@ For divs that hold template parts*/
         width: 100%;
         padding: 0; 
         margin: 0; 
+        box-sizing: border-box;
+    }
+    .full-framed{
+        width: 90%;
+        padding: 1% 0 6%;
+        margin: 0 auto;
         box-sizing: border-box;
     }
     .framed-900{

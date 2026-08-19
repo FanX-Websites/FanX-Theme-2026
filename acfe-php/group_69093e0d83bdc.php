@@ -179,19 +179,19 @@ acf_add_local_field_group(array(
 					'allow_in_bindings' => 0,
 				),
 				array(
-					'allow_backendsearch' => 1,
+					'allow_backendsearch' => 0,
 					'show_column_filter' => false,
-					'allow_bulkedit' => 1,
-					'allow_quickedit' => 1,
-					'show_column' => 1,
-					'show_column_weight' => 100,
-					'show_column_sortable' => 1,
+					'allow_bulkedit' => 0,
+					'allow_quickedit' => 0,
+					'show_column' => 0,
+					'show_column_weight' => 1000,
+					'show_column_sortable' => false,
 					'key' => 'field_691fb32d72580',
-					'label' => 'Order',
+					'label' => 'Post Display Order',
 					'name' => 'display_order',
 					'aria-label' => '',
 					'type' => 'number',
-					'instructions' => '<b>Celebrities:</b> 100 | <b>Voice:</b> 200 | <b>Vend Celebs:</b> 290 | <b>Comics:</b> 300 | <b>Authors:</b> 400 | <b>Artists:</b> 500 | <b>Panelists/Vendors:</b> 600',
+					'instructions' => '<b>Celebrities:</b>Top 100 | <b>Voice:</b> 200 | Vend Celebs: 290 <b>Comics:</b> 300 | <b>Authors:</b> 400 | <b>Artists:</b> 500 | <b>Panelists:</b> 600 | <b>Vendors:</b> 700',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -2207,7 +2207,7 @@ The content here appears in the eXperience tab when there is no eXperiences chos
 		'posts' => 'Posts',
 		'profile-pages' => 'Profile Pages',
 	),
-	'modified' => 1785567186,
+	'modified' => 1787100889,
 ));
 
 endif;
