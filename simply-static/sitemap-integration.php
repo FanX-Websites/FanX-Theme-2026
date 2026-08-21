@@ -1,6 +1,7 @@
 <?php
 /**
  * FanX Theme - Simply Static Integration + Yoast Sitemap Backup
+ * //NOTE: Currently disconnected in functions for testing if still needed.  
  * 
  * Enhances Simply Static's URL discovery to include:
  * - All custom post types
