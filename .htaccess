@@ -1,9 +1,0 @@
-# Block access to Included files 
-RewriteEngine On
-RewriteCond %{REQUEST_URI} /page/[0-9]+/?$
-RewriteRule ^ - [R=404,L]
-
-# Block direct access to Hidden Files (ie: .git) in the current theme
-<FilesMatch "^\.">
-    Require all denied
-</FilesMatch>

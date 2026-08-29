@@ -1335,11 +1335,11 @@ List of all Panel Programming Rooms (Accommodation list under Customer Service)'
 		'advanced' => '1',
 	),
 	'qef_simple_location_rules' => 0,
+	'modified' => 1787592028,
 	'acfe_categories' => array(
 		'event-info' => 'Event Info',
 		'options-pages' => 'Options Pages',
 	),
-	'modified' => 1786827728,
 ));
 
 endif;

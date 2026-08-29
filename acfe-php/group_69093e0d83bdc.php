@@ -181,11 +181,11 @@ acf_add_local_field_group(array(
 				array(
 					'allow_backendsearch' => 0,
 					'show_column_filter' => false,
-					'allow_bulkedit' => 0,
-					'allow_quickedit' => 0,
-					'show_column' => 0,
-					'show_column_weight' => 1000,
-					'show_column_sortable' => false,
+					'allow_bulkedit' => 1,
+					'allow_quickedit' => 1,
+					'show_column' => 1,
+					'show_column_weight' => 100,
+					'show_column_sortable' => 1,
 					'key' => 'field_691fb32d72580',
 					'label' => 'Post Display Order',
 					'name' => 'display_order',
@@ -480,8 +480,7 @@ Automatically populates when a Blog Post Features this Profile in an Announcemen
 					'save_terms' => 1,
 					'load_terms' => 1,
 					'return_format' => 'id',
-					'field_type' => 'multi_select',
-					'allow_null' => 0,
+					'field_type' => 'checkbox',
 					'acfe_bidirectional' => array(
 						'acfe_bidirectional_enabled' => '0',
 					),
@@ -491,6 +490,7 @@ Automatically populates when a Blog Post Features this Profile in an Announcemen
 					'allow_in_bindings' => 1,
 					'bidirectional' => 0,
 					'multiple' => 0,
+					'allow_null' => 0,
 					'bidirectional_target' => array(
 					),
 				),
@@ -2207,7 +2207,7 @@ The content here appears in the eXperience tab when there is no eXperiences chos
 		'posts' => 'Posts',
 		'profile-pages' => 'Profile Pages',
 	),
-	'modified' => 1787100889,
+	'modified' => 1787770963,
 ));
 
 endif;
