@@ -825,9 +825,9 @@
                 {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
                     "key": "field_6a039d348ee12",
@@ -1418,9 +1418,9 @@
                 {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
                     "key": "field_6a17c496f9dd2",
@@ -1438,7 +1438,8 @@
                     },
                     "post_type": [
                         "guests",
-                        "partner"
+                        "partner",
+                        "features"
                     ],
                     "post_status": "",
                     "taxonomy": "",
@@ -2180,7 +2181,7 @@
         "advanced": "1"
     },
     "qef_simple_location_rules": 0,
-    "modified": 1787770963,
+    "modified": 1788223309,
     "acfe_categories": {
         "people": "People",
         "posts": "Posts",

@@ -840,9 +840,9 @@ Automatically populates when Group Photo Op Product is pushed live.',
 				array(
 					'allow_backendsearch' => false,
 					'show_column_filter' => false,
-					'allow_bulkedit' => false,
-					'allow_quickedit' => false,
-					'show_column' => false,
+					'allow_bulkedit' => 0,
+					'allow_quickedit' => 0,
+					'show_column' => 0,
 					'show_column_weight' => 1000,
 					'show_column_sortable' => false,
 					'key' => 'field_6a039d348ee12',
@@ -1438,9 +1438,9 @@ The content here appears in the eXperience tab when there is no eXperiences chos
 				array(
 					'allow_backendsearch' => false,
 					'show_column_filter' => false,
-					'allow_bulkedit' => false,
-					'allow_quickedit' => false,
-					'show_column' => false,
+					'allow_bulkedit' => 0,
+					'allow_quickedit' => 0,
+					'show_column' => 0,
 					'show_column_weight' => 1000,
 					'show_column_sortable' => false,
 					'key' => 'field_6a17c496f9dd2',
@@ -1459,6 +1459,7 @@ The content here appears in the eXperience tab when there is no eXperiences chos
 					'post_type' => array(
 						0 => 'guests',
 						1 => 'partner',
+						2 => 'features',
 					),
 					'post_status' => '',
 					'taxonomy' => '',
@@ -2207,7 +2208,7 @@ The content here appears in the eXperience tab when there is no eXperiences chos
 		'posts' => 'Posts',
 		'profile-pages' => 'Profile Pages',
 	),
-	'modified' => 1787770963,
+	'modified' => 1788223309,
 ));
 
 endif;

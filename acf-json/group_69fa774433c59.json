@@ -1,4 +1,5 @@
 {
+    "qef_simple_location_rules": 0,
     "key": "group_69fa774433c59",
     "title": "Product Profile Pages",
     "fields": [
@@ -1038,8 +1039,7 @@
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": true,
                         "acfe_bidirectional_related": [
-                            "field_69795e4c3bb33",
-                            "field_6a03999fdfa76"
+                            "field_69795e4c3bb33"
                         ]
                     },
                     "acfe_settings": "",
@@ -1680,8 +1680,7 @@
         ],
         "advanced": "1"
     },
-    "qef_simple_location_rules": 0,
-    "modified": 1784579906,
+    "modified": 1788135993,
     "acfe_categories": {
         "products": "Products",
         "profile-pages": "Profile Pages"

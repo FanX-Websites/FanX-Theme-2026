@@ -1,4 +1,5 @@
 {
+    "qef_simple_location_rules": 0,
     "key": "group_6a03999f64f61",
     "title": "Features\/Activities Profile Pages",
     "fields": [
@@ -423,7 +424,7 @@
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
                     "key": "field_6a03999fdf809",
-                    "label": "(Column 4\/12)",
+                    "label": "(Column 6\/12)",
                     "name": "",
                     "aria-label": "",
                     "type": "acfe_column",
@@ -435,7 +436,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "columns": "4\/12",
+                    "columns": "6\/12",
                     "endpoint": 0,
                     "acfe_permissions": "",
                     "allow_in_bindings": 0
@@ -592,261 +593,6 @@
                     "bidirectional": 0,
                     "multiple": 0,
                     "bidirectional_target": []
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_6a03999fdf924",
-                    "label": "(Column 4\/12)",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "acfe_column",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "columns": "4\/12",
-                    "endpoint": 0,
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 0
-                },
-                {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": 1,
-                    "key": "field_6a03999fdf95d",
-                    "label": "Autograph Price",
-                    "name": "auto_price",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "maxlength": "",
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": 1,
-                    "key": "field_6a03999fdf995",
-                    "label": "Photo Op Price",
-                    "name": "op_price",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "maxlength": "",
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_6a03999fdf9ce",
-                    "label": "Photo Ops Link",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "message",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "Currently pulls Friday link from Guest Options Page.",
-                    "new_lines": "wpautop",
-                    "esc_html": 0,
-                    "acfe_settings": "",
-                    "acfe_permissions": ""
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_6a03999fdfa05",
-                    "label": "Dedicated Product Category Link",
-                    "name": "ded_prod_cat",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "<p>[xp_ded_prod_cat] Use when a guest has their own product category in the shop<\/p>\r\n<i>*Currently replaces the Photo Op, Autograph links on their profile, and adds a link to the Celebrity Row eXtras status, when said products are on sale<\/i>",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_6a03999fdfa3d",
-                    "label": "(Column 4\/12)",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "acfe_column",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "columns": "4\/12",
-                    "endpoint": 0,
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 0
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_6a03999fdfa76",
-                    "label": "Group Photo Ops Involved in:",
-                    "name": "group_op",
-                    "aria-label": "",
-                    "type": "post_object",
-                    "instructions": "[xp_group_op] <\/br>\r\nAutomatically populates when Group Photo Op Product is pushed live.",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_6a03999fdf87b",
-                                "operator": "!=empty"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "products"
-                    ],
-                    "post_status": "",
-                    "taxonomy": [
-                        "xp:group-photo-ops"
-                    ],
-                    "return_format": "id",
-                    "multiple": 1,
-                    "save_custom": 0,
-                    "acfe_bidirectional": {
-                        "acfe_bidirectional_enabled": true,
-                        "acfe_bidirectional_related": [
-                            "field_69fa774569713"
-                        ]
-                    },
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "allow_null": 0,
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "bidirectional": 0,
-                    "ui": 1,
-                    "bidirectional_target": [],
-                    "save_post_type": "",
-                    "save_post_status": ""
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_6a03999fdfaae",
-                    "label": "Celebrity Row Extras",
-                    "name": "celeb_extras",
-                    "aria-label": "",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "acfe_textarea_code": 0,
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "maxlength": "",
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "rows": "",
-                    "placeholder": "",
-                    "new_lines": ""
                 },
                 {
                     "allow_backendsearch": false,
@@ -1215,9 +961,9 @@
                 {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
                     "key": "field_69fa7465a763d",
@@ -1246,10 +992,7 @@
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": true,
                         "acfe_bidirectional_related": [
-                            "field_6a039d348ee12",
-                            "field_69fa640081616",
-                            "field_69fa774448d6d",
-                            "field_69fa746512e83"
+                            "field_6a039d348ee12"
                         ]
                     },
                     "acfe_settings": "",
@@ -2019,7 +1762,7 @@
             "show_column_weight": 1000,
             "show_column_sortable": false,
             "key": "field_6a1f7ffc07458",
-            "label": "Remote Location (copy)",
+            "label": "Remote Location END",
             "name": "",
             "aria-label": "",
             "type": "accordion",
@@ -2209,8 +1952,7 @@
         ],
         "advanced": "1"
     },
-    "qef_simple_location_rules": 0,
-    "modified": 1787633356,
+    "modified": 1788136705,
     "acfe_categories": {
         "profile-pages": "Profile Pages"
     }
