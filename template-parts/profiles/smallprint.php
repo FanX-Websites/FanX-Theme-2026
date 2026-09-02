@@ -6,7 +6,7 @@
         <div class="small-print">
             <?php $foo = get_field( 'foo', 'options' ); ?>
             <p>
-                test <?php echo esc_html( $foo['small_print'] ?? '' ); //Small Print ?>
+             <?php echo esc_html( $foo['small_print'] ?? '' ); //Small Print ?>
             </p>
             <?php 
                 /*
