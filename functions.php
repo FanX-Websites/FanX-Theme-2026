@@ -155,27 +155,34 @@ add_action('wp_enqueue_scripts', function() {
 			//Simply Static
 			'simply-static/system-level-exports.php', //System-level scheduled exports & backups
 			//'simply-static/sitemap-integration.php', //Sitemap integration 
+			//'simply-static/sitemap-integration.php', //Sitemap integration 
 		//Admin Tools 	
 			'admin/white-label.php', //Admin White Labeling
 			'admin/customadmin.php', //Custom Admin Features	
 			'admin/custommenu.php', //Menu Customizations & Support
 			'admin/post-rules.php', //Post Editor Locking System
+		//Admin Widgets 
+			//Backup Feed 	
 			'admin/backup-feed/static-backups.php', //Static Backups Feed
 			'admin/backup-feed/wordpress-backups.php', //WordPress Backups Feed
 			'admin/backup-feed/github-pushes.php', //GitHub Pushes Feed
 			'admin/backup-feed/backup-widget.php', //Consolidated Backup & Repository Widget with Tabs
+			//Event Mode
 			'admin/event-mode-widget.php', //Event Mode Toggle Widget
+			//System Diagnose 
 			'admin/sys-diagnose/site-debug-log.php', //Debug Log Dashboard Widget
 			'admin/sys-diagnose/wp-cron-log.php', //WP_CRON Log
 			'admin/sys-diagnose/widget.php', //Widget Main Tab Structure
-			'admin/exports/pre-export-checker.php', //Pre-Export Health Check
 			'admin/sys-diagnose/export-health-widget.php', //Export Manager Dashboard Widget
+			//Exports
+			'admin/exports/pre-export-checker.php', //Pre-Export Health Check
 			'admin/exports/user-export-scheduler.php', //Export Scheduler - One-Time Exports via wp-cron
 			'admin/exports/single/post-export-table.php', //Post Export Database Table Manager
 			'admin/exports/single/post-export-metabox.php', //Post Export Metabox
 			'admin/exports/single/post-export-scheduler.php', //Post Export Scheduler - Single Post Exports via Custom Table
+			//Activity Feed 
 			'admin/activity-feed/index.php', //Activity Logging & Dashboard Widget
-			'admin/theme-update-checker/theme-manage.php', //Admin Management 
+
 	];
 //END Theme Files <---
 
@@ -185,6 +192,17 @@ add_action('wp_enqueue_scripts', function() {
 			include $filepath;
 		}
 	}
+
+//Theme Updates Check ---> Triggered by Stylesheet Version Number
+if ( file_exists( get_template_directory() . '/admin/theme-update-checker/plugin-update-checker.php' ) ) {
+    require get_template_directory() . '/admin/theme-update-checker/plugin-update-checker.php';
+    $myUpdateChecker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+        'https://github.com/FanX-Websites/FanX-Theme-2026',
+        get_template_directory() . '/style.css', //Theme updates reliant on Stylesheet Versions
+        'fanx-theme'
+    );
+}
+
 
 //Filters
 	add_filter('simply_static_use_cache', '__return_false'); 
