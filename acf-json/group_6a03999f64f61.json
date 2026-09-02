@@ -477,7 +477,6 @@
                     "allow_in_bindings": 1,
                     "bidirectional": 0,
                     "multiple": 0,
-                    "allow_null": 0,
                     "bidirectional_target": []
                 },
                 {

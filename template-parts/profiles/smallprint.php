@@ -4,10 +4,12 @@
 
 <!--- SMALL PRINT -->
         <div class="small-print">
+            <?php $foo = get_field( 'foo', 'options' ); ?>
             <p>
-                <?php the_field('foo_small_print', 'options'); //Small Print ?>
+             <?php echo esc_html( $foo['small_print'] ?? '' ); //Small Print ?>
             </p>
             <?php 
+                /*
                 $xp_terms = get_the_terms( get_the_ID(), 'xp' );
                 $has_autographs = false;
                 
@@ -21,10 +23,11 @@
                 }
                 
                 if ( $has_autographs ) : 
+                */
             ?>
             <p>
-                <?php the_field('foo_celeb_small_print', 'options'); //Small Print ?>
+                <?php echo wp_kses_post( $foo['celeb_small_print'] ?? '' ); //Small Print ?>
             </p>
-            <?php endif; ?>
+            <?php // endif; ?>
         </div>
         <!-- END Small Print -->

@@ -1,0 +1,8 @@
+[22-Aug-2026 01:01:21 America/Denver] PHP Fatal error:  Uncaught Error: Call to undefined function get_field() in /home/ashelizmoore/fillory/TBCC/wp-content/themes/FanXTheme2026/footer.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/ashelizmoore/fillory/TBCC/wp-content/themes/FanXTheme2026/footer.php on line 10
+[22-Aug-2026 01:02:15 America/Denver] PHP Fatal error:  Uncaught Error: Call to undefined function get_field() in /home/ashelizmoore/fillory/TBCC/wp-content/themes/FanXTheme2026/footer.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/ashelizmoore/fillory/TBCC/wp-content/themes/FanXTheme2026/footer.php on line 10

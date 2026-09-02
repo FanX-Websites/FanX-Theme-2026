@@ -8,33 +8,33 @@
  */
 
 // ============================================================================
+// GET GUEST NAME FROM POST TITLE
+// ============================================================================
+$guest_name = get_the_title();
+
+// Shared fallback message, reused whenever no schedule can be shown
+$no_events_message = esc_html( $guest_name ) . ' doesn\'t have a schedule posted here.<br>Check out their eXperience Tab to see what they\'re up to!';
+
+if ( empty( $guest_name ) ) {
+    return; // Exit if no guest name is available
+}
+
+// ============================================================================
 // CONDITIONAL CHECK: Only display schedule if API key is configured
 // ============================================================================
 $leap_api_key = get_field( 'leap_api_key', 'option' );
 
 if ( empty( $leap_api_key ) ) {
-    // API key is EMPTY - show ACF fallback message
-
+    // API key is EMPTY - show fallback message
     ?>
 <!---------------------- NO EVENTS ------------------->
-    <div class="guest-schedule block"> 
-        <div class="guest-no-events block">
-            <?php 
-                $guest_name = get_the_title();
-                echo esc_html( $guest_name ) . ' doesn\'t have a schedule posted here.<br>Check out their eXperience Tab to see what they\'re up to!';
-            ?>
-        </div>
+<div class="guest-schedule block"> 
+    <div class="guest-no-events block">
+        <?php echo $no_events_message; ?>
     </div><!-- END NO EVENTS -->
+</div>
     <?php
     return;
-}
-// ============================================================================
-// GET GUEST NAME FROM POST TITLE
-// ============================================================================
-$guest_name = get_the_title();
-
-if ( empty( $guest_name ) ) {
-    return; // Exit if no guest name is available
 }
 
 // ============================================================================
@@ -106,7 +106,7 @@ usort( $guest_events, function( $a, $b ) {
 
 ?>
 <!--- Guest Live LEAP Schedule ---------------------->
-<div class="guest-schedule block">    
+<div class="guest-schedule block">  
     <?php if ( ! empty( $guest_events ) ) : ?>
     <div class="schedule-list">
         <?php foreach ( $guest_events as $event ) : 
@@ -136,12 +136,16 @@ usort( $guest_events, function( $a, $b ) {
     </div><!-- END Schedule List ------------------>
 <?php else : ?>
     <div class="guest-no-events block">
-        <?php 
-            $guest_name = get_the_title();
-            echo esc_html( $guest_name ) . ' doesn\'t have a schedule posted here.<br>Check out their eXperience Tab to see what they\'re up to!';
-        ?>
+        <?php echo $no_events_message; ?>
     </div>
     <?php endif; ?>
+
+<!---- APPEARANCE MESSAGE & Apps Link ------->
+<div class="message small-print">
+Guest schedules are subject to change. <a href="/app">Download the App</a> for the most up to date schedule.
 </div>
+
+
+</div><!--- END Guest Schedule Block ---->
 
 

@@ -4,6 +4,7 @@ if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
 	'qef_simple_location_rules' => 0,
+	'qef_simple_location_rules' => 0,
 	'key' => 'group_69fa774433c59',
 	'title' => 'Product Profile Pages',
 	'fields' => array(

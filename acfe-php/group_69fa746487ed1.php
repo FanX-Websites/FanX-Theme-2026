@@ -335,6 +335,9 @@ acf_add_local_field_group(array(
 			'acfe_group_modal' => 0,
 			'acfe_settings' => '',
 			'acfe_permissions' => '',
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'allow_backendsearch' => false,
@@ -797,9 +800,6 @@ Automatically populates when Group Photo Op Product is pushed live.',
 					'columns' => '6/12',
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'allow_backendsearch' => false,
@@ -994,6 +994,9 @@ Automatically populates when Group Photo Op Product is pushed live.',
 			'acfe_group_modal' => 0,
 			'acfe_settings' => '',
 			'acfe_permissions' => '',
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'allow_backendsearch' => false,
@@ -1637,9 +1640,6 @@ Will ALSO add this post to the announcement section of all profiles selected.',
 					'columns' => '6/12',
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'allow_backendsearch' => false,
@@ -1692,6 +1692,9 @@ Will ALSO add this post to the announcement section of all profiles selected.',
 			'acfe_group_modal' => 0,
 			'acfe_settings' => '',
 			'acfe_permissions' => '',
+			'acfe_group_modal_close' => 0,
+			'acfe_group_modal_button' => '',
+			'acfe_group_modal_size' => 'large',
 			'sub_fields' => array(
 				array(
 					'allow_backendsearch' => false,
@@ -1725,9 +1728,6 @@ Will ALSO add this post to the announcement section of all profiles selected.',
 					'append' => '',
 				),
 			),
-			'acfe_group_modal_close' => 0,
-			'acfe_group_modal_button' => '',
-			'acfe_group_modal_size' => 'large',
 		),
 		array(
 			'allow_backendsearch' => false,
@@ -2045,10 +2045,10 @@ Will ALSO add this post to the announcement section of all profiles selected.',
 		),
 		'advanced' => '1',
 	),
+	'modified' => 1787597792,
 	'acfe_categories' => array(
 		'blog-posts' => 'Blog Posts',
 	),
-	'modified' => 1785531009,
 ));
 
 endif;

@@ -186,6 +186,11 @@ acf_add_local_field_group(array(
 					'show_column' => 1,
 					'show_column_weight' => 100,
 					'show_column_sortable' => 1,
+					'allow_bulkedit' => 1,
+					'allow_quickedit' => 1,
+					'show_column' => 1,
+					'show_column_weight' => 100,
+					'show_column_sortable' => 1,
 					'key' => 'field_691fb32d72580',
 					'label' => 'Post Display Order',
 					'name' => 'display_order',
@@ -332,6 +337,7 @@ Automatically populates when a Blog Post Features this Profile in an Announcemen
 							3 => 'field_6a039ab5557fa',
 							4 => 'field_6a17c496f9dd9',
 							5 => 'field_69fa774448d6d',
+							6 => 'field_69fa7465a7904',
 						),
 					),
 					'acfe_settings' => '',
@@ -729,9 +735,9 @@ Automatically populates when a Blog Post Features this Profile in an Announcemen
 				array(
 					'allow_backendsearch' => false,
 					'show_column_filter' => false,
-					'allow_bulkedit' => false,
-					'allow_quickedit' => false,
-					'show_column' => false,
+					'allow_bulkedit' => 0,
+					'allow_quickedit' => 0,
+					'show_column' => 0,
 					'show_column_weight' => 1000,
 					'show_column_sortable' => false,
 					'key' => 'field_69fd0d48e7eb8',
@@ -739,8 +745,8 @@ Automatically populates when a Blog Post Features this Profile in an Announcemen
 					'name' => 'ded_prod_cat',
 					'aria-label' => '',
 					'type' => 'link',
-					'instructions' => '<p>[xp_ded_prod_cat] Use when a guest has their own product category in the shop</p>
-<i>*Currently replaces the Photo Op, Autograph links on their profile, and adds a link to the Celebrity Row eXtras status, when said products are on sale</i>',
+					'instructions' => '<p>[xp_ded_prod_cat] Use when a Group Photo Op is featured in a special product category in the shop</p>
+<i>*Replaces the link of the button that automatically appears when Celebrity Photo Ops Category is used. </i>',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -2203,6 +2209,7 @@ The content here appears in the eXperience tab when there is no eXperiences chos
 		'advanced' => '1',
 	),
 	'qef_simple_location_rules' => 0,
+	'modified' => 1787597793,
 	'acfe_categories' => array(
 		'people' => 'People',
 		'posts' => 'Posts',

@@ -25,6 +25,9 @@
     add_filter('Yoast\WP\SEO\enable_notification_post_slug_change', '__return_false' ); //URL change 
     add_filter('Yoast\WP\SEO\enable_notification_term_slug_change', '__return_false' ); //URL Change 
 
+     add_filter( 'wpseo_premium_should_load_redirect', '__return_false' );
+
+
 
 
 
