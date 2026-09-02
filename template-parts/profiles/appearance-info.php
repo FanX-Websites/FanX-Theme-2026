@@ -19,12 +19,9 @@
             $links = array();
 
         foreach ( $days_cats as $cat ) {
-                $links[] = '<a href="' . esc_url( get_term_link( $cat ) ) . '">' . esc_html( $cat->name ) . '</a>';
+                $links[] = esc_html( $cat->name );
             }
-            echo implode( ' | ', $links ) . '*';
-            echo '<div class="small-print">
-        <p>*Choose a day above to see what else is happening!</p> 
-    </div><!-- END Appearance smallpring --->'; //small-print
+            echo implode( ' | ', $links );
             echo '</div><!-- END days guest-xp -->';
         }
     ?> 

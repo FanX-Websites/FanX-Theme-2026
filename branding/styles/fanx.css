@@ -4,7 +4,6 @@ Text Domain: fanxtheme2026
 Theme URI: https://dev.DancingFraxinus.com/fanx26
 Author: Elizabeth Moore
 Author URI: https://DancingFraxinus.com/
-Version: 1.8.16 
 
 //INFO: Style.css: Wireframes & Default/Backup  | fanx.css: Current Global branding styles | schedule.css | template-parts.css |
 //FIXME: Clean up unused styles and tighten up redundant code 
@@ -164,7 +163,7 @@ blockquote::before {
 }
 
 
-/*Small Print Text - Default //FIXME: duplicated code? */
+/*Small Print Text - Default //FIXME:  */
 p.small-print{
   font-size: .9em;
   line-height: 1.25em;
@@ -921,6 +920,12 @@ body::after {
   border: 0;
   border-radius: 0;
   background-color: var(--color_brht);
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 1;
+    /*Space Between*/
 }
 .link-bar a{
   color: var(--color_tru_wht);
@@ -952,7 +957,7 @@ body::after {
   .mobile-icons a {
     padding:0 7px;
     color: var(--color_tru_wht);
-    font-size: 3em;
+    font-size: clamp(2rem, 3em + 3vw, 3rem) !important; 
     gap: 0 1.5rem; 
   }
   .ops-block,.tickets-block {
@@ -972,6 +977,17 @@ body::after {
     background-color: var(--color_acc_brht);
     padding: 0 20px; 
   }
+}
+@media (max-width: 420px) {
+  .link-bar{
+    display: flex;
+      justify-content: left;
+      align-items: center;
+      flex-direction: row; 
+      flex: 1;
+      /*Space Between*/
+  }
+
 }
 /* END Sticky Bottom Link Bar */
 

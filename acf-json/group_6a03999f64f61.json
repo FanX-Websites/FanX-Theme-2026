@@ -466,8 +466,7 @@
                     "save_terms": 1,
                     "load_terms": 1,
                     "return_format": "id",
-                    "field_type": "multi_select",
-                    "allow_null": 0,
+                    "field_type": "checkbox",
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": "0"
                     },
@@ -477,6 +476,7 @@
                     "allow_in_bindings": 1,
                     "bidirectional": 0,
                     "multiple": 0,
+                    "allow_null": 0,
                     "bidirectional_target": []
                 },
                 {
@@ -2210,7 +2210,7 @@
         "advanced": "1"
     },
     "qef_simple_location_rules": 0,
-    "modified": 1787105047,
+    "modified": 1787623113,
     "acfe_categories": {
         "profile-pages": "Profile Pages"
     }

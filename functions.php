@@ -154,9 +154,7 @@ add_action('wp_enqueue_scripts', function() {
 			'seo/yoast-tweaks.php', //Yoast SEO Tweaks
 			//Simply Static
 			'simply-static/system-level-exports.php', //System-level scheduled exports & backups
-				// 'simply-static/schedule.php', //Simply Static Schedule Management - Missing File 
-				// 'simply-static/enqueue.php', //Simply Static Enqueue Tweaks - Missig File 
-			'simply-static/sitemap-integration.php',
+			//'simply-static/sitemap-integration.php', //Sitemap integration 
 		//Admin Tools 	
 			'admin/white-label.php', //Admin White Labeling
 			'admin/customadmin.php', //Custom Admin Features	
@@ -177,6 +175,7 @@ add_action('wp_enqueue_scripts', function() {
 			'admin/exports/single/post-export-metabox.php', //Post Export Metabox
 			'admin/exports/single/post-export-scheduler.php', //Post Export Scheduler - Single Post Exports via Custom Table
 			'admin/activity-feed/index.php', //Activity Logging & Dashboard Widget
+			'admin/theme-update-checker/theme-manage.php', //Admin Management 
 	];
 //END Theme Files <---
 
