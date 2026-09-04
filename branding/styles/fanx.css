@@ -273,9 +273,11 @@ a.button {
 }
 .button-group .button.button-left {
   border-radius: 0 25px 0 0;
+
 }
 .button-group .button.button-right {
   border-radius: 0 0 0 25px;
+
 }
 .button-group .button .small-print {
   padding: 0;

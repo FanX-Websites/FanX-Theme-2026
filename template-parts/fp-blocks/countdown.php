@@ -15,8 +15,9 @@
     <div class="countdown-layout"> <!-- Countdown Inner Layout w/Fill-->
         
         <!-- Countdown Title --> 
-            <?php if ( fanx_is_event_mode_enabled() ) : ?> 
-                <p>ICC26 is happening NOW</p>
+            <?php if ( fanx_is_event_mode_enabled() ) : //EVENT MODE MESSAGE //FIXME: Insert ACF Hashtag Field
+                ?> 
+                <p>TBCC26 is happening NOW</p>
             <?php else : ?>
                 <p>See You in...</p>
             <?php endif; ?>
@@ -29,7 +30,7 @@
         <?php echo esc_attr( $event_date ); ?>">
 
         <!-- Countdown Timer -->
-        <?php if ( fanx_is_event_mode_enabled() ) : ?>
+        <?php if ( fanx_is_event_mode_enabled() ): //EVENT MODE BUTTONS ----------> ?>
             <div class="cd-live-event">
                 <p>Come Join Us!</p>
                 <?php

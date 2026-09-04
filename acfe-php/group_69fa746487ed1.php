@@ -2045,7 +2045,7 @@ Will ALSO add this post to the announcement section of all profiles selected.',
 		),
 		'advanced' => '1',
 	),
-	'modified' => 1787597792,
+	'modified' => 1788540049,
 	'acfe_categories' => array(
 		'blog-posts' => 'Blog Posts',
 	),

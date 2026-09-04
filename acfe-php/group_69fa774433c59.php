@@ -3,8 +3,6 @@
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
-	'qef_simple_location_rules' => 0,
-	'qef_simple_location_rules' => 0,
 	'key' => 'group_69fa774433c59',
 	'title' => 'Product Profile Pages',
 	'fields' => array(
@@ -1690,6 +1688,7 @@ Currently Set to guests and bi-directional with Group Op Products',
 	'display_title' => 'Product Pages',
 	'allow_ai_access' => false,
 	'ai_description' => '',
+	'qef_simple_location_rules' => 0,
 	'acfe' => array(
 		'autosync' => array(
 			0 => 'php',
@@ -1697,7 +1696,7 @@ Currently Set to guests and bi-directional with Group Op Products',
 		),
 		'advanced' => '1',
 	),
-	'modified' => 1788135993,
+	'modified' => 1788540050,
 	'acfe_categories' => array(
 		'products' => 'Products',
 		'profile-pages' => 'Profile Pages',

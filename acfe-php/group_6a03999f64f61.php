@@ -476,7 +476,6 @@ Automatically populates when a Blog Post Features this Profile in an Announcemen
 					'load_terms' => 1,
 					'return_format' => 'id',
 					'field_type' => 'checkbox',
-					'field_type' => 'checkbox',
 					'acfe_bidirectional' => array(
 						'acfe_bidirectional_enabled' => '0',
 					),
@@ -486,10 +485,9 @@ Automatically populates when a Blog Post Features this Profile in an Announcemen
 					'allow_in_bindings' => 1,
 					'bidirectional' => 0,
 					'multiple' => 0,
-					'allow_null' => 0,
-					'allow_null' => 0,
 					'bidirectional_target' => array(
 					),
+					'allow_null' => 0,
 				),
 				array(
 					'allow_backendsearch' => false,
@@ -1971,10 +1969,10 @@ If guest shares a schedule, post it here.',
 		),
 		'advanced' => '1',
 	),
+	'modified' => 1788540049,
 	'acfe_categories' => array(
 		'profile-pages' => 'Profile Pages',
 	),
-	'modified' => 1788136705,
 ));
 
 endif;

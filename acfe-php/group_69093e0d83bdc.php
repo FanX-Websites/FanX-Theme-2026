@@ -3,6 +3,7 @@
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
+	'qef_simple_location_rules' => 0,
 	'key' => 'group_69093e0d83bdc',
 	'title' => 'Guest Profile Pages',
 	'fields' => array(
@@ -181,11 +182,6 @@ acf_add_local_field_group(array(
 				array(
 					'allow_backendsearch' => 0,
 					'show_column_filter' => false,
-					'allow_bulkedit' => 1,
-					'allow_quickedit' => 1,
-					'show_column' => 1,
-					'show_column_weight' => 100,
-					'show_column_sortable' => 1,
 					'allow_bulkedit' => 1,
 					'allow_quickedit' => 1,
 					'show_column' => 1,
@@ -2208,14 +2204,12 @@ The content here appears in the eXperience tab when there is no eXperiences chos
 		),
 		'advanced' => '1',
 	),
-	'qef_simple_location_rules' => 0,
-	'modified' => 1787597793,
+	'modified' => 1788540050,
 	'acfe_categories' => array(
 		'people' => 'People',
 		'posts' => 'Posts',
 		'profile-pages' => 'Profile Pages',
 	),
-	'modified' => 1788223309,
 ));
 
 endif;
