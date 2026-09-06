@@ -207,6 +207,40 @@ if ( file_exists( get_template_directory() . '/admin/theme-update-checker/plugin
 //Filters
 	add_filter('simply_static_use_cache', '__return_false'); 
 
+
+//Images 
+	function fanx_manage_mimes($mimes) {
+    $allow = [
+        'svg'  => 'image/svg+xml',
+        'webp' => 'image/webp',
+        'ico'  => 'image/x-icon',
+    ];
+
+    $block = ['exe', 'php', 'js'];
+
+    foreach ($allow as $ext => $mime) {
+        $mimes[$ext] = $mime;
+    }
+
+    foreach ($block as $ext) {
+        unset($mimes[$ext]);
+    }
+
+    return $mimes;
+}
+add_filter('upload_mimes', 'fanx_manage_mimes');
+
+function fanx_fix_svg_filetype($data, $file, $filename, $mimes) {
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    if ($ext === 'svg') {
+        $data['ext']  = 'svg';
+        $data['type'] = 'image/svg+xml';
+    }
+    return $data;
+}
+add_filter('wp_check_filetype_and_ext', 'fanx_fix_svg_filetype', 10, 4);
+
+
 //PROTECT THE THINGS --->
 	
 	/*** Block User Enumeration */

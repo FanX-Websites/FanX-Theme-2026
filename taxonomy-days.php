@@ -22,7 +22,7 @@ get_header(); /** body- main-site */
     <!-------------------------- Main Content Area --------------------->
     <div class="cat-tax grid-container">
         <?php
-        // Query guests CPT for the current taxonomy term, excluding postponed xp-status
+        // Current Taxonomy - Cats Excluded: Postoned
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
         $term = get_queried_object();
         $args = array(
