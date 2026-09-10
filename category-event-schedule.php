@@ -79,7 +79,9 @@ echo '<div class="clear-filter-container hidden"><button class="clear-filter-btn
 echo '<div class="schedule-day-filters"></div>';
 
 // Group events by day and time (needs to happen before output)
+// Days are derived from the actual event dates so any combination/order returned by the API is handled
 $events_by_day = array();
+$earliest_date_for_day = array();
 foreach ( $schedules as $event ) {
     $event_date = substr( $event['start_time'], 0, 10 );
     $event_day = date( 'l', strtotime( $event_date ) ); // No timezone conversion
@@ -94,16 +96,17 @@ foreach ( $schedules as $event ) {
     }
     
     $events_by_day[ $event_day ][ $event_time ][] = $event;
-}
-
-// Sort days in order
-$days_order = array( 'Friday', 'Saturday', 'Sunday' );
-$sorted_days = array();
-foreach ( $days_order as $day ) {
-    if ( isset( $events_by_day[ $day ] ) ) {
-        $sorted_days[ $day ] = $events_by_day[ $day ];
+    
+    if ( ! isset( $earliest_date_for_day[ $event_day ] ) || $event_date < $earliest_date_for_day[ $event_day ] ) {
+        $earliest_date_for_day[ $event_day ] = $event_date;
     }
 }
+
+// Sort days chronologically by each day's earliest actual date
+uksort( $events_by_day, function( $a, $b ) use ( $earliest_date_for_day ) {
+    return strcmp( $earliest_date_for_day[ $a ], $earliest_date_for_day[ $b ] );
+} );
+$sorted_days = $events_by_day;
 
 // Day headers removed - now using dynamic title above buttons
 
@@ -227,8 +230,7 @@ echo '</div>'; // Close schedule-wrapper
     });
     
     // ===== DAY FILTER TABS =====
-    // Extract unique days in order (Fri, Sat, Sun)
-    const daysOrder = ['Friday', 'Saturday', 'Sunday'];
+    // Days come from the DOM in the order PHP already sorted them (chronological by actual date)
     const uniqueDays = [];
     
     dayContainers.forEach(container => {
@@ -242,19 +244,17 @@ echo '</div>'; // Close schedule-wrapper
     const tabsWrapper = document.createElement('div');
     tabsWrapper.className = 'button-group';
     
-    // Create filter tabs in correct day order
+    // Create filter tabs in the same order the days appear in the DOM
     let firstTab = true;
     
-    daysOrder.forEach(day => {
-        if (uniqueDays.includes(day)) {
-            const button = document.createElement('button');
-            button.className = `button day-tab${firstTab ? ' active' : ''}`;
-            button.dataset.day = day;
-            button.textContent = day;
-            if (firstTab) button.classList.add('button');
-            tabsWrapper.appendChild(button);
-            firstTab = false;
-        }
+    uniqueDays.forEach(day => {
+        const button = document.createElement('button');
+        button.className = `button day-tab${firstTab ? ' active' : ''}`;
+        button.dataset.day = day;
+        button.textContent = day;
+        if (firstTab) button.classList.add('button');
+        tabsWrapper.appendChild(button);
+        firstTab = false;
     });
     
     filterContainer.appendChild(tabsWrapper);

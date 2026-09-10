@@ -37,46 +37,11 @@ if ( ! $data || ! isset( $data['schedules'] ) || empty( $data['schedules'] ) ) {
 
 $schedules = $data['schedules'];
 
-// ============================================================================
-// VENUE FILTER: Only show events from specific locations
-// ============================================================================
-$allowed_venues = array(
-    '500 Ballroom',
-    'Room 105',
-    'Room 108',
-    'Room 132',
-    'Room 134',
-    'Room 135',
-    'Room 137',
-    'Room 140'
-);
-
-// Filter events to only include allowed venues
-$filtered_schedules = array_filter( $schedules, function( $event ) use ( $allowed_venues ) {
-    return ! empty( $event['location'] ) && in_array( $event['location'], $allowed_venues );
-} );
-
-if ( empty( $filtered_schedules ) ) {
-    echo '<div class="schedule-wrapper">';
-    echo '<p>No events available for the selected venues.</p>';
-    echo '</div>';
-    return;
-}
-
-// Extract unique venues from filtered events (for display)
-// Maintain order from $allowed_venues
-$unique_venues = array();
-foreach ( $allowed_venues as $allowed_venue ) {
-    foreach ( $filtered_schedules as $event ) {
-        if ( ! empty( $event['location'] ) && $event['location'] === $allowed_venue && ! in_array( $allowed_venue, $unique_venues ) ) {
-            $unique_venues[] = $allowed_venue;
-        }
-    }
-}
-
-// Group filtered events by day and time
+// Group events by day and time
+// Days are derived from the actual event dates so any combination/order returned by the API is handled
 $events_by_day = array();
-foreach ( $filtered_schedules as $event ) {
+$earliest_date_for_day = array();
+foreach ( $schedules as $event ) {
     $event_date = substr( $event['start_time'], 0, 10 );
     $event_day = date( 'l', strtotime( $event_date ) );
     $event_time = date( 'g:i a', strtotime( $event['start_time'] ) );
@@ -90,25 +55,22 @@ foreach ( $filtered_schedules as $event ) {
     }
     
     $events_by_day[ $event_day ][ $event_time ][] = $event;
-}
-
-// Sort days in order
-$days_order = array( 'Friday', 'Saturday', 'Sunday' );
-$sorted_days = array();
-foreach ( $days_order as $day ) {
-    if ( isset( $events_by_day[ $day ] ) ) {
-        $sorted_days[ $day ] = $events_by_day[ $day ];
+    
+    if ( ! isset( $earliest_date_for_day[ $event_day ] ) || $event_date < $earliest_date_for_day[ $event_day ] ) {
+        $earliest_date_for_day[ $event_day ] = $event_date;
     }
 }
+
+// Sort days chronologically by each day's earliest actual date
+uksort( $events_by_day, function( $a, $b ) use ( $earliest_date_for_day ) {
+    return strcmp( $earliest_date_for_day[ $a ], $earliest_date_for_day[ $b ] );
+} );
+$sorted_days = $events_by_day;
 
 ?>
 
 <div class="schedule-wrapper">
     <div class="schedule-day-filters"></div>
-    
-    <?php if ( ! empty( $unique_venues ) ) : ?>
-        <div class="schedule-venue-filters"></div>
-    <?php endif; ?>
     
 <div class="panel-schedule-tag-filter self-centered-column">
     <div class="panel schedule-tag-filter-info hidden">
@@ -142,10 +104,9 @@ foreach ( $days_order as $day ) {
                                 $end_time = date( 'g:i A', strtotime( $event['end_time'] ) );
                             }
                             
-                            $venue_slug = ! empty( $event['location'] ) ? sanitize_title( $event['location'] ) : '';
                             ?>
                             
-                            <div class="event-card grid-block" <?php if ( $venue_slug ) echo 'data-venue="' . esc_attr( $venue_slug ) . '"'; ?>>
+                            <div class="event-card grid-block">
                                 <div class="event-header">
                                     <?php
                                     // Display time range
@@ -230,8 +191,7 @@ foreach ( $days_order as $day ) {
         });
     });
     
-    // Day filter tabs
-    const daysOrder = ['Friday', 'Saturday', 'Sunday'];
+    // Day filter tabs - days come from the DOM in the order PHP already sorted them (chronological by actual date)
     const uniqueDays = [];
     
     dayContainers.forEach(container => {
@@ -245,15 +205,13 @@ foreach ( $days_order as $day ) {
     tabsWrapper.className = 'button-group';
     
     let firstTab = true;
-    daysOrder.forEach(day => {
-        if (uniqueDays.includes(day)) {
-            const button = document.createElement('button');
-            button.className = `button day-tab${firstTab ? ' active' : ''}`;
-            button.dataset.day = day;
-            button.textContent = day;
-            tabsWrapper.appendChild(button);
-            firstTab = false;
-        }
+    uniqueDays.forEach(day => {
+        const button = document.createElement('button');
+        button.className = `button day-tab${firstTab ? ' active' : ''}`;
+        button.dataset.day = day;
+        button.textContent = day;
+        tabsWrapper.appendChild(button);
+        firstTab = false;
     });
     
     filterContainer.appendChild(tabsWrapper);
@@ -304,112 +262,12 @@ foreach ( $days_order as $day ) {
         });
     });
     
-    // ===== VENUE FILTER TABS =====
-    const venueFilterContainer = document.querySelector('.schedule-venue-filters');
-    if (venueFilterContainer) {
-        const eventCards = document.querySelectorAll('.event-card[data-venue]');
-        
-        // Hardcoded venue order matching $allowed_venues
-        const orderedVenues = [
-            { slug: '500-ballroom', display: '500 Ballroom' },
-            { slug: 'room-105', display: 'Room 105' },
-            { slug: 'room-108', display: 'Room 108' },
-            { slug: 'room-132', display: 'Room 132' },
-            { slug: 'room-134', display: 'Room 134' },
-            { slug: 'room-135', display: 'Room 135' },
-            { slug: 'room-137', display: 'Room 137' },
-            { slug: 'room-140', display: 'Room 140' }
-        ];
-        
-        // Only include venues that have events
-        const availableVenues = orderedVenues.filter(venue => {
-            return Array.from(eventCards).some(card => card.dataset.venue === venue.slug);
-        });
-        
-        if (availableVenues.length > 0) {
-            const venueTabsWrapper = document.createElement('div');
-            venueTabsWrapper.className = 'venue-tab-bar';
-            venueTabsWrapper.style.marginTop = '1rem';
-            
-            // Create "All Venues" button
-            const allButton = document.createElement('button');
-            allButton.className = 'venue-tab active';
-            allButton.dataset.venue = 'all';
-            allButton.textContent = 'All Panel Rooms';
-            venueTabsWrapper.appendChild(allButton);
-            
-            // Add separator after "All Venues"
-            if (availableVenues.length > 0) {
-                const separator = document.createTextNode(' | ');
-                venueTabsWrapper.appendChild(separator);
-            }
-            
-            // Create individual venue buttons in correct order
-            availableVenues.forEach((venue, index) => {
-                const button = document.createElement('button');
-                button.className = 'venue-tab';
-                button.dataset.venue = venue.slug;
-                button.textContent = venue.display;
-                venueTabsWrapper.appendChild(button);
-                
-                // Add separator between buttons (except after the last one)
-                if (index < availableVenues.length - 1) {
-                    const separator = document.createTextNode(' | ');
-                    venueTabsWrapper.appendChild(separator);
-                }
-            });
-            
-            venueFilterContainer.appendChild(venueTabsWrapper);
-            
-            const venueTabs = document.querySelectorAll('.venue-tab');
-            
-            function filterByVenue(venue) {
-                selectedVenue = venue;
-                applyFilters();
-                
-                // Update URL hash
-                if (venue !== 'all') {
-                    window.location.hash = venue;
-                } else {
-                    window.history.replaceState(null, '', window.location.pathname);
-                }
-            }
-            
-            venueTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    venueTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    filterByVenue(this.dataset.venue);
-                });
-            });
-            
-            // Check URL hash on page load
-            function checkHashOnLoad() {
-                const hash = window.location.hash.slice(1); // Remove the # symbol
-                if (hash) {
-                    const hashTab = document.querySelector(`.venue-tab[data-venue="${hash}"]`);
-                    if (hashTab) {
-                        venueTabs.forEach(t => t.classList.remove('active'));
-                        hashTab.classList.add('active');
-                        filterByVenue(hash);
-                    }
-                }
-            }
-            
-            checkHashOnLoad();
-            
-            // Listen for hash changes (back button support)
-            window.addEventListener('hashchange', checkHashOnLoad);
-        }
-    }
-    
     // ===== TAG FILTER =====
     const tagButtons = document.querySelectorAll('.event-tag');
     const eventCards = document.querySelectorAll('.event-card');
     const tagFilterInfo = document.querySelector('.schedule-tag-filter-info');
     const clearFilterBtn = document.querySelector('.clear-filter-btn');
     let selectedTag = null;
-    let selectedVenue = 'all'; // Track selected venue
     
     function updateFilterState(tag, tagText, tagElement) {
         selectedTag = tag;
@@ -422,23 +280,15 @@ foreach ( $days_order as $day ) {
             tag ? tagFilterInfo.classList.remove('hidden') : tagFilterInfo.classList.add('hidden');
         }
         
-        // Apply both venue and tag filters
         applyFilters();
     }
     
     function applyFilters() {
         eventCards.forEach(card => {
-            const cardVenue = card.dataset.venue;
             const cardTags = Array.from(card.querySelectorAll('.event-tag')).map(btn => btn.dataset.tag);
-            
-            // Check venue match
-            const venueMatches = (selectedVenue === 'all' || cardVenue === selectedVenue);
-            
-            // Check tag match
             const tagMatches = (!selectedTag || cardTags.includes(selectedTag));
             
-            // Show only if both match
-            if (venueMatches && tagMatches) {
+            if (tagMatches) {
                 card.classList.remove('hidden');
             } else {
                 card.classList.add('hidden');

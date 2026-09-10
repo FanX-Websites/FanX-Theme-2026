@@ -73,17 +73,22 @@ $schedules = $data['schedules'];
 // ============================================================================
 $guest_events = array();
 
+// Normalize whitespace so stray/double spaces in either name don't break the match
+$normalized_guest_name = strtolower( trim( preg_replace( '/\s+/', ' ', $guest_name ) ) );
+
 foreach ( $schedules as $event ) {
     // Check if this guest appears in the event's people array
     if ( ! empty( $event['people'] ) && is_array( $event['people'] ) ) {
         foreach ( $event['people'] as $person ) {
-            // Construct person's full name
-            $person_full_name = trim( ( $person['first_name'] ?? '' ) . ' ' . ( $person['last_name'] ?? '' ) );
-            $person_alt_name = $person['alt_name'] ?? '';
+            // Construct person's full name, trimming each part individually before joining
+            $first_name = trim( $person['first_name'] ?? '' );
+            $last_name = trim( $person['last_name'] ?? '' );
+            $person_full_name = strtolower( trim( preg_replace( '/\s+/', ' ', $first_name . ' ' . $last_name ) ) );
+            $person_alt_name = strtolower( trim( preg_replace( '/\s+/', ' ', $person['alt_name'] ?? '' ) ) );
             
-            // Compare names (case-insensitive)
-            if ( strtolower( $person_full_name ) === strtolower( $guest_name ) || 
-                 ( ! empty( $person_alt_name ) && strtolower( $person_alt_name ) === strtolower( $guest_name ) ) ) {
+            // Compare names (case-insensitive, whitespace-normalized)
+            if ( $person_full_name === $normalized_guest_name || 
+                 ( ! empty( $person_alt_name ) && $person_alt_name === $normalized_guest_name ) ) {
                 $guest_events[] = $event;
                 break; // Found the guest, add event and move to next event
             }

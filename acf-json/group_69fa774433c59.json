@@ -1,5 +1,4 @@
 {
-    "qef_simple_location_rules": 0,
     "key": "group_69fa774433c59",
     "title": "Product Profile Pages",
     "fields": [
@@ -587,7 +586,7 @@
                     "allow_bulkedit": 1,
                     "allow_quickedit": 1,
                     "show_column": 1,
-                    "show_column_weight": 1000,
+                    "show_column_weight": 200,
                     "show_column_sortable": 1,
                     "key": "field_69fa7744b9eab",
                     "label": "Photo Op Price",
@@ -1007,10 +1006,10 @@
                 {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
+                    "allow_bulkedit": 1,
+                    "allow_quickedit": 1,
+                    "show_column": 1,
+                    "show_column_weight": 300,
                     "show_column_sortable": false,
                     "key": "field_69fa774569713",
                     "label": "Featured Guests - Mutli-Post Gallery - Post IDs",
@@ -1037,7 +1036,7 @@
                     "save_custom": 0,
                     "save_post_status": "publish",
                     "acfe_bidirectional": {
-                        "acfe_bidirectional_enabled": true,
+                        "acfe_bidirectional_enabled": "1",
                         "acfe_bidirectional_related": [
                             "field_69795e4c3bb33"
                         ]
@@ -1680,7 +1679,8 @@
         ],
         "advanced": "1"
     },
-    "modified": 1788135993,
+    "qef_simple_location_rules": 0,
+    "modified": 1788983691,
     "acfe_categories": {
         "products": "Products",
         "profile-pages": "Profile Pages"

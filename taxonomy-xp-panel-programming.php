@@ -18,9 +18,9 @@ get_header(); /** body- main-site */
 
  <!---- Programming Tabs Section ------------------------->
 
-    <!--- GUEST LIST ------------------------------------->
+    <!--- GUEST LIST - SECTION ------------------------------------>
         <!--------------- #Guest List Section [Template Part] ----------------------->
-        <div class="container full space">
+        <div class="section">
         <!----- Guest List Header ---------->
             <div class="section-header">
                 <h2>Featured Panelists</h2>
@@ -35,9 +35,9 @@ get_header(); /** body- main-site */
      <?php get_template_part('template-parts/sections/floor-maps'); //Floor Maps Section [Template-Part] ?>
     <!-- END Floor #Maps & Room List Section -->  
 
-    <!--- SCHEDULE ------------------------------------------------>
+    <!--- SCHEDULE - SECTION ----------------------------------------------->
         <!----Panel Programming Schedule Section -------------->
-        <div class="container full space">
+        <div class="section">
         <!----- Panel Programming Schedule Header ---------->
             <div class="section-header" id="sched">
                 <h2>Panel Programming Schedule</h2>

@@ -597,7 +597,7 @@ Automatically populates when a Blog Post Features this Profile in an Announcemen
 					'allow_bulkedit' => 1,
 					'allow_quickedit' => 1,
 					'show_column' => 1,
-					'show_column_weight' => 1000,
+					'show_column_weight' => 200,
 					'show_column_sortable' => 1,
 					'key' => 'field_69fa7744b9eab',
 					'label' => 'Photo Op Price',
@@ -1017,10 +1017,10 @@ Automatically populates when a Blog Post Features this Profile in an Announcemen
 				array(
 					'allow_backendsearch' => false,
 					'show_column_filter' => false,
-					'allow_bulkedit' => false,
-					'allow_quickedit' => false,
-					'show_column' => false,
-					'show_column_weight' => 1000,
+					'allow_bulkedit' => 1,
+					'allow_quickedit' => 1,
+					'show_column' => 1,
+					'show_column_weight' => 300,
 					'show_column_sortable' => false,
 					'key' => 'field_69fa774569713',
 					'label' => 'Featured Guests - Mutli-Post Gallery - Post IDs',
@@ -1049,7 +1049,7 @@ Currently Set to guests and bi-directional with Group Op Products',
 					'save_custom' => 0,
 					'save_post_status' => 'publish',
 					'acfe_bidirectional' => array(
-						'acfe_bidirectional_enabled' => true,
+						'acfe_bidirectional_enabled' => '1',
 						'acfe_bidirectional_related' => array(
 							0 => 'field_69795e4c3bb33',
 						),
@@ -1688,7 +1688,6 @@ Currently Set to guests and bi-directional with Group Op Products',
 	'display_title' => 'Product Pages',
 	'allow_ai_access' => false,
 	'ai_description' => '',
-	'qef_simple_location_rules' => 0,
 	'acfe' => array(
 		'autosync' => array(
 			0 => 'php',
@@ -1696,11 +1695,12 @@ Currently Set to guests and bi-directional with Group Op Products',
 		),
 		'advanced' => '1',
 	),
-	'modified' => 1788540050,
+	'qef_simple_location_rules' => 0,
 	'acfe_categories' => array(
 		'products' => 'Products',
 		'profile-pages' => 'Profile Pages',
 	),
+	'modified' => 1788983691,
 ));
 
 endif;
