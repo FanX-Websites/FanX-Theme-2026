@@ -43,8 +43,14 @@ function get_booth_location( $post_id = null ) {
 			
 			if ( isset( $data['space_orders'] ) && is_array( $data['space_orders'] ) ) {
 				// Normalize to lowercase, single-spaced words (punctuation collapsed to spaces, not removed)
+				// Accents/diacritics are transliterated to ASCII first so "José" and "Jose" normalize the same
 				$normalize_for_match = function( $str ) {
-					$str = strtolower( (string) $str );
+					$str = (string) $str;
+					$transliterated = iconv( 'UTF-8', 'ASCII//TRANSLIT', $str );
+					if ( $transliterated !== false ) {
+						$str = $transliterated;
+					}
+					$str = mb_strtolower( $str, 'UTF-8' );
 					$str = preg_replace( '/[^a-z0-9]+/', ' ', $str );
 					return trim( preg_replace( '/\s+/', ' ', $str ) );
 				};
