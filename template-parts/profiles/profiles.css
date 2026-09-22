@@ -1,0 +1,44 @@
+/** FanX Theme Profile Stylesheet 
+
+//INFO: View Style.css for the Wireframes | fanx.css for branding styles | Template parts: template-parts.css, profiles.css 
+
+//TODO: Move all Profile specific template part css to this stylesheet 
+**/
+
+
+/* Profile Page Schedules TAB */
+
+.guest-schedule-item {
+    padding: 5%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 1px solid var(--color_prim);
+    border-radius: 0;
+}
+
+h4.guest-event-title {
+    color: var(--color_prim_lght);
+    font-size: 1em;
+    text-align: center;
+    line-height: 1.25em;
+    margin: 0 auto;
+    padding: 1%;
+}
+
+.guest-schedule-item-details {
+    color: var(--color_lght);
+    font-size: .85em;
+    line-height: 1.25em;
+}
+
+span.day-name {
+    font-weight: bold;
+
+}
+
+.schedule-list {
+    width: 100%;
+}

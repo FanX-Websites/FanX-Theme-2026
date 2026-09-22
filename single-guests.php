@@ -43,14 +43,6 @@ get_header();
                     
                 </div><!-- END profile-img ------------>
 
-                <!-- Appearance Info [Template Part] -->
-                <div class="container full"> 
-                    <?php 
-                    if ( get_post_type() === 'guests' || get_post_type() === 'features' ) {
-                        get_template_part( 'template-parts/profiles/appearance-info' ); 
-                    }
-                    ?>
-                </div><!-- END Appearance Days ---> 
 
         </div><!--END Grid Block Profile Details -->
         <?php endif; ?>
@@ -66,6 +58,31 @@ get_header();
                     <h2><?php the_field('heafoo_subtitle'); ?></h2> <!-- Subtitle --> 
                     <h3><?php the_field('heafoo_subtext'); ?></h3> <!--  Subtext -->  
                 </div><!-- END Profile Name & Cats --> 
+
+                 <!-- Fandom Tags -->
+                <div class="fandom-tags">
+                    <?php
+                    $fandoms = get_the_terms( get_the_ID(), 'fandoms' );
+                    if ( $fandoms && ! is_wp_error( $fandoms ) ) {
+                        echo '<div class="tags-list">';
+                        $tags = array();
+                        foreach ( $fandoms as $fandom ) {
+                            $tags[] = '<span class="fandom-tag">' . esc_html( $fandom->name ) . '</span>';
+                        }
+                        echo implode( ' | ', $tags );
+                        echo '</div>';
+                    }
+                    ?>
+                </div><!-- END Fandom Tags -->
+
+                <!-- Appearance Info [Template Part] -->
+                <div class="container full"> 
+                    <?php 
+                    if ( get_post_type() === 'guests' || get_post_type() === 'features' ) {
+                        get_template_part( 'template-parts/profiles/appearance-info' ); 
+                    }
+                    ?>
+                </div><!-- END Appearance Days ---> 
 
                 <!-- Guest List Tags (Alumni only) -->
                 <?php if ( has_term( 'alumni', 'category' ) ) : ?>
@@ -87,28 +104,12 @@ get_header();
                 <?php endif; ?>
                 <!-- END Guest List Tags -->
 
-                <!-- Fandom Tags -->
-                <div class="fandom-tags">
-                    <?php
-                    $fandoms = get_the_terms( get_the_ID(), 'fandoms' );
-                    if ( $fandoms && ! is_wp_error( $fandoms ) ) {
-                        echo '<div class="tags-list">';
-                        $tags = array();
-                        foreach ( $fandoms as $fandom ) {
-                            $tags[] = '<span class="fandom-tag">' . esc_html( $fandom->name ) . '</span>';
-                        }
-                        echo implode( ' | ', $tags );
-                        echo '</div>';
-                    }
-                    ?>
-                </div><!-- END Fandom Tags -->
-
             </div><!-- END Profile content header --->    
                 
             <!-- Guest Profile Info -->
             <div class="guest tab-section block"><!-- Guest Tabs --------------->
 
-                <?php $is_tv_film = has_term( 'tv-film-guests', 'category' ); //Default to Guest eXperiences tab for TV/Film guests ?>
+                <?php $default_xp_tab = ( get_post_type() === 'guests' ) && ! has_term( 'alumni', 'category' ); //Default to Guest eXperiences tab for Guests CPT (except Alumni) ?>
 
                 <?php if ( ( get_post_type() === 'guests' || get_post_type() === 'features' ) && ! has_term( 'alumni', 'category' ) ) : ?>
                 <div class="guest tab-top-bar block"><!-- Tab Top Bar -->
@@ -121,7 +122,7 @@ get_header();
                 <div class="profile the-content-block">
 
                     <!--- Guest Bio Tab - Tab 1 ---------------------->
-                    <div class="guest-bio tab" id="guest-bio" <?php echo $is_tv_film ? 'style="display:none"' : ''; ?>>
+                    <div class="guest-bio tab" id="guest-bio" <?php echo $default_xp_tab ? 'style="display:none"' : ''; ?>>
                         <!--- Profile Content - DIV -->
                             <div class="profile the-content">
                                <?php 
@@ -149,7 +150,7 @@ get_header();
                     <!-- END Guest Schedule Tab -->
                     
                     <!--- Guest eXperiences Tab - Tab 3 ------------------------>
-                    <div class="guest-xp tab" id="guest-xp" <?php echo $is_tv_film ? '' : 'style="display:none"'; ?>>
+                    <div class="guest-xp tab" id="guest-xp" <?php echo $default_xp_tab ? '' : 'style="display:none"'; ?>>
                        <div class="profile the-content">
                             <!-- Guest eXperiences [Template Part]-->
                             <div class="container full"> 

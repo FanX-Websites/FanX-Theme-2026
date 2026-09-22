@@ -1,7 +1,7 @@
 <?php 
 /* Template Part: Guest Profile Experiences 
 @author FanXTheme2026
-//INFO: All Guest/Feature Experiences featured here. 
+//INFO: eXperiences Tab: All Guest/Feature Experiences featured here. 
 //NOTE: Uses the template-parts.css Stylesheet 
 //TODO: Create a CSS Grid for easy restructuring. Each eXperience gets it own box. 
 //TODO: Update to cater to Postponed related tags ie: Photo Op Swaps/Refunds Available (template-part currently completely hidden) 
@@ -24,11 +24,15 @@
             $shared_link_url = is_array($ded_prod_cat_link) ? ($ded_prod_cat_link['url'] ?? '') : $ded_prod_cat_link;
         }
         
-        // Check for Xperience Categories 
+        // Check for Active Xperience Categories - Conditional 
         $has_photo_ops = false;
         $has_autographs = false;
         $has_panel_programming = false;
         $has_author_signings = false;
+        $has_vendor_floor = false;
+        
+        // Vendor Floor / Literary Lane / Artist Alley - Category Name for Title
+        $vendor_feature_name = '';
         
         if ( $xp_terms && ! is_wp_error( $xp_terms ) ) {
             foreach ( $xp_terms as $term ) {
@@ -40,11 +44,15 @@
                     $has_panel_programming = true;
                 } elseif ( $term->slug === 'author-signings' ) {
                     $has_author_signings = true;
+                } elseif ( $term->slug === 'vendor-floor' || $term->slug === 'literary-lane' || $term->slug === 'artist-alley' ) {
+                    $has_vendor_floor = true;
+                    $vendor_feature_name = $term->name;
                 }
+                
             }
         }
         
-        // Check for celeb extras
+        // Check for celeb extras - Conditional
         $has_celeb_xtras = false;
         if ( $xp_status_terms && ! is_wp_error( $xp_status_terms ) ) {
             foreach ( $xp_status_terms as $term ) {
@@ -178,6 +186,7 @@
             <?php if ( $has_autographs ) : ?>
 
             <div class="grid-block xp-block">
+
             <!-- Autographs -------------------------------------------------->
                 <div class="guest-auto-info">
                     <?php 
@@ -234,6 +243,7 @@
             $has_celeb_xtras_purchase_now = false;
             $has_celeb_xtras_onsite = false;
             $has_celeb_xtras_soon = false; 
+          
             
             if ( $xp_status_terms && ! is_wp_error( $xp_status_terms ) ) {
                 foreach ( $xp_status_terms as $term ) {
@@ -246,14 +256,19 @@
                      } elseif ( $term->slug === 'celeb-extras-soon' ) {
                         $has_celeb_xtras_soon = true;
                         break;
+                    } elseif ( $term->slug === 'photo-op-extras' ) {
+                        $has_photo_op_extras = true;
+                        break;
+                    
                     }
                 }
             }
             ?>
             
-            <?php if ( $has_celeb_xtras_purchase_now || $has_celeb_xtras_onsite || $has_celeb_xtras_soon ) : ?>
+            <?php if ( $has_celeb_xtras_purchase_now || $has_celeb_xtras_onsite || $has_celeb_xtras_soon || $has_photo_op_extras ) : ?>
     
             <div class="grid-block xp-block">
+
             <!-- Celebrity Row eXtras ------------------------------------->
                 <div class="celeb-xtra-info">
                         <h4 class="xp-title">Celebrity Row Extras</h4>
@@ -300,21 +315,21 @@
                                 foreach ( (array)$group_op_posts as $post_id ) {
                                     $ops_xp = get_field('xp', $post_id);  
                                     $price = is_array($ops_xp) ? ($ops_xp['op_price'] ?? '') : ''; //Price
-                                    $button_url = '';
-                                    if ( have_rows('button', $post_id) ) {
-                                        while ( have_rows('button', $post_id) ) {
-                                            the_row();
-                                            $button_url = get_sub_field('url');
-                                            break; // Get first button only
-                                        }
-                                    }
                                     $title = get_the_title($post_id); //Title
+
+                                    // Use shared product link if available, otherwise use celeb_grp_ops_url
+                                    if ( $shared_link_url ) {
+                                        $grp_op_link_url = $shared_link_url;
+                                    } else {
+                                        $celeb_grp_ops_link = get_field('celeb_grp_ops_url', 'option');
+                                        $grp_op_link_url = is_array($celeb_grp_ops_link) ? ($celeb_grp_ops_link['url'] ?? '') : $celeb_grp_ops_link;
+                                    }
                                 ?>
                                     <div class="grp-op guest-xp">
-                                        <?php echo esc_html($title); ?> - 
-                                        <?php echo esc_html($price); ?>
-                                        <?php if ($button_url) { ?>
-                                            <span class="xp-now"><a href="<?php echo esc_url($button_url); ?>">Buy Group Ops NOW</a></span>
+                                        <?php echo esc_html($title); ?>:
+                                        <?php echo esc_html($price); ?> -
+                                        <?php if ($grp_op_link_url) { ?>
+                                            <span class="xp-now"><a href="<?php echo esc_url($grp_op_link_url); ?>">Buy NOW </a></span>
                                             
                                         <?php } ?>
                                     </div>
@@ -328,11 +343,10 @@
             <?php endif; ?>
 
 
-            <!-- Panel Programming --->
+            <!-- Panel Programming ---------------------------------------------------->
             <?php if ( $has_panel_programming ) : ?>
 
             <div class="grid-block xp-block">
-            <!-- Panel Programming -->
                 <div class="programming-info">
                     <h4 class="xp-title">Panel Programming</h4>
                     
@@ -353,23 +367,24 @@
                             if ( $is_panels_announced_soon ) {
                                 echo '<span class="xp-soon">More Info Coming Soon</span>';
                             } else {
-                                echo '<span class="xp-now">View Schedule tab for more information</span>';
+                                echo '<span class="xp-now">View the Schedule tab to check out their panels!</span>';
                             }
                         ?>
                     </div>
                 </div>
-            </div><!-- END Grid Block - Panel Programming -->
+            </div><!-- END Grid Block - Panel Programming -------------------->
 
             <?php endif; ?>
             <!--- END Panel Programming -->
             
-            <!-- Author Signings -->
+            <!-- Author Signings --------------------------------------->
             <?php if ( $has_author_signings ) : ?>
             
             <div class="grid-block xp-block">
             <!-- Author Signings -->
                 <div class="author-signings-info">
                     <h4 class="xp-title">Author Signings</h4>
+                   <span class="xp-now">View the Schedule tab to get signing times & locations</span>
                     
                     <div class="author-signings-status guest-xp">
                         <?php 
@@ -382,25 +397,35 @@
                                     if ( $term->slug === 'author-signings-soon' ) {
                                         $is_author_signings_soon = true;
                                     } elseif ( $term->slug === 'pre-purchase-autographs' ) {
-                                        $has_pre_purchase_author_signings = true;
+                                        $has_pre_purchase_author_signings = true; //Activates Ded LEAP Purchase Link. 
                                     }
                                 }
                             }
                             
                             if ( $is_author_signings_soon ) {
                                 echo '<span class="xp-soon">More Info Coming Soon</span>';
-                            } elseif ( $shared_link_url && $has_pre_purchase_author_signings ) {
-                                echo '<span class="xp-now"><a href="' . esc_url($shared_link_url) . '">Reserve Your Signing Now</a></span>';
-                            }
+                            }  elseif ( $has_pre_purchase_author_signings ) { 
+
+                 // Use shared product link if available, otherwise use individual author signing link
+                        if ( $shared_link_url ) {
+                            echo '<span class="xp-now"><a href="' . esc_url($shared_link_url) . '">Reserve Your Signing Now</a></span>';
+                        } else {
+                            $celeb_sign_link = get_field('celeb_sign_url', 'option');
+                            $sign_link_url = is_array($celeb_sign_link) ? ($celeb_sign_link['url'] ?? '') : $celeb_sign_link;
+                            echo '<span class="xp-now"><a href="' . esc_url($sign_link_url) . '">Reserve Your Signing Now</a></span>';
+                        }
+                    }
                         ?>
                     </div>
                 </div>
-            </div><!-- END Grid Block - Author Signings -->
+            </div><!-- END Grid Block - Author Signings ------------------------>
             
             <?php endif; ?>
             <!--- END Author Signings -->
             
-        <!-- Vendor Booths --->
+    <!-- Vendor Booths --------------------------------------------->
+
+        <!-- Guests connected to Features ------->
             <?php if ( $vend_booth_posts ) : ?>
 
             <div class="grid-block xp-block">  
@@ -430,7 +455,46 @@
                 </div>
             </div>
             <?php endif; ?>     
-        <!-- END Vendor Booths ---> 
+        <!-- END Guests in Features ---------------------->
+
+        <!--- Features/Guests Booths --------------------->
+            <?php if ( $has_vendor_floor ) : ?>
+
+            <div class="grid-block xp-block">
+                <div class="vend-booth-info">
+                    <h4 class="xp-title"><?php echo esc_html( $vendor_feature_name ); ?></h4>
+
+                <!--- Appearance Location/Booth Info --->
+                <div class="appear-block">
+                    <div>
+                    <?php if ( has_term( 'cosplay-central', 'category' ) ) : ?>
+                        Find them in Cosplay Central 
+                    <?php endif; ?>
+                    </div>
+                 
+                    <?php 
+                        // Load booth location function
+                        $leap_space_file = get_template_directory() . '/leap/space.php';
+                        if ( file_exists( $leap_space_file ) ) {
+                            require_once( $leap_space_file );  //Hide if no Booth Info in LEAP
+                            $vend_booth = get_booth_location( get_the_ID() );
+                            
+                            if ( trim( $vend_booth ) ) { //ACF Field Override
+                                echo '<strong>Find them at</strong> ';
+                                echo wp_kses_post($vend_booth);
+                                echo '<p><a href="' . esc_url( home_url('/xp/vendor-floor/#map') ) . '">View Vendor Floor Map</a></p>';
+                            }
+                        }
+                    ?>
+                </div>
+            
+                
+            </div><!-- END Grid Block - Vendor Floor/Literary Lane/Artist Alley -->
+
+            <?php endif; ?>
+        <!--- END Features/Guests Booth ------------------->
+
+    <!-- END Vendor Booths -----------------------------------------------> 
 
         </div><!-- END Grid Container -->
 </div><!-- END Guest eXperiences Block -->

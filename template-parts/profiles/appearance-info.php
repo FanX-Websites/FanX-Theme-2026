@@ -15,32 +15,32 @@
             $order = ['thursday' => 1, 'friday' => 2, 'saturday' => 3, 'sunday' => 4];
                 usort($days_cats, fn($a, $b) => ($order[$a->slug] ?? 99) - ($order[$b->slug] ?? 99));
                 echo '<div class="days guest-xp">'; //days guest-xp
-                echo '<strong>Appearing:</strong> ';
+                echo '<strong>Appearing on </strong> '; // Appearing on Message 
             $links = array();
 
         foreach ( $days_cats as $cat ) {
                 $links[] = esc_html( $cat->name );
             }
-            echo implode( ' | ', $links );
+            echo implode( ' / ', $links ); //Divider
             echo '</div><!-- END days guest-xp -->';
         }
     ?> 
     </div><!-- END appear-days -->
 
-    <!--- Appearance Location/Booth Info --->
+    <!-- - Appearance Location/Booth Info --->
     <div class="appear-block">
         <?php 
             // Load booth location function
-            $leap_space_file = get_template_directory() . '/leap/space.php';
-            if ( file_exists( $leap_space_file ) ) {
-                require_once( $leap_space_file );  //Hide if no Booth Info in LEAP
-                $vend_booth = get_booth_location( get_the_ID() );
+            // $leap_space_file = get_template_directory() . '/leap/space.php';
+            // if ( file_exists( $leap_space_file ) ) {
+            //     require_once( $leap_space_file );  //Hide if no Booth Info in LEAP
+            //     $vend_booth = get_booth_location( get_the_ID() );
                 
-                if ( trim( $vend_booth ) ) { //ACF Field Override
-                    echo '<strong>Location:</strong> ';
-                    echo wp_kses_post($vend_booth);
-                }
-            }
+            //     if ( trim( $vend_booth ) ) { //ACF Field Override
+            //         // echo '<strong>Location:</strong> ';
+            //         echo wp_kses_post($vend_booth);
+            //     }
+            // }
             ?>
     </div><!-- END appear-loca -->
 

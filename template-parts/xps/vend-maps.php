@@ -144,7 +144,7 @@ $map_misc = get_field('map_misc', 'option');
 
     <!-- Floor Maps Container -->
     <?php if (!empty($map_vend) || !empty($map_misc)) { ?>
-        <div class="floor-maps grid-container layout-2col child">
+        <div class="floor-maps grid-container layout-2col child" id="map">
             <div class="map-container grid-block">    
             <figure class="img-container"><!-- Vendor Map Container -->
             <?php 

@@ -1,10 +1,10 @@
 <?php 
-/** Template Part: Guest Profile Schedule 
+/** Template Part: GUEST PROFILE Schedule TAB
  * @package FanX Theme 2026
  * Displays a guest's schedule from the LEAP Conventions API in list format
  * Automatically matches guest by post title against LEAP schedule data
  * 
- *
+ * For default Schedule template view the schedules folder 
  */
 
 // ============================================================================
@@ -130,13 +130,16 @@ usort( $guest_events, function( $a, $b ) {
                 $location = $event['location'] ?? 'TBA';
                 $title = $event['title'] ?? 'Untitled Event';
         ?>
+        <!-- Guest Schedule Content ---> 
             <div class="guest-schedule-item">
-                <h4 class="guest-event-title"><?php echo esc_html( $title ); ?> - <?php echo esc_html( $location ); ?></h4>
+                <h4 class="guest-event-title"><?php echo esc_html( $title ); //Event Title ?></h4> 
+                <?php echo esc_html( $location ); //Room Number ?>
                 <div class="guest-schedule-item-details">
-                    <span class="day-name"><?php echo esc_html( $event_day ); ?></span>
-                    <span class="time"><?php echo esc_html( $event_time ); ?></span>
+                    <span class="day-name"><?php echo esc_html( $event_day ); //Day ?>@</span>
+                    <span class="time"><?php echo esc_html( $event_time ); //Time ?></span>
                 </div><!--- END guest-schedule-item-details -->
-            </div><!--- END guest-schedule-item -->
+            </div>
+        <!--- END Guest Schedule Content -->
         <?php endforeach; ?>
     </div><!-- END Schedule List ------------------>
 <?php else : ?>

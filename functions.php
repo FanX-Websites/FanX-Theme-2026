@@ -71,13 +71,15 @@
 			wp_enqueue_style('fanx-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get('Version')); //Stylesheet 
 
 		//Branding Stylesheets 
-			//FANX
+			//FANX Main Branding ::
 				wp_enqueue_style('fanx-branding', get_template_directory_uri() . '/branding/styles/fanx.css', array(), wp_get_theme()->get('Version')); //Branding CSS - 2026
-			//Template Parts
+			//Template Parts ::
 				wp_enqueue_style('template-parts', get_template_directory_uri() . '/template-parts/template-parts.css', array(), wp_get_theme()->get('Version')); //Template Parts CSS - 2026
-			//Schedules
+			//Profile CPTs ::
+				wp_enqueue_style('profiles', get_template_directory_uri() . '/template-parts/profiles/profiles.css', array(), wp_get_theme()->get('Version')); //Template Parts CSS - 2026
+			//Schedules ::
 				wp_enqueue_style('schedules', get_template_directory_uri() . '/template-parts/schedules/schedules.css', array(), wp_get_theme()->get('Version')); //Schedules CSS -- 2026
-			//Icons 
+			//Icons ::
 				wp_enqueue_style('icons-styles', get_template_directory_uri() . '/branding/fonts/icons.css', array(), wp_get_theme()->get('Version')); //Icons CSS
 
 		//External Stylesheets
