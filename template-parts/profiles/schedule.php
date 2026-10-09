@@ -74,9 +74,24 @@ $schedules = $data['schedules'];
 $guest_events = array();
 
 // Normalize whitespace so stray/double spaces in either name don't break the match
-$normalized_guest_name = strtolower( trim( preg_replace( '/\s+/', ' ', $guest_name ) ) );
+// remove_accents() strips diacritics (e.g. ï, ê) so accented variations still match
+$normalized_guest_name = strtolower( trim( preg_replace( '/\s+/', ' ', remove_accents( $guest_name ) ) ) );
 
 foreach ( $schedules as $event ) {
+    // Also match if the post title appears anywhere within the venue/location name
+    $normalized_location = strtolower( trim( preg_replace( '/\s+/', ' ', remove_accents( $event['location'] ?? '' ) ) ) );
+    if ( ! empty( $normalized_location ) && ! empty( $normalized_guest_name ) && strpos( $normalized_location, $normalized_guest_name ) !== false ) {
+        $guest_events[] = $event;
+        continue; // Already matched by location, skip people check
+    }
+
+    // Also match if the post title appears anywhere within the event title
+    $normalized_event_title = strtolower( trim( preg_replace( '/\s+/', ' ', remove_accents( $event['title'] ?? '' ) ) ) );
+    if ( ! empty( $normalized_event_title ) && ! empty( $normalized_guest_name ) && strpos( $normalized_event_title, $normalized_guest_name ) !== false ) {
+        $guest_events[] = $event;
+        continue; // Already matched by event title, skip people check
+    }
+
     // Check if this guest appears in the event's people array
     if ( ! empty( $event['people'] ) && is_array( $event['people'] ) ) {
         foreach ( $event['people'] as $person ) {

@@ -17,7 +17,7 @@
         <!-- Countdown Title --> 
             <?php if ( fanx_is_event_mode_enabled() ) : //EVENT MODE MESSAGE //FIXME: Insert ACF Hashtag Field
                 ?> 
-                <p>TBCC26 is happening NOW</p>
+                <p>FanX26 is happening NOW</p>
             <?php else : ?>
                 <p>See You in...</p>
             <?php endif; ?>

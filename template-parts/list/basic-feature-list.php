@@ -1,11 +1,11 @@
 <?php 
 /** Template Part: Basic Features/Activities List - eXperiences
  * 
- * Displays the Feature CPT for the Current Category ONLY (No child categories or xp-status: Postponed)
+ * Displays the Feature CPT Posts for the Current XP Category Term that are assigned to Main Category in Features & Activities ONLY (No child categories or xp-status: Postponed)
  * 
- * //NOTE: Headers are not included in this template part - Add header to template part parent div. 
- * Header Div Class: 
- *  
+ * //NOTE: Headers are not included in this template part. Use section header div classes to activate header above this template part. 
+ * Header Div Class: section-header 
+ *  Being used on: 
  */
 ?>
 <div class="featured-guest-list-section self-centered-column">
@@ -61,6 +61,14 @@
             'field'    => 'slug',
             'terms'    => 'alumni',
             'operator' => 'NOT IN',
+        );
+        
+        // Limit to features-activities category (and all child terms)
+        $tax_query[] = array(
+            'taxonomy'         => 'category',
+            'field'            => 'slug',
+            'terms'            => 'features',
+            'include_children' => true,
         );
         
         $args = array(

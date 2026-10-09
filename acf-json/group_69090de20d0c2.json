@@ -1159,7 +1159,7 @@
                     "name": "prog_stat",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "map_prog_stat",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -1176,6 +1176,65 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": ""
+                },
+                {
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_6ab5681c9f394",
+                    "label": "Schedule - Status",
+                    "name": "prog_sched_stat",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "map_prog_sched_stat",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Available NOW",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "maxlength": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_6ab568019f393",
+                    "label": "Programming Schedule - Link",
+                    "name": "prog_sched_url",
+                    "aria-label": "",
+                    "type": "acfe_advanced_link",
+                    "instructions": "map_prog_sched_url",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": "",
+                    "taxonomy": "",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 0
                 },
                 {
                     "allow_backendsearch": false,
@@ -1220,6 +1279,31 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "key": "field_691ba5fa056d7",
+                    "label": "(Column 4\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "4\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69091a7028fd8",
                     "label": "Programming Room List",
                     "name": "prog_room_list",
@@ -1239,31 +1323,6 @@
                     "toolbar": "full",
                     "media_upload": 1,
                     "delay": 1
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_691ba5fa056d7",
-                    "label": "(Column 4\/12)",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "acfe_column",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "columns": "4\/12",
-                    "endpoint": 0,
-                    "allow_in_bindings": 0
                 },
                 {
                     "allow_backendsearch": false,
@@ -1325,7 +1384,7 @@
         "advanced": "1"
     },
     "qef_simple_location_rules": 0,
-    "modified": 1786827728,
+    "modified": 1790274217,
     "acfe_categories": {
         "event-info": "Event Info",
         "options-pages": "Options Pages"

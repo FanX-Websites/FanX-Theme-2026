@@ -328,6 +328,9 @@
             "acfe_group_modal": 0,
             "acfe_settings": "",
             "acfe_permissions": "",
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "allow_backendsearch": false,
@@ -353,45 +356,6 @@
                     "columns": "3\/12",
                     "endpoint": 0,
                     "allow_in_bindings": 0
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": 1,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_69fa746512c86",
-                    "label": "Days Appearing",
-                    "name": "days",
-                    "aria-label": "",
-                    "type": "taxonomy",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "taxonomy": "days",
-                    "add_term": 1,
-                    "save_terms": 1,
-                    "load_terms": 1,
-                    "return_format": "id",
-                    "field_type": "multi_select",
-                    "allow_null": 0,
-                    "acfe_bidirectional": {
-                        "acfe_bidirectional_enabled": "0"
-                    },
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "bidirectional": 0,
-                    "multiple": 0,
-                    "bidirectional_target": []
                 },
                 {
                     "allow_backendsearch": false,
@@ -470,296 +434,6 @@
                 },
                 {
                     "allow_backendsearch": false,
-                    "show_column_filter": 1,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_69fa746512d30",
-                    "label": "eXperience Status",
-                    "name": "xp_stat",
-                    "aria-label": "",
-                    "type": "taxonomy",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "taxonomy": "xp-status",
-                    "add_term": 1,
-                    "save_terms": 1,
-                    "load_terms": 1,
-                    "return_format": "id",
-                    "field_type": "multi_select",
-                    "allow_null": 0,
-                    "acfe_bidirectional": {
-                        "acfe_bidirectional_enabled": "0"
-                    },
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "bidirectional": 0,
-                    "multiple": 0,
-                    "bidirectional_target": []
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_69fa746512d69",
-                    "label": "(Column 3\/12)",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "acfe_column",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "columns": "3\/12",
-                    "endpoint": 0,
-                    "allow_in_bindings": 0
-                },
-                {
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": 1,
-                    "key": "field_69fa746512da1",
-                    "label": "Autograph Price",
-                    "name": "auto_price",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "maxlength": "",
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 1,
-                    "allow_quickedit": 1,
-                    "show_column": 1,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": 1,
-                    "key": "field_69fa746512dd9",
-                    "label": "Photo Op Price",
-                    "name": "op_price",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "maxlength": "",
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_69fa746512e12",
-                    "label": "Photo Ops Link",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "message",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "Currently pulls Friday link from Guest Options Page.",
-                    "new_lines": "wpautop",
-                    "esc_html": 0,
-                    "acfe_settings": "",
-                    "acfe_permissions": ""
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_69fa746512e4b",
-                    "label": "(Column 3\/12)",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "acfe_column",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "columns": "3\/12",
-                    "endpoint": 0,
-                    "allow_in_bindings": 0
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_69fa746512e83",
-                    "label": "Group Photo Ops Involved in:",
-                    "name": "group_op",
-                    "aria-label": "",
-                    "type": "post_object",
-                    "instructions": "[xp_group_op] <\/br>\r\nAutomatically populates when Group Photo Op Product is pushed live.",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_69fa746512cbf",
-                                "operator": "!=empty"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "products"
-                    ],
-                    "post_status": "",
-                    "taxonomy": [
-                        "xp:group-photo-ops"
-                    ],
-                    "return_format": "id",
-                    "multiple": 1,
-                    "save_custom": 1,
-                    "save_post_type": "products",
-                    "save_post_status": "draft",
-                    "acfe_bidirectional": {
-                        "acfe_bidirectional_enabled": true,
-                        "acfe_bidirectional_related": {
-                            "1": "field_69fa7465a763d"
-                        }
-                    },
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "allow_null": 0,
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "bidirectional": 0,
-                    "ui": 1,
-                    "bidirectional_target": []
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_69fa746512ebc",
-                    "label": "Celebrity Row Extras",
-                    "name": "celeb_extras",
-                    "aria-label": "",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "acfe_textarea_code": 0,
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "maxlength": "",
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "rows": "",
-                    "placeholder": "",
-                    "new_lines": ""
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_69fa746512ef4",
-                    "label": "(Column 3\/12)",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "acfe_column",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "columns": "3\/12",
-                    "endpoint": 0,
-                    "allow_in_bindings": 0
-                },
-                {
-                    "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
                     "allow_quickedit": false,
@@ -783,10 +457,7 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "allow_backendsearch": false,
@@ -981,6 +652,9 @@
             "acfe_group_modal": 0,
             "acfe_settings": "",
             "acfe_permissions": "",
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "allow_backendsearch": false,
@@ -1620,10 +1294,7 @@
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
             "allow_backendsearch": false,
@@ -1658,9 +1329,9 @@
             "show_column": false,
             "show_column_weight": 1000,
             "show_column_sortable": false,
-            "key": "field_6a0b86a85074b",
-            "label": "Schedule & Room\/Booth",
-            "name": "sched",
+            "key": "field_69fa74648fbb0",
+            "label": "Remote Location",
+            "name": "loca",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -1685,12 +1356,12 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "key": "field_6a0b86a85074c",
-                    "label": "Room\/Booth Number",
-                    "name": "room_booth",
+                    "key": "field_6ac00c71cf656",
+                    "label": "(Column 6\/12)",
+                    "name": "",
                     "aria-label": "",
-                    "type": "text",
-                    "instructions": "[sched_room_booth]",
+                    "type": "acfe_column",
+                    "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -1698,77 +1369,10 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "maxlength": "",
-                    "acfe_permissions": "",
-                    "allow_in_bindings": 1,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
-        },
-        {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
-            "key": "field_6a0b9403eb014",
-            "label": "Remote Location",
-            "name": "",
-            "aria-label": "",
-            "type": "accordion",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "open": 0,
-            "multi_expand": 0,
-            "endpoint": 0,
-            "acfe_permissions": ""
-        },
-        {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
-            "key": "field_69fa74648fbb0",
-            "label": "Location",
-            "name": "loca",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "acfe_seamless_style": 0,
-            "acfe_group_modal": 0,
-            "acfe_settings": "",
-            "acfe_permissions": "",
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large",
-            "sub_fields": [
+                    "columns": "6\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
                 {
                     "allow_backendsearch": 0,
                     "show_column_filter": false,
@@ -1807,6 +1411,31 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "key": "field_6ac00c83cf657",
+                    "label": "(Column 6\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "6\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69fa7466a38a3",
                     "label": "Map",
                     "name": "map",
@@ -1827,34 +1456,36 @@
                     "acfe_settings": "",
                     "acfe_validate": "",
                     "allow_in_bindings": 0
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_6ac00c91cf658",
+                    "label": "(Column Endpoint)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "endpoint": 1,
+                    "allow_in_bindings": 0,
+                    "columns": "6\/12"
                 }
-            ]
-        },
-        {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
-            "key": "field_6a0b940deb015",
-            "label": "(copy)",
-            "name": "",
-            "aria-label": "",
-            "type": "accordion",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "open": 0,
-            "multi_expand": 0,
-            "endpoint": 1,
-            "acfe_permissions": ""
+            ],
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
         },
         {
             "allow_backendsearch": false,
@@ -1999,6 +1630,59 @@
                     "parent_repeater": "field_69fa74648fc21"
                 }
             ]
+        },
+        {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
+            "key": "field_6ac00858b42c2",
+            "label": "Scratchpad",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "allow_backendsearch": 0,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
+            "key": "field_6ac00874b42c3",
+            "label": "Status Sensitive Content",
+            "name": "stat",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Hold status sensitive content here so you can just update it as needed later.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 1
         }
     ],
     "location": [
@@ -2030,7 +1714,7 @@
         "advanced": "1"
     },
     "qef_simple_location_rules": 0,
-    "modified": 1785445076,
+    "modified": 1790971095,
     "acfe_categories": {
         "blog-posts": "Blog Posts"
     }

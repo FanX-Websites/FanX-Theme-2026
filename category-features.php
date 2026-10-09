@@ -5,7 +5,6 @@
  * 
  * Notes: 
  * Uses classes: self-centered, self-centered-row, post-block, tax-cat,
- * //TODO: Latest News Block 
  */
 
 get_header(); /** body- main-site */
@@ -24,23 +23,23 @@ get_header(); /** body- main-site */
         // Query features CPT for the current category
         $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
         $args = array(
-            'post_type' => 'features',
+            'post_type' => 'features', //Features CPT <-----
             'tax_query' => array(
                 'relation' => 'AND',
-                array(
-                    'taxonomy' => 'category',
-                    'field' => 'term_id',
-                    'terms' => get_queried_object_id(),
-                ),
+                // array(
+                //     'taxonomy' => 'category',
+                //     'field' => 'term_id',
+                //     'terms' => get_queried_object_id(),
+                // ),
                 array(
                     'taxonomy' => 'category',
                     'field' => 'slug',
                     'terms' => 'alumni',
-                    'operator' => 'NOT IN',
+                    'operator' => 'NOT IN', //NO ALUMNI <-----
                 ),
             ),
             'nopaging' => false,
-            'posts_per_page' => 100,
+            'posts_per_page' => 100, 
             'meta_query' => array(
                 array(
                     'key' => 'info_display_order',

@@ -13,6 +13,19 @@ get_header(); /** body- main-site */
     </div><!-- END page-header Container -->
     <!------------ END Page Header Container -------------------->
 
+<!-- Floor #Maps & Room List Section --->
+    <div class="vend-map full-framed section">
+        <div class="section-header">
+                <h2>Vendor List & Floor Maps</h2>
+                <p>for <?php echo get_field('event_hashtag', 'options')  ?></p>
+            </div><!---- END Guest List Header ---------->
+        <div class="container full">
+            <?php get_template_part('template-parts/xps/vend-maps'); ?>
+        </div>
+    </div><!--- END Floor Maps & Room List Section ---> 
+
+    <!-- END Floor #Maps & Room List Section -->  
+
 
     <!--------------- #Feature/Activity List Section [Template Part] ----------------------->
     <div class="section">
@@ -27,19 +40,8 @@ get_header(); /** body- main-site */
         </div>
     </div><!-- END #Feature/Activity List Section ----------------------------------------->
 
-    <!--------------- #Feature/Activity List Section [Template Part] ----------------------->
-    <div class="section">
-        <!----- Features/Activities List Header ---------->
-            <div class="section-header">
-                <h2>Vendor Spotlight</h2>
-                <p>on the Vendor Floor</p>
-            </div><!---- END Features/Activities List Header ---------->
-        <!---- END Features/Activities List Header ---------->
-        <div class="container full">
-            <?php get_template_part('template-parts/list/basic-feature-list-child'); //Basic Feature List -  ?>
-        </div>
-    </div><!-- END #Feature/Activity List Section ----------------------------------------->
 
+  
     <!--------------- #Feature/Activity List Section [Template Part] ----------------------->
     <div class="section">
         <!----- Guest List Header ---------->
@@ -52,21 +54,6 @@ get_header(); /** body- main-site */
             <?php get_template_part('template-parts/list/basic-guest-list'); ?>
         </div>
     </div><!-- END #Feature/Activity List Section ----------------------------------------->
-
-
-
-    <!-- Floor #Maps & Room List Section --->
-    <div class="vend-map full-framed section">
-        <div class="section-header">
-                <h2>Vendor List & Floor Maps</h2>
-                <p>for <?php echo get_field('event_hashtag', 'options')  ?></p>
-            </div><!---- END Guest List Header ---------->
-        <div class="container full">
-            <?php get_template_part('template-parts/xps/vend-maps'); ?>
-        </div>
-    </div><!--- END Floor Maps & Room List Section ---> 
-
-    <!-- END Floor #Maps & Room List Section -->  
 
 
    <!------------------- Latest #News Post Block --------------------->
