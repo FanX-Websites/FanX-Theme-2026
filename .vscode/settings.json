@@ -1,8 +1,8 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.background": "#06314A",
-        "titleBar.activeBackground": "#084468",
-        "titleBar.activeForeground": "#F5FBFE"
+        "activityBar.background": "#462515",
+        "titleBar.activeBackground": "#63331E",
+        "titleBar.activeForeground": "#FEFBFA"
     },
     "github.copilot.enable": false,
     "github.copilot.autocomplete.enable": false,
@@ -12,5 +12,9 @@
     "editor.inlineSuggest.suppressSuggestions": true,
     "editor.suggest.enabled": false,
     "editor.acceptSuggestionOnTab": false,
-    "editor.quickSuggestions": false
+    "editor.quickSuggestions": {
+        "comments": "off",
+        "strings": "off",
+        "other": "off"
+    }
 }
