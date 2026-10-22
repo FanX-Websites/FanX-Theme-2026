@@ -791,7 +791,7 @@ body::after {
     .description p{
       margin: 0;
       padding: 0 0 2%;
-      font-size: 1em;
+      font-size: 1em;                                                                                                                                                                                                                                     
       line-height: 1.75em;
       text-align: center;
       font-style: italic;
@@ -799,6 +799,11 @@ body::after {
     }
 /*END Page Headers ----------------------------------*/
 
+/*Page Content */
+.landing-page-content{
+  color: var(--color_prim_lght);
+}
+                                                                                                                                                                                       
 /* The Content */
 
 .the-content img{

@@ -2,6 +2,7 @@
 /**
  * Template Name: Front Page
  */
+
 get_header(); ?>
 
 <!-- Front-Page Layout -->

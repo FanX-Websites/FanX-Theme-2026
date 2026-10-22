@@ -146,6 +146,7 @@ add_action('wp_enqueue_scripts', function() {
 		//Functions - Front End
 			'functions/shortcode.php',
 			'functions/tag-cats.php',
+			'functions/template-include.php',
 		//Branding
 			
 		//Plugins - Third Party	
