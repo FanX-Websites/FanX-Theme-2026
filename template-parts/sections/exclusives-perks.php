@@ -7,14 +7,14 @@
 */
 ?>
 <!-- News & Updates Post Layout (Post)  -->
-<div class="updates-section grid-bkgrnd "><!-- News & Updates Section Container -->     
+<div class="exclusives-section grid-bkgrnd "><!-- News & Updates Section Container -->     
     
     <!-------------- Posts Loop --------------------->
-    <div class="updates-posts-loop"> 
+    <div class="exclusives-posts-loop"> 
 
         <!-------------- Single Post Container --------------------->
-        <div class="updates-post self-centered">
-            <div class="updates-section-title"><!---- Updates Section Title -->
+        <div class="exclusives-post self-centered">
+            <div class="exclusives-section-title"><!---- Updates Section Title -->
                 <h3>Announcements & Updates</h3>
             </div><!-- END Updates Title -->
 
@@ -27,35 +27,28 @@
                     'post_type' => 'post',
                     'posts_per_page' => 3,
                     'tax_query' => array(
-                        'relation' => 'AND',
                         array(
-                            'taxonomy' => $term->taxonomy,
-                            'field' => 'term_id',
-                            'terms' => $term->term_id,
-                        ),
-                        array(
-                            'taxonomy' => 'blog',
+                            'taxonomy' => 'xp',
                             'field' => 'slug',
-                            'terms' => 'community-events',
-                            'operator' => 'NOT IN',
+                            'terms' => 'special-events',
                         ),
                     ),
                 );
-                $updates_query = new WP_Query( $args );
+                $exclusives_query = new WP_Query( $args );
             ?>
             
-            <?php if ( $updates_query->have_posts() ) : ?>
-                <?php while ( $updates_query->have_posts() ) : $updates_query->the_post(); ?>
+            <?php if ( $exclusives_query->have_posts() ) : ?>
+                <?php while ( $exclusives_query->have_posts() ) : $exclusives_query->the_post(); ?>
 
                     <!--------- Article Section - Updates ---------->
-                    <article class="updates self-centered-row" 
+                    <article class="exclusives self-centered-row" 
                         id="post-<?php the_ID(); ?>" 
                             <?php post_class(); ?>>
 
                         <!-------------- Post Thumbnail Container--------------------->
-                        <div class="updates-post-thumbnail-container">
+                        <div class="exclusives-post-thumbnail-container">
                             <?php if ( has_post_thumbnail() ) : ?>
-                                <div class="updates-post-thumbnail">
+                                <div class="exclusives-post-thumbnail">
                                     <a href="<?php the_permalink(); ?>">
                                         <?php the_post_thumbnail( 'medium' ); ?>
                                     </a>
@@ -66,15 +59,15 @@
                     
 
                         <!-------------- Post Content --------------------->
-                        <div class="updates-post-content">
-                            <header class="updates-entry-title"><!----------------- Post Title Header -->
+                        <div class="exclusives-post-content">
+                            <header class="exclusives-entry-title"><!----------------- Post Title Header -->
                                 <h4>
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h4>
                             </header><!-- END Post Title Header -->
                             
                             <!-------------- Post Excerpt --------------------->
-                            <div class="updates-entry-summary">
+                            <div class="exclusives-entry-summary">
                                 <?php echo wp_trim_words(apply_filters('the_excerpt', get_the_excerpt()), 55); ?>
                             </div>
                         
@@ -92,8 +85,8 @@
             
             <!----------- No Posts Message -------------->
             <?php else : ?>
-                <div class="updates-no-posts-message">
-                   No updates Yet
+                <div class="exclusives-no-posts-message">
+                   No exclusives Yet
                         <?php echo wp_kses_post(get_field('news_message', get_option('page_on_front')) ?? ''); ?>
                         <?php 
                             $news_link = get_field('news_url', get_option('page_on_front'));

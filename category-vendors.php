@@ -142,6 +142,12 @@ get_header(); /** body- main-site */
     </div>
     <!--- END Small Print Section -->
 
+<!------------------- eXclusives & Perks Post Block --------------------->
+    <!-- <div class="container full">
+       <?php //get_template_part('template-parts/sections/exclusives-perks'); ?>
+    </div> -->
+<!----------- END eXclusive & Perks Post Block -->
+
 <!------------------- Latest News Post Block --------------------->
     <div class="container full">
         <?php get_template_part('template-parts/sections/updates-section'); ?>

@@ -11,10 +11,10 @@
 
 <!-- Remove search strings from url -->
 <script>
-if (window.history.replaceState) {
-    const cleanUrl = window.location.pathname;
-    window.history.replaceState({}, document.title, cleanUrl);
-}
+    if (window.history.replaceState) {
+        const cleanUrl = window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
 </script> 
 
 <!-- END Footer Injection Code --->
