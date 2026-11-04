@@ -890,6 +890,31 @@
             "selected": 0
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
+            "key": "field_6ae59f64f20ca",
+            "label": "Section Info",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
             "allow_backendsearch": 0,
             "show_column_filter": false,
             "allow_bulkedit": 0,
@@ -952,7 +977,7 @@
             "append": ""
         },
         {
-            "allow_backendsearch": 0,
+            "allow_backendsearch": 1,
             "show_column_filter": false,
             "allow_bulkedit": false,
             "allow_quickedit": false,
@@ -980,7 +1005,32 @@
             "tabs": "all",
             "toolbar": "full",
             "media_upload": 1,
-            "delay": 0
+            "delay": 1
+        },
+        {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
+            "key": "field_6ae59fa0f20cb",
+            "label": "Section Info - END",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 1
         },
         {
             "allow_backendsearch": false,
@@ -995,7 +1045,7 @@
             "name": "tc",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "Click the ADD CONTENT BLOCK button to the right to start making content -->",
+            "instructions": "Click the ADD TABLE\/CHARTS button to the right to start making content -->",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -1011,7 +1061,7 @@
             "max": 0,
             "acfe_permissions": "",
             "collapsed": "",
-            "button_label": "Add Content Block",
+            "button_label": "Add Table\/Chart",
             "rows_per_page": 20,
             "sub_fields": [
                 {
@@ -1023,7 +1073,7 @@
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
                     "key": "field_698bfc11cc107",
-                    "label": "Content Block - [Title]",
+                    "label": "Table\/Chart - [Title]",
                     "name": "",
                     "aria-label": "",
                     "type": "accordion",
@@ -1174,6 +1224,104 @@
                     "toolbar": "full",
                     "media_upload": 1,
                     "delay": 0,
+                    "parent_repeater": "field_698bfc11cc106"
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_6ae5a0f6a883f",
+                    "label": "LIST",
+                    "name": "list",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "[tc_list]",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_repeater_stylised_button": 1,
+                    "layout": "block",
+                    "acfe_settings": "",
+                    "min": 0,
+                    "max": 0,
+                    "acfe_permissions": "",
+                    "collapsed": "",
+                    "button_label": "Add Row",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "allow_backendsearch": 1,
+                            "show_column_filter": false,
+                            "allow_bulkedit": 0,
+                            "allow_quickedit": 0,
+                            "show_column": 0,
+                            "show_column_weight": 1000,
+                            "show_column_sortable": false,
+                            "key": "field_6ae5a140a8840",
+                            "label": "List Item",
+                            "name": "item",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Each Text box is a new item on the list. Layout will differ by template used.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "acfe_settings": "",
+                            "acfe_validate": "",
+                            "maxlength": "",
+                            "acfe_permissions": "",
+                            "allow_in_bindings": 1,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_6ae5a0f6a883f"
+                        },
+                        {
+                            "allow_backendsearch": 1,
+                            "show_column_filter": false,
+                            "allow_bulkedit": 0,
+                            "allow_quickedit": 0,
+                            "show_column": 0,
+                            "show_column_weight": 1000,
+                            "show_column_sortable": false,
+                            "key": "field_6ae9850d630d2",
+                            "label": "List Item details",
+                            "name": "details",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Each Text box is a new item on the list. Layout will differ by template used.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "acfe_settings": "",
+                            "acfe_validate": "",
+                            "maxlength": "",
+                            "acfe_permissions": "",
+                            "allow_in_bindings": 1,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_6ae5a0f6a883f"
+                        }
+                    ],
                     "parent_repeater": "field_698bfc11cc106"
                 },
                 {
@@ -1404,10 +1552,60 @@
             "json"
         ],
         "advanced": "1",
+        "meta": [
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            }
+        ],
         "note": "TO DO: \r\n- Hide Individual Content Blocks\r\n- Use the depreciated ACF QUICK Fields Plugin?"
     },
     "qef_simple_location_rules": 0,
-    "modified": 1785445739,
+    "modified": 1793770571,
     "acfe_categories": {
         "categories": "Categories",
         "event-info": "Event Info",

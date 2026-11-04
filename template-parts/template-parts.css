@@ -504,60 +504,105 @@ h3.content-block-subtext {
   margin: 15px;
   padding: 0
 }
-/* CB - Ticket Comparison Chart ---------------------------- */
-.ticket-info-blocks .content-block {
-  color: var(--color_tru_blk);
-  justify-content: flex-start;
+/* Ticket Comparison Chart ---------------------------- //TODO: CLEAN UP */
+
+/* ---------- Table Charts Section ------------->
+- Currently: Shares Wireframes w/content blocks - */
+/* Default Table Charts Section Styles */
+
+ .ticket-info-charts .tc-section{
+  background-color: transparent;
+  width: 90%; 
 }
- /** Ticket Content Block Text Styling */
-.ticket-info-blocks h2{ /** Content Block Title */
-  font-weight: 700;
-  font-size: 3em;
-  line-height: 1.2em;
+
+.tc-section-inner .ticket-info-charts{
+padding: 0;
+gap: 0; 
+border-radius: 0px;
+}
+
+.ticket-info-charts .table-chart{
+  padding: 30px;
+  margin: 0;
+  justify-content: start;
+  background-color: transparent;
+  border: 1px solid var(--color_lght);
+  border-radius: 0px; 
+  gap: 0px; 
+}
+
+/*
+h2.tc-section-title {
+  color: var(--color_tru_wht);
   width: 100%;
-  color: var(--color_prim);
+  text-transform: uppercase;
+  font-size: 3em;
+  text-align: center;
   padding: 0;
   margin: 0
 }
 
-.ticket-info-blocks h3{/** Content Block Subtext*/
+.ticket-info-charts p.tc-section-txt {
+  font-size: 1.2em;
+  font-weight: 100;
+  text-align: center;
+  color: var(--color_acc);
   width: 100%;
   padding: 0;
   margin: 0;
-  text-align: center;
-  font-weight: 800;
-  font-size: 2.75em;
-  line-height: 1.35em;
-  color: var(--color_prim_brht); 
+} 
+*/
+/* Table Charts - Content */
+
+.ticket-info-charts h2.table-chart-title{ /*pass name*/
+  color: var(--color_prim_lght);
+  width: 100%;
+  font-size: clamp(3rem, 3vw, 5em);
+  }
+
+.ticket-info-charts h3.table-chart-subtext{ /*price*/
+    font-size: clamp(3rem, 3vw, 6em);
+    text-align: center;
+    color: var(--color_tru_wht);
+
+    }
+
+
+.ticket-info-charts .table-chart p,
+.ticket-info-charts .table-chart ul li {
+  color: var(--color_tru_wht);
+  font-size: 1em; 
+  margin:.75em 0; 
+  width: 100%; 
 }
 
-.ticket-info-blocks em{ 
-  width: 100%;
-  padding: 0;
-  margin: 0;
+.ticket-info-charts span.list-item-details {
+    font-size: .75em;
+    line-height: .5em;
+    color: var(--color_lght);
+    width: 100%;
+   
+}
+
+.ticket-info-charts s,
+.ticket-info-charts del,
+.ticket-info-charts strike {
+ opacity: 0.5;
+}
+
+
+.ticket-info-charts .table-chart-small-print {
+  font-size: clamp(.8rem, 1.5vw, 1em);
+  line-height: 1.25em;
+  color: var(--color_tru_wht);
   text-align: center;
   font-style: italic;
-  font-weight: 100;
-  font-size: 1em;
-  line-height: 1.2em;
-  color: var(--color_acc);
-}
+  padding-bottom: 3%;
+  margin: 15px;
+  padding: 0
+} 
 
-.ticket-info-blocks h5{
-  font-size: 1.5em;
-  font-weight: 300;
-  color: var(--color_base);
-  text-align: center;
-}
-
-.ticket-info-blocks li {
-  color: var(--color_tru_blk);
-  text-align: left
-}
-
-.ticket-info-blocks p {
-  color: var(--color_tru_blk)
-}
+/* ----------END Table Charts Section ------------->
 
 /* CB - Event Hour Content ----------------------------------------- */
 
@@ -650,7 +695,7 @@ h3.content-block-subtext {
 /* ---------- END Content Blocks Section ------------->
 
 /* ---------- Table Charts Section ------------->
-- Shares Wireframes w/content blocks - */
+- Currently: Shares Wireframes w/content blocks - */
 /* Default Table Charts Section Styles */
 .tc-section {
   width: 100%;

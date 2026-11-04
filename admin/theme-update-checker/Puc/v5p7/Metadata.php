@@ -123,6 +123,12 @@ if ( !class_exists(Metadata::class, false) ):
 			foreach ($fields as $field) {
 				if ( property_exists($from, $field) ) {
 					$to->$field = $from->$field;
+				} else if (
+					isset($from->extraProperties)
+					&& is_array($from->extraProperties)
+					&& array_key_exists($field, $from->extraProperties)
+				) {
+					$to->$field = $from->extraProperties[$field];
 				}
 			}
 		}

@@ -6,7 +6,7 @@
  * Notes: 
  * - Classes used: 
  * - Pages using this template part: Exhibitor Info 
- * - CSS Wireframes shared with content-blocks in style.css, Styling in FanX.css
+ * - CSS Wireframes shared with table-charts in style.css, Styling in FanX.css
  * //TODO: Use as replacement for Comparison & Pricing Charts - Ticketing, Exhibitor Packages, etc.
 */
 ?>
@@ -40,7 +40,7 @@ if ( !$section_title && !$section_sub && !$section_txt && !$blocks ) {
 <div class="tc-section" id="table-charts">
     <div class="tc-section-inner">  
      
-    <!-- Table Chart Section Header -->
+    <!-- Table Chart Section HEADER -------->
         <h2 class="tc-section-title">
         <?php echo wp_kses_post( $section_title ?? '' ); ?></h2>
         <h3 class="tc-section-sub">
@@ -51,12 +51,12 @@ if ( !$section_title && !$section_sub && !$section_txt && !$blocks ) {
     <!-- END Table Chart Section Header -->
 
     <!-- Table Chart BLOCK ---------------------->
-    <?php //Content Block - Repeater
+    <?php //Table Chart - Repeater
      // Check if blocks exist and have any content
         $has_content = false;
         if ($blocks) {
             foreach ($blocks as $block) {
-                if (!empty($block['title']) || !empty($block['subtext']) || !empty($block['content']) || !empty($block['butt_txt']) || !empty($block['small_print'])) {
+                if (!empty($block['title']) || !empty($block['subtext']) || !empty($block['content']) || !empty($block['list']) || !empty($block['butt_txt']) || !empty($block['small_print'])) {
                     $has_content = true;
                     break;
                 }
@@ -94,7 +94,7 @@ if ( !$section_title && !$section_sub && !$section_txt && !$blocks ) {
             }
             
             if ($page_slug) {
-                $layout_class .= ' ' . $page_slug . '-blocks'; //Template Specific Class > .{page-slug}-blocks
+                $layout_class .= ' ' . $page_slug . '-charts'; //Template Specific Class > .{page-slug}-blocks
             }
             
             if ($block_count === 1) {
@@ -125,8 +125,31 @@ if ( !$section_title && !$section_sub && !$section_txt && !$blocks ) {
                         <p class="table-chart-text">   
                             <?php echo wp_kses_post($block['content'] ?? ''); //Content ?>
                         </p>
+                                                    
+                        <?php 
+                        // Table Chart - LIST (nested repeater: list > item)
+                            $list_items = $block['list'] ?? [];
+                            if (!empty($list_items)) : ?>
+                                <ul class="table-chart-list">
+                                    <?php foreach ($list_items as $list_item) :
+                                        if (empty($list_item['item'])) continue; // skip empty rows
+                                    ?>
+                                        <li class="list-item">
+                                            <?php echo wp_kses_post($list_item['item']); ?>
+                                            <?php if (!empty($list_item['details'])) : ?>
+                                                <span class="list-item-details"><?php echo wp_kses_post($list_item['details']); ?></span> 
+                                            <?php endif; ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                        
+                        <!-- END Table Chart - LIST -->
+
+
+
                         <?php
-                        // Content Block - Button
+                        // Table Chart - Button
                         $button_text    = $block['butt_txt'] ?? '';    // Button Text > .butt_txt
                         $button_subtext = $block['butt_subtxt'] ?? ''; // Button Subtext > .butt_subtxt
                         $button_link    = $block['butt_url'] ?? '';    // Button Link > .butt_url

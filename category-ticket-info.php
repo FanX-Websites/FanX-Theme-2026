@@ -17,11 +17,17 @@ get_header(); /** body- main-site */
 <!------------ END Page Header Container -------------------->
 
 <!------------------- Main Content Area -------------------->
-    <!-- Content Blocks - Comparison Chart -[Template Part] -->
+    <!-- Table Charts - Comparison Chart -[Template Part] -->
+    <div class="comparison-chart container">        
+        <?php get_template_part('template-parts/sections/table-charts'); ?>
+    </div>
+    <!----------- END Comparison Chart Section -->
+
+    <!-- Content Blocks -[Template Part] -->
     <div class="comparison-chart container">        
         <?php get_template_part('template-parts/sections/content-blocks'); ?>
     </div>
-    <!----------- END Comparison Chart Section -->
+    <!----------- END Content Blocks -->
 
     <!------------------- Latest News Post Block --------------------->
     <div class="container full">

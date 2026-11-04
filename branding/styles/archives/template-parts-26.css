@@ -1,0 +1,1428 @@
+/** FanX Theme Template Parts Stylesheet - 2026
+
+//INFO: View Style.css for the Wireframes | fanx.css for branding styles | Template parts: template-parts.css, profiles.css 
+
+**/
+
+/* ------------------------------------ Front Page Blocks ----------------------------------------------- */ 
+
+/* Front Page Grid Container - DESKTOP */ 
+.fp-grid {
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1.5fr 1fr;
+  gap: 20px;
+  padding: 20px 10px;
+  border-radius: 0;
+  font-family: inherit;
+}
+/* Front Page Grid Blocks */
+
+/** Both Columns */
+  /* Event Details Block */
+  .event-details.container { 
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--color_base);
+  }
+
+/* -------------------- Countdown Block -------------- */
+  .countdown.container {
+    grid-column: 2;
+    grid-row: 1 / span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+}
+
+/** The Block size & positioning in Partent Div*/
+  .countdown-fp-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+/** Inner Div - builds on .fill */
+  .countdown-layout{
+    display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    width: 100%;
+      padding: 0;
+      margin: 0;
+      gap: 10px;
+  }
+  .countdown-layout p { /*Countdown Header Message - All Modes */
+    color: var(--color_tru_wht);
+    font-size: clamp(1.25rem, 1.75vw, 3em);
+    font-weight: 400;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+      padding: 3% 0 0;
+      margin: 0 auto;
+  }
+
+/** Countdown Timer ------------- */
+
+  .countdown-container{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  .countdown-timer {
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .countdown-item {
+    transition: transform 0.3s ease;
+  }
+  .countdown-value {
+    /** The Numbers */
+    color: var(--color_tru_wht);
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
+    font-weight: 100;
+    line-height: 3rem;
+  }
+  .countdown-separator {
+    color: var(--color_tru_wht);
+    font-size: 2.5rem;
+    font-weight: 100;
+    line-height: 2.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  .countdown-label {
+    /** The Days & Minutes */
+    font-size: 1em;
+    line-height: 2rem;
+    color: var(--color_tru_wht);
+    text-transform: lowercase;
+    letter-spacing: 1px;
+  }
+
+/** LIVE MODE ------------------------ */
+
+  .cd-live-event .button-group{
+    padding: 0; 
+  }
+  .cd-live-event a.button{
+    padding: 1%; 
+    margin: 0 auto;
+    font-size: 1.25em;
+    line-height: 1.25em;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: var(--color_base);
+    border: solid 8px var(--color_base);
+  }
+  .cd-live-event a.button:hover{
+    padding: 1%;
+    margin: 0 auto;
+    font-size: 1.25em;
+    line-height: 1.25em;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: var(--color_base);
+    border: solid 8px var(--color_base);
+  }
+  .countdown-container>.cd-live-event p{ /* Live Event Message */
+    font-size: clamp(2.5rem, 3vw, 3.5em);
+    line-height: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color_tru_wht);
+    padding: 0 0 5%; 
+    margin: 0 auto; 
+  }
+/** END LIVE MODE */ 
+
+/** Grid Column 1 ------------- */
+
+/* Featured Video Block */
+.feat-video.container {
+  grid-column: 1;
+  grid-row: 2 / span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/** Grid Column 2 */
+
+/** Grid Column 2 - FP Updates Feed */
+
+  /* FRONT PAGE - Updates Feed BLOCK-- DESKTOP --- */
+
+    .updates-feed.container {
+      grid-column: 2;
+      grid-row: 2 / span 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      /* Scrollbar Styling */
+    }
+
+  /** FP BLOCK - UPDATES FEED ----------------- */
+.updates-feed-fp-block{  
+    padding: 20px;
+    margin: 0;
+    font-family: inherit;
+    overflow: scroll; 
+}
+
+.updates-layout{
+    padding: 3%;
+}
+
+.updates-feed-post-container{
+    border-bottom: solid 1px var(--color_acc_lght);
+    border-top: solid 1px var(--color_acc_lght);
+    border-radius: 0px; 
+    padding: 20px;
+}
+
+article.updates-feed{
+    margin-bottom: 1%; 
+}
+/** Post Title */
+article.updates-feed > .updates-feed-post-content h3 a{
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 400;
+    text-align: center;
+    color: var(--color_prim_lght);
+    text-decoration: none;
+}
+
+div.updates-feed-entry-summary{
+    font-size: 1em;
+    line-height: 1.5em;
+    color: var(--color_lght);
+    font-weight: 100;
+    margin: 0;
+    padding: 1%;
+  }
+
+/* .updates-feed-entry-summary{
+    color: var(--color_lght); 
+    margin: 0; 
+    padding: 10px; 
+    font-size: 1.15em;
+} */
+
+.updates-feed-entry-footer{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.updates-feed-entry-footer .button{
+    margin-top: 10px;
+    padding: 1px;
+    font-size: 1rem;
+    max-width: 150px;  
+}
+
+/** The Updates Div Title */
+h3.updates-feed{
+    color: var(--color_tru_wht);
+    margin-bottom: 10px;
+    text-align: center; 
+    text-transform: uppercase;
+}
+
+/** Restricted Height/Scroll for Large Desktop */
+@media (min-width: 1300px) {
+    .updates-feed.container{
+    display: flex;
+    align-items: start; 
+    max-height: 55vh;
+}
+
+}
+/** Restricted height/scroll for smaller desktop/tablets */
+@media (min-width: 1045px) and (max-width: 1300px) {
+    .updates-feed.container{
+    display: flex;
+    align-items: start; 
+    max-height: 40vh;
+}
+
+}
+/** END FP BLOCK - UPDATES FEED ----------------- */
+
+
+/* Responsive Grid for MOBILE ------------------- */
+  @media (max-width: 1100px) {
+    .fp-grid {
+      grid-template:repeat(4,auto) / 1fr;
+      gap: 20px
+    }
+
+    .event-details.container {/* Event Details Block - MOBILE */
+      grid-column: 1;
+      grid-row: 1;
+      padding: 20px 10px
+    }
+
+    .feat-video.container{/* Featured Video Block - MOBILE */
+      grid-column: 1;
+      grid-row: 3
+    }
+
+    .countdown.container{/* Countdown Block - MOBILE */
+      grid-column: 1;
+      grid-row: 2;
+      padding: 0 0 5%;
+    }
+
+    .updates-feed.container{/* Updates Feed Block - MOBILE */
+      grid-column: 1;
+      grid-row: 4;
+      border: 3px solid var(--color_acc_lght);
+      padding: 3%;
+      width: 90%;
+      margin: 0 auto
+    }
+}   /* END Front Page Grid Blocks - Mobile */
+
+
+/** Event Details FP Block **/
+.event-details-fp-block {
+  /** The Block size & positioning in Partent Div*/
+  color: var(--color_tru_wht);
+  display: flex;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding: 3% 5%;
+  margin: 0;
+  max-width: 600px;
+}
+
+.fp-event-name h1 {
+  font-size: 2rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+}
+
+.fp-event-date h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+}
+
+.fp-event-location h3 {
+  font-size: 1.2rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+}
+
+/* ------------------------------ END - Front Page Grid Blocks ---------------------------------- */
+
+/** ---------------------- Page Sections -------------------> 
+
+/* Featured Image - Description Section */
+
+.feat-desc-layout-section {
+  padding: 1% 3%;
+  margin: 0 auto;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.feat-desc.grid-container.layout-1-2col {
+  margin: 0 auto;
+  padding: 0;
+  gap: 1em;
+}
+
+.feat-desc.term-description h3 {
+  text-align: center;
+}
+
+.feat-desc .term-description a {
+  color: var(--color_lght);
+  text-decoration: underline;
+}
+
+.feat-img.grid-block {
+  max-width: 450px;
+  border-radius: 45px;
+}
+
+.desc.grid-block {
+  border-radius: 45px;
+}
+
+.feat-desc .img-container img {
+  border-radius: 45px;
+  max-width: 400px;
+}
+
+.feat-desc .term-description {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1%;
+}
+
+/* END Featured Image/Description Section */ 
+
+/* Featured Posts List Section */
+
+
+  .section-header{
+    background-color: var(--color_tru_wht);
+    width: 95%;
+    max-width: 1000px;
+    padding: 2%;
+    margin: 0 auto;
+    border-radius: 200px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  @media (max-width: 400px){
+  .section-header {
+      background-color: var(--color_tru_wht);
+      width: 85%;
+      max-width: 1000px;
+      padding: 8% 5%;
+      margin: 3% auto;
+      border-radius: 80px 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+  
+  .section-header h2{
+    font-size: clamp(1.25rem, 3vw, 3em);
+    line-height: 1.25em;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color_tru_blk);
+    width: 100%;
+    padding: 0;
+    margin: 0
+  }
+  .section-header p{
+    width: 100%;
+    text-align: center;
+    padding: 0%; 
+    margin: 0 auto;
+    font-size: 1.25em; 
+    color: var(--color_tru_blk);
+  }
+
+/* ------------- Content Blocks Section ------------> 
+- Refer to Wireframes in Style.css for layouts, breakpoints - */
+
+/* Default Content Blocks Section Styles */
+.cb-section {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 0;
+}
+
+.cb-section-inner {
+  width: 100%;
+  padding: 3% 0 9%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content-blocks {
+  padding: 0;
+  margin: 0;
+  width: 90%;
+  max-width: 1500px
+}
+
+.content-block {
+  padding: 30px;
+  margin: 0;
+  background-color: var(--color_brht);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
+  box-sizing: border-box;
+}
+/* Content Block - Content */
+.content-block p,.content-block ul li {
+  color: var(--color_tru_blk)
+}
+
+h2.content-block-title {
+  color: var(--color_prim);
+  width: 100%;
+  text-transform: uppercase;
+  font-size: clamp(1.5rem, 2vw, 2em);
+  text-align: center;
+  padding: 0;
+  margin: 0
+}
+
+h3.content-block-subtext {
+  display: block;
+  font-size: 1.2em;
+  font-weight: 100;
+  text-align: center;
+  color: var(--color_acc_brht);
+  width: 100%;
+  padding: 0 0 15px;
+  margin: 0
+}
+
+.content-block-small-print p, .content-block-small-print.small-print .span{
+  font-size: .9em;
+  line-height: 1.25em;
+  color: var(--color_tru_blk);
+  text-align: center;
+  font-style: italic;
+  padding-bottom: 3%;
+  margin: 15px;
+  padding: 0
+}
+/* Ticket Comparison Chart ---------------------------- //TODO: CLEAN UP */
+
+/* .ticket-info-blocks .table-charts{
+  color: var(--color_tru_blk);
+  justify-content: flex-start;
+}
+
+.ticket-info-blocks h2{ /
+  font-weight: 700;
+  font-size: 3em;
+  line-height: 1.2em;
+  width: 100%;
+  color: var(--color_prim);
+  padding: 0;
+  margin: 0
+}
+
+.ticket-info-blocks h3{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-weight: 800;
+  font-size: 2.75em;
+  line-height: 1.35em;
+  color: var(--color_prim_brht); 
+}
+
+.ticket-info-blocks em{ 
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-style: italic;
+  font-weight: 100;
+  font-size: 1em;
+  line-height: 1.2em;
+  color: var(--color_acc);
+}
+
+.ticket-info-blocks h5{
+  font-size: 1.5em;
+  font-weight: 300;
+  color: var(--color_base);
+  text-align: center;
+}
+
+.ticket-info-blocks li {
+  color: var(--color_tru_blk);
+  text-align: left
+}
+
+.ticket-info-blocks p {
+  color: var(--color_tru_blk)
+} */
+
+/* CB - Event Hour Content ----------------------------------------- */
+
+/** Event Info - Calendar Events List  */
+ .event-info ul {
+  padding: 0;
+  margin: 0;
+  width: 90%
+}
+ .event-info ul li {
+  list-style-type: none;
+  padding-left: 15px;
+  position: relative;
+  /*Text */  
+  line-height: 1.25em;
+  font-size: 1.2em;
+  border-top: .1px solid var(--color_base_lght);
+  border-bottom: .1px solid var(--color_base_lght);
+  padding: 20px
+}
+ .event-info ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 2em
+}
+
+/** Registration */
+  .content-blocks ul li:nth-child(1)::before {
+    background-color: var(--color_base_brht)
+}
+ /** Vendor Floor */
+  .content-blocks ul li:nth-child(2)::before {
+    background-color: var(--color_acc_brht)
+}
+ /** Panel Programming */
+  .content-blocks ul li:nth-child(3)::before {
+    background-color: var(--color_prim_brht)
+}
+/** END Event Info - Calendar Events List - */
+
+/* Event Info - Text Styling ---------------*/
+ .small-print p em{
+  color: var(--color_drk);
+}
+ .small-print p strong{
+  color: var(--color_drk);
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+ .small-print h5{
+  color: var(--color_prim);
+  font-size: 1.15em;
+  line-height: 1.25em;
+  font-weight: 300;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+
+}
+
+
+/* CB - ADA Content Blocks ------------------------- */    
+.ada-blocks .content-block {
+  max-width: 900px;
+  width: 90%;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: transparent;
+  color: var(--color_tru_wht);
+}
+
+.ada-blocks .content-block p,.ada-blocks .content-block li {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  color: var(--color_tru_wht);
+}
+
+.ada-blocks .content-block h2{
+  color: var(--color_prim_brht);
+}
+.ada-blocks .content-block h3{
+  color: var(--color_acc_lght);
+}
+
+/* ---------- END Content Blocks Section ------------->
+
+/* ---------- Table Charts Section ------------->
+- Currently: Shares Wireframes w/content blocks - */
+/* Default Table Charts Section Styles */
+.tc-section {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 0;
+  background-color: var(--color_prim);
+}
+
+.tc-section-inner {
+  width: 100%;
+  padding: 3% 0 9%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* shares with content blocks -currently
+.content-blocks {
+  padding: 0;
+  margin: 0;
+  width: 90%;
+  max-width: 1500px
+}*/
+.table-charts{
+  width: 100%; 
+  padding: 0; 
+  margin: 0;
+}
+.table-chart {
+  padding: 30px;
+  margin: 0;
+  background-color: transparent;
+  border: 1px solid var(--color_prim_lght);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
+  box-sizing: border-box;
+}
+/* Table Chart - Content */
+
+h2.tc-section-title{
+  color: var(--color_tru_wht);
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 3em;
+  text-align: center;
+  padding: 0;
+  margin: 0
+}
+p.tc-section-txt{
+  font-size: 1.2em;
+  font-weight: 100;
+  text-align: center;
+  color: var(--color_acc);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.table-chart p,.table-chart ul li {
+  color: var(--color_tru_wht)
+}
+
+h2.table-chart-title {
+  color: var(--color_prim_brht);
+  width: 100%;
+  text-transform: uppercase;
+  font-size: clamp(1.5rem, 3vw, 2.5em);
+  text-align: center;
+  padding: 0;
+  margin: 0
+}
+
+h3.table-chart-subtext {
+  font-size: clamp(1.2rem, 2vw, 1.75em);
+  font-weight: 100;
+  text-align: center;
+  color: var(--color_acc_lght);
+  width: 100%;
+  padding: 0 0 15px;
+  margin: 0
+}
+
+.table-chart-small-print {
+  font-size: clamp(.9rem, 1.5vw, 1.25em);
+  line-height: 1.25em;
+  color: var(--color_tru_wht);
+  text-align: center;
+  font-style: italic;
+  padding-bottom: 3%;
+  margin: 15px;
+  padding: 0
+}
+/* ----------END Table Charts Section ------------->
+
+/* Template Part: News & Updates Section */   
+ /* Updates Section - Container Styling */
+
+.updates-section{
+  background-color: var(--color_base);
+  padding: 4% 0 4%;
+  margin: 0;
+  width: 100%;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+ /*Updates Section - Text Styling */
+.updates-section-title{ /* Updates Section Title Container */
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  flex-flow: column; 
+  width: 100%; 
+  margin: 0;
+  padding: 3% 6%;
+  border: 1px solid white; 
+}
+
+.updates-section-title h3{ /* Updates Section Title */
+  color: var(--color_tru_wht);
+  font-weight: 600;
+  line-height: 1.25em;
+  padding: 0; 
+  margin: 0;
+  text-transform: uppercase;
+  font-size: clamp(1.5rem,2.5vw,3rem);
+  text-align: center;
+  width: 100%;
+}
+.updates-section-title p{
+  color: var(--color_lght);
+  padding: 0;
+  margin: 0;
+}
+
+.updates-posts-loop { /* Updates Section - Posts Loop Container */
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  padding: 0%;
+  margin: 0;
+  border-radius: 0;
+  background-color: var(--color_drk);
+}
+
+.updates-entry-title h4 a{ /* Updates Section - Post Title */
+  font-size: clamp(1.2rem, 2.0vw, 2.0rem);
+  font-weight: 200;
+  color: var(--color_acc);
+  text-decoration: none;
+  text-align: center;
+}
+
+.updates-entry-summary{ /* Updates Section - Post Summary */
+  font-size: 1em;
+  line-height: 1.5em;
+  text-align: center;
+  color: var(--color_tru_blk);
+  margin: 0;
+  padding: 1% 6%
+}
+article.updates, .updates-no-posts-message{
+  padding: 3%; 
+  margin: 0; 
+  background-color: var(--color_tru_wht);
+  border-radius: 45px; 
+  width: 100%; 
+
+}
+
+   
+
+/** Posts Loop */
+/* .updates-posts-loop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  margin: 0
+} */
+
+ /** Posts Container Styling */
+
+ .updates-post.self-centered{
+  width: 80%;
+  max-width: 1000px;
+  gap: 10px;
+  padding: 0;
+  border: 6px solid var(--color_drk);
+  margin: 0;
+ }
+
+ /* .updates-post-container { Replace with post container above ^
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 90%;
+      max-width: 1000px;
+      padding: 2%;
+      background-color: var(--color_drk);
+      border: 6px solid var(--color_lght)
+} */
+
+    /** Updates Section - Article Content - Updates */
+
+        /** Post Content - Updates Section */
+.updates-post-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 3% 6%;
+  margin: 0;
+  min-width: 300px
+}
+
+.updates-entry-header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center
+}
+
+h3.updates-entry-title a{
+  font-size: clamp(1.2rem, 2.0vw, 2.0rem);
+  font-weight: 200;
+  color: var(--color_acc_lght);
+  text-decoration: none;
+  text-align: center;
+}
+.updates-entry-summary p{
+  font-size: 1em;
+  line-height: 1.5em;
+  text-align: center;
+  color: var(--color_lght);
+  margin: 0;
+  padding: 1% 6%
+}
+
+.updates-no-posts-message{
+padding: 3%;
+margin: 0 auto;
+text-align: center;
+color: var(--color_tru_blk);
+font-size: 2em;
+font-weight: 100;
+line-height: 1.5em;
+}
+/* Updates Section END */
+
+/** MAPS */
+/* Template Part: Address & Maps Section */
+.map-block {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0
+}
+/* END Address & Maps Section */
+
+/* List & Maps Sections
+ - Used on Events Info Page - Floor Maps Template Part
+*/ 
+
+ .room-list{
+  padding: 3%; 
+  margin: 0; 
+  background-color: var(--color_base_lght);
+  min-height: 300px;
+}
+ .list-container{
+  padding: 6%;
+  margin: 0 auto;  
+  background-color: var(--color_brht);
+  width: 90%;
+  height: auto; 
+  min-height: 300px;
+  border: solid 8px var(--color_acc);
+  border-top: none;
+  border-left: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ .list-container *{
+  color: var(--color_tru_blk);
+}
+
+ .floor-maps{
+  padding: 3%;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  background-color: var(--color_prim);
+  }
+
+ .floor-maps .img-container {
+  padding: 2%;
+  margin: 0;
+  border-radius: 0px;
+}
+
+
+@media (max-width: 768px) {
+   .floor-maps .img-container {
+    width: 100%;
+  }
+}
+
+
+/** List Container Template Styling */ 
+  /* Vendor Floor List */
+  .list-content{
+      border-left: 1px solid var(--color_prim_lght);
+      padding-left: 3%;
+      border-radius: 0;
+      width: 100%; 
+      height: auto; 
+  }
+
+  .list-title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 6%;
+  }
+
+  .list-title-bar h4 {
+    margin: 0;
+    flex: 1;
+  }
+
+  .list-title-bar .scroll-indicator {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    width: auto;
+    padding: 0;
+    margin: 0;
+  }
+
+  .vendor-list{
+    padding: 3%;
+    margin: 0;
+    background-color: var(--color_prim_lght);
+    min-height: 300px;
+  }
+
+  .vendor-list-wrapper{
+    max-height: 500px; 
+    overflow-y: auto;
+    border-top: 1px solid var(--color_prim_lght);
+    border-bottom: 1px solid var(--color_prim_lght);
+    padding: 3%; 
+    border-radius: 0;
+  }
+  table.vendor-list{
+    padding: 1%;
+    margin: 0 auto;
+    width: 100%;
+    background-color: var(--color_brht);
+  }
+  table.vendor-list td{
+    list-style-type: none;
+    padding: 1% 2%;
+    border-bottom: .1px solid var(--color_prim_lght);
+    font-size: 1em;
+  }
+  table.vendor-list th{
+    text-align: left; 
+  }
+  .scroll-indicator {
+    width: 100%;
+    padding: 3%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 0;
+  }
+
+  .scroll-indicator span {
+    color: var(--color_tru_blk);
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 1.25em;
+    display: inline-block;
+  }
+  .maps-list-section.grid-container{
+    gap: 20px; 
+  }
+
+/** END List & Maps Sections */
+
+
+
+/* PROFILE PAGE TEMPLATE PARTS --------------------------------------- */
+
+/* Profile/Blog Headers */
+
+/* Post Top Main Headers */
+.profile-header{
+  padding: 2% 0 1%;
+  margin: 0;
+  width: 100%;
+  height: auto;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.profile-header h1{
+  padding: 1% 0 0; 
+}
+.profile-header h1 a{
+  text-decoration: none; 
+  color: var(--color_prim_brht);
+}
+
+.profile-header h2 a{
+  text-decoration: none;
+  color: var(--color_prim_lght);
+  margin: 0; 
+  padding: 0; 
+  line-height: 1em;
+  font-size: .75em;
+}
+
+/* Post Content Headers */
+.profile-name h2, .blog-post-header h2{
+  font-size: 1.5em;
+  line-height: 1.75em; 
+}
+.profile-content h3{
+  font-size: 1em;
+  font-style: italic;
+  line-height: 1.75em;
+  padding: 0 0 1%; 
+  margin: 0; 
+}
+
+/* Guest Appearance Info */
+
+.appearance-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  padding: 1%;
+  margin: 0 auto;
+}
+.appear-block{
+  width: 100%;
+  padding: 1%;
+  margin: 0;
+}
+
+.days.guest-xp .small-print p{
+  margin: 0; 
+  padding: 0;
+  text-align: center;
+}
+
+.days.guest-xp .small-print{
+  padding: 0;
+  margin: 0;
+  font-size: .8em;
+  line-height: 1.5em;
+}
+
+
+/* Guest Experiences ---- GUEST-XP */
+/* .guest-xp-block{ 
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color_lght);
+  border-top: none;
+  border-bottom-left-radius: 45px;
+}
+.guest-xp-block h3 {
+  font-size: 1.2em;
+  font-weight: 300;
+  color: var(--color_acc_lght);
+  text-align: center;
+} */
+
+
+.guest-xp-card {
+  padding: 0;
+  margin: 0 auto;
+  border-radius: 0;
+  height: auto;
+  width: 90%;
+}
+
+.grid-block.xp-block{
+  border-bottom: 1px solid var(--color_prim);
+  border-radius: 0;
+  font-size: 1em;
+  font-weight: 100;
+  line-height: 1em;
+  text-align: center;
+  color: var(--color_tru_wht);
+  margin: 0 auto;
+}
+
+.celeb-extras-content{
+  font-size: .9em;
+}
+.guest-xp li{
+  margin: 0; 
+  padding: 0 0;
+  line-height: 1.25em;
+}
+
+ .xp-soon, .xp-now{
+  font-size: .9em; 
+  font-style: italic; 
+  
+ }
+ .xp-title{
+  font-size: 1.2em;
+  font-weight: 300;
+  color: var(--color_tru_wht);
+  text-align: center;
+  padding: 0; 
+  margin: 0;
+ }
+
+
+ /* XP Buttons - Profiles ---- */
+ button.xp {
+   width: 90%;
+   padding: 3%;
+   margin: 3%;
+   border: 1px solid var(--color_prim_lght);
+   color: var(--color_tru_wht);
+   background-color: var(--color_prim)
+ }
+
+ .xp-buttons {
+   flex-flow: column;
+ }
+
+ .guest-xp {
+   width: 100%;
+   padding: 2%;
+   margin: 0;
+   color: var(--color_tru_wht);
+ }
+
+ .vend-booth, .vend-booth h3 a{
+  text-decoration: none;
+  font-size: 1em;
+  line-height: 1.25em;
+  margin:0 auto;
+  padding: 0;
+
+ }
+
+ /* END Buttons ------------------------------ */
+
+
+ /** Gallery Grids */
+
+ .gallery-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   gap: 2rem;
+   width: 100%;
+ }
+
+ /* Gallery Grid Responsive Breakpoints */
+ @media (max-width: 1024px) {
+   .gallery-grid {
+     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+     gap: 1.5rem;
+   }
+ }
+
+ @media (max-width: 768px) {
+   .gallery-grid {
+     grid-template-columns: 1fr;
+     gap: 1.5rem;
+   }
+ }
+
+ @media (max-width: 480px) {
+   .gallery-grid {
+     gap: 1rem;
+   }
+ }
+
+ /* Gallery Grid Layout Variants */
+ .gallery-grid.layout-single {
+   grid-template-columns: 1fr;
+ }
+
+ .gallery-grid.layout-two-col {
+   grid-template-columns: repeat(2, 1fr);
+ }
+
+ /* Layout Variant Responsive Breakpoints */
+ @media (max-width: 1024px) {
+   .gallery-grid.layout-two-col {
+     grid-template-columns: 1fr;
+   }
+ }
+
+ @media (max-width: 768px) {
+   .gallery-grid.layout-two-col {
+     grid-template-columns: 1fr;
+   }
+ }
+
+/* Multi-Post Gallery ---- Profile Pages & Posts //TODO: Clean up code - CSS GRID BLOCK REPLACEMENT
+*/
+.featured-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 5% 0;
+}
+.multi-post-gallery.title {
+  font-size: 2em;
+  line-height: 2em;
+  font-weight: 500;
+  color: var(--color_tru_wht);
+  text-align: center;
+  width: 100%;
+
+}
+.multi-post-gallery.subtitle {
+  font-size: 1em;
+  line-height: 1.25em;
+  font-weight: 100;
+  color: var(--color_acc_lght);
+  text-align: center;
+  font-style: italic;
+  width: 100%;
+}
+
+/* Multi-Post Gallery Wrapper - Isolates grid behavior from parent flex layout */
+.multi-post-gallery-wrapper {
+  width: 100%;
+  display: block;
+  padding: 3%; 
+}
+
+/* Gallery Post Grid Container & Block */
+
+.multi-post-gallery-section{
+  width: 100%;
+  padding: 3%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1200px;
+}
+.grid-container.multi-post-gallery{
+  gap: 3%;
+}
+.grid-block.gallery-post {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 200px;
+  max-width: 300px;
+
+}
+
+.gallery-post-img {
+  width: 100%;
+  height: auto;
+  /* Flex centering no longer needed with responsive images and object-fit */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.gallery-post-img img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.gallery-post a {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.gallery-post-title {
+  font-size: 1.5em;
+  font-weight: 500;
+  color: var(--color_tru_wht);
+  text-align: center;
+  padding: 2%;
+  margin: 0;
+}
+
+/* Multi-Post Gallery - Hotels & Travel Pages */
+.multi-post-gallery-wrapper.hotels-post .gallery-post-img {
+  width: 100%;
+  height: 250px;
+  margin: 3% 0;
+  overflow: hidden;
+  border-radius: 25px;
+  background-color: var(--color_brht);
+}
+
+.multi-post-gallery-wrapper.hotels-post .gallery-post-img img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+  object-fit: cover;
+}
+
+/* END Profile Page Template Parts --------------------------------------- */
+
+/*Submenus - Used on Profile Pages & Blog Pages */
+
+/* Page Content Sections ----- */ 
+
+/** Coming Soon Template Part ------ **/
+.coming-soon {
+  line-height: 1.5em; 
+}
+.coming-soon a{
+  color: var(--color_tru_wht);
+  text-decoration: none; 
+}
+
+/** Guest Schedule Template Part ------ **/
+
+
+/** END Guest Schedule Template Part ------ */
+
