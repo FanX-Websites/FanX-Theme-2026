@@ -1234,6 +1234,32 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "key": "field_6aeb24738da5f",
+                    "label": "List",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0,
+                    "parent_repeater": "field_698bfc11cc106"
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6ae5a0f6a883f",
                     "label": "LIST",
                     "name": "list",
@@ -1322,6 +1348,32 @@
                             "parent_repeater": "field_6ae5a0f6a883f"
                         }
                     ],
+                    "parent_repeater": "field_698bfc11cc106"
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_6aeb248b8da60",
+                    "label": "List - END",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 1,
                     "parent_repeater": "field_698bfc11cc106"
                 },
                 {
@@ -1600,12 +1652,16 @@
             {
                 "key": "",
                 "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
             }
         ],
         "note": "TO DO: \r\n- Hide Individual Content Blocks\r\n- Use the depreciated ACF QUICK Fields Plugin?"
     },
     "qef_simple_location_rules": 0,
-    "modified": 1793770571,
+    "modified": 1793795230,
     "acfe_categories": {
         "categories": "Categories",
         "event-info": "Event Info",
