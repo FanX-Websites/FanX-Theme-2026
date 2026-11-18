@@ -6,3 +6,7 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/ashelizmoore/fillory/TBCC/wp-content/themes/FanXTheme2026/footer.php on line 10
+[11-Nov-2026 01:10:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function language_attributes() in /home/ashelizmoore/fillory/fanx/wp-content/themes/FanXTheme2026/header.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ashelizmoore/fillory/fanx/wp-content/themes/FanXTheme2026/header.php on line 2

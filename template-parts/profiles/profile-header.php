@@ -10,10 +10,6 @@
     <!--  Profile Header -->
     <div class="profile-header block"> 
         
-        <!-- Submenu --- [Template Part] -->
-        <div class="container">
-            <?php get_template_part('template-parts/sub-menu'); ?>
-        </div><!-- END Submenu -->
 
         <!-- Main Category --->
         <h1>

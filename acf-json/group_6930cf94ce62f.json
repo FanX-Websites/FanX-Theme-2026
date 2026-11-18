@@ -130,6 +130,37 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
+                    "key": "field_6aee8c88cc3ed",
+                    "label": "Page\/Category Slug",
+                    "name": "cat_slug",
+                    "aria-label": "",
+                    "type": "acfe_slug",
+                    "instructions": "This slug determines the fields available on this category page. Do Not change without coordinating with web admin",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "cat-slug",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a44c0693e7a2",
                     "label": "Coming Soon Mode",
                     "name": "coming_soon",
@@ -566,7 +597,7 @@
                     "parent_repeater": "field_6943c77711a87"
                 },
                 {
-                    "allow_backendsearch": false,
+                    "allow_backendsearch": 1,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
                     "allow_quickedit": false,
@@ -594,7 +625,7 @@
                     "tabs": "all",
                     "toolbar": "full",
                     "media_upload": 1,
-                    "delay": 0,
+                    "delay": 1,
                     "parent_repeater": "field_6943c77711a87"
                 },
                 {
@@ -890,31 +921,6 @@
             "selected": 0
         },
         {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
-            "key": "field_6ae59f64f20ca",
-            "label": "Section Info",
-            "name": "",
-            "aria-label": "",
-            "type": "accordion",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "open": 0,
-            "multi_expand": 0,
-            "endpoint": 0
-        },
-        {
             "allow_backendsearch": 0,
             "show_column_filter": false,
             "allow_bulkedit": 0,
@@ -1015,31 +1021,6 @@
             "show_column": false,
             "show_column_weight": 1000,
             "show_column_sortable": false,
-            "key": "field_6ae59fa0f20cb",
-            "label": "Section Info - END",
-            "name": "",
-            "aria-label": "",
-            "type": "accordion",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "open": 0,
-            "multi_expand": 0,
-            "endpoint": 1
-        },
-        {
-            "allow_backendsearch": false,
-            "show_column_filter": false,
-            "allow_bulkedit": false,
-            "allow_quickedit": false,
-            "show_column": false,
-            "show_column_weight": 1000,
-            "show_column_sortable": false,
             "key": "field_698bfc11cc106",
             "label": "Tables \/Charts Section",
             "name": "tc",
@@ -1094,6 +1075,33 @@
                 {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_6aed2e6c89e68",
+                    "label": "(Column 3\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "3\/12",
+                    "endpoint": 0,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_698bfc11cc106"
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
                     "allow_bulkedit": 0,
                     "allow_quickedit": 0,
                     "show_column": 0,
@@ -1128,6 +1136,33 @@
                     "acfe_permissions": "",
                     "allow_in_bindings": 0,
                     "preview_size": "medium",
+                    "parent_repeater": "field_698bfc11cc106"
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_6aed2ee4a18af",
+                    "label": "(Column 6\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "6\/12",
+                    "endpoint": 0,
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 0,
                     "parent_repeater": "field_698bfc11cc106"
                 },
                 {
@@ -1195,6 +1230,32 @@
                     "parent_repeater": "field_698bfc11cc106"
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_6aed2e9189e69",
+                    "label": "(Column Endpoint)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "endpoint": 1,
+                    "allow_in_bindings": 0,
+                    "columns": "6\/12",
+                    "parent_repeater": "field_698bfc11cc106"
+                },
+                {
                     "allow_backendsearch": 0,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -1224,32 +1285,6 @@
                     "toolbar": "full",
                     "media_upload": 1,
                     "delay": 0,
-                    "parent_repeater": "field_698bfc11cc106"
-                },
-                {
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
-                    "key": "field_6aeb24738da5f",
-                    "label": "List",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "accordion",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "open": 0,
-                    "multi_expand": 0,
-                    "endpoint": 0,
                     "parent_repeater": "field_698bfc11cc106"
                 },
                 {
@@ -1358,11 +1393,11 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "key": "field_6aeb248b8da60",
-                    "label": "List - END",
+                    "key": "field_6aed2f4769d29",
+                    "label": "(Column 4\/12)",
                     "name": "",
                     "aria-label": "",
-                    "type": "accordion",
+                    "type": "acfe_column",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -1371,9 +1406,9 @@
                         "class": "",
                         "id": ""
                     },
-                    "open": 0,
-                    "multi_expand": 0,
-                    "endpoint": 1,
+                    "columns": "4\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0,
                     "parent_repeater": "field_698bfc11cc106"
                 },
                 {
@@ -1409,6 +1444,32 @@
                     "parent_repeater": "field_698bfc11cc106"
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_6aed2f5869d2a",
+                    "label": "(Column 4\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "4\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_698bfc11cc106"
+                },
+                {
                     "allow_backendsearch": 0,
                     "show_column_filter": false,
                     "allow_bulkedit": 0,
@@ -1441,6 +1502,32 @@
                     "parent_repeater": "field_698bfc11cc106"
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_6aed2f5b69d2b",
+                    "label": "(Column 4\/12)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "columns": "4\/12",
+                    "endpoint": 0,
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_698bfc11cc106"
+                },
+                {
                     "allow_backendsearch": 0,
                     "show_column_filter": false,
                     "allow_bulkedit": 0,
@@ -1470,6 +1557,32 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
+                    "parent_repeater": "field_698bfc11cc106"
+                },
+                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
+                    "key": "field_6aed2f6669d2c",
+                    "label": "(Column Endpoint)",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "acfe_column",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "endpoint": 1,
+                    "allow_in_bindings": 0,
+                    "columns": "6\/12",
                     "parent_repeater": "field_698bfc11cc106"
                 },
                 {
@@ -1533,6 +1646,39 @@
                     "parent_repeater": "field_698bfc11cc106"
                 }
             ]
+        },
+        {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
+            "key": "field_6aee8c59cc3ec",
+            "label": "Exhibitor Info",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6aee8c88cc3ed",
+                        "operator": "==",
+                        "value": "exhibitor-info"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
         }
     ],
     "location": [
@@ -1656,12 +1802,52 @@
             {
                 "key": "",
                 "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
             }
         ],
         "note": "TO DO: \r\n- Hide Individual Content Blocks\r\n- Use the depreciated ACF QUICK Fields Plugin?"
     },
     "qef_simple_location_rules": 0,
-    "modified": 1793795230,
+    "modified": 1794020228,
     "acfe_categories": {
         "categories": "Categories",
         "event-info": "Event Info",

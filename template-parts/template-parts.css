@@ -344,6 +344,7 @@ h3.updates-feed{
   margin: 0 auto;
   padding: 0;
   gap: 1em;
+ 
 }
 
 .feat-desc.term-description h3 {
@@ -357,11 +358,11 @@ h3.updates-feed{
 
 .feat-img.grid-block {
   max-width: 450px;
-  border-radius: 45px;
+  border-radius: 0px;
 }
 
 .desc.grid-block {
-  border-radius: 45px;
+  background-color: green;
 }
 
 .feat-desc .img-container img {
@@ -373,6 +374,7 @@ h3.updates-feed{
   width: 90%;
   margin: 0 auto;
   padding: 1%;
+  max-width: 800px; 
 }
 
 /* END Featured Image/Description Section */ 
@@ -430,8 +432,8 @@ h3.updates-feed{
 /* ------------- Content Blocks Section ------------> 
 - Refer to Wireframes in Style.css for layouts, breakpoints - */
 
-/* Default Content Blocks Section Styles */
-.cb-section {
+/* Default */
+.cb-section{
   width: 100%;
   padding: 0;
   margin: 0;
@@ -439,9 +441,101 @@ h3.updates-feed{
   justify-content: center;
   display: flex;
   border-radius: 0;
+  background-color: var(--color_acc_lght);
+}
+.cb-section-inner{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 0;
+}
+.content-blocks{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 0;
+  gap: 0; 
+}
+/*Induvidual Blocks*/
+.content-block{
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  flex-direction: column; 
+  padding: 3%; 
+  margin: 3%; 
+  border-radius: 0;
+  border: 2px solid var(--color_tru_blk);
+}
+/* Induvidual Blocks - Content */
+h2.content-block-title{
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  color: var(--color_tru_blk);
+}
+h3.content-block-subtext{
+  display: block;
+  font-size: 1.2em;
+  font-weight: 100;
+  text-align: center;
+  width: 100%;
+  padding: 0 0 15px;
+  margin: 0;
+  color: var(--color_tru_blk);
+}
+.content-block-text, .content-block-text a{
+  color: var(--color_tru_blk);
+}
+/* WYSIWYG paragraphs inside content blocks (wrapper changed from <p> to <div> in content-blocks.php) */
+.content-block-text p{
+  margin: 0 0 1em;
+  color: var(--color_tru_blk);
+}
+.content-block-text p:last-child{
+  margin-bottom: 0;
 }
 
-.cb-section-inner {
+.content-block-small-print p,
+.content-block-small-print.small-print .span{
+  font-size: .9em;
+  line-height: 1.25em;
+  text-align: center;
+  font-style: italic;
+  padding-bottom: 3%;
+  margin: 15px;
+  padding: 0;
+  color: var(--color_tru_blk);
+}
+/* Content Blocks - Buttons */
+.content-block span.button-text, .content-block span.button-subtext{
+  color: var(--color_tru_blk);
+}
+.content-block .button{
+  background-color: var(--color_prim_lght);
+  border: 2px solid var(--color_tru_blk);
+  
+}
+
+/* Event-Info Content Blocks Section Styles */
+.event-info .cb-section {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.event-info .cb-section-inner {
   width: 100%;
   padding: 3% 0 9%;
   margin: 0;
@@ -451,14 +545,14 @@ h3.updates-feed{
   flex-direction: column;
 }
 
-.content-blocks {
+.event-info .content-blocks {
   padding: 0;
   margin: 0;
   width: 90%;
   max-width: 1500px
 }
 
-.content-block {
+.event-info .content-block {
   padding: 30px;
   margin: 0;
   background-color: var(--color_brht);
@@ -468,12 +562,12 @@ h3.updates-feed{
   flex-direction: column; 
   box-sizing: border-box;
 }
-/* Content Block - Content */
-.content-block p,.content-block ul li {
+/* Event Info Content Block - Content */
+.event-info .content-block p,.event-info .content-block ul li {
   color: var(--color_tru_blk)
 }
 
-h2.content-block-title {
+.event-info h2.content-block-title {
   color: var(--color_prim);
   width: 100%;
   text-transform: uppercase;
@@ -483,7 +577,7 @@ h2.content-block-title {
   margin: 0
 }
 
-h3.content-block-subtext {
+.event-info h3.content-block-subtext {
   display: block;
   font-size: 1.2em;
   font-weight: 100;
@@ -494,7 +588,7 @@ h3.content-block-subtext {
   margin: 0
 }
 
-.content-block-small-print p, .content-block-small-print.small-print .span{
+.event-info .content-block-small-print p, .event-info .content-block-small-print.small-print .span{
   font-size: .9em;
   line-height: 1.25em;
   color: var(--color_tru_blk);
@@ -504,13 +598,14 @@ h3.content-block-subtext {
   margin: 15px;
   padding: 0
 }
+
 /* Ticket Comparison Chart ---------------------------- //TODO: CLEAN UP */
 
 /* ---------- Table Charts Section ------------->
 - Currently: Shares Wireframes w/content blocks - */
 /* Default Table Charts Section Styles */
 
- .ticket-info-charts .tc-section{
+.ticket-info-charts .tc-section{
   background-color: transparent;
   width: 90%; 
 }
@@ -528,7 +623,7 @@ border-radius: 0px;
   background-color: transparent;
   border: 1px solid var(--color_lght);
   border-radius: 0px; 
-  gap: 0px; 
+  gap: 0px;
 }
 
 /*
@@ -555,9 +650,8 @@ h2.tc-section-title {
 /* Table Charts - Content */
 
 .ticket-info-charts h2.table-chart-title{ /*pass name*/
-  color: var(--color_prim_lght);
   width: 100%;
-  font-size: clamp(3rem, 3vw, 5em);
+  font-size: clamp(3rem, 4vw, 5em);
   }
 
 .ticket-info-charts h3.table-chart-subtext{ /*price*/
@@ -705,13 +799,13 @@ h2.tc-section-title {
   justify-content: center;
   display: flex;
   border-radius: 0;
-  background-color: var(--color_prim);
 }
 
 .tc-section-inner {
-  width: 100%;
+  width: 90%;
   padding: 3% 0 9%;
   margin: 0;
+  max-width: 1500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -725,11 +819,7 @@ h2.tc-section-title {
   width: 90%;
   max-width: 1500px
 }*/
-.table-charts{
-  width: 100%; 
-  padding: 0; 
-  margin: 0;
-}
+
 .table-chart {
   padding: 30px;
   margin: 0;
@@ -762,14 +852,14 @@ p.tc-section-txt{
   margin: 0;
 }
 .table-chart p,.table-chart ul li {
-  color: var(--color_tru_wht)
+  color: var(--color_tru_wht);
 }
 
 h2.table-chart-title {
-  color: var(--color_prim_brht);
+  color: var(--color_tru_wht);
   width: 100%;
   text-transform: uppercase;
-  font-size: clamp(1.5rem, 3vw, 2.5em);
+  font-size: clamp(1.5rem, 4vw, 2.5em);
   text-align: center;
   padding: 0;
   margin: 0
@@ -784,17 +874,54 @@ h3.table-chart-subtext {
   padding: 0 0 15px;
   margin: 0
 }
+.table-chart-text{
+  padding: 0; 
+  margin: 0 auto; 
+}
 
-.table-chart-small-print {
-  font-size: clamp(.9rem, 1.5vw, 1.25em);
-  line-height: 1.25em;
-  color: var(--color_tru_wht);
+.table-chart-small-print, .table-chart-small-print a{
+  font-size: .9em;
+  line-height: 1.2em;
+  color: var(--color_lght);
   text-align: center;
   font-style: italic;
   padding-bottom: 3%;
   margin: 15px;
   padding: 0
 }
+
+.table-chart .button{
+  background-color: transparent; 
+  border: 2px solid var(--color_tru_wht);
+}
+
+/* Table Chart ------- Specifics -----> */
+.table-chart.chart-3{
+  background-color: var(--color_acc);
+}
+
+.table-chart.chart-2{
+  background-color: var(--color_prim);
+}
+.table-chart.chart-1 {
+  background-color: var(--color_base);}
+
+
+/* Exhibitor Info Booth Info & Prices - Table Charts */
+.exhibitor-info-charts .table-chart-subtext{
+  font-size: 1em;
+  color: var(--color_lght); 
+}
+.exhibitor-info-charts h2.table-chart-title {
+  font-size: clamp(1.5rem, 3vw, 2em);
+}
+.exhibitor-info-charts .table-chart{
+  border-radius: 0;
+  justify-content: start;
+
+}
+
+
 /* ----------END Table Charts Section ------------->
 
 /* Template Part: News & Updates Section */   
@@ -838,6 +965,7 @@ h3.table-chart-subtext {
   color: var(--color_lght);
   padding: 0;
   margin: 0;
+  text-align: center; 
 }
 
 .updates-posts-loop { /* Updates Section - Posts Loop Container */
@@ -850,10 +978,9 @@ h3.table-chart-subtext {
   background-color: var(--color_drk);
 }
 
-.updates-entry-title h4 a{ /* Updates Section - Post Title */
-  font-size: clamp(1.2rem, 2.0vw, 2.0rem);
+.updates-entry-title h4 a, .updates-entry-title{ /* Updates Section - Post Title */
   font-weight: 200;
-  color: var(--color_acc);
+  color: var(--color_tru_blk);
   text-decoration: none;
   text-align: center;
 }
@@ -866,13 +993,18 @@ h3.table-chart-subtext {
   margin: 0;
   padding: 1% 6%
 }
+a.updates-entry.button{
+  border: 1px solid var(--color_tru_blk);
+  border-radius: 0; 
+  color: var(--color_tru_blk);
+  background-color: var(--color_base_lght);
+}
 article.updates, .updates-no-posts-message{
   padding: 3%; 
   margin: 0; 
   background-color: var(--color_tru_wht);
   border-radius: 45px; 
   width: 100%; 
-
 }
 
    

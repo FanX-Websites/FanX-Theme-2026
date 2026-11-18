@@ -3,6 +3,13 @@
     "title": "Participant Application Info",
     "fields": [
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_69f03b3186518",
             "label": "Exhibitors",
             "name": "",
@@ -21,6 +28,13 @@
             "selected": 0
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_690566b041964",
             "label": "Exhibitor Space Applications",
             "name": "app",
@@ -42,6 +56,13 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_697d2ee7de12e",
                     "label": "Next Event Waitlist\/Newsletter",
                     "name": "ex_news_url",
@@ -57,9 +78,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 1
+                    "allow_in_bindings": 1,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd9ca6421fc",
                     "label": "(Column 4\/12)",
                     "name": "",
@@ -78,6 +107,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f39bd638e44",
                     "label": "Exhibitor\/Vendor Booths",
                     "name": "",
@@ -96,31 +132,13 @@
                     "endpoint": 0
                 },
                 {
-                    "key": "field_69f3c411b0853",
-                    "label": "Exhibitor\/Vendor Icon",
-                    "name": "ex_ico",
-                    "aria-label": "",
-                    "type": "icon_picker",
-                    "instructions": "[app_ex_ico] <\/br>\r\nFor More Icons: https:\/\/fonts.google.com\/icons. Copy 'Icon_name' and add to icons.php",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "tabs": [
-                        "google"
-                    ],
-                    "return_format": "array",
-                    "allow_in_bindings": 1,
-                    "library": "all",
-                    "default_value": {
-                        "type": null,
-                        "value": null
-                    }
-                },
-                {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908f682debb9",
                     "label": "Exhibitor\/Vendor Status",
                     "name": "ex_stat",
@@ -142,12 +160,19 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a3f298161805",
-                    "label": "Exhibitor\/Vendor Subtext",
-                    "name": "ex_sub_txt",
+                    "label": "Exhibitor\/Vendor Call to Action",
+                    "name": "ex_act",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "[app_ex_sub_txt]",
+                    "instructions": "[app_ex_act]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -163,6 +188,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908f6c0debba",
                     "label": "Exhibitor\/Vendor Link",
                     "name": "ex_url",
@@ -178,9 +210,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 1
+                    "allow_in_bindings": 1,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f39dbea2198",
                     "label": "Exhibitor\/Vendor Waitlist",
                     "name": "ex_wait",
@@ -196,9 +236,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 1
+                    "allow_in_bindings": 1,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f39db1a2194",
                     "label": "Cosplay Alley Booths",
                     "name": "",
@@ -217,6 +265,13 @@
                     "endpoint": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f39db4a2195",
                     "label": "Cosplay Icon",
                     "name": "cos_icon",
@@ -247,6 +302,13 @@
                     "choices": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f39db7a2196",
                     "label": "Cosplay Alley Status",
                     "name": "cos_stat",
@@ -268,6 +330,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a3f29c261807",
                     "label": "Cosplay Alley Subtext",
                     "name": "cos_sub_txt",
@@ -289,6 +358,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f3a3af6c41e",
                     "label": "Cosplay Alley Link",
                     "name": "cos_url",
@@ -306,6 +382,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd89e5d9b9f",
                     "label": "Cosplay Alley Waitlist",
                     "name": "cos_wait",
@@ -321,9 +404,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 1
+                    "allow_in_bindings": 1,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f39ca338e4a",
                     "label": "Accordian END",
                     "name": "",
@@ -342,6 +433,13 @@
                     "endpoint": 1
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f39dcfa2199",
                     "label": "Accordian END (copy)",
                     "name": "",
@@ -360,6 +458,13 @@
                     "endpoint": 1
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69c572df54c45",
                     "label": "(Column 4\/12)",
                     "name": "",
@@ -378,6 +483,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd8f697752d",
                     "label": "Artist Alley BOOTH",
                     "name": "",
@@ -396,6 +508,13 @@
                     "endpoint": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6971e5ba12c2c",
                     "label": "Artist Alley BOOTH Icon",
                     "name": "art_icon",
@@ -426,6 +545,13 @@
                     "choices": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908f75edebbd",
                     "label": "Artist Alley BOOTH Status",
                     "name": "art_stat",
@@ -447,9 +573,16 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a3f36a961808",
                     "label": "Artist Alley BOOTH Subtext",
-                    "name": "art_sub_txt",
+                    "name": "art_act",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "[app_art_sub_txt]",
@@ -468,6 +601,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908f786debbe",
                     "label": "Artist Alley BOOTH Link",
                     "name": "art_url",
@@ -483,9 +623,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 1
+                    "allow_in_bindings": 1,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd89d5d9b9e",
                     "label": "Artist Alley BOOTH Waitlist",
                     "name": "art_wait",
@@ -501,9 +649,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 1
+                    "allow_in_bindings": 1,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd8f887752e",
                     "label": "Artist Alley TABLE",
                     "name": "",
@@ -522,6 +678,13 @@
                     "endpoint": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd8fbd77531",
                     "label": "Artist Alley TABLE Icon",
                     "name": "art_tbl_icon",
@@ -552,6 +715,13 @@
                     "choices": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd8fdc77532",
                     "label": "Artist Alley TABLE Status",
                     "name": "art_tbl_stat",
@@ -573,6 +743,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a3f36e661809",
                     "label": "Artist Alley TABLE Subtext",
                     "name": "art_tbl_sub_txt",
@@ -594,6 +771,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd8fe477533",
                     "label": "Artist Alley TABLE Link",
                     "name": "art_tbl_url",
@@ -609,9 +793,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 1
+                    "allow_in_bindings": 1,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd8fee77534",
                     "label": "Artist Alley TABLE Waitlist",
                     "name": "art_tbl_wait",
@@ -627,9 +819,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 1
+                    "allow_in_bindings": 1,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd8f967752f",
                     "label": "Artist Alley END",
                     "name": "",
@@ -648,6 +848,13 @@
                     "endpoint": 1
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd875c0f13e",
                     "label": "(Column 3\/12)",
                     "name": "",
@@ -666,6 +873,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f39bfa38e45",
                     "label": "Artisan Crafters",
                     "name": "",
@@ -684,6 +898,13 @@
                     "endpoint": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6971e59912c2b",
                     "label": "Artisan Crafter Icon",
                     "name": "ind_icon",
@@ -714,6 +935,13 @@
                     "choices": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908f6fadebbc",
                     "label": "Artisan Crafter Status",
                     "name": "ind_stat",
@@ -735,6 +963,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a3f371c6180a",
                     "label": "Artisan Crafter Subtext",
                     "name": "ind_sub_txt",
@@ -756,6 +991,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908fbd1b9536",
                     "label": "Artisan Crafter Link",
                     "name": "ind_url",
@@ -771,9 +1013,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 0
+                    "allow_in_bindings": 0,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd89c0d9b9d",
                     "label": "Artisan Crafter Waitlist",
                     "name": "ind_wait",
@@ -789,9 +1039,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 0
+                    "allow_in_bindings": 0,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f39c7b38e48",
                     "label": "Accordian END",
                     "name": "",
@@ -810,6 +1068,13 @@
                     "endpoint": 1
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f39c2638e46",
                     "label": "Authors & Publishers",
                     "name": "",
@@ -828,6 +1093,13 @@
                     "endpoint": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6971e5f112c2d",
                     "label": "Author\/Publisher Icon",
                     "name": "lit_icon",
@@ -858,6 +1130,13 @@
                     "choices": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd8935d9b99",
                     "label": "Author\/Publisher Status",
                     "name": "lit_stat",
@@ -879,12 +1158,19 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6a3f374d6180b",
                     "label": "Author\/Publisher Subtext",
                     "name": "lit_sub_txt",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "[app_lit_sub_txt]",
+                    "instructions": "[app_lit_act]",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -900,6 +1186,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd893ad9b9a",
                     "label": "Author\/Publisher Link",
                     "name": "lit_url",
@@ -915,9 +1208,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 0
+                    "allow_in_bindings": 0,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd89a8d9b9c",
                     "label": "Author\/Publisher Waitlist",
                     "name": "lit_wait",
@@ -933,9 +1234,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 0
+                    "allow_in_bindings": 0,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f39c9c38e49",
                     "label": "Accordian END",
                     "name": "",
@@ -954,6 +1263,13 @@
                     "endpoint": 1
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd887af9286",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -974,6 +1290,13 @@
             ]
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_69f03c62fe1d8",
             "label": "Exhibitor Information Packets",
             "name": "info",
@@ -995,6 +1318,13 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f042179c385",
                     "label": "(Column 4\/12)",
                     "name": "",
@@ -1013,6 +1343,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f041760b635",
                     "label": "Exhibitor Package Status",
                     "name": "exhibitor_package_status_",
@@ -1034,6 +1371,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f042209c386",
                     "label": "(Column 6\/12)",
                     "name": "",
@@ -1052,6 +1396,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f03d510b634",
                     "label": "Exhibitor Package PDF\/ Published Google Doc Link",
                     "name": "ex_pkg_url",
@@ -1069,6 +1420,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f03cca0b633",
                     "label": "Exhibitor Booth Breakdown (Chart) Link",
                     "name": "booth_chrt_url",
@@ -1086,6 +1444,13 @@
                     "allow_in_bindings": 1
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69f042309c387",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -1106,6 +1471,13 @@
             ]
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_69f03b3fc8147",
             "label": "Panelists",
             "name": "",
@@ -1124,6 +1496,13 @@
             "selected": 0
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_6908fa1692c4f",
             "label": "Panelist\/Guest Applications",
             "name": "app",
@@ -1145,6 +1524,13 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_697d2edfde12d",
                     "label": "(Column 3\/12)",
                     "name": "",
@@ -1163,6 +1549,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69c5734654c46",
                     "label": "Programming Icon",
                     "name": "prog_icon",
@@ -1176,13 +1569,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "icon_sets": [
                         "solid",
                         "regular",
@@ -1200,6 +1586,13 @@
                     "choices": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_690567df41965",
                     "label": "Panel Programming",
                     "name": "pan_stat",
@@ -1221,6 +1614,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6905688241966",
                     "label": "Panel Programming Link",
                     "name": "pan_url",
@@ -1234,6 +1634,12 @@
                         "class": "",
                         "id": ""
                     },
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 1,
+                    "post_status": []
+                },
+                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -1241,11 +1647,6 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 1
-                },
-                {
                     "key": "field_69cd8a81e2051",
                     "label": "Panel Programming Waitlist",
                     "name": "pan_wait",
@@ -1261,9 +1662,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 1
+                    "allow_in_bindings": 1,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_697d2f1373e5b",
                     "label": "(Column 3\/12)",
                     "name": "",
@@ -1282,6 +1691,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908fa3692c50",
                     "label": "Cosplay Judge\/Host",
                     "name": "cos_judge_stat",
@@ -1303,6 +1719,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908faa392c51",
                     "label": "Cosplay Juge\/Host Link",
                     "name": "cos_judge_url",
@@ -1318,9 +1741,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 1
+                    "allow_in_bindings": 1,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_697d2f1b73e5c",
                     "label": "(Column 3\/12)",
                     "name": "",
@@ -1339,6 +1770,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908fcb3ad734",
                     "label": "Cosplay Contestant",
                     "name": "cos_con_stat",
@@ -1360,6 +1798,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908fd0bad735",
                     "label": "Cosplay Contestant Link",
                     "name": "cos_con_url",
@@ -1375,9 +1820,17 @@
                     },
                     "post_type": "",
                     "taxonomy": "",
-                    "allow_in_bindings": 1
+                    "allow_in_bindings": 1,
+                    "post_status": []
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_69cd8b4e0d084",
                     "label": "(Column 3\/12)",
                     "name": "",
@@ -1396,6 +1849,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908fb45b9535",
                     "label": "Special Guest",
                     "name": "sp_stat",
@@ -1409,13 +1869,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 0,
@@ -1424,6 +1877,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908fc7e9196e",
                     "label": "Special Guest Link",
                     "name": "sp_url",
@@ -1437,6 +1897,12 @@
                         "class": "",
                         "id": ""
                     },
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 1,
+                    "post_status": []
+                },
+                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -1444,11 +1910,6 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 1
-                },
-                {
                     "key": "field_697d2f1d73e5d",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -1462,13 +1923,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "endpoint": 1,
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
@@ -1476,6 +1930,13 @@
             ]
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_69f03b43c8148",
             "label": "Media Partners & Sponsors",
             "name": "",
@@ -1494,6 +1955,13 @@
             "selected": 0
         },
         {
+            "allow_backendsearch": false,
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_6908fc1f9196d",
             "label": "Media\/Partner Applications",
             "name": "app",
@@ -1515,6 +1983,13 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_697d2f4673e5e",
                     "label": "(Column 3\/12)",
                     "name": "",
@@ -1533,6 +2008,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": 0,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908fe83a23f5",
                     "label": "Press Pass",
                     "name": "press_stat",
@@ -1546,13 +2028,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 0,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "Apply SOON",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -1561,6 +2036,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908febfa23f6",
                     "label": "Press Pass Link",
                     "name": "press_url",
@@ -1574,6 +2056,12 @@
                         "class": "",
                         "id": ""
                     },
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 0,
+                    "post_status": []
+                },
+                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -1581,11 +2069,6 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 0
-                },
-                {
                     "key": "field_697d2f4e73e5f",
                     "label": "(Column 3\/12)",
                     "name": "",
@@ -1604,6 +2087,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908feed75e00",
                     "label": "Convention Crew",
                     "name": "crew_stat",
@@ -1617,13 +2107,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "Apply SOON",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -1632,6 +2115,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_697d3397e63c8",
                     "label": "Convention Crew Link",
                     "name": "crew_url",
@@ -1645,6 +2135,12 @@
                         "class": "",
                         "id": ""
                     },
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 0,
+                    "post_status": []
+                },
+                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -1652,11 +2148,6 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 0
-                },
-                {
                     "key": "field_69cd8bfdb827c",
                     "label": "(Column 3\/12)",
                     "name": "",
@@ -1675,6 +2166,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": 1,
+                    "show_column_filter": false,
+                    "allow_bulkedit": 0,
+                    "allow_quickedit": 0,
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908fdd0a23f3",
                     "label": "Sponsors",
                     "name": "spon_stat",
@@ -1688,13 +2186,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": 1,
-                    "show_column_filter": false,
-                    "allow_bulkedit": 0,
-                    "allow_quickedit": 0,
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "default_value": "Get More Info",
                     "maxlength": "",
                     "allow_in_bindings": 1,
@@ -1703,6 +2194,13 @@
                     "append": ""
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_6908fe5da23f4",
                     "label": "Sponsors Link",
                     "name": "spon_url",
@@ -1716,6 +2214,12 @@
                         "class": "",
                         "id": ""
                     },
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 1,
+                    "post_status": []
+                },
+                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -1723,11 +2227,6 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 1
-                },
-                {
                     "key": "field_69cd8c0db827d",
                     "label": "(Column 3\/12)",
                     "name": "",
@@ -1746,6 +2245,13 @@
                     "allow_in_bindings": 0
                 },
                 {
+                    "allow_backendsearch": false,
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_697d35fe77650",
                     "label": "Sponsorship Deck PDF",
                     "name": "spon_deck",
@@ -1759,6 +2265,12 @@
                         "class": "",
                         "id": ""
                     },
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_in_bindings": 0,
+                    "post_status": []
+                },
+                {
                     "allow_backendsearch": false,
                     "show_column_filter": false,
                     "allow_bulkedit": false,
@@ -1766,11 +2278,6 @@
                     "show_column": false,
                     "show_column_weight": 1000,
                     "show_column_sortable": false,
-                    "post_type": "",
-                    "taxonomy": "",
-                    "allow_in_bindings": 0
-                },
-                {
                     "key": "field_697d2f5173e60",
                     "label": "(Column Endpoint)",
                     "name": "",
@@ -1784,13 +2291,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "allow_backendsearch": false,
-                    "show_column_filter": false,
-                    "allow_bulkedit": false,
-                    "allow_quickedit": false,
-                    "show_column": false,
-                    "show_column_weight": 1000,
-                    "show_column_sortable": false,
                     "endpoint": 1,
                     "allow_in_bindings": 0,
                     "columns": "6\/12"
@@ -1823,9 +2323,28 @@
         "autosync": [
             "php",
             "json"
+        ],
+        "meta": [
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            },
+            {
+                "key": "",
+                "value": ""
+            }
         ]
     },
-    "modified": 1782543372,
+    "qef_simple_location_rules": 0,
+    "modified": 1794903964,
     "acfe_categories": {
         "options-pages": "Options Pages",
         "people": "People"

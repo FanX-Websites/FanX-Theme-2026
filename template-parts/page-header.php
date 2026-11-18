@@ -8,13 +8,9 @@
  */
 ?>
 <!--------- Page Header ----------------------->
-<div class="page-header-section self-centered-top"><!--------- Page Header Section -->          
+<div class="page-header-section self-centered"><!--------- Page Header Section -->          
     <div class="page-header block"> <!---------- Page Header Block -->
 
-        <!--------- Submenu --- [Template Part] -->
-            <?php get_template_part( 'template-parts/sub-menu' ); // SUBMENU ?> 
-        <!--------- END Submenu -------->
-        
         <!---------------------- Page Title Block ----------------------->
         <div class="page-title block self-centered-column">
                 <h1> 

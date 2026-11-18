@@ -21,7 +21,16 @@
             <?php 
                 // Query only blog posts (post type 'post') from the current category/taxonomy
                 // Exclude posts that use community-events term
+                // Require a 'blog' term whose name/slug contains 'update'
                 $term = get_queried_object();
+
+                $update_terms = get_terms( array(
+                    'taxonomy'   => 'blog',
+                    'fields'     => 'ids',
+                    'hide_empty' => false,
+                    'search'     => 'update', // matches name or slug containing 'update'
+                ) );
+
                 $args = array(
                     'post_type' => 'post',
                     'posts_per_page' => 3,
@@ -40,6 +49,16 @@
                         ),
                     ),
                 );
+
+                // Only add the 'update' requirement if matching terms exist
+                if ( ! empty( $update_terms ) && ! is_wp_error( $update_terms ) ) {
+                    $args['tax_query'][] = array(
+                        'taxonomy' => 'blog',
+                        'field'    => 'term_id',
+                        'terms'    => $update_terms,
+                    );
+                }
+
                 $updates_query = new WP_Query( $args );
             ?>
             
@@ -79,7 +98,7 @@
                         
                            <!-- Read More Button/ Footer -->
                 <footer class="entry-footer">
-                <a href="<?php the_permalink(); ?>" class="button">Read More</a>
+                <a href="<?php the_permalink(); ?>" class="updates-entry button">Read More</a>
                 </footer>
                 <!-- END Read More Button/ Footer -->          
 

@@ -91,6 +91,7 @@
             }
             ?>
             <div class="<?php echo esc_attr($layout_class); ?>">
+               
                 <?php
                 foreach ($blocks as $index => $block) :
                     $block_class = 'content-block'; // content block class > .content-block
@@ -105,26 +106,45 @@
                         <h3 class="content-block-subtext">   
                             <?php echo wp_kses_post($block['subtext'] ?? ''); //Subtext ------------ ?>
                         </h3>
-                        <p class="content-block-text">   
-                            <?php 
-                            $content = $block['content'] ?? ''; // Main Content
-                            // Remove wrapping <p> tags from ACF field
-                            $content = preg_replace('/<\/?p[^>]*>/', '', $content);
-                            echo wp_kses_post($content); 
-                            ?>
-                        </p>
+                        <div class="content-block-text">   
+                            
+                            <?php echo wp_kses_post($block['content'] ?? ''); // Main Content (WYSIWYG) ?>
+                        </div>
                     <?php
                     // Button --------------------------------------------------------- <<
                         $button_text    = $block['butt_txt'] ?? '';    // Button Text 
                         $button_subtext = $block['butt_subtxt'] ?? ''; // Button Subtext 
                         $button_link    = $block['butt_url'] ?? '';    // Button Link 
+                        $button_target  = '_self';
+                        
+                        // Support ACF Advanced Link field (returns array with url/title/target)
+                        if ( is_array( $button_link ) ) {
+                            $button_target = ! empty( $button_link['target'] ) ? $button_link['target'] : '_self';
+                            $button_link   = $button_link['url'] ?? '';
+                        } elseif ( is_string( $button_link ) && $button_link !== '' ) {
+                            // Support ACF shortcodes, e.g. [acf field="my_link" link_format="url"]
+                            $button_link = trim( do_shortcode( $button_link ) );
+
+                            // If the shortcode returned a full <a> tag (default link_format="html"),
+                            // pull out the href and target attributes
+                            if ( stripos( $button_link, '<a ' ) !== false ) {
+                                if ( preg_match( '/href=["\']([^"\']+)["\']/i', $button_link, $href_match ) ) {
+                                    if ( preg_match( '/target=["\']([^"\']+)["\']/i', $button_link, $target_match ) ) {
+                                        $button_target = $target_match[1];
+                                    }
+                                    $button_link = $href_match[1];
+                                } else {
+                                    $button_link = '';
+                                }
+                            }
+                        }
                         
                         //Button Conditionals 
                         if ($button_text) {
                             $disabled = !$button_link;
                             $class = $disabled ? 'button button--disabled' : 'button';
                             ?>
-                            <a <?php if ($button_link) : ?>href="<?php echo esc_url($button_link); ?>"<?php endif; ?> class="<?php echo esc_attr($class); ?>">
+                            <a <?php if ($button_link) : ?>href="<?php echo esc_url($button_link); ?>" target="<?php echo esc_attr($button_target); ?>"<?php endif; ?> class="<?php echo esc_attr($class); ?>">
                                 <span class="button-text"><?php echo esc_html($button_text); ?></span>
                                 <span class="button-subtext"><?php echo esc_html($button_subtext); ?></span>
                             </a>

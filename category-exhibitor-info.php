@@ -15,26 +15,26 @@ get_header(); /** body- main-site */
     </div><!-- END page-header Container -->
     <!------------ END Page Header Container -------------------->
 
-    <!--- Featured Image + Description Section [Template Part] ------------------------>
-    <div class="container full">
+    <!--- Featured Image + Description Section[Template Part] #INFO ------------------------>
+    <div class="container full" id="info">
     <?php get_template_part( 'template-parts/sections/feat-img-descript' ); ?>
     </div>
     <!---- END Featured Image + Description Section Template Part ------------------>
 
-    <!-------------------------- CONTENT BLOCKS Template Part --------------------->
-    <div class="content-blocks container">
+    <!-------------------------- CONTENT BLOCKS Template Part  --------------------->
+    <div class="container full">
         <?php get_template_part('template-parts/sections/content-blocks'); ?>
     </div>
     <!---------------------------END Content BLOCK Template Part --------------------->
 
-    <!-------------------------- Table Charts Template Part --------------------->
-    <div class="table-charts container">
+    <!-------------------------- Table Charts Template Part #BOOTHS --------------------->
+    <div class="container full" id="booths">
         <?php get_template_part('template-parts/sections/table-charts'); ?>
     </div>
     <!---------------------------END Table Charts Template Part --------------------->
 
-    <!-------------------------- Updates Section Template Part --------------------->
-    <div class="container full">
+    <!-------------------------- Updates Section Template Part #UPDATES --------------------->
+    <div class="container full" id="updates">
         <?php get_template_part('template-parts/sections/updates-section'); ?>
     </div>
     <!---------------------------END Updates Section Template Part --------------------->

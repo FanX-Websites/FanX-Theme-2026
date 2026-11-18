@@ -149,7 +149,7 @@ blockquote::before {
   height: 1px;
   width: 50%;
   background-color: var(--color_prim_lght);
-  margin: 30px auto
+
 }
 
 /* Text Branding */
@@ -181,13 +181,22 @@ p.small-print{
 /* END Text ---------------------------------------------- */
 
 /* Buttons ----------------------------------------------- */
+.featured-links{
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  flex-flow: column;
+}
+
+
 /* Global Button Styles */
 .button {
-  background-color: var(--color_base);
-  border: solid 8px var(--color_base);
-  border-radius: 75px;
+  background-color: transparent; 
+  border: solid 1px var(--color_lght);
+  border-radius: 0px;
   padding: 2% 3%;
   margin: 10px;
+  max-width: 500px;
   font-size: 1em;
   font-weight: 100;
   width: 90%;
@@ -196,12 +205,12 @@ p.small-print{
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-flow: column
+  flex-flow: column;
 }
 
 .button:hover {
-  background-color: var(--color_prim);
-  border: var(--color_prim) solid 8px
+  background-color: transparent;
+  border: var(--color_lght) solid 1px
 }
 
 a.button {
@@ -717,21 +726,24 @@ body::after {
 
 /** Page Headers */ 
   /* Page Header Block */
-  .page-header-section > .page-header .block{ 
-    padding: 1%;
-    gap: 0;
-  }
-  .page-header > .page-title.block {
-    padding: 0 0 3%; 
+  /* .page-header-section > .page-header .block{ 
+    padding: 0%;
     margin: 0; 
+    gap: 0;
+
+  } */
+  .page-header > .page-title.block {
+    padding: 3%; 
+    margin: 0; 
+    gap: 1; 
   }
   /*- Page Header Text */
   .page-title h1{
     width: 90%;
     margin: 0;
     padding: 0;
-    font-size: clamp(2.5rem,8vw,4rem);
-    line-height: 1.5em;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    line-height: 1.25em;
     font-weight: 700;
     text-align: center; 
     color: var(--color_base_brht);
@@ -799,7 +811,7 @@ body::after {
     }
 /*END Page Headers ----------------------------------*/
 
-/* The Content */
+/* The Content - DEFAULT */
 
 .the-content img{
   max-width: 90%; 
@@ -807,41 +819,46 @@ body::after {
 } 
 
 .the-content-block{
-  padding: 5% 0 ;
-  margin: 0 0 3%;
-  border-top: 1px solid var(--color_prim);
-  border-bottom: 1px solid var(--color_prim);
+  padding: 0;
+  margin: 0;
   border-radius: 0;
   width: 100%; 
 }
 .the-content{
   border-radius: 0;
-  padding: 0 3%;
+  padding: 1% 3% 5%;
+  margin: 0; 
   border: 0;
+}
+
+/* The Content - Profiles*/
+/* .profile .the-content-block{
+  padding: 5% 0;
+  margin: 0 0 3%;
+} */
+
+/* The Content - Scroll Feature */
+.scoll.the-content {
   max-height: 60vh;
   /* min-height: 150px; */
   overflow-y: auto;
 }
-
-.the-content::-webkit-scrollbar {
+/* Scroll Bar */
+.scroll.the-content::-webkit-scrollbar {
   width: 10px;
 }
-
-.the-content::-webkit-scrollbar-track {
+.scroll.the-content::-webkit-scrollbar-track {
   background: var(--color_base);
 }
-
-.the-content::-webkit-scrollbar-thumb {
-  background: var(--color_acc_brht);
+.scroll.the-content::-webkit-scrollbar-thumb {
+  background: var(--color_base_brht);
   border-radius: 5px;
 }
-
-.the-content::-webkit-scrollbar-thumb:hover {
+.scroll.the-content::-webkit-scrollbar-thumb:hover {
   background: var(--color_base);
 }
 
-
-    /* ORGANIZE BELOW */ 
+    /* //TODO: ORGANIZE BELOW vvvv */ 
 
 
 /* Footer ----------------------------------- */       

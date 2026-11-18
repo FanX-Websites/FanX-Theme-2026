@@ -5,9 +5,8 @@
  * Displays featured image (left column) + term description (right column)
  * Layout: 1fr 2fr ratio using layout-1-2col grid
  * 
- * //NOTE: This template triggers on any template that uses the description field
+ * //NOTE: This template triggers on any template that uses the description field (Categories)
  * 
- * //FIXME: The Description field in Cat/Tax Pages aren't working 
  * 
  * Usage: get_template_part( 'template-parts/sections/feat-img-descript' );
  */
@@ -45,35 +44,37 @@ if ( $queried_object && isset( $queried_object->taxonomy ) ) {
 }
 
 $section_class = '';
-if ( $page_slug ) {
+if ( $page_slug ) { 
     $section_class = $page_slug . '-blocks'; // Template Specific Class > .{page-slug}-blocks
 }
 ?>
-<div class="feat-desc-section<?php echo esc_attr( $section_class ); ?>">
-    <div class="feat-desc grid-container framed-1300 <?php echo ! empty( $featured_image ) ? 'layout-1-2col' : 'layout-single'; ?>">
+
+<!-- Featured Discription Section ------------------------------------------------>
+<div class="feat-desc-section <?php echo esc_attr( $section_class ); ?>">
+    <div class="feat-desc <?php echo ! empty( $featured_image ) ? 'grid-container layout-1-2col' : 'layout-single'; ?>">
         
-        <!-- Featured Image: 1fr (narrow left) - Only show if image exists -->
+    <!-- Featured Image: 1fr (narrow left) - Only show if image exists -->
         <?php if ( ! empty( $featured_image ) ) : ?>
-        <div class="feat-img grid-block outlined"">
-            <div class="feat-img img-container">
-                <?php 
-                $img_url = $featured_image['url'] ?? '';
-                $img_alt = $featured_image['alt'] ?? 'Featured image for ' . $term->name;
-                
-                if ( $img_url ) {
-                    echo '<img src="' . esc_url( $img_url ) . '" alt="' . esc_attr( $img_alt ) . '" />';
-                }
-                ?>
-            </div><!-- END img-container -->
-        </div><!-- END Featured Image Grid Block -->
+            <div class="feat-img grid-block">
+                <div class="feat-img img-container">
+                    <?php 
+                        $img_url = $featured_image['url'] ?? '';
+                        $img_alt = $featured_image['alt'] ?? 'Featured image for ' . $term->name;
+                        
+                        if ( $img_url ) {
+                            echo '<img src="' . esc_url( $img_url ) . '" alt="' . esc_attr( $img_alt ) . '" />';
+                        }
+                    ?>
+                </div><!-- END img-container -->
+            </div><!-- END Featured Image Grid Block ----------------------->   
         <?php endif; ?>
 
-        <!-- Description: 2fr (wide right) or full width if no image -->
-        <div class="desc grid-block outlined gradi">
+    <!-- Description: 2fr (wide right) or full width if no image ------------------>
+        <div class="desc">
             <div class="feat-desc term-description">
                 <?php echo wp_kses_post( $description ); ?>
             </div><!-- END term-description -->
-        </div><!-- END Description Grid Block -->
+        </div><!-- END Description Grid Block ---------------------->
 
     </div><!-- END feat-desc grid-container -->
 </div><!-- END feat-desc-section -->

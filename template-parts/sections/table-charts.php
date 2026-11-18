@@ -153,7 +153,30 @@ if ( !$section_title && !$section_sub && !$section_txt && !$blocks ) {
                         $button_text    = $block['butt_txt'] ?? '';    // Button Text > .butt_txt
                         $button_subtext = $block['butt_subtxt'] ?? ''; // Button Subtext > .butt_subtxt
                         $button_link    = $block['butt_url'] ?? '';    // Button Link > .butt_url
+                        $button_target  = '_self';
                         $button_class   = 'button';
+
+                        // Support ACF Advanced Link field (returns array with url/title/target)
+                        if ( is_array( $button_link ) ) {
+                            $button_target = ! empty( $button_link['target'] ) ? $button_link['target'] : '_self';
+                            $button_link   = $button_link['url'] ?? '';
+                        } elseif ( is_string( $button_link ) && $button_link !== '' ) {
+                            // Support ACF shortcodes, e.g. [acf field="my_link" link_format="url"]
+                            $button_link = trim( do_shortcode( $button_link ) );
+
+                            // If the shortcode returned a full <a> tag (default link_format="html"),
+                            // pull out the href and target attributes
+                            if ( stripos( $button_link, '<a ' ) !== false ) {
+                                if ( preg_match( '/href=["\']([^"\']+)["\']/i', $button_link, $href_match ) ) {
+                                    if ( preg_match( '/target=["\']([^"\']+)["\']/i', $button_link, $target_match ) ) {
+                                        $button_target = $target_match[1];
+                                    }
+                                    $button_link = $href_match[1];
+                                } else {
+                                    $button_link = '';
+                                }
+                            }
+                        }
                         
                         if (!$button_text || !$button_link) {
                             $button_class .= ' button--hidden';
@@ -163,7 +186,7 @@ if ( !$section_title && !$section_sub && !$section_txt && !$blocks ) {
                             $button_class .= ' button--has-subtext';
                         }
                         ?>
-                        <a href="<?php echo esc_url($button_link); ?>" class="<?php echo esc_attr($button_class); ?>">
+                        <a href="<?php echo esc_url($button_link); ?>" target="<?php echo esc_attr($button_target); ?>" class="<?php echo esc_attr($button_class); ?>">
                             <span class="button-text"><?php echo esc_html($button_text); ?></span>
                             <span class="button-subtext"><?php echo esc_html($button_subtext); ?></span>
                         </a>
